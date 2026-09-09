@@ -1,0 +1,127 @@
+@import "tailwindcss";
+
+/*
+  Design tokens — validated for WCAG AA on primary surfaces.
+  Dark mode is first-class (logo: blue + silver on near-black).
+*/
+
+:root {
+  --background: #f4f6f8;
+  --foreground: #0b1220;
+  --surface: #ffffff;
+  --surface-elevated: #ffffff;
+  --muted: #e8eef5;
+  --muted-foreground: #475569;
+  --border: rgba(15, 23, 42, 0.12);
+  --primary: #0d6efd;
+  --primary-foreground: #ffffff;
+  --primary-bright: #0a58ca;
+  --success: #15803d;
+  --success-foreground: #ffffff;
+  --warning: #b45309;
+  --warning-foreground: #ffffff;
+  --danger: #b91c1c;
+  --danger-foreground: #ffffff;
+  --ring: #0d6efd;
+  --sidebar: #0d1117;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-muted: #94a3b8;
+  --sidebar-active: #151b23;
+  --input: #ffffff;
+  --input-foreground: #0b1220;
+  --placeholder: #64748b;
+  --overlay: rgba(15, 23, 42, 0.55);
+  --focus-ring: 0 0 0 2px #ffffff, 0 0 0 4px #0d6efd;
+}
+
+.dark {
+  --background: #05070a;
+  --foreground: #f8fafc;
+  --surface: #0d1117;
+  --surface-elevated: #151b23;
+  --muted: #1a222d;
+  --muted-foreground: #cbd5e1;
+  --border: rgba(255, 255, 255, 0.08);
+  --primary: #0d6efd;
+  --primary-foreground: #ffffff;
+  --primary-bright: #2496ff;
+  --success: #22c55e;
+  --success-foreground: #052e16;
+  --warning: #fbbf24;
+  --warning-foreground: #422006;
+  --danger: #f87171;
+  --danger-foreground: #450a0a;
+  --ring: #2496ff;
+  --sidebar: #05070a;
+  --sidebar-foreground: #f8fafc;
+  --sidebar-muted: #cbd5e1;
+  --sidebar-active: #151b23;
+  --input: #151b23;
+  --input-foreground: #f8fafc;
+  --placeholder: #94a3b8;
+  --overlay: rgba(0, 0, 0, 0.65);
+  --focus-ring: 0 0 0 2px #05070a, 0 0 0 4px #2496ff;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-surface: var(--surface);
+  --color-surface-elevated: var(--surface-elevated);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-bright: var(--primary-bright);
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-danger: var(--danger);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-muted: var(--sidebar-muted);
+  --color-sidebar-active: var(--sidebar-active);
+  --color-input: var(--input);
+  --font-sans: var(--font-sans-app);
+  --font-mono: var(--font-mono-app);
+}
+
+* {
+  border-color: var(--border);
+}
+
+html {
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans-app), ui-sans-serif, system-ui, sans-serif;
+}
+
+::placeholder {
+  color: var(--placeholder);
+  opacity: 1;
+}
+
+:focus-visible {
+  outline: none;
+  box-shadow: var(--focus-ring);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
