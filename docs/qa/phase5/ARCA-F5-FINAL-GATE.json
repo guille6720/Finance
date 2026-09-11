@@ -1,0 +1,43 @@
+{
+  "label": "ARCA_F5_FINAL_GATE",
+  "recorded_at": "2026-09-11T12:00:00.000Z",
+  "scope": "HOMOLOGATION_AND_TECHNICAL_ONLY",
+  "WSAA_HOMOLOGATION": "PASS",
+  "FEDUMMY": "PASS",
+  "PARAMETER_SYNC": "PASS",
+  "CONDICION_IVA_RECEPTOR_SYNC": "PASS",
+  "FECAESOLICITAR_APPROVED": "PASS",
+  "FECOMPCONSULTAR": "PASS",
+  "CAE_MATCH": "PASS",
+  "REJECTION_FLOW": "PASS",
+  "REJECTION_NUMBER_CONSUMED": "NO",
+  "UNCERTAIN_RECONCILIATION": "PASS",
+  "NO_AUTOMATIC_RETRY": "PASS",
+  "NO_DUPLICATE_AUTHORIZATION": "PASS",
+  "ACCOUNTING_POST_ONCE": "PASS",
+  "CONCURRENT_DOUBLE_POST_PROTECTION": "PASS",
+  "TRANSACTION_ATOMICITY": "PASS",
+  "POSTED_ENTRY_IMMUTABILITY": "PASS",
+  "REVERSAL_SEMANTICS": "PASS",
+  "ARCA_SECRET_SCAN": "PASS",
+  "F5_HOMOLOGATION": "PASS",
+  "F5_TECHNICAL_STATUS": "COMPLETE",
+  "ARCA_PRODUCTION": "NOT_AUTHORIZED",
+  "ARCA_LIVE_CALLS_THIS_GATE": "NOT_RUN",
+  "sanitized_notes": [
+    "No full CAE, token, sign, CUIT, private key, certificate, CMS, or Base64 secrets stored in this file.",
+    "Live homologation evidence referenced from prior sanitized Phase 5 QA artifacts.",
+    "Accounting post-once proven via unit/simulator tests + migration RPC."
+  ],
+  "artifacts": {
+    "gateway": "src/server/arca/",
+    "accounting_rpc": "supabase/migrations/20260501210000_phase5_fiscal_accounting_post_once.sql",
+    "accounting_module": "src/lib/fiscal/accounting/post-once.ts",
+    "prior_evidence": [
+      "docs/qa/phase5/ARCA-HOMOLOGATION-CAE-ONCE.json",
+      "docs/qa/phase5/ARCA-HOMOLOGATION-REJECTION.json",
+      "docs/qa/phase5/ARCA-HOMOLOGATION-UNCERTAIN.json",
+      "docs/qa/phase5/ARCA-ACCOUNTING-POST-ONCE.json"
+    ]
+  }
+}
