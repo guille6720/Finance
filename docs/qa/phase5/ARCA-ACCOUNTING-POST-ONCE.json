@@ -1,0 +1,38 @@
+{
+  "label": "ARCA_PHASE5_ACCOUNTING_POST_ONCE",
+  "recorded_at": "2026-09-11T11:28:30.000Z",
+  "scope": "STAGING_TESTS_ONLY",
+  "AUTHORIZED_ACCOUNTING_POST": "PASS",
+  "AUTHORIZED_RECONCILED_ACCOUNTING_POST": "PASS",
+  "REJECTED_ACCOUNTING_BLOCK": "PASS",
+  "UNCERTAIN_ACCOUNTING_BLOCK": "PASS",
+  "IDEMPOTENCY": "PASS",
+  "CONCURRENT_DOUBLE_POST_PROTECTION": "PASS",
+  "TRANSACTION_ATOMICITY": "PASS",
+  "POSTED_ENTRY_IMMUTABILITY": "PASS",
+  "REVERSAL_SEMANTICS": "PASS",
+  "ACCOUNTING_POST_ONCE": "PASS",
+  "ARCA_UNIT_TESTS": "PASS",
+  "ARCA_SECRET_SCAN": "PASS",
+  "ARCA_LIVE_CALLS": "NOT_RUN",
+  "ARCA_PRODUCTION": "NOT_AUTHORIZED",
+  "F5_TECHNICAL_STATUS": "ACCOUNTING_POST_ONCE_IMPLEMENTED",
+  "evidence": {
+    "migration": "supabase/migrations/20260501210000_phase5_fiscal_accounting_post_once.sql",
+    "rpc": "public.post_fiscal_document_accounting(uuid)",
+    "source_key_table": "public.fiscal_accounting_post_keys",
+    "unique_index": "journal_entries_sale_source_uidx",
+    "engine": "public.post_journal_entry / public.reverse_journal_entry",
+    "unit_module": "src/lib/fiscal/accounting/post-once.ts",
+    "tests": "tests/unit/fiscal/accounting-post-once.test.ts",
+    "accounting_post_once_tests": "26 passed",
+    "arca_unit_tests": "75 passed",
+    "secret_scan_findings": 0
+  },
+  "notes": [
+    "DB status AUTHORIZED covers both APPROVED and RECONCILED_AUTHORIZED outcomes.",
+    "Application gate also accepts AUTHORIZED_RECONCILED as allow.",
+    "No FECAESolicitar / FECompConsultar / FECompUltimoAutorizado / WSAA live calls in this gate.",
+    "No additional homologation invoices issued."
+  ]
+}
