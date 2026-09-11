@@ -1,0 +1,45 @@
+{
+  "label": "LIVE_HOMOLOGATION_REJECTION",
+  "recorded_at": "2026-09-11T01:46:47.557Z",
+  "REJECTION_FLOW": "PASS",
+  "REJECTION_RESULT": "REJECTED",
+  "LAST_BEFORE": 1,
+  "LAST_AFTER": 1,
+  "NUMBER_CONSUMED": "NO",
+  "AUTOMATIC_RETRY": "NO",
+  "FECAESOLICITAR_CALL_COUNT": 1,
+  "ACCOUNTING_POST": "NOT_RUN",
+  "ARCA_PRODUCTION": "NOT_AUTHORIZED",
+  "evidence": {
+    "FECAESOLICITAR": "EXECUTED",
+    "FECOMPCONSULTAR": "NOT_RUN",
+    "CAE_MATCH": null,
+    "CAE_PRESENT": false,
+    "LAST_AUTHORIZED_QUERY": "PASS",
+    "LAST_AUTHORIZED": 1,
+    "LAST_BEFORE": 1,
+    "LAST_AFTER": 1,
+    "NO_AUTOMATIC_RETRY": true,
+    "AUTOMATIC_RETRY": "NO",
+    "FECAESOLICITAR_CALL_COUNT": 1,
+    "RECONCILIATION_STATUS": "NOT_NEEDED",
+    "NUMBER_CONSUMED": "NO",
+    "ACCOUNTING_POST": "NOT_RUN",
+    "ARCA_PRODUCTION": "NOT_AUTHORIZED",
+    "SIMULATED_RESPONSE_LOSS": "NOT_RUN",
+    "errors": [],
+    "observations": [
+      {
+        "code": "10037",
+        "msg": "El campo  MonId es obligatorio  y debe corresponder a algún valor devuelto  por  el  método FEParamGetTiposMonedas."
+      },
+      {
+        "code": "10037",
+        "msg": "El campo  MonId es obligatorio  y debe corresponder a algún valor devuelto  por  el  método FEParamGetTiposMonedas."
+      }
+    ],
+    "outcome": "REJECTED",
+    "detail": "Rejection gate PASS — number not consumed"
+  },
+  "BLOCKER": null
+}

@@ -1,0 +1,47 @@
+{
+  "label": "LIVE_HOMOLOGATION_POS_PROBE",
+  "recorded_at": "2026-09-10T20:29:23.838Z",
+  "methods": [
+    "WSAA loginCms",
+    "FECompUltimoAutorizado"
+  ],
+  "cbte_tipo": 11,
+  "points": [
+    1,
+    2,
+    10
+  ],
+  "forbidden": [
+    "FECAESolicitar",
+    "FECompConsultar",
+    "FEParamGetPtosVenta"
+  ],
+  "WSAA_HOMOLOGATION": "PASS",
+  "probes": [
+    {
+      "pto_venta": 1,
+      "status": "PASS",
+      "arca_error_code": null,
+      "sanitized_error_message": null,
+      "ultimo_comprobante": 0
+    },
+    {
+      "pto_venta": 2,
+      "status": "PASS",
+      "arca_error_code": null,
+      "sanitized_error_message": null,
+      "ultimo_comprobante": 0
+    },
+    {
+      "pto_venta": 10,
+      "status": "PASS",
+      "arca_error_code": null,
+      "sanitized_error_message": null,
+      "ultimo_comprobante": 0
+    }
+  ],
+  "FECAESOLICITAR": "NOT_RUN",
+  "ARCA_PRODUCTION": "NOT_AUTHORIZED",
+  "BLOCKER": null,
+  "ROOT_CAUSE": null
+}

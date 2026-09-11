@@ -27,6 +27,10 @@
 # misc
 .DS_Store
 *.pem
+*.key
+*.csr
+contabilium-homo.key
+contabilium-homo.csr
 
 # debug
 npm-debug.log*
@@ -38,7 +42,11 @@ yarn-error.log*
 .env
 .env.local
 .env.*.local
+.env.dr.local
+.env.arca.homo.local
+.arca-homo-ta.local.json
 !.env.example
+!.env.arca.homo.example
 
 # vercel
 .vercel

@@ -1,0 +1,37 @@
+{
+  "label": "LIVE_HOMOLOGATION",
+  "recorded_at": "2026-09-10T20:36:33.883Z",
+  "FISCAL_GATEWAY_IMPLEMENTED": "YES",
+  "ARCA_CONFIG_VALIDATION": "PASS",
+  "ARCA_CERT_KEY_MATCH": "PASS",
+  "ARCA_SECRET_SAFETY": "PASS",
+  "ARCA_ENVIRONMENT_GUARD": "PASS",
+  "WSAA_HOMOLOGATION": "FAIL",
+  "TA_CACHE": "NOT_RUN",
+  "FEDUMMY": "NOT_RUN",
+  "PARAMETER_SYNC": "NOT_RUN",
+  "CONDICION_IVA_RECEPTOR_SYNC": "NOT_RUN",
+  "PTO_VENTA": "NOT_RUN",
+  "PTO_VENTA_DISCOVERY": "NOT_RUN",
+  "LAST_AUTHORIZED_QUERY": "NOT_RUN",
+  "FECAESOLICITAR": "NOT_RUN",
+  "ARCA_PRODUCTION": "NOT_AUTHORIZED",
+  "F5_HOMOLOGATION_STATUS": "IN_PROGRESS",
+  "sanitized": {
+    "wsaa_url": "https://wsaahomo.afip.gov.ar/ws/services/LoginCms",
+    "wsfe_url": "https://wswhomo.afip.gov.ar/wsfev1/service.asmx",
+    "wsaa_service": "wsfe",
+    "cuit_digits": 11,
+    "cert_alias": "CONTABILIUMHOMO01",
+    "configured_pto_venta": 10,
+    "cert": {
+      "fingerprint_sha256": "abf7c2457a2016b0a6585d44178c8af7f7604874c2b7966e3aba026537e8662b",
+      "not_before": "2026-09-10T13:43:57.000Z",
+      "not_after": "2028-09-09T13:43:57.000Z",
+      "key_match": true
+    }
+  },
+  "BLOCKER": "WSAA_FAULT",
+  "ROOT_CAUSE": "WSAA HTTP 500: El CEE ya posee un TA valido para el acceso al WSN solicitado [ns1:coe.alreadyAuthenticated]",
+  "USER_ACTION_REQUIRED": null
+}

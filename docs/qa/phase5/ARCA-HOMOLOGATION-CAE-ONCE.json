@@ -1,0 +1,26 @@
+{
+  "label": "LIVE_HOMOLOGATION_CAE_ONCE",
+  "recorded_at": "2026-09-10T23:32:16.628Z",
+  "confirmed": true,
+  "ACCOUNTING_POST": "NOT_RUN",
+  "ARCA_PRODUCTION": "NOT_AUTHORIZED",
+  "LIVE_FECAESOLICITAR": "EXECUTED",
+  "result": {
+    "outcome": "AUTHORIZED",
+    "pto_venta": 10,
+    "cbte_tipo": 11,
+    "cbte_nro": 1,
+    "resultado": "A",
+    "cae_present": true,
+    "cae_length": 14,
+    "cae_fch_vto": "20260920",
+    "observations": [],
+    "errors": [],
+    "events": [],
+    "ACCOUNTING_POST": "NOT_RUN",
+    "ARCA_PRODUCTION": "NOT_AUTHORIZED",
+    "detail": "Homologation CAE verified"
+  },
+  "BLOCKER": null,
+  "ROOT_CAUSE": null
+}
