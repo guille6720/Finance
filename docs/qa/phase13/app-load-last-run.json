@@ -1,0 +1,2432 @@
+{
+  "VERIFIED_READ_CAPACITY_APP": 250,
+  "VERIFIED_WRITE_CAPACITY_APP": 250,
+  "VERIFIED_MIXED_CAPACITY_APP": 250,
+  "WRITE_RETEST_FROM_50_CAPACITY": 250,
+  "read": {
+    "workload": "READ_APP",
+    "verified_capacity": 250,
+    "status": "PASS",
+    "stages": [
+      {
+        "vus": 10,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 2.47,
+          "p95": 7.2,
+          "p99": null,
+          "error_rate": 0,
+          "http_reqs": 15151,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "errupted iterations\ndefault   [  60% ] 10 VUs  11.9s/20s\n\nrunning (13.0s), 10/10 VUs, 640 complete and 0 interrupted iterations\ndefault   [  65% ] 10 VUs  12.9s/20s\n\nrunning (14.0s), 10/10 VUs, 690 complete and 0 interrupted iterations\ndefault   [  70% ] 10 VUs  13.9s/20s\n\nrunning (15.0s), 10/10 VUs, 740 complete and 0 interrupted iterations\ndefault   [  75% ] 10 VUs  14.9s/20s\n\nrunning (16.0s), 10/10 VUs, 790 complete and 0 interrupted iterations\ndefault   [  80% ] 10 VUs  15.9s/20s\n\nrunning (17.0s), 10/10 VUs, 850 complete and 0 interrupted iterations\ndefault   [  85% ] 10 VUs  16.9s/20s\n\nrunning (18.0s), 10/10 VUs, 890 complete and 0 interrupted iterations\ndefault   [  90% ] 10 VUs  17.9s/20s\n\nrunning (19.0s), 10/10 VUs, 950 complete and 0 interrupted iterations\ndefault   [  95% ] 10 VUs  18.9s/20s\n\nrunning (20.0s), 10/10 VUs, 1000 complete and 0 interrupted iterations\ndefault   [ 100% ] 10 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<3000' p(95)=7.2ms\n\n    http_req_failed\n    ✓ 'rate<0.05' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 15150   751.10886/s\n    checks_succeeded...: 100.00% 15150 out of 15150\n    checks_failed......: 0.00%   0 out of 15150\n\n    ✓ 200 organizations\n    ✓ 200 organization_members\n    ✓ 200 organization_features\n    ✓ 200 branches\n    ✓ 200 fiscal_profiles\n    ✓ 200 business_profiles\n    ✓ 200 accounting_periods\n    ✓ 200 audit_events\n    ✓ 200 counterparties\n    ✓ 200 products\n    ✓ 200 journal_entries\n    ✓ 200 treasury_accounts\n    ✓ 200 warehouses\n    ✓ 404 missing customers\n    ✓ 404 missing tax_books\n\n    HTTP\n    http_req_duration..............: avg=3.01ms  min=0s       med=2.47ms   max=91.76ms  p(90)=4.89ms   p(95)=7.2ms   \n      { expected_response:true }...: avg=3.01ms  min=0s       med=2.47ms   max=91.76ms  p(90)=4.89ms   p(95)=7.2ms   \n    http_req_failed................: 0.00% 0 out of 15151\n    http_reqs......................: 15151 751.158438/s\n\n    EXECUTION\n    iteration_duration.............: avg=198.7ms min=178.09ms med=194.19ms max=326.14ms p(90)=212.52ms p(95)=216.72ms\n    iterations.....................: 1010  50.073924/s\n    vus............................: 10    min=10         max=10\n    vus_max........................: 10    min=10         max=10\n\n    NETWORK\n    data_received..................: 12 MB 590 kB/s\n    data_sent......................: 18 MB 888 kB/s\n\n\n\n\nrunning (20.2s), 00/10 VUs, 1010 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 10 VUs  20s\n",
+        "db_before": {
+          "connections": {
+            "total": 13,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "9.36",
+              "total_ms": "346.30"
+            },
+            {
+              "query": "WITH\npks_uniques_cols AS (\n  SELECT\n    conrelid,\n    array_agg(key order by key) as cols\n  FROM pg_constraint,\n  LATERA",
+              "calls": "37",
+              "mean_ms": "2.68",
+              "total_ms": "99.11"
+            },
+            {
+              "query": "WITH pgrst_source AS (SELECT pgrst_call.pgrst_scalar FROM (SELECT $1 AS json_data) pgrst_payload, LATERAL (SELECT \"p_org",
+              "calls": "24",
+              "mean_ms": "3.14",
+              "total_ms": "75.38"
+            },
+            {
+              "query": "CREATE DATABASE \"storage_vectors\"",
+              "calls": "1",
+              "mean_ms": "68.68",
+              "total_ms": "68.68"
+            },
+            {
+              "query": "with\nall_relations as (\n  select reltype\n  from pg_class\n  where relkind in ($2,$3,$4,$5,$6)\n  union\n  select oid\n  from",
+              "calls": "37",
+              "mean_ms": "1.75",
+              "total_ms": "64.69"
+            },
+            {
+              "query": "with recursive\npks_fks as (\n  -- pk + fk referencing col\n  select\n    contype::text as contype,\n    conname,\n    array_l",
+              "calls": "37",
+              "mean_ms": "1.31",
+              "total_ms": "48.40"
+            },
+            {
+              "query": "with tables as (\n  select table_name\n  from information_schema.tables\n  where table_schema = $1 and table_type = $2\n  or",
+              "calls": "1",
+              "mean_ms": "38.51",
+              "total_ms": "38.51"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "1010",
+              "mean_ms": "0.58",
+              "total_ms": "584.19"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "1010",
+              "mean_ms": "0.38",
+              "total_ms": "383.31"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "1010",
+              "mean_ms": "0.38",
+              "total_ms": "381.32"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "9.36",
+              "total_ms": "346.30"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "1010",
+              "mean_ms": "0.33",
+              "total_ms": "336.34"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "13217",
+              "mean_ms": "0.02",
+              "total_ms": "266.15"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "1010",
+              "mean_ms": "0.24",
+              "total_ms": "244.76"
+            }
+          ]
+        }
+      },
+      {
+        "vus": 25,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 4.77,
+          "p95": 8.55,
+          "p99": null,
+          "error_rate": 0,
+          "http_reqs": 32806,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "rations\ndefault   [  59% ] 25 VUs  11.9s/20s\n\nrunning (13.0s), 25/25 VUs, 1405 complete and 0 interrupted iterations\ndefault   [  64% ] 25 VUs  12.9s/20s\n\nrunning (14.0s), 25/25 VUs, 1505 complete and 0 interrupted iterations\ndefault   [  69% ] 25 VUs  13.9s/20s\n\nrunning (15.0s), 25/25 VUs, 1605 complete and 0 interrupted iterations\ndefault   [  74% ] 25 VUs  14.9s/20s\n\nrunning (16.0s), 25/25 VUs, 1730 complete and 0 interrupted iterations\ndefault   [  79% ] 25 VUs  15.9s/20s\n\nrunning (17.0s), 25/25 VUs, 1830 complete and 0 interrupted iterations\ndefault   [  84% ] 25 VUs  16.9s/20s\n\nrunning (18.0s), 25/25 VUs, 1930 complete and 0 interrupted iterations\ndefault   [  89% ] 25 VUs  17.9s/20s\n\nrunning (19.0s), 25/25 VUs, 2030 complete and 0 interrupted iterations\ndefault   [  94% ] 25 VUs  18.9s/20s\n\nrunning (20.0s), 25/25 VUs, 2155 complete and 0 interrupted iterations\ndefault   [  99% ] 25 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<3000' p(95)=8.55ms\n\n    http_req_failed\n    ✓ 'rate<0.05' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 32805   1618.517087/s\n    checks_succeeded...: 100.00% 32805 out of 32805\n    checks_failed......: 0.00%   0 out of 32805\n\n    ✓ 200 organizations\n    ✓ 200 organization_members\n    ✓ 200 organization_features\n    ✓ 200 branches\n    ✓ 200 fiscal_profiles\n    ✓ 200 business_profiles\n    ✓ 200 accounting_periods\n    ✓ 200 audit_events\n    ✓ 200 counterparties\n    ✓ 200 products\n    ✓ 200 journal_entries\n    ✓ 200 treasury_accounts\n    ✓ 200 warehouses\n    ✓ 404 missing customers\n    ✓ 404 missing tax_books\n\n    HTTP\n    http_req_duration..............: avg=5.07ms  min=503.2µs  med=4.77ms   max=97.93ms  p(90)=7.31ms   p(95)=8.55ms  \n      { expected_response:true }...: avg=5.07ms  min=503.2µs  med=4.77ms   max=97.93ms  p(90)=7.31ms   p(95)=8.55ms  \n    http_req_failed................: 0.00% 0 out of 32806\n    http_reqs......................: 32806 1618.566424/s\n\n    EXECUTION\n    iteration_duration.............: avg=229.1ms min=169.81ms med=229.21ms max=323.68ms p(90)=251.34ms p(95)=260.39ms\n    iterations.....................: 2187  107.901139/s\n    vus............................: 25    min=25         max=25\n    vus_max........................: 25    min=25         max=25\n\n    NETWORK\n    data_received..................: 26 MB 1.3 MB/s\n    data_sent......................: 39 MB 1.9 MB/s\n\n\n\n\nrunning (20.3s), 00/25 VUs, 2187 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 25 VUs  20s\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "1010",
+              "mean_ms": "0.58",
+              "total_ms": "584.19"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "1010",
+              "mean_ms": "0.38",
+              "total_ms": "383.31"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "1010",
+              "mean_ms": "0.38",
+              "total_ms": "381.32"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "9.36",
+              "total_ms": "346.30"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "1010",
+              "mean_ms": "0.33",
+              "total_ms": "336.34"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "13217",
+              "mean_ms": "0.02",
+              "total_ms": "266.15"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "1010",
+              "mean_ms": "0.24",
+              "total_ms": "244.76"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "3197",
+              "mean_ms": "0.50",
+              "total_ms": "1602.63"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "3197",
+              "mean_ms": "0.38",
+              "total_ms": "1226.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "3197",
+              "mean_ms": "0.35",
+              "total_ms": "1107.17"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "3197",
+              "mean_ms": "0.32",
+              "total_ms": "1011.22"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "41648",
+              "mean_ms": "0.02",
+              "total_ms": "782.83"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "3197",
+              "mean_ms": "0.22",
+              "total_ms": "703.19"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "9.36",
+              "total_ms": "346.30"
+            }
+          ]
+        }
+      },
+      {
+        "vus": 50,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 8.36,
+          "p95": 14.37,
+          "p99": null,
+          "error_rate": 0,
+          "http_reqs": 55171,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "ions\ndefault   [  59% ] 50 VUs  11.9s/20s\n\nrunning (13.0s), 50/50 VUs, 2280 complete and 0 interrupted iterations\ndefault   [  64% ] 50 VUs  12.9s/20s\n\nrunning (14.0s), 50/50 VUs, 2443 complete and 0 interrupted iterations\ndefault   [  69% ] 50 VUs  13.9s/20s\n\nrunning (15.0s), 50/50 VUs, 2663 complete and 0 interrupted iterations\ndefault   [  74% ] 50 VUs  14.9s/20s\n\nrunning (16.0s), 50/50 VUs, 2845 complete and 0 interrupted iterations\ndefault   [  79% ] 50 VUs  15.9s/20s\n\nrunning (17.0s), 50/50 VUs, 3052 complete and 0 interrupted iterations\ndefault   [  84% ] 50 VUs  16.9s/20s\n\nrunning (18.0s), 50/50 VUs, 3227 complete and 0 interrupted iterations\ndefault   [  89% ] 50 VUs  17.9s/20s\n\nrunning (19.0s), 50/50 VUs, 3426 complete and 0 interrupted iterations\ndefault   [  94% ] 50 VUs  18.9s/20s\n\nrunning (20.0s), 50/50 VUs, 3620 complete and 0 interrupted iterations\ndefault   [  99% ] 50 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<3000' p(95)=14.37ms\n\n    http_req_failed\n    ✓ 'rate<0.05' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 55170   2720.34355/s\n    checks_succeeded...: 100.00% 55170 out of 55170\n    checks_failed......: 0.00%   0 out of 55170\n\n    ✓ 200 organizations\n    ✓ 200 organization_members\n    ✓ 200 organization_features\n    ✓ 200 branches\n    ✓ 200 fiscal_profiles\n    ✓ 200 business_profiles\n    ✓ 200 accounting_periods\n    ✓ 200 audit_events\n    ✓ 200 counterparties\n    ✓ 200 products\n    ✓ 200 journal_entries\n    ✓ 200 treasury_accounts\n    ✓ 200 warehouses\n    ✓ 404 missing customers\n    ✓ 404 missing tax_books\n\n    HTTP\n    http_req_duration..............: avg=8.05ms   min=0s       med=8.36ms   max=189.7ms  p(90)=11.75ms  p(95)=14.37ms \n      { expected_response:true }...: avg=8.05ms   min=0s       med=8.36ms   max=189.7ms  p(90)=11.75ms  p(95)=14.37ms \n    http_req_failed................: 0.00% 0 out of 55171\n    http_reqs......................: 55171 2720.392858/s\n\n    EXECUTION\n    iteration_duration.............: avg=272.56ms min=169.02ms med=276.65ms max=496.19ms p(90)=321.71ms p(95)=374.71ms\n    iterations.....................: 3678  181.356237/s\n    vus............................: 50    min=50         max=50\n    vus_max........................: 50    min=50         max=50\n\n    NETWORK\n    data_received..................: 43 MB 2.1 MB/s\n    data_sent......................: 65 MB 3.2 MB/s\n\n\n\n\nrunning (20.3s), 00/50 VUs, 3678 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 50 VUs  20s\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "3197",
+              "mean_ms": "0.50",
+              "total_ms": "1602.63"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "3197",
+              "mean_ms": "0.38",
+              "total_ms": "1226.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "3197",
+              "mean_ms": "0.35",
+              "total_ms": "1107.17"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "3197",
+              "mean_ms": "0.32",
+              "total_ms": "1011.22"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "41648",
+              "mean_ms": "0.02",
+              "total_ms": "782.83"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "3197",
+              "mean_ms": "0.22",
+              "total_ms": "703.19"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "9.36",
+              "total_ms": "346.30"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "6875",
+              "mean_ms": "0.47",
+              "total_ms": "3245.99"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "6875",
+              "mean_ms": "0.39",
+              "total_ms": "2659.86"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "6875",
+              "mean_ms": "0.35",
+              "total_ms": "2439.59"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "6875",
+              "mean_ms": "0.26",
+              "total_ms": "1787.26"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "89462",
+              "mean_ms": "0.02",
+              "total_ms": "1636.33"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "6875",
+              "mean_ms": "0.22",
+              "total_ms": "1482.73"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "9.36",
+              "total_ms": "346.30"
+            }
+          ]
+        }
+      },
+      {
+        "vus": 100,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 13.03,
+          "p95": 89.08,
+          "p99": null,
+          "error_rate": 0,
+          "http_reqs": 54256,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "00 VUs  11.9s/20s\n\nrunning (13.0s), 100/100 VUs, 1982 complete and 0 interrupted iterations\ndefault   [  65% ] 100 VUs  12.9s/20s\n\nrunning (14.0s), 100/100 VUs, 2255 complete and 0 interrupted iterations\ndefault   [  70% ] 100 VUs  13.9s/20s\n\nrunning (15.0s), 100/100 VUs, 2356 complete and 0 interrupted iterations\ndefault   [  75% ] 100 VUs  14.9s/20s\n\nrunning (16.0s), 100/100 VUs, 2462 complete and 0 interrupted iterations\ndefault   [  80% ] 100 VUs  15.9s/20s\n\nrunning (17.0s), 100/100 VUs, 2607 complete and 0 interrupted iterations\ndefault   [  85% ] 100 VUs  16.9s/20s\n\nrunning (18.0s), 100/100 VUs, 2912 complete and 0 interrupted iterations\ndefault   [  90% ] 100 VUs  17.9s/20s\n\nrunning (19.0s), 100/100 VUs, 3214 complete and 0 interrupted iterations\ndefault   [  95% ] 100 VUs  18.9s/20s\n\nrunning (20.0s), 100/100 VUs, 3512 complete and 0 interrupted iterations\ndefault   [ 100% ] 100 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<3000' p(95)=89.08ms\n\n    http_req_failed\n    ✓ 'rate<0.05' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 54255   2628.882739/s\n    checks_succeeded...: 100.00% 54255 out of 54255\n    checks_failed......: 0.00%   0 out of 54255\n\n    ✓ 200 organizations\n    ✓ 200 organization_members\n    ✓ 200 organization_features\n    ✓ 200 branches\n    ✓ 200 fiscal_profiles\n    ✓ 200 business_profiles\n    ✓ 200 accounting_periods\n    ✓ 200 audit_events\n    ✓ 200 counterparties\n    ✓ 200 products\n    ✓ 200 journal_entries\n    ✓ 200 treasury_accounts\n    ✓ 200 warehouses\n    ✓ 404 missing customers\n    ✓ 404 missing tax_books\n\n    HTTP\n    http_req_duration..............: avg=27.52ms  min=502.7µs  med=13.03ms  max=788.13ms p(90)=63.87ms p(95)=89.08ms\n      { expected_response:true }...: avg=27.52ms  min=502.7µs  med=13.03ms  max=788.13ms p(90)=63.87ms p(95)=89.08ms\n    http_req_failed................: 0.00% 0 out of 54256\n    http_reqs......................: 54256 2628.931193/s\n\n    EXECUTION\n    iteration_duration.............: avg=564.83ms min=175.15ms med=380.41ms max=2.06s    p(90)=1.04s   p(95)=1.18s  \n    iterations.....................: 3617  175.258849/s\n    vus............................: 100   min=100        max=100\n    vus_max........................: 100   min=100        max=100\n\n    NETWORK\n    data_received..................: 43 MB 2.1 MB/s\n    data_sent......................: 64 MB 3.1 MB/s\n\n\n\n\nrunning (20.6s), 000/100 VUs, 3617 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 100 VUs  20s\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "6875",
+              "mean_ms": "0.47",
+              "total_ms": "3245.99"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "6875",
+              "mean_ms": "0.39",
+              "total_ms": "2659.86"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "6875",
+              "mean_ms": "0.35",
+              "total_ms": "2439.59"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "6875",
+              "mean_ms": "0.26",
+              "total_ms": "1787.26"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "89462",
+              "mean_ms": "0.02",
+              "total_ms": "1636.33"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "6875",
+              "mean_ms": "0.22",
+              "total_ms": "1482.73"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "9.36",
+              "total_ms": "346.30"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "10492",
+              "mean_ms": "0.49",
+              "total_ms": "5099.34"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "10492",
+              "mean_ms": "0.40",
+              "total_ms": "4245.51"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "10492",
+              "mean_ms": "0.37",
+              "total_ms": "3927.29"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "10492",
+              "mean_ms": "0.25",
+              "total_ms": "2672.85"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "136483",
+              "mean_ms": "0.02",
+              "total_ms": "2568.06"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "10492",
+              "mean_ms": "0.23",
+              "total_ms": "2375.68"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_members\".\"id\", \"public\".\"organization_members\".\"role\" FROM \"public\"",
+              "calls": "10492",
+              "mean_ms": "0.04",
+              "total_ms": "437.95"
+            }
+          ]
+        }
+      },
+      {
+        "vus": 250,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 163.13,
+          "p95": 236.15,
+          "p99": null,
+          "error_rate": 0.0101,
+          "http_reqs": 33766,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "\"Get \\\"http://127.0.0.1:54321/rest/v1/fiscal_profiles?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,fiscal_condition_id\\\": EOF\"\ntime=\"2026-09-09T12:42:04-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/organization_features?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,status,feature_id\\\": EOF\"\ntime=\"2026-09-09T12:42:04-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/business_profiles?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,business_type\\\": EOF\"\ntime=\"2026-09-09T12:42:04-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/tax_books?select=id&limit=1\\\": EOF\"\ntime=\"2026-09-09T12:42:04-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/audit_events?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,event_type,created_at&order=created_at.desc&limit=10\\\": EOF\"\ntime=\"2026-09-09T12:42:05-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/organizations?id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,legal_name,status\\\": EOF\"\ntime=\"2026-09-09T12:42:06-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/counterparties?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,legal_name,tax_id&limit=5\\\": EOF\"\ntime=\"2026-09-09T12:42:06-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/fiscal_profiles?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,fiscal_condition_id\\\": EOF\"\ntime=\"2026-09-09T12:42:06-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/organizations?id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,legal_name,status\\\": EOF\"\ntime=\"2026-09-09T12:42:06-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/organizations?id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,legal_name,status\\\": EOF\"\ntime=\"2026-09-09T12:42:06-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/fiscal_profiles?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,fiscal_condition_id\\\": EOF\"\ntime=\"2026-09-09T12:42:06-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/fiscal_profiles?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,fiscal_condition_id\\\": EOF\"\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "10492",
+              "mean_ms": "0.49",
+              "total_ms": "5099.34"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "10492",
+              "mean_ms": "0.40",
+              "total_ms": "4245.51"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "10492",
+              "mean_ms": "0.37",
+              "total_ms": "3927.29"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "10492",
+              "mean_ms": "0.25",
+              "total_ms": "2672.85"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "136483",
+              "mean_ms": "0.02",
+              "total_ms": "2568.06"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "10492",
+              "mean_ms": "0.23",
+              "total_ms": "2375.68"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_members\".\"id\", \"public\".\"organization_members\".\"role\" FROM \"public\"",
+              "calls": "10492",
+              "mean_ms": "0.04",
+              "total_ms": "437.95"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "165407",
+              "mean_ms": "0.02",
+              "total_ms": "3264.66"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_members\".\"id\", \"public\".\"organization_members\".\"role\" FROM \"public\"",
+              "calls": "12692",
+              "mean_ms": "0.04",
+              "total_ms": "564.84"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "write": {
+    "workload": "WRITE_APP",
+    "verified_capacity": 250,
+    "status": "PASS",
+    "stages": [
+      {
+        "vus": 10,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 10.78,
+          "p95": 53.8,
+          "p99": null,
+          "error_rate": 0,
+          "http_reqs": 1701,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "complete and 0 interrupted iterations\ndefault   [  45% ] 10 VUs  08.9s/20s\n\nrunning (10.0s), 10/10 VUs, 406 complete and 0 interrupted iterations\ndefault   [  50% ] 10 VUs  09.9s/20s\n\nrunning (11.0s), 10/10 VUs, 450 complete and 0 interrupted iterations\ndefault   [  55% ] 10 VUs  10.9s/20s\n\nrunning (12.0s), 10/10 VUs, 490 complete and 0 interrupted iterations\ndefault   [  60% ] 10 VUs  11.9s/20s\n\nrunning (13.0s), 10/10 VUs, 536 complete and 0 interrupted iterations\ndefault   [  65% ] 10 VUs  12.9s/20s\n\nrunning (14.0s), 10/10 VUs, 580 complete and 0 interrupted iterations\ndefault   [  70% ] 10 VUs  13.9s/20s\n\nrunning (15.0s), 10/10 VUs, 620 complete and 0 interrupted iterations\ndefault   [  75% ] 10 VUs  14.9s/20s\n\nrunning (16.0s), 10/10 VUs, 663 complete and 0 interrupted iterations\ndefault   [  80% ] 10 VUs  15.9s/20s\n\nrunning (17.0s), 10/10 VUs, 710 complete and 0 interrupted iterations\ndefault   [  85% ] 10 VUs  16.9s/20s\n\nrunning (18.0s), 10/10 VUs, 750 complete and 0 interrupted iterations\ndefault   [  90% ] 10 VUs  17.9s/20s\n\nrunning (19.0s), 10/10 VUs, 790 complete and 0 interrupted iterations\ndefault   [  95% ] 10 VUs  18.9s/20s\n\nrunning (20.0s), 10/10 VUs, 830 complete and 0 interrupted iterations\ndefault   [ 100% ] 10 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<4000' p(95)=53.8ms\n\n    http_req_failed\n    ✓ 'rate<0.08' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 1700    83.719894/s\n    checks_succeeded...: 100.00% 1700 out of 1700\n    checks_failed......: 0.00%   0 out of 1700\n\n    ✓ settings upsert ok\n    ✓ audit insert ok\n\n    HTTP\n    http_req_duration..............: avg=18.22ms  min=6.28ms  med=10.78ms  max=176.19ms p(90)=29.5ms   p(95)=53.8ms  \n      { expected_response:true }...: avg=18.22ms  min=6.28ms  med=10.78ms  max=176.19ms p(90)=29.5ms   p(95)=53.8ms  \n    http_req_failed................: 0.00%  0 out of 1701\n    http_reqs......................: 1701   83.769141/s\n\n    EXECUTION\n    iteration_duration.............: avg=237.37ms min=213.7ms med=229.68ms max=395.57ms p(90)=262.55ms p(95)=287.59ms\n    iterations.....................: 850    41.859947/s\n    vus............................: 10     min=10        max=10\n    vus_max........................: 10     min=10        max=10\n\n    NETWORK\n    data_received..................: 872 kB 43 kB/s\n    data_sent......................: 2.4 MB 119 kB/s\n\n\n\n\nrunning (20.3s), 00/10 VUs, 850 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 10 VUs  20s\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "165407",
+              "mean_ms": "0.02",
+              "total_ms": "3264.66"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_members\".\"id\", \"public\".\"organization_members\".\"role\" FROM \"public\"",
+              "calls": "12692",
+              "mean_ms": "0.04",
+              "total_ms": "564.84"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "850",
+              "mean_ms": "15.36",
+              "total_ms": "13053.13"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "167107",
+              "mean_ms": "0.02",
+              "total_ms": "3296.44"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            }
+          ]
+        }
+      },
+      {
+        "vus": 25,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 9.9,
+          "p95": 30.22,
+          "p99": null,
+          "error_rate": 0,
+          "http_reqs": 4329,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "terrupted iterations\ndefault   [  45% ] 25 VUs  08.9s/20s\n\nrunning (10.0s), 25/25 VUs, 1026 complete and 0 interrupted iterations\ndefault   [  50% ] 25 VUs  09.9s/20s\n\nrunning (11.0s), 25/25 VUs, 1138 complete and 0 interrupted iterations\ndefault   [  55% ] 25 VUs  10.9s/20s\n\nrunning (12.0s), 25/25 VUs, 1241 complete and 0 interrupted iterations\ndefault   [  60% ] 25 VUs  11.9s/20s\n\nrunning (13.0s), 25/25 VUs, 1354 complete and 0 interrupted iterations\ndefault   [  65% ] 25 VUs  12.9s/20s\n\nrunning (14.0s), 25/25 VUs, 1466 complete and 0 interrupted iterations\ndefault   [  70% ] 25 VUs  13.9s/20s\n\nrunning (15.0s), 25/25 VUs, 1580 complete and 0 interrupted iterations\ndefault   [  75% ] 25 VUs  14.9s/20s\n\nrunning (16.0s), 25/25 VUs, 1694 complete and 0 interrupted iterations\ndefault   [  80% ] 25 VUs  15.9s/20s\n\nrunning (17.0s), 25/25 VUs, 1794 complete and 0 interrupted iterations\ndefault   [  85% ] 25 VUs  16.9s/20s\n\nrunning (18.0s), 25/25 VUs, 1907 complete and 0 interrupted iterations\ndefault   [  90% ] 25 VUs  17.9s/20s\n\nrunning (19.0s), 25/25 VUs, 2022 complete and 0 interrupted iterations\ndefault   [  95% ] 25 VUs  18.9s/20s\n\nrunning (20.0s), 25/25 VUs, 2133 complete and 0 interrupted iterations\ndefault   [ 100% ] 25 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<4000' p(95)=30.22ms\n\n    http_req_failed\n    ✓ 'rate<0.08' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 4328    212.736516/s\n    checks_succeeded...: 100.00% 4328 out of 4328\n    checks_failed......: 0.00%   0 out of 4328\n\n    ✓ settings upsert ok\n    ✓ audit insert ok\n\n    HTTP\n    http_req_duration..............: avg=16.15ms  min=5.91ms  med=9.9ms    max=565.1ms  p(90)=14.91ms  p(95)=30.22ms \n      { expected_response:true }...: avg=16.15ms  min=5.91ms  med=9.9ms    max=565.1ms  p(90)=14.91ms  p(95)=30.22ms \n    http_req_failed................: 0.00%  0 out of 4329\n    http_reqs......................: 4329   212.785669/s\n\n    EXECUTION\n    iteration_duration.............: avg=233.08ms min=213.2ms med=220.75ms max=776.41ms p(90)=233.23ms p(95)=294.05ms\n    iterations.....................: 2164   106.368258/s\n    vus............................: 25     min=25        max=25\n    vus_max........................: 25     min=25        max=25\n\n    NETWORK\n    data_received..................: 2.2 MB 109 kB/s\n    data_sent......................: 6.1 MB 302 kB/s\n\n\n\n\nrunning (20.3s), 00/25 VUs, 2164 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 25 VUs  20s\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "850",
+              "mean_ms": "15.36",
+              "total_ms": "13053.13"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "167107",
+              "mean_ms": "0.02",
+              "total_ms": "3296.44"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            },
+            {
+              "query": "WITH\nbase_types AS (\n  SELECT t.oid, bt.typnamespace AS base_namespace, bt.oid AS base_type\n  FROM pg_type t\n  JOIN pg_t",
+              "calls": "37",
+              "mean_ms": "15.48",
+              "total_ms": "572.77"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "3014",
+              "mean_ms": "10.68",
+              "total_ms": "32183.00"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "171435",
+              "mean_ms": "0.02",
+              "total_ms": "3365.27"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "3014",
+              "mean_ms": "0.26",
+              "total_ms": "774.11"
+            }
+          ]
+        }
+      },
+      {
+        "vus": 50,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 71.74,
+          "p95": 494.52,
+          "p99": null,
+          "error_rate": 0,
+          "http_reqs": 4351,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "d 0 interrupted iterations\ndefault   [  45% ] 50 VUs  08.9s/20s\n\nrunning (10.0s), 50/50 VUs, 994 complete and 0 interrupted iterations\ndefault   [  50% ] 50 VUs  09.9s/20s\n\nrunning (11.0s), 50/50 VUs, 1120 complete and 0 interrupted iterations\ndefault   [  55% ] 50 VUs  10.9s/20s\n\nrunning (12.0s), 50/50 VUs, 1216 complete and 0 interrupted iterations\ndefault   [  60% ] 50 VUs  11.9s/20s\n\nrunning (13.0s), 50/50 VUs, 1323 complete and 0 interrupted iterations\ndefault   [  65% ] 50 VUs  12.9s/20s\n\nrunning (14.0s), 50/50 VUs, 1450 complete and 0 interrupted iterations\ndefault   [  70% ] 50 VUs  13.9s/20s\n\nrunning (15.0s), 50/50 VUs, 1562 complete and 0 interrupted iterations\ndefault   [  75% ] 50 VUs  14.9s/20s\n\nrunning (16.0s), 50/50 VUs, 1673 complete and 0 interrupted iterations\ndefault   [  80% ] 50 VUs  15.9s/20s\n\nrunning (17.0s), 50/50 VUs, 1743 complete and 0 interrupted iterations\ndefault   [  85% ] 50 VUs  16.9s/20s\n\nrunning (18.0s), 50/50 VUs, 1868 complete and 0 interrupted iterations\ndefault   [  90% ] 50 VUs  17.9s/20s\n\nrunning (19.0s), 50/50 VUs, 1996 complete and 0 interrupted iterations\ndefault   [  95% ] 50 VUs  18.9s/20s\n\nrunning (20.0s), 50/50 VUs, 2115 complete and 0 interrupted iterations\ndefault   [ 100% ] 50 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<4000' p(95)=494.52ms\n\n    http_req_failed\n    ✓ 'rate<0.08' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 4350    211.708869/s\n    checks_succeeded...: 100.00% 4350 out of 4350\n    checks_failed......: 0.00%   0 out of 4350\n\n    ✓ settings upsert ok\n    ✓ audit insert ok\n\n    HTTP\n    http_req_duration..............: avg=132.53ms min=7.83ms   med=71.74ms  max=2.98s p(90)=292.41ms p(95)=494.52ms\n      { expected_response:true }...: avg=132.53ms min=7.83ms   med=71.74ms  max=2.98s p(90)=292.41ms p(95)=494.52ms\n    http_req_failed................: 0.00%  0 out of 4351\n    http_reqs......................: 4351   211.757538/s\n\n    EXECUTION\n    iteration_duration.............: avg=465.91ms min=217.83ms med=379.89ms max=3.22s p(90)=777.49ms p(95)=955.03ms\n    iterations.....................: 2175   105.854435/s\n    vus............................: 50     min=50        max=50\n    vus_max........................: 50     min=50        max=50\n\n    NETWORK\n    data_received..................: 2.2 MB 109 kB/s\n    data_sent......................: 6.2 MB 300 kB/s\n\n\n\n\nrunning (20.5s), 00/50 VUs, 2175 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 50 VUs  20s\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "3014",
+              "mean_ms": "10.68",
+              "total_ms": "32183.00"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "171435",
+              "mean_ms": "0.02",
+              "total_ms": "3365.27"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "3014",
+              "mean_ms": "0.26",
+              "total_ms": "774.11"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "5189",
+              "mean_ms": "36.06",
+              "total_ms": "187107.57"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "175785",
+              "mean_ms": "0.02",
+              "total_ms": "3443.05"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "5189",
+              "mean_ms": "0.29",
+              "total_ms": "1487.24"
+            }
+          ]
+        }
+      },
+      {
+        "vus": 100,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 251.18,
+          "p95": 999.47,
+          "p99": null,
+          "error_rate": 0,
+          "http_reqs": 4519,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "[  44% ] 100 VUs  08.9s/20s\n\nrunning (10.0s), 100/100 VUs, 1020 complete and 0 interrupted iterations\ndefault   [  49% ] 100 VUs  09.9s/20s\n\nrunning (11.0s), 100/100 VUs, 1128 complete and 0 interrupted iterations\ndefault   [  54% ] 100 VUs  10.9s/20s\n\nrunning (12.0s), 100/100 VUs, 1241 complete and 0 interrupted iterations\ndefault   [  59% ] 100 VUs  11.9s/20s\n\nrunning (13.0s), 100/100 VUs, 1356 complete and 0 interrupted iterations\ndefault   [  64% ] 100 VUs  12.9s/20s\n\nrunning (14.0s), 100/100 VUs, 1464 complete and 0 interrupted iterations\ndefault   [  69% ] 100 VUs  13.9s/20s\n\nrunning (15.0s), 100/100 VUs, 1584 complete and 0 interrupted iterations\ndefault   [  74% ] 100 VUs  14.9s/20s\n\nrunning (16.0s), 100/100 VUs, 1693 complete and 0 interrupted iterations\ndefault   [  79% ] 100 VUs  15.9s/20s\n\nrunning (17.0s), 100/100 VUs, 1807 complete and 0 interrupted iterations\ndefault   [  84% ] 100 VUs  16.9s/20s\n\nrunning (18.0s), 100/100 VUs, 1914 complete and 0 interrupted iterations\ndefault   [  89% ] 100 VUs  17.9s/20s\n\nrunning (19.0s), 100/100 VUs, 2025 complete and 0 interrupted iterations\ndefault   [  94% ] 100 VUs  18.9s/20s\n\nrunning (20.0s), 100/100 VUs, 2150 complete and 0 interrupted iterations\ndefault   [  99% ] 100 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<4000' p(95)=999.47ms\n\n    http_req_failed\n    ✓ 'rate<0.08' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 4518    217.937087/s\n    checks_succeeded...: 100.00% 4518 out of 4518\n    checks_failed......: 0.00%   0 out of 4518\n\n    ✓ settings upsert ok\n    ✓ audit insert ok\n\n    HTTP\n    http_req_duration..............: avg=350.66ms min=9.26ms  med=251.18ms max=2.46s p(90)=783.85ms p(95)=999.47ms\n      { expected_response:true }...: avg=350.66ms min=9.26ms  med=251.18ms max=2.46s p(90)=783.85ms p(95)=999.47ms\n    http_req_failed................: 0.00%  0 out of 4519\n    http_reqs......................: 4519   217.985324/s\n\n    EXECUTION\n    iteration_duration.............: avg=902.37ms min=245.4ms med=792.72ms max=3.18s p(90)=1.52s    p(95)=1.78s   \n    iterations.....................: 2259   108.968543/s\n    vus............................: 100    min=100       max=100\n    vus_max........................: 100    min=100       max=100\n\n    NETWORK\n    data_received..................: 2.3 MB 112 kB/s\n    data_sent......................: 6.4 MB 309 kB/s\n\n\n\n\nrunning (20.7s), 000/100 VUs, 2259 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 100 VUs  20s\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "5189",
+              "mean_ms": "36.06",
+              "total_ms": "187107.57"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "175785",
+              "mean_ms": "0.02",
+              "total_ms": "3443.05"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "5189",
+              "mean_ms": "0.29",
+              "total_ms": "1487.24"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "7448",
+              "mean_ms": "45.81",
+              "total_ms": "341216.30"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "180303",
+              "mean_ms": "0.02",
+              "total_ms": "3538.09"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "7448",
+              "mean_ms": "0.32",
+              "total_ms": "2378.10"
+            }
+          ]
+        }
+      },
+      {
+        "vus": 250,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 669.61,
+          "p95": 2.95,
+          "p99": null,
+          "error_rate": 0.0316,
+          "http_reqs": 4829,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "quest Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:44:05-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:44:06-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:44:06-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:44:06-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:44:08-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:44:08-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:44:08-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:44:08-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:44:09-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:44:10-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:44:10-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:44:10-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:44:10-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:44:10-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:44:11-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "7448",
+              "mean_ms": "45.81",
+              "total_ms": "341216.30"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "180303",
+              "mean_ms": "0.02",
+              "total_ms": "3538.09"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "7448",
+              "mean_ms": "0.32",
+              "total_ms": "2378.10"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "9779",
+              "mean_ms": "51.15",
+              "total_ms": "500160.20"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "184978",
+              "mean_ms": "0.02",
+              "total_ms": "3649.11"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "9792",
+              "mean_ms": "0.34",
+              "total_ms": "3314.43"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "mixed": {
+    "workload": "MIXED_APP",
+    "verified_capacity": 250,
+    "status": "PASS",
+    "stages": [
+      {
+        "vus": 10,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 1.92,
+          "p95": 11.23,
+          "p99": null,
+          "error_rate": 0,
+          "http_reqs": 6241,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "0.0s), 10/10 VUs, 578 complete and 0 interrupted iterations\ndefault   [  50% ] 10 VUs  09.9s/20s\n\nrunning (11.0s), 10/10 VUs, 636 complete and 0 interrupted iterations\ndefault   [  55% ] 10 VUs  10.9s/20s\n\nrunning (12.0s), 10/10 VUs, 690 complete and 0 interrupted iterations\ndefault   [  60% ] 10 VUs  11.9s/20s\n\nrunning (13.0s), 10/10 VUs, 750 complete and 0 interrupted iterations\ndefault   [  65% ] 10 VUs  12.9s/20s\n\nrunning (14.0s), 10/10 VUs, 800 complete and 0 interrupted iterations\ndefault   [  70% ] 10 VUs  13.9s/20s\n\nrunning (15.0s), 10/10 VUs, 860 complete and 0 interrupted iterations\ndefault   [  75% ] 10 VUs  14.9s/20s\n\nrunning (16.0s), 10/10 VUs, 920 complete and 0 interrupted iterations\ndefault   [  80% ] 10 VUs  15.9s/20s\n\nrunning (17.0s), 10/10 VUs, 971 complete and 0 interrupted iterations\ndefault   [  85% ] 10 VUs  16.9s/20s\n\nrunning (18.0s), 10/10 VUs, 1034 complete and 0 interrupted iterations\ndefault   [  90% ] 10 VUs  17.9s/20s\n\nrunning (19.0s), 10/10 VUs, 1096 complete and 0 interrupted iterations\ndefault   [  95% ] 10 VUs  18.9s/20s\n\nrunning (20.0s), 10/10 VUs, 1157 complete and 0 interrupted iterations\ndefault   [ 100% ] 10 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<4000' p(95)=11.23ms\n\n    http_req_failed\n    ✓ 'rate<0.08' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 6240    309.415327/s\n    checks_succeeded...: 100.00% 6240 out of 6240\n    checks_failed......: 0.00%   0 out of 6240\n\n    ✓ org read 200\n    ✓ branches 200\n    ✓ periods 200\n    ✓ write upsert ok\n    ✓ counterparties 200\n    ✓ products 200\n\n    HTTP\n    http_req_duration..............: avg=3.79ms   min=502.29µs med=1.92ms   max=147.11ms p(90)=6.47ms   p(95)=11.23ms \n      { expected_response:true }...: avg=3.79ms   min=502.29µs med=1.92ms   max=147.11ms p(90)=6.47ms   p(95)=11.23ms \n    http_req_failed................: 0.00%  0 out of 6241\n    http_reqs......................: 6241   309.464913/s\n\n    EXECUTION\n    iteration_duration.............: avg=171.48ms min=156.41ms med=163.03ms max=309.69ms p(90)=195.27ms p(95)=220.68ms\n    iterations.....................: 1170   58.015374/s\n    vus............................: 10     min=10        max=10\n    vus_max........................: 10     min=10        max=10\n\n    NETWORK\n    data_received..................: 4.1 MB 203 kB/s\n    data_sent......................: 7.6 MB 377 kB/s\n\n\n\n\nrunning (20.2s), 00/10 VUs, 1170 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 10 VUs  20s\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "9779",
+              "mean_ms": "51.15",
+              "total_ms": "500160.20"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "184978",
+              "mean_ms": "0.02",
+              "total_ms": "3649.11"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "9792",
+              "mean_ms": "0.34",
+              "total_ms": "3314.43"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "10169",
+              "mean_ms": "49.82",
+              "total_ms": "506615.46"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "191218",
+              "mean_ms": "0.02",
+              "total_ms": "3758.74"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "9792",
+              "mean_ms": "0.34",
+              "total_ms": "3314.43"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            }
+          ]
+        }
+      },
+      {
+        "vus": 25,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 1.57,
+          "p95": 10.64,
+          "p99": null,
+          "error_rate": 0,
+          "http_reqs": 15498,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "5/25 VUs, 1435 complete and 0 interrupted iterations\ndefault   [  50% ] 25 VUs  09.9s/20s\n\nrunning (11.0s), 25/25 VUs, 1585 complete and 0 interrupted iterations\ndefault   [  55% ] 25 VUs  10.9s/20s\n\nrunning (12.0s), 25/25 VUs, 1735 complete and 0 interrupted iterations\ndefault   [  60% ] 25 VUs  11.9s/20s\n\nrunning (13.0s), 25/25 VUs, 1808 complete and 0 interrupted iterations\ndefault   [  65% ] 25 VUs  12.9s/20s\n\nrunning (14.0s), 25/25 VUs, 1958 complete and 0 interrupted iterations\ndefault   [  70% ] 25 VUs  13.9s/20s\n\nrunning (15.0s), 25/25 VUs, 2108 complete and 0 interrupted iterations\ndefault   [  75% ] 25 VUs  14.9s/20s\n\nrunning (16.0s), 25/25 VUs, 2258 complete and 0 interrupted iterations\ndefault   [  80% ] 25 VUs  15.9s/20s\n\nrunning (17.0s), 25/25 VUs, 2410 complete and 0 interrupted iterations\ndefault   [  85% ] 25 VUs  16.9s/20s\n\nrunning (18.0s), 25/25 VUs, 2563 complete and 0 interrupted iterations\ndefault   [  90% ] 25 VUs  17.9s/20s\n\nrunning (19.0s), 25/25 VUs, 2714 complete and 0 interrupted iterations\ndefault   [  95% ] 25 VUs  18.9s/20s\n\nrunning (20.0s), 25/25 VUs, 2867 complete and 0 interrupted iterations\ndefault   [ 100% ] 25 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<4000' p(95)=10.64ms\n\n    http_req_failed\n    ✓ 'rate<0.08' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 15497   765.250333/s\n    checks_succeeded...: 100.00% 15497 out of 15497\n    checks_failed......: 0.00%   0 out of 15497\n\n    ✓ org read 200\n    ✓ branches 200\n    ✓ periods 200\n    ✓ write upsert ok\n    ✓ counterparties 200\n    ✓ products 200\n\n    HTTP\n    http_req_duration..............: avg=4.08ms   min=502.4µs  med=1.57ms   max=661.12ms p(90)=3.73ms   p(95)=10.64ms \n      { expected_response:true }...: avg=4.08ms   min=502.4µs  med=1.57ms   max=661.12ms p(90)=3.73ms   p(95)=10.64ms \n    http_req_failed................: 0.00% 0 out of 15498\n    http_reqs......................: 15498 765.299713/s\n\n    EXECUTION\n    iteration_duration.............: avg=172.82ms min=156.21ms med=160.46ms max=820.62ms p(90)=182.51ms p(95)=208.45ms\n    iterations.....................: 2904  143.401108/s\n    vus............................: 25    min=25         max=25\n    vus_max........................: 25    min=25         max=25\n\n    NETWORK\n    data_received..................: 10 MB 501 kB/s\n    data_sent......................: 19 MB 933 kB/s\n\n\n\n\nrunning (20.3s), 00/25 VUs, 2904 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 25 VUs  20s\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "10169",
+              "mean_ms": "49.82",
+              "total_ms": "506615.46"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "191218",
+              "mean_ms": "0.02",
+              "total_ms": "3758.74"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "9792",
+              "mean_ms": "0.34",
+              "total_ms": "3314.43"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "11146",
+              "mean_ms": "47.16",
+              "total_ms": "525616.73"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "206715",
+              "mean_ms": "0.02",
+              "total_ms": "3993.19"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "9792",
+              "mean_ms": "0.34",
+              "total_ms": "3314.43"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            }
+          ]
+        }
+      },
+      {
+        "vus": 50,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 1.61,
+          "p95": 11.61,
+          "p99": null,
+          "error_rate": 0,
+          "http_reqs": 30524,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "50 VUs, 2710 complete and 0 interrupted iterations\ndefault   [  49% ] 50 VUs  09.9s/20s\n\nrunning (11.0s), 50/50 VUs, 3018 complete and 0 interrupted iterations\ndefault   [  54% ] 50 VUs  10.9s/20s\n\nrunning (12.0s), 50/50 VUs, 3330 complete and 0 interrupted iterations\ndefault   [  59% ] 50 VUs  11.9s/20s\n\nrunning (13.0s), 50/50 VUs, 3640 complete and 0 interrupted iterations\ndefault   [  64% ] 50 VUs  12.9s/20s\n\nrunning (14.0s), 50/50 VUs, 3934 complete and 0 interrupted iterations\ndefault   [  70% ] 50 VUs  13.9s/20s\n\nrunning (15.0s), 50/50 VUs, 4128 complete and 0 interrupted iterations\ndefault   [  75% ] 50 VUs  14.9s/20s\n\nrunning (16.0s), 50/50 VUs, 4427 complete and 0 interrupted iterations\ndefault   [  79% ] 50 VUs  15.9s/20s\n\nrunning (17.0s), 50/50 VUs, 4732 complete and 0 interrupted iterations\ndefault   [  84% ] 50 VUs  16.9s/20s\n\nrunning (18.0s), 50/50 VUs, 5030 complete and 0 interrupted iterations\ndefault   [  89% ] 50 VUs  17.9s/20s\n\nrunning (19.0s), 50/50 VUs, 5333 complete and 0 interrupted iterations\ndefault   [  94% ] 50 VUs  18.9s/20s\n\nrunning (20.0s), 50/50 VUs, 5637 complete and 0 interrupted iterations\ndefault   [ 100% ] 50 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<4000' p(95)=11.61ms\n\n    http_req_failed\n    ✓ 'rate<0.08' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 30523   1507.453521/s\n    checks_succeeded...: 100.00% 30523 out of 30523\n    checks_failed......: 0.00%   0 out of 30523\n\n    ✓ org read 200\n    ✓ branches 200\n    ✓ periods 200\n    ✓ write upsert ok\n    ✓ counterparties 200\n    ✓ products 200\n\n    HTTP\n    http_req_duration..............: avg=4.38ms   min=502.1µs  med=1.61ms   max=378.76ms p(90)=6.87ms   p(95)=11.61ms \n      { expected_response:true }...: avg=4.38ms   min=502.1µs  med=1.61ms   max=378.76ms p(90)=6.87ms   p(95)=11.61ms \n    http_req_failed................: 0.00% 0 out of 30524\n    http_reqs......................: 30524 1507.502909/s\n\n    EXECUTION\n    iteration_duration.............: avg=175.42ms min=156.42ms med=160.92ms max=604.51ms p(90)=184.33ms p(95)=241.87ms\n    iterations.....................: 5720  282.496286/s\n    vus............................: 50    min=50         max=50\n    vus_max........................: 50    min=50         max=50\n\n    NETWORK\n    data_received..................: 20 MB 987 kB/s\n    data_sent......................: 37 MB 1.8 MB/s\n\n\n\n\nrunning (20.2s), 00/50 VUs, 5720 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 50 VUs  20s\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "11146",
+              "mean_ms": "47.16",
+              "total_ms": "525616.73"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "206715",
+              "mean_ms": "0.02",
+              "total_ms": "3993.19"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "9792",
+              "mean_ms": "0.34",
+              "total_ms": "3314.43"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "13069",
+              "mean_ms": "42.15",
+              "total_ms": "550852.49"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "237238",
+              "mean_ms": "0.02",
+              "total_ms": "4454.55"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "9792",
+              "mean_ms": "0.34",
+              "total_ms": "3314.43"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            }
+          ]
+        }
+      },
+      {
+        "vus": 100,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 45.42,
+          "p95": 183.64,
+          "p99": null,
+          "error_rate": 0,
+          "http_reqs": 21582,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "nning (14.0s), 100/100 VUs, 2663 complete and 0 interrupted iterations\ndefault   [  70% ] 100 VUs  13.9s/20s\n\nrunning (15.0s), 100/100 VUs, 2878 complete and 0 interrupted iterations\ndefault   [  75% ] 100 VUs  14.9s/20s\n\nrunning (16.0s), 100/100 VUs, 3095 complete and 0 interrupted iterations\ndefault   [  80% ] 100 VUs  15.9s/20s\n\nrunning (17.0s), 100/100 VUs, 3283 complete and 0 interrupted iterations\ndefault   [  85% ] 100 VUs  16.9s/20s\n\nrunning (18.0s), 100/100 VUs, 3487 complete and 0 interrupted iterations\ndefault   [  90% ] 100 VUs  17.9s/20s\n\nrunning (19.0s), 100/100 VUs, 3703 complete and 0 interrupted iterations\ndefault   [  95% ] 100 VUs  18.9s/20s\n\nrunning (20.0s), 100/100 VUs, 3903 complete and 0 interrupted iterations\ndefault   [ 100% ] 100 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<4000' p(95)=183.64ms\n\n    http_req_failed\n    ✓ 'rate<0.08' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 21581  1064.348715/s\n    checks_succeeded...: 99.99% 21580 out of 21581\n    checks_failed......: 0.00%  1 out of 21581\n\n    ✓ org read 200\n    ✓ branches 200\n    ✗ periods 200\n      ↳  99% — ✓ 4039 / ✗ 1\n    ✓ write upsert ok\n    ✓ counterparties 200\n    ✓ products 200\n\n    HTTP\n    http_req_duration..............: avg=64.69ms  min=0s      med=45.42ms  max=749.2ms p(90)=139.11ms p(95)=183.64ms\n      { expected_response:true }...: avg=64.7ms   min=0s      med=45.42ms  max=749.2ms p(90)=139.11ms p(95)=183.65ms\n    http_req_failed................: 0.00% 1 out of 21582\n    http_reqs......................: 21582 1064.398034/s\n\n    EXECUTION\n    iteration_duration.............: avg=496.75ms min=157.6ms med=472.68ms max=1.32s   p(90)=712.98ms p(95)=795.48ms\n    iterations.....................: 4040  199.247894/s\n    vus............................: 100   min=100        max=100\n    vus_max........................: 100   min=100        max=100\n\n    NETWORK\n    data_received..................: 14 MB 698 kB/s\n    data_sent......................: 26 MB 1.3 MB/s\n\n\n\n\nrunning (20.3s), 000/100 VUs, 4040 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 100 VUs  20s\ntime=\"2026-09-09T12:45:53-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/accounting_periods?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,name\\\": dial tcp 127.0.0.1:54321: bind: No se puede ejecutar la operación en un socket ya que el sistema no tiene suficiente espacio de búfer o porque una cola estaba llena.\"\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "13069",
+              "mean_ms": "42.15",
+              "total_ms": "550852.49"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "237238",
+              "mean_ms": "0.02",
+              "total_ms": "4454.55"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "9792",
+              "mean_ms": "0.34",
+              "total_ms": "3314.43"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\", \"public\".\"branches\".\"code\" FROM \"pub",
+              "calls": "12703",
+              "mean_ms": "0.23",
+              "total_ms": "2979.92"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "14450",
+              "mean_ms": "39.49",
+              "total_ms": "570679.37"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "258818",
+              "mean_ms": "0.02",
+              "total_ms": "4907.88"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\" FROM \"public\".\"ac",
+              "calls": "13833",
+              "mean_ms": "0.33",
+              "total_ms": "4577.27"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "9792",
+              "mean_ms": "0.34",
+              "total_ms": "3314.43"
+            }
+          ]
+        }
+      },
+      {
+        "vus": 250,
+        "exitCode": 0,
+        "pass": true,
+        "metrics": {
+          "p50": 201.32,
+          "p95": 557.39,
+          "p99": null,
+          "error_rate": 0.0074,
+          "http_reqs": 19191,
+          "status_429": null,
+          "status_5xx": null
+        },
+        "stdout_tail": "http://127.0.0.1:54321/rest/v1/products?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,sku,name&limit=5\\\": EOF\"\ntime=\"2026-09-09T12:46:05-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/products?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,sku,name&limit=5\\\": EOF\"\ntime=\"2026-09-09T12:46:05-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/organizations?id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,status\\\": EOF\"\ntime=\"2026-09-09T12:46:05-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/organizations?id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,status\\\": EOF\"\ntime=\"2026-09-09T12:46:05-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/accounting_periods?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,name\\\": EOF\"\ntime=\"2026-09-09T12:46:05-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/organizations?id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,status\\\": EOF\"\ntime=\"2026-09-09T12:46:05-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/organizations?id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,status\\\": EOF\"\ntime=\"2026-09-09T12:46:08-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:46:09-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/organizations?id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,status\\\": EOF\"\ntime=\"2026-09-09T12:46:09-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/organizations?id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,status\\\": EOF\"\ntime=\"2026-09-09T12:46:09-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/counterparties?organization_id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,legal_name&limit=5\\\": EOF\"\ntime=\"2026-09-09T12:46:11-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/organizations?id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,status\\\": EOF\"\ntime=\"2026-09-09T12:46:18-03:00\" level=warning msg=\"Request Failed\" error=\"Get \\\"http://127.0.0.1:54321/rest/v1/organizations?id=eq.b432992d-f582-499d-9404-955d000d9c93&select=id,status\\\": EOF\"\n",
+        "db_before": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "14450",
+              "mean_ms": "39.49",
+              "total_ms": "570679.37"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "258818",
+              "mean_ms": "0.02",
+              "total_ms": "4907.88"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\" FROM \"public\".\"ac",
+              "calls": "13833",
+              "mean_ms": "0.33",
+              "total_ms": "4577.27"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"legal_name\", \"public\".\"organizati",
+              "calls": "12664",
+              "mean_ms": "0.26",
+              "total_ms": "3319.87"
+            },
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+              "calls": "9792",
+              "mean_ms": "0.34",
+              "total_ms": "3314.43"
+            }
+          ]
+        },
+        "db_after": {
+          "connections": {
+            "total": 22,
+            "active": 1,
+            "waiting_lock": 0
+          },
+          "ungranted_locks": 0,
+          "deadlocks": 0,
+          "pg_stat_top": [
+            {
+              "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+              "calls": "15708",
+              "mean_ms": "37.62",
+              "total_ms": "590988.35"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+              "calls": "12697",
+              "mean_ms": "0.50",
+              "total_ms": "6356.40"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\" FROM \"public\".\"ac",
+              "calls": "17387",
+              "mean_ms": "0.36",
+              "total_ms": "6209.17"
+            },
+            {
+              "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+              "calls": "277865",
+              "mean_ms": "0.02",
+              "total_ms": "5388.54"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+              "calls": "12726",
+              "mean_ms": "0.42",
+              "total_ms": "5354.42"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+              "calls": "12729",
+              "mean_ms": "0.39",
+              "total_ms": "4975.21"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"status\" FROM \"public\".\"organizati",
+              "calls": "17378",
+              "mean_ms": "0.22",
+              "total_ms": "3753.46"
+            },
+            {
+              "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\" FROM \"public\".\"branches\" WHERE  \"publ",
+              "calls": "17385",
+              "mean_ms": "0.21",
+              "total_ms": "3640.86"
+            }
+          ]
+        }
+      }
+    ]
+  },
+  "write_100_analysis": {
+    "observed": {
+      "passed_through": 250,
+      "failed_at": null
+    },
+    "hypotheses": [],
+    "likely_cause": "no_failure",
+    "harness_changes": []
+  },
+  "write_retest_from_50": [
+    {
+      "vus": 50,
+      "exitCode": 0,
+      "pass": true,
+      "metrics": {
+        "p50": 71.26,
+        "p95": 283.84,
+        "p99": null,
+        "error_rate": 0,
+        "http_reqs": 4703,
+        "status_429": null,
+        "status_5xx": null
+      },
+      "stdout_tail": " 0 interrupted iterations\ndefault   [  44% ] 50 VUs  08.9s/20s\n\nrunning (10.0s), 50/50 VUs, 1097 complete and 0 interrupted iterations\ndefault   [  49% ] 50 VUs  09.9s/20s\n\nrunning (11.0s), 50/50 VUs, 1215 complete and 0 interrupted iterations\ndefault   [  54% ] 50 VUs  10.9s/20s\n\nrunning (12.0s), 50/50 VUs, 1327 complete and 0 interrupted iterations\ndefault   [  59% ] 50 VUs  11.9s/20s\n\nrunning (13.0s), 50/50 VUs, 1453 complete and 0 interrupted iterations\ndefault   [  64% ] 50 VUs  12.9s/20s\n\nrunning (14.0s), 50/50 VUs, 1566 complete and 0 interrupted iterations\ndefault   [  69% ] 50 VUs  13.9s/20s\n\nrunning (15.0s), 50/50 VUs, 1687 complete and 0 interrupted iterations\ndefault   [  74% ] 50 VUs  14.9s/20s\n\nrunning (16.0s), 50/50 VUs, 1799 complete and 0 interrupted iterations\ndefault   [  79% ] 50 VUs  15.9s/20s\n\nrunning (17.0s), 50/50 VUs, 1928 complete and 0 interrupted iterations\ndefault   [  84% ] 50 VUs  16.9s/20s\n\nrunning (18.0s), 50/50 VUs, 2050 complete and 0 interrupted iterations\ndefault   [  89% ] 50 VUs  17.9s/20s\n\nrunning (19.0s), 50/50 VUs, 2171 complete and 0 interrupted iterations\ndefault   [  94% ] 50 VUs  18.9s/20s\n\nrunning (20.0s), 50/50 VUs, 2288 complete and 0 interrupted iterations\ndefault   [  99% ] 50 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<4000' p(95)=283.84ms\n\n    http_req_failed\n    ✓ 'rate<0.08' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 4702    229.829493/s\n    checks_succeeded...: 100.00% 4702 out of 4702\n    checks_failed......: 0.00%   0 out of 4702\n\n    ✓ settings upsert ok\n    ✓ audit insert ok\n\n    HTTP\n    http_req_duration..............: avg=114.29ms min=9ms      med=71.26ms  max=5.36s p(90)=202.26ms p(95)=283.84ms\n      { expected_response:true }...: avg=114.29ms min=9ms      med=71.26ms  max=5.36s p(90)=202.26ms p(95)=283.84ms\n    http_req_failed................: 0.00%  0 out of 4703\n    http_reqs......................: 4703   229.878372/s\n\n    EXECUTION\n    iteration_duration.............: avg=429.5ms  min=234.13ms med=367.72ms max=5.7s  p(90)=566.98ms p(95)=722.39ms\n    iterations.....................: 2351   114.914746/s\n    vus............................: 50     min=50        max=50\n    vus_max........................: 50     min=50        max=50\n\n    NETWORK\n    data_received..................: 2.4 MB 118 kB/s\n    data_sent......................: 6.7 MB 326 kB/s\n\n\n\n\nrunning (20.5s), 00/50 VUs, 2351 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 50 VUs  20s\n",
+      "db_before": {
+        "connections": {
+          "total": 22,
+          "active": 1,
+          "waiting_lock": 0
+        },
+        "ungranted_locks": 0,
+        "deadlocks": 0,
+        "pg_stat_top": [
+          {
+            "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+            "calls": "15708",
+            "mean_ms": "37.62",
+            "total_ms": "590988.35"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+            "calls": "12697",
+            "mean_ms": "0.50",
+            "total_ms": "6356.40"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\" FROM \"public\".\"ac",
+            "calls": "17387",
+            "mean_ms": "0.36",
+            "total_ms": "6209.17"
+          },
+          {
+            "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+            "calls": "277865",
+            "mean_ms": "0.02",
+            "total_ms": "5388.54"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+            "calls": "12726",
+            "mean_ms": "0.42",
+            "total_ms": "5354.42"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+            "calls": "12729",
+            "mean_ms": "0.39",
+            "total_ms": "4975.21"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"status\" FROM \"public\".\"organizati",
+            "calls": "17378",
+            "mean_ms": "0.22",
+            "total_ms": "3753.46"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"branches\".\"id\", \"public\".\"branches\".\"name\" FROM \"public\".\"branches\" WHERE  \"publ",
+            "calls": "17385",
+            "mean_ms": "0.21",
+            "total_ms": "3640.86"
+          }
+        ]
+      },
+      "db_after": {
+        "connections": {
+          "total": 22,
+          "active": 1,
+          "waiting_lock": 0
+        },
+        "ungranted_locks": 0,
+        "deadlocks": 0,
+        "pg_stat_top": [
+          {
+            "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+            "calls": "18059",
+            "mean_ms": "41.29",
+            "total_ms": "745641.64"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+            "calls": "12697",
+            "mean_ms": "0.50",
+            "total_ms": "6356.40"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\" FROM \"public\".\"ac",
+            "calls": "17387",
+            "mean_ms": "0.36",
+            "total_ms": "6209.17"
+          },
+          {
+            "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+            "calls": "282567",
+            "mean_ms": "0.02",
+            "total_ms": "5474.12"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+            "calls": "12726",
+            "mean_ms": "0.42",
+            "total_ms": "5354.42"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+            "calls": "12729",
+            "mean_ms": "0.39",
+            "total_ms": "4975.21"
+          },
+          {
+            "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+            "calls": "12143",
+            "mean_ms": "0.34",
+            "total_ms": "4086.05"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"status\" FROM \"public\".\"organizati",
+            "calls": "17378",
+            "mean_ms": "0.22",
+            "total_ms": "3753.46"
+          }
+        ]
+      }
+    },
+    {
+      "vus": 100,
+      "exitCode": 0,
+      "pass": true,
+      "metrics": {
+        "p50": 256.89,
+        "p95": 984.06,
+        "p99": null,
+        "error_rate": 0,
+        "http_reqs": 4495,
+        "status_429": null,
+        "status_5xx": null
+      },
+      "stdout_tail": "44% ] 100 VUs  08.9s/20s\n\nrunning (10.0s), 100/100 VUs, 1027 complete and 0 interrupted iterations\ndefault   [  49% ] 100 VUs  09.9s/20s\n\nrunning (11.0s), 100/100 VUs, 1145 complete and 0 interrupted iterations\ndefault   [  54% ] 100 VUs  10.9s/20s\n\nrunning (12.0s), 100/100 VUs, 1243 complete and 0 interrupted iterations\ndefault   [  59% ] 100 VUs  11.9s/20s\n\nrunning (13.0s), 100/100 VUs, 1358 complete and 0 interrupted iterations\ndefault   [  64% ] 100 VUs  12.9s/20s\n\nrunning (14.0s), 100/100 VUs, 1464 complete and 0 interrupted iterations\ndefault   [  69% ] 100 VUs  13.9s/20s\n\nrunning (15.0s), 100/100 VUs, 1582 complete and 0 interrupted iterations\ndefault   [  74% ] 100 VUs  14.9s/20s\n\nrunning (16.0s), 100/100 VUs, 1694 complete and 0 interrupted iterations\ndefault   [  79% ] 100 VUs  15.9s/20s\n\nrunning (17.0s), 100/100 VUs, 1797 complete and 0 interrupted iterations\ndefault   [  84% ] 100 VUs  16.9s/20s\n\nrunning (18.0s), 100/100 VUs, 1904 complete and 0 interrupted iterations\ndefault   [  89% ] 100 VUs  17.9s/20s\n\nrunning (19.0s), 100/100 VUs, 2016 complete and 0 interrupted iterations\ndefault   [  94% ] 100 VUs  18.9s/20s\n\nrunning (20.0s), 100/100 VUs, 2136 complete and 0 interrupted iterations\ndefault   [  99% ] 100 VUs  19.9s/20s\n\n\n  █ THRESHOLDS \n\n    http_req_duration\n    ✓ 'p(95)<4000' p(95)=984.06ms\n\n    http_req_failed\n    ✓ 'rate<0.08' rate=0.00%\n\n\n  █ TOTAL RESULTS \n\n    checks_total.......: 4494    217.427987/s\n    checks_succeeded...: 100.00% 4494 out of 4494\n    checks_failed......: 0.00%   0 out of 4494\n\n    ✓ settings upsert ok\n    ✓ audit insert ok\n\n    HTTP\n    http_req_duration..............: avg=352.19ms min=7.28ms   med=256.89ms max=2.88s p(90)=773.72ms p(95)=984.06ms\n      { expected_response:true }...: avg=352.19ms min=7.28ms   med=256.89ms max=2.88s p(90)=773.72ms p(95)=984.06ms\n    http_req_failed................: 0.00%  0 out of 4495\n    http_reqs......................: 4495   217.476369/s\n\n    EXECUTION\n    iteration_duration.............: avg=905.75ms min=253.31ms med=812.36ms max=3.11s p(90)=1.51s    p(95)=1.73s   \n    iterations.....................: 2247   108.713994/s\n    vus............................: 100    min=100       max=100\n    vus_max........................: 100    min=100       max=100\n\n    NETWORK\n    data_received..................: 2.3 MB 112 kB/s\n    data_sent......................: 6.4 MB 308 kB/s\n\n\n\n\nrunning (20.7s), 000/100 VUs, 2247 complete and 0 interrupted iterations\ndefault ✓ [ 100% ] 100 VUs  20s\n",
+      "db_before": {
+        "connections": {
+          "total": 22,
+          "active": 1,
+          "waiting_lock": 0
+        },
+        "ungranted_locks": 0,
+        "deadlocks": 0,
+        "pg_stat_top": [
+          {
+            "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+            "calls": "18059",
+            "mean_ms": "41.29",
+            "total_ms": "745641.64"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+            "calls": "12697",
+            "mean_ms": "0.50",
+            "total_ms": "6356.40"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\" FROM \"public\".\"ac",
+            "calls": "17387",
+            "mean_ms": "0.36",
+            "total_ms": "6209.17"
+          },
+          {
+            "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+            "calls": "282567",
+            "mean_ms": "0.02",
+            "total_ms": "5474.12"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+            "calls": "12726",
+            "mean_ms": "0.42",
+            "total_ms": "5354.42"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+            "calls": "12729",
+            "mean_ms": "0.39",
+            "total_ms": "4975.21"
+          },
+          {
+            "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+            "calls": "12143",
+            "mean_ms": "0.34",
+            "total_ms": "4086.05"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"status\" FROM \"public\".\"organizati",
+            "calls": "17378",
+            "mean_ms": "0.22",
+            "total_ms": "3753.46"
+          }
+        ]
+      },
+      "db_after": {
+        "connections": {
+          "total": 22,
+          "active": 1,
+          "waiting_lock": 0
+        },
+        "ungranted_locks": 0,
+        "deadlocks": 0,
+        "pg_stat_top": [
+          {
+            "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+            "calls": "20306",
+            "mean_ms": "44.32",
+            "total_ms": "899973.46"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+            "calls": "12697",
+            "mean_ms": "0.50",
+            "total_ms": "6356.40"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\" FROM \"public\".\"ac",
+            "calls": "17387",
+            "mean_ms": "0.36",
+            "total_ms": "6209.17"
+          },
+          {
+            "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+            "calls": "287061",
+            "mean_ms": "0.02",
+            "total_ms": "5575.09"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+            "calls": "12726",
+            "mean_ms": "0.42",
+            "total_ms": "5354.42"
+          },
+          {
+            "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+            "calls": "14390",
+            "mean_ms": "0.35",
+            "total_ms": "5013.70"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+            "calls": "12729",
+            "mean_ms": "0.39",
+            "total_ms": "4975.21"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"status\" FROM \"public\".\"organizati",
+            "calls": "17378",
+            "mean_ms": "0.22",
+            "total_ms": "3753.46"
+          }
+        ]
+      }
+    },
+    {
+      "vus": 250,
+      "exitCode": 0,
+      "pass": true,
+      "metrics": {
+        "p50": 724.96,
+        "p95": 3,
+        "p99": null,
+        "error_rate": 0.0258,
+        "http_reqs": 4647,
+        "status_429": null,
+        "status_5xx": null
+      },
+      "stdout_tail": "-09T12:47:36-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:47:36-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:47:36-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:47:36-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:47:36-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:47:36-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:47:36-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:47:36-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:47:37-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:47:37-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:47:37-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:47:37-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:47:37-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:47:37-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\ntime=\"2026-09-09T12:47:39-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/audit_events\\\": EOF\"\ntime=\"2026-09-09T12:47:39-03:00\" level=warning msg=\"Request Failed\" error=\"Post \\\"http://127.0.0.1:54321/rest/v1/organization_settings?on_conflict=organization_id,key\\\": EOF\"\n",
+      "db_before": {
+        "connections": {
+          "total": 22,
+          "active": 1,
+          "waiting_lock": 0
+        },
+        "ungranted_locks": 0,
+        "deadlocks": 0,
+        "pg_stat_top": [
+          {
+            "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+            "calls": "20306",
+            "mean_ms": "44.32",
+            "total_ms": "899973.46"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+            "calls": "12697",
+            "mean_ms": "0.50",
+            "total_ms": "6356.40"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\" FROM \"public\".\"ac",
+            "calls": "17387",
+            "mean_ms": "0.36",
+            "total_ms": "6209.17"
+          },
+          {
+            "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+            "calls": "287061",
+            "mean_ms": "0.02",
+            "total_ms": "5575.09"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+            "calls": "12726",
+            "mean_ms": "0.42",
+            "total_ms": "5354.42"
+          },
+          {
+            "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+            "calls": "14390",
+            "mean_ms": "0.35",
+            "total_ms": "5013.70"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+            "calls": "12729",
+            "mean_ms": "0.39",
+            "total_ms": "4975.21"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"status\" FROM \"public\".\"organizati",
+            "calls": "17378",
+            "mean_ms": "0.22",
+            "total_ms": "3753.46"
+          }
+        ]
+      },
+      "db_after": {
+        "connections": {
+          "total": 22,
+          "active": 1,
+          "waiting_lock": 0
+        },
+        "ungranted_locks": 0,
+        "deadlocks": 0,
+        "pg_stat_top": [
+          {
+            "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"organization_settings\"(\"key\", \"organization_id\", \"value\") SELECT \"pgrst_body",
+            "calls": "22553",
+            "mean_ms": "46.98",
+            "total_ms": "1059561.64"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"organization_features\".\"id\", \"public\".\"organization_features\".\"status\", \"public\"",
+            "calls": "12697",
+            "mean_ms": "0.50",
+            "total_ms": "6356.40"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\" FROM \"public\".\"ac",
+            "calls": "17387",
+            "mean_ms": "0.36",
+            "total_ms": "6209.17"
+          },
+          {
+            "query": "WITH pgrst_source AS (INSERT INTO \"public\".\"audit_events\"(\"action\", \"actor_user_id\", \"entity_id\", \"entity_type\", \"event_",
+            "calls": "16669",
+            "mean_ms": "0.35",
+            "total_ms": "5894.98"
+          },
+          {
+            "query": "select set_config('search_path', $1, true), set_config($2, $3, true), set_config('role', $4, true), set_config('request.",
+            "calls": "291587",
+            "mean_ms": "0.02",
+            "total_ms": "5681.85"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"accounting_periods\".\"id\", \"public\".\"accounting_periods\".\"name\", \"public\".\"accoun",
+            "calls": "12726",
+            "mean_ms": "0.42",
+            "total_ms": "5354.42"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"audit_events\".\"id\", \"public\".\"audit_events\".\"event_type\", \"public\".\"audit_events",
+            "calls": "12729",
+            "mean_ms": "0.39",
+            "total_ms": "4975.21"
+          },
+          {
+            "query": "WITH pgrst_source AS ( SELECT \"public\".\"organizations\".\"id\", \"public\".\"organizations\".\"status\" FROM \"public\".\"organizati",
+            "calls": "17378",
+            "mean_ms": "0.22",
+            "total_ms": "3753.46"
+          }
+        ]
+      }
+    }
+  ]
+}

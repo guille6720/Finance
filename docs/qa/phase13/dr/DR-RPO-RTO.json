@@ -1,0 +1,9 @@
+{
+  "status": "NOT_MEASURED",
+  "evidence_class": "DOCUMENTED",
+  "MEASURED_RPO_MINUTES": null,
+  "MEASURED_RTO_MINUTES": null,
+  "RPO_TARGET_PASS": null,
+  "RTO_TARGET_PASS": null,
+  "note": "Vendor WAL interval is DOCUMENTED not MEASURED. Daily backups cannot meet 5 minutes."
+}

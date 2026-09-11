@@ -1,0 +1,121 @@
+{
+  "started": "2026-09-09T22:40:20.953Z",
+  "finished": "2026-09-09T22:40:32.719Z",
+  "DR_PRIMARY_REF": "yqqqocmbuxgagounywtp",
+  "staging_ref": "rpcpdrzbcclofvjpgldb",
+  "isolated": true,
+  "DR_FIXTURE_LOADED": "PASS",
+  "golden": {
+    "status": "PASS",
+    "GOLDEN_FULL_FLOW": "PASS",
+    "pass_count": 19,
+    "fail_count": 0,
+    "summary": [
+      {
+        "step": "auth",
+        "status": "PASS"
+      },
+      {
+        "step": "organization",
+        "status": "PASS"
+      },
+      {
+        "step": "membership_bootstrap",
+        "status": "PASS"
+      },
+      {
+        "step": "modules_entitlements",
+        "status": "PASS"
+      },
+      {
+        "step": "fiscal_invoicing_arca",
+        "status": "PASS"
+      },
+      {
+        "step": "chart_of_accounts",
+        "status": "PASS"
+      },
+      {
+        "step": "fiscal_year_periods",
+        "status": "PASS"
+      },
+      {
+        "step": "customer",
+        "status": "PASS"
+      },
+      {
+        "step": "supplier",
+        "status": "PASS"
+      },
+      {
+        "step": "product",
+        "status": "PASS"
+      },
+      {
+        "step": "warehouse",
+        "status": "PASS"
+      },
+      {
+        "step": "treasury_account_setup",
+        "status": "PASS"
+      },
+      {
+        "step": "sale_order",
+        "status": "PASS"
+      },
+      {
+        "step": "purchase",
+        "status": "PASS"
+      },
+      {
+        "step": "treasury_payment",
+        "status": "PASS"
+      },
+      {
+        "step": "inventory_impact",
+        "status": "PASS"
+      },
+      {
+        "step": "accounting_journal",
+        "status": "PASS"
+      },
+      {
+        "step": "taxes_projection",
+        "status": "PASS"
+      },
+      {
+        "step": "dashboard_reporting",
+        "status": "PASS"
+      }
+    ]
+  },
+  "storage": {
+    "ok": true,
+    "status": 200,
+    "path": "ebbd5760-d71f-4d6e-b578-145f2e717f95/c90b3472-71ca-49a0-8b28-4a2ed9d94895/DR_FIXTURE_PURCHASE_EVIDENCE.pdf",
+    "bytes": 191,
+    "sha256": "6e211f19d464655d3010442e8b4b6ef87b296933fc2f03de707752f1ba616522",
+    "mime_type": "application/pdf",
+    "public": false,
+    "detail": "uploaded",
+    "local_backup": "docs/qa/phase13/dr/_storage_backup/DR_FIXTURE_PURCHASE_EVIDENCE.pdf"
+  },
+  "secondary_member": {
+    "ok": true,
+    "status": 201,
+    "user_id": "87e8fcb3-4345-45db-817a-3e91ffcbd022"
+  },
+  "rpo_probe": {
+    "ok": true,
+    "status": 201,
+    "written_at": "2026-09-09T22:40:32.436Z",
+    "org_id": "ebbd5760-d71f-4d6e-b578-145f2e717f95"
+  },
+  "fixture_ids": {
+    "org_id": "ebbd5760-d71f-4d6e-b578-145f2e717f95",
+    "owner_user_id": "08d09dc2-11bc-4458-85ab-8ab781e02c88",
+    "secondary_user_id": "87e8fcb3-4345-45db-817a-3e91ffcbd022",
+    "purchase_document_id_for_path": "c90b3472-71ca-49a0-8b28-4a2ed9d94895",
+    "rpo_probe": "DR_FIXTURE_RPO_PROBE"
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "generated_at": "2026-09-09T13:24:18.962Z",
+  "algorithm": "sha256",
+  "note": "13C forensic: no Phase 2-11 recovery migrations — insufficient provenance",
+  "git_commit_count": 1,
+  "migrations": [
+    {
+      "name": "20260329000001_phase1_foundation.sql",
+      "sha256": "cb16a0c8b7ffdf25220da177af2da4c5b9bf814d4324b2364aef374d9cb7649b",
+      "bytes": 25478,
+      "phase": "1",
+      "provenance": {
+        "original_commit_sha": "085924124fa78938c982bb499d1f670db55f93c9",
+        "original_path": "supabase/migrations/20260329000001_phase1_foundation.sql",
+        "note": "present in initial publish commit"
+      }
+    },
+    {
+      "name": "20260909120000_phase13_hardening.sql",
+      "sha256": "3e8d9c27cab107c250a7e7d785013352e79378103163d542b0487186e38134f0",
+      "bytes": 3592,
+      "phase": "13",
+      "provenance": {
+        "original_commit_sha": "085924124fa78938c982bb499d1f670db55f93c9",
+        "original_path": "supabase/migrations/20260909120000_phase13_hardening.sql",
+        "note": "added in Phase 13 local worktree; may be uncommitted relative to origin/main"
+      }
+    }
+  ],
+  "chain_sha256": "a6689353367d604bb9517c261e6290b07f61c88790a201ee50052636329d306a",
+  "unexplained_migrations": [],
+  "recovered_migrations": []
+}

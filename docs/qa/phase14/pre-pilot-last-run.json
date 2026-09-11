@@ -1,0 +1,336 @@
+{
+  "phase": 14,
+  "generated_at": "2026-09-09T16:18:07.684Z",
+  "PHASE14_PRE_PILOT_GATE": "PASS",
+  "PHASE_14": "IN_PROGRESS",
+  "PUBLIC_PRODUCTION_LAUNCH": "NOT_AUTHORIZED",
+  "PRODUCTION": "NOT_AUTHORIZED",
+  "PHASE_13_DR": {
+    "RPO_5m": "UNPROVEN",
+    "RTO_4h": "UNPROVEN",
+    "COST_APPROVAL_REQUIRED": true
+  },
+  "ARCA_HOMOLOGATION": "BLOCKED_PENDING",
+  "summary": {
+    "ENVIRONMENT_ISOLATION": "PASS",
+    "RELEASE_MANIFEST": "PASS",
+    "MIGRATION_DRIFT": "PASS",
+    "ROLLBACK_REHEARSAL": "PASS",
+    "ONBOARDING_FULL_FLOW": "PASS",
+    "AUTHORIZATION_ACCEPTANCE": "PASS",
+    "PILOT_GOLDEN_FLOWS": "PASS",
+    "TENANT_DATA_EXPORT": "PASS",
+    "OBSERVABILITY": "PASS",
+    "RUNBOOKS": "PASS",
+    "PILOT_ACCEPTANCE": "PASS",
+    "SECURITY_REGRESSION": "PASS",
+    "PERFORMANCE_REGRESSION": "PASS",
+    "COMPATIBILITY": "PASS",
+    "FEATURE_RELEASE_MATRIX": "PASS"
+  },
+  "blocking": [],
+  "details": {
+    "release": {
+      "status": "PASS",
+      "RELEASE_MANIFEST_VALID": "PASS",
+      "missing": [],
+      "migration_count": 122,
+      "chain_match": true,
+      "detail": "manifest valid; migrations=122"
+    },
+    "drift": {
+      "MIGRATION_DRIFT": 0,
+      "status": "PASS",
+      "file_count": 122,
+      "history_count": 122,
+      "provenance": "PASS",
+      "mismatches": [],
+      "destructive_without_emc_plan": []
+    },
+    "rollback": {
+      "ROLLBACK_REHEARSAL": "PASS",
+      "status": "PASS",
+      "simulated": {
+        "release_n_plus_1": "20261301120000_phase13_recover_definer_authz_hardening.sql",
+        "application_rollback": "schema retained; no automatic down SQL",
+        "synthetic_operations": true
+      },
+      "automatic_downgrade_migrations": false,
+      "phase1_tables_intact": true,
+      "fingerprint_sha256": "ca472ea6dc3ccf45d9a49929cc84695fba2bdffb3357080d6bf363a690838cf8",
+      "detail": "Forward-only rehearsal: N+1 applied, app rollback does not drop schema, marker written"
+    },
+    "onboarding": {
+      "ONBOARDING_FULL_FLOW": "PASS",
+      "status": "PASS",
+      "steps": 10,
+      "elapsed_ms": 29509,
+      "errors": [],
+      "manual_interventions": 0,
+      "executed": [
+        {
+          "step": "auth",
+          "status": "PASS",
+          "note": "user created + JWT obtained"
+        },
+        {
+          "step": "organization",
+          "status": "PASS",
+          "note": "org created"
+        },
+        {
+          "step": "membership_bootstrap",
+          "status": "PASS",
+          "note": "owner membership created"
+        },
+        {
+          "step": "modules_entitlements",
+          "status": "PASS",
+          "note": "platform_bootstrap + 12 features enabled"
+        },
+        {
+          "step": "customer",
+          "status": "PASS",
+          "note": "counterparty + CUSTOMER role created"
+        },
+        {
+          "step": "supplier",
+          "status": "PASS",
+          "note": "counterparty + SUPPLIER role created"
+        },
+        {
+          "step": "product",
+          "status": "PASS",
+          "note": "STOCK_ITEM created"
+        },
+        {
+          "step": "warehouse",
+          "status": "PASS",
+          "note": "warehouse created"
+        },
+        {
+          "step": "treasury_account_setup",
+          "status": "PASS",
+          "note": "clearing COA + CASH treasury account"
+        },
+        {
+          "step": "dashboard_reporting",
+          "status": "PASS",
+          "note": "get_dashboard_summary + get_financial_dashboard OK"
+        }
+      ],
+      "org_id": "d318872f-05de-406a-9e2c-7c652b04c4e2"
+    },
+    "authz": {
+      "status": "PASS",
+      "failed": []
+    },
+    "flows": {
+      "PILOT_GOLDEN_FLOWS": "PASS",
+      "status": "PASS",
+      "flows": [
+        {
+          "flow": "A_SALES",
+          "status": "PASS",
+          "missing": []
+        },
+        {
+          "flow": "B_PURCHASES",
+          "status": "PASS",
+          "missing": []
+        },
+        {
+          "flow": "C_TREASURY",
+          "status": "PASS",
+          "missing": []
+        },
+        {
+          "flow": "D_INVENTORY",
+          "status": "PASS",
+          "missing": []
+        },
+        {
+          "flow": "E_ACCOUNTING",
+          "status": "PASS",
+          "missing": []
+        },
+        {
+          "flow": "F_TAX",
+          "status": "PASS",
+          "missing": []
+        },
+        {
+          "flow": "G_POS",
+          "status": "PASS",
+          "note": "POS schema present; ARCA disabled; session open/tender exercised only if terminals exist",
+          "arca": "disabled"
+        }
+      ],
+      "arca_authorization_calls": "DISABLED",
+      "golden_full_flow": "PASS"
+    },
+    "exp": {
+      "status": "PASS",
+      "failed": []
+    },
+    "observability": {
+      "OBSERVABILITY": "PASS",
+      "status": "PASS",
+      "signals": [
+        "http_5xx",
+        "correlation_id",
+        "auth_errors",
+        "audit_immutability",
+        "runbook_p0",
+        "slo_doc"
+      ],
+      "correlation_id": true,
+      "secret_safe_audit_writer": true,
+      "missing": [],
+      "runbook_links": [
+        "docs/ops/INCIDENT-RESPONSE.md",
+        "docs/ops/RUNBOOK.md",
+        "docs/operations/SLO-PILOT.md"
+      ]
+    },
+    "runbooks": {
+      "status": "PASS",
+      "detail": "checks=5; failed=0",
+      "checks": [
+        {
+          "id": "runbook.local_start",
+          "status": "PASS"
+        },
+        {
+          "id": "runbook.forbids_paid_provision",
+          "status": "PASS"
+        },
+        {
+          "id": "incident.forbids_production",
+          "status": "PASS"
+        },
+        {
+          "id": "incident.forbids_arca",
+          "status": "PASS"
+        },
+        {
+          "id": "runbook.mentions_rpo_rto_cost_gate",
+          "status": "PASS"
+        }
+      ]
+    },
+    "acceptance": {
+      "PILOT_ACCEPTANCE": "PASS",
+      "status": "PASS",
+      "checks": [
+        {
+          "id": "setup",
+          "status": "PASS"
+        },
+        {
+          "id": "daily_operations",
+          "status": "PASS"
+        },
+        {
+          "id": "corrections_reversals_idempotency",
+          "status": "PASS"
+        },
+        {
+          "id": "reports",
+          "status": "PASS"
+        },
+        {
+          "id": "exports",
+          "status": "PASS"
+        },
+        {
+          "id": "arca_not_called",
+          "status": "PASS"
+        }
+      ],
+      "failed": []
+    },
+    "definer": {
+      "status": "PASS",
+      "detail": "functions=156; unexplained=0; failed=0; auto_classified=91"
+    },
+    "deep": {
+      "status": "PASS"
+    },
+    "cross": {
+      "status": "PASS",
+      "detail": "cases=19; failed=0"
+    },
+    "idem": {
+      "status": "PASS"
+    },
+    "perf": {
+      "status": "PASS",
+      "detail": "Phase 13 operational load reused as regression baseline (no higher load required)",
+      "verified": {
+        "read": 250,
+        "write": 250,
+        "mixed": 250
+      }
+    },
+    "compat": {
+      "status": "PASS",
+      "old_app_new_db": "PASS",
+      "new_app_old_db": "N/A_FORWARD_ONLY_LOCAL",
+      "new_app_new_db": "PASS",
+      "expand_migrate_contract": "docs/qa/phase14/EXPAND-MIGRATE-CONTRACT.md",
+      "coordinated_deployments": [],
+      "columnChecks": [
+        {
+          "id": "compat.organizations.id",
+          "status": "PASS"
+        },
+        {
+          "id": "compat.organizations.legal_name",
+          "status": "PASS"
+        },
+        {
+          "id": "compat.organizations.created_by",
+          "status": "PASS"
+        },
+        {
+          "id": "compat.organizations.status",
+          "status": "PASS"
+        },
+        {
+          "id": "compat.organization_members.organization_id",
+          "status": "PASS"
+        },
+        {
+          "id": "compat.organization_members.user_id",
+          "status": "PASS"
+        },
+        {
+          "id": "compat.organization_members.role",
+          "status": "PASS"
+        },
+        {
+          "id": "compat.organization_members.status",
+          "status": "PASS"
+        },
+        {
+          "id": "compat.audit_events.organization_id",
+          "status": "PASS"
+        },
+        {
+          "id": "compat.audit_events.event_type",
+          "status": "PASS"
+        },
+        {
+          "id": "compat.audit_events.action",
+          "status": "PASS"
+        }
+      ],
+      "note": "Old app + new DB: Phase 1 columns remain. New app + old DB not rehearsed (no down migrations). Destructive changes require EMC plan."
+    },
+    "envIsolation": {
+      "status": "PASS",
+      "detail": "env isolation unit tests"
+    }
+  }
+}

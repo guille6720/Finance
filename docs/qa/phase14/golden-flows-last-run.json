@@ -1,0 +1,44 @@
+{
+  "PILOT_GOLDEN_FLOWS": "PASS",
+  "status": "PASS",
+  "flows": [
+    {
+      "flow": "A_SALES",
+      "status": "PASS",
+      "missing": []
+    },
+    {
+      "flow": "B_PURCHASES",
+      "status": "PASS",
+      "missing": []
+    },
+    {
+      "flow": "C_TREASURY",
+      "status": "PASS",
+      "missing": []
+    },
+    {
+      "flow": "D_INVENTORY",
+      "status": "PASS",
+      "missing": []
+    },
+    {
+      "flow": "E_ACCOUNTING",
+      "status": "PASS",
+      "missing": []
+    },
+    {
+      "flow": "F_TAX",
+      "status": "PASS",
+      "missing": []
+    },
+    {
+      "flow": "G_POS",
+      "status": "PASS",
+      "note": "POS schema present; ARCA disabled; session open/tender exercised only if terminals exist",
+      "arca": "disabled"
+    }
+  ],
+  "arca_authorization_calls": "DISABLED",
+  "golden_full_flow": "PASS"
+}

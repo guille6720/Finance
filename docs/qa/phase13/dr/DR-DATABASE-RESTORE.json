@@ -1,0 +1,13 @@
+{
+  "status": "NOT_EXECUTED",
+  "evidence_class": "DOCUMENTED",
+  "reason": "Waiting for explicit cost approval. Parts H–O not started.",
+  "DATABASE_RESTORE": null,
+  "STORAGE_RESTORE": null,
+  "SECURITY_AFTER_RESTORE": null,
+  "CROSS_TENANT_AFTER_RESTORE": null,
+  "DATA_INTEGRITY_AFTER_RESTORE": null,
+  "GOLDEN_FLOW_AFTER_RESTORE": null,
+  "APPLICATION_RECOVERY": null,
+  "POST_RESTORE_PERFORMANCE_SMOKE": null
+}

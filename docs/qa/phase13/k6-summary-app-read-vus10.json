@@ -1,0 +1,234 @@
+{
+    "root_group": {
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "200 organizations": {
+                    "id": "e90b1e9f5f2f0220d011a9422e4d3648",
+                    "passes": 1010,
+                    "fails": 0,
+                    "name": "200 organizations",
+                    "path": "::200 organizations"
+                },
+                "200 organization_members": {
+                    "fails": 0,
+                    "name": "200 organization_members",
+                    "path": "::200 organization_members",
+                    "id": "ba7b034717d90468f9dcfd6b4cae433f",
+                    "passes": 1010
+                },
+                "200 organization_features": {
+                    "passes": 1010,
+                    "fails": 0,
+                    "name": "200 organization_features",
+                    "path": "::200 organization_features",
+                    "id": "80ff911405fa5c93395ee72737f68e22"
+                },
+                "200 branches": {
+                    "name": "200 branches",
+                    "path": "::200 branches",
+                    "id": "7221046067fe01e53c98d36734e1b5a0",
+                    "passes": 1010,
+                    "fails": 0
+                },
+                "200 fiscal_profiles": {
+                    "path": "::200 fiscal_profiles",
+                    "id": "36fbdf65be6f1f52e7fffd9a83ae88e4",
+                    "passes": 1010,
+                    "fails": 0,
+                    "name": "200 fiscal_profiles"
+                },
+                "200 business_profiles": {
+                    "name": "200 business_profiles",
+                    "path": "::200 business_profiles",
+                    "id": "5ce18d2e635d4ec8cbb58abaebc46698",
+                    "passes": 1010,
+                    "fails": 0
+                },
+                "200 accounting_periods": {
+                    "path": "::200 accounting_periods",
+                    "id": "8d4347177868aa7014bab363152ab975",
+                    "passes": 1010,
+                    "fails": 0,
+                    "name": "200 accounting_periods"
+                },
+                "200 audit_events": {
+                    "name": "200 audit_events",
+                    "path": "::200 audit_events",
+                    "id": "e9cae8cb2eb208f8f8b40fa6c79607ab",
+                    "passes": 1010,
+                    "fails": 0
+                },
+                "200 counterparties": {
+                    "name": "200 counterparties",
+                    "path": "::200 counterparties",
+                    "id": "6caa5a18e22a0e74fa6f2bd830b56b5b",
+                    "passes": 1010,
+                    "fails": 0
+                },
+                "200 products": {
+                    "name": "200 products",
+                    "path": "::200 products",
+                    "id": "d9367330cc3a7c1ebe65482efecff4e2",
+                    "passes": 1010,
+                    "fails": 0
+                },
+                "200 journal_entries": {
+                    "passes": 1010,
+                    "fails": 0,
+                    "name": "200 journal_entries",
+                    "path": "::200 journal_entries",
+                    "id": "8cb135f9352f0dc6856ff11316f15c69"
+                },
+                "200 treasury_accounts": {
+                    "name": "200 treasury_accounts",
+                    "path": "::200 treasury_accounts",
+                    "id": "e22e1edcd6277292758455f81060206b",
+                    "passes": 1010,
+                    "fails": 0
+                },
+                "200 warehouses": {
+                    "name": "200 warehouses",
+                    "path": "::200 warehouses",
+                    "id": "684a22a20eb7acb7d1dfec5ebf7997a7",
+                    "passes": 1010,
+                    "fails": 0
+                },
+                "404 missing customers": {
+                    "fails": 0,
+                    "name": "404 missing customers",
+                    "path": "::404 missing customers",
+                    "id": "7f2cf064291efd0374f0a7e58e37222b",
+                    "passes": 1010
+                },
+                "404 missing tax_books": {
+                    "id": "d6115bd68550e6fe8f45fe46abe2c17f",
+                    "passes": 1010,
+                    "fails": 0,
+                    "name": "404 missing tax_books",
+                    "path": "::404 missing tax_books"
+                }
+            },
+        "name": "",
+        "path": ""
+    },
+    "metrics": {
+        "http_req_waiting": {
+            "max": 91.7614,
+            "p(90)": 4.7096,
+            "p(95)": 6.9925,
+            "avg": 2.9173109299716127,
+            "min": 0,
+            "med": 2.2681
+        },
+        "http_reqs": {
+            "rate": 751.1584379212345,
+            "count": 15151
+        },
+        "http_req_duration": {
+            "max": 91.7614,
+            "p(90)": 4.8919,
+            "p(95)": 7.206049999999999,
+            "avg": 3.0114256946736093,
+            "min": 0,
+            "med": 2.471,
+            "thresholds": {
+                "p(95)<3000": false
+            }
+        },
+        "http_req_connecting": {
+            "p(95)": 0,
+            "avg": 0.025116804171341833,
+            "min": 0,
+            "med": 0,
+            "max": 7.9045,
+            "p(90)": 0
+        },
+        "http_req_sending": {
+            "min": 0,
+            "med": 0,
+            "max": 19.2414,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.02450495016830572
+        },
+        "http_req_receiving": {
+            "med": 0,
+            "max": 13.4756,
+            "p(90)": 0.5132,
+            "p(95)": 0.52895,
+            "avg": 0.06960981453369397,
+            "min": 0
+        },
+        "data_sent": {
+            "count": 17910726,
+            "rate": 887980.5269748031
+        },
+        "data_received": {
+            "count": 11896442,
+            "rate": 589803.49742859
+        },
+        "iterations": {
+            "count": 1010,
+            "rate": 50.073923985244996
+        },
+        "vus": {
+            "value": 10,
+            "min": 10,
+            "max": 10
+        },
+        "vus_max": {
+            "value": 10,
+            "min": 10,
+            "max": 10
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "http_req_duration{expected_response:true}": {
+            "avg": 3.0114256946736093,
+            "min": 0,
+            "med": 2.471,
+            "max": 91.7614,
+            "p(90)": 4.8919,
+            "p(95)": 7.206049999999999
+        },
+        "checks": {
+            "passes": 15150,
+            "fails": 0,
+            "value": 1
+        },
+        "http_req_blocked": {
+            "max": 7.9045,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.030281730578839688,
+            "min": 0,
+            "med": 0
+        },
+        "iteration_duration": {
+            "med": 194.19365,
+            "max": 326.1473,
+            "p(90)": 212.52647,
+            "p(95)": 216.72311,
+            "avg": 198.7033401980197,
+            "min": 178.092
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 15151,
+            "thresholds": {
+                "rate<0.05": false
+            },
+            "value": 0
+        }
+    },
+    "setup_data": {
+        "token": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MTI2OWYxLTIxZDgtNGYyZS1iNzE5LWMyMjQwYTg0MGQ5MCIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjU0MzIxL2F1dGgvdjEiLCJzdWIiOiJmZjhkYmQ4OC02NTBmLTRjZTQtOWQzNy1kODcyNTE5Mzc0YjQiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzg4OTcyMDA3LCJpYXQiOjE3ODg5Njg0MDcsImVtYWlsIjoicGhhc2UxMy1sb2FkLWZpeGVkQGV4YW1wbGUuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiTG9hZCBGaXh0dXJlIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoicGFzc3dvcmQiLCJ0aW1lc3RhbXAiOjE3ODg5Njg0MDd9XSwic2Vzc2lvbl9pZCI6IjA2Y2YwYjdmLTAwNmQtNDZiZS05MDViLTQyNmRhY2Y4MzM2ZSIsImlzX2Fub255bW91cyI6ZmFsc2V9.PrBXjUxWriAQEZDk9ypfdMN5uTWqMyKfnpOfksjfFnm1ft8iK3qZkPGNNc9RixqF3l2AoLcyYtoXQa720iJwfQ"
+    }
+}

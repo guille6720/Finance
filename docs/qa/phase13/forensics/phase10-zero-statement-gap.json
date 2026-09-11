@@ -1,0 +1,478 @@
+{
+  "generated_at": "2026-09-09T13:53:29.608Z",
+  "staging_project_ref": "rpcpdrzbcclofvjpgldb",
+  "methodology": "Empty/noop local migrations compared to staging pg_dump catalog and later non-empty migrations. No SQL invented.",
+  "summary": {
+    "total_empty_analyzed": 18,
+    "recommend_catalog_recovery": 11,
+    "proven_by_later_migrations": 0,
+    "blocked_semantic_provenance": 7
+  },
+  "migrations": [
+    {
+      "version": "20260901190000",
+      "name": "20260901190000_.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [],
+        "functions": [],
+        "types": [],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF — unnamed Phase 9 tail migration (after phase9_pos_fk_indexes); no slug tokens"
+      },
+      "objects_proven_in_staging_catalog": [],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "BLOCKED_SEMANTIC_PROVENANCE"
+    },
+    {
+      "version": "20261001100000",
+      "name": "20261001100000_phase10_tax_reference_core.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [
+          "tax_jurisdictions",
+          "tax_rule_sets",
+          "tax_rule_versions",
+          "tax_obligations"
+        ],
+        "functions": [
+          "tax_resolve_active_rule"
+        ],
+        "types": [
+          "tax_code",
+          "tax_obligation_type",
+          "tax_rule_status"
+        ],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF"
+      },
+      "objects_proven_in_staging_catalog": [
+        "tax_code",
+        "tax_jurisdictions",
+        "tax_obligation_type",
+        "tax_obligations",
+        "tax_resolve_active_rule",
+        "tax_rule_sets",
+        "tax_rule_status",
+        "tax_rule_versions"
+      ],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "RECOMMEND_CATALOG_RECOVERY"
+    },
+    {
+      "version": "20261001110000",
+      "name": "20261001110000_phase10_tax_registrations_rules.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [
+          "organization_tax_registrations"
+        ],
+        "functions": [
+          "upsert_organization_tax_registration"
+        ],
+        "types": [
+          "tax_registration_status"
+        ],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF"
+      },
+      "objects_proven_in_staging_catalog": [
+        "organization_tax_registrations",
+        "tax_registration_status",
+        "upsert_organization_tax_registration"
+      ],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "RECOMMEND_CATALOG_RECOVERY"
+    },
+    {
+      "version": "20261001120000",
+      "name": "20261001120000_phase10_tax_periods.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [
+          "tax_periods"
+        ],
+        "functions": [
+          "ensure_tax_period",
+          "close_tax_period",
+          "reopen_tax_period",
+          "review_tax_period"
+        ],
+        "types": [
+          "tax_period_status",
+          "tax_workspace_environment"
+        ],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF"
+      },
+      "objects_proven_in_staging_catalog": [
+        "close_tax_period",
+        "ensure_tax_period",
+        "reopen_tax_period",
+        "review_tax_period",
+        "tax_period_status",
+        "tax_periods",
+        "tax_workspace_environment"
+      ],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "RECOMMEND_CATALOG_RECOVERY"
+    },
+    {
+      "version": "20261001130000",
+      "name": "20261001130000_phase10_vat_classification_wp.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [
+          "vat_purchase_classifications",
+          "tax_withholdings_perceptions"
+        ],
+        "functions": [
+          "register_tax_wp",
+          "upsert_vat_purchase_classification"
+        ],
+        "types": [
+          "vat_credit_classification",
+          "tax_wp_type",
+          "tax_wp_status"
+        ],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF"
+      },
+      "objects_proven_in_staging_catalog": [
+        "register_tax_wp",
+        "tax_withholdings_perceptions",
+        "tax_wp_status",
+        "tax_wp_type",
+        "upsert_vat_purchase_classification",
+        "vat_credit_classification",
+        "vat_purchase_classifications"
+      ],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "RECOMMEND_CATALOG_RECOVERY"
+    },
+    {
+      "version": "20261001140000",
+      "name": "20261001140000_phase10_tax_determinations.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [
+          "tax_determinations",
+          "tax_determination_lines",
+          "tax_determination_sources",
+          "tax_determination_rule_snapshots"
+        ],
+        "functions": [
+          "calculate_tax_determination",
+          "revalidate_tax_determination_sources"
+        ],
+        "types": [
+          "tax_determination_status",
+          "tax_determination_line_kind",
+          "tax_source_domain"
+        ],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF"
+      },
+      "objects_proven_in_staging_catalog": [
+        "calculate_tax_determination",
+        "revalidate_tax_determination_sources",
+        "tax_determination_line_kind",
+        "tax_determination_lines",
+        "tax_determination_rule_snapshots",
+        "tax_determination_sources",
+        "tax_determination_status",
+        "tax_determinations",
+        "tax_source_domain"
+      ],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "RECOMMEND_CATALOG_RECOVERY"
+    },
+    {
+      "version": "20261001150000",
+      "name": "20261001150000_phase10_iibb.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [
+          "iibb_cm_coefficients",
+          "iibb_jurisdiction_allocations"
+        ],
+        "functions": [
+          "upsert_iibb_jurisdiction_allocation"
+        ],
+        "types": [
+          "iibb_distribution_method",
+          "iibb_sales_allocation_strategy",
+          "tax_cm_form_code"
+        ],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF"
+      },
+      "objects_proven_in_staging_catalog": [
+        "iibb_cm_coefficients",
+        "iibb_distribution_method",
+        "iibb_jurisdiction_allocations",
+        "iibb_sales_allocation_strategy",
+        "tax_cm_form_code",
+        "upsert_iibb_jurisdiction_allocation"
+      ],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "RECOMMEND_CATALOG_RECOVERY"
+    },
+    {
+      "version": "20261001160000",
+      "name": "20261001160000_phase10_filing_obligations.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [
+          "tax_filing_records",
+          "tax_payment_records",
+          "tax_adjustments"
+        ],
+        "functions": [
+          "create_tax_obligation",
+          "record_tax_filing_external",
+          "record_tax_payment_external"
+        ],
+        "types": [
+          "tax_filing_kind",
+          "tax_filing_status",
+          "tax_obligation_status"
+        ],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF"
+      },
+      "objects_proven_in_staging_catalog": [
+        "create_tax_obligation",
+        "record_tax_filing_external",
+        "record_tax_payment_external",
+        "tax_adjustments",
+        "tax_filing_kind",
+        "tax_filing_records",
+        "tax_filing_status",
+        "tax_obligation_status",
+        "tax_payment_records"
+      ],
+      "objects_proven_created_by_later_migrations": [
+        {
+          "object": "tax_filing_records",
+          "migration": "20261001280000_phase10_hardening_filing_fk_index.sql"
+        }
+      ],
+      "recovery_policy": "RECOMMEND_CATALOG_RECOVERY"
+    },
+    {
+      "version": "20261001170000",
+      "name": "20261001170000_phase10_tax_helpers.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [],
+        "functions": [
+          "tax_assert_feature",
+          "tax_assert_role",
+          "tax_assert_service_role",
+          "tax_canonical_fiscal_hash",
+          "tax_canonical_purchase_hash",
+          "tax_fiscal_vat_economic_sign",
+          "tax_obligation_outstanding",
+          "tax_resolve_effective_date",
+          "tax_sha256"
+        ],
+        "types": [],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF"
+      },
+      "objects_proven_in_staging_catalog": [
+        "tax_assert_feature",
+        "tax_assert_role",
+        "tax_assert_service_role",
+        "tax_canonical_fiscal_hash",
+        "tax_canonical_purchase_hash",
+        "tax_fiscal_vat_economic_sign",
+        "tax_obligation_outstanding",
+        "tax_resolve_effective_date",
+        "tax_sha256"
+      ],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "RECOMMEND_CATALOG_RECOVERY"
+    },
+    {
+      "version": "20261001180000",
+      "name": "20261001180000_phase10_calculate_vat.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [],
+        "functions": [
+          "calculate_tax_period",
+          "reconcile_vat_accounting"
+        ],
+        "types": [],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF"
+      },
+      "objects_proven_in_staging_catalog": [
+        "calculate_tax_period",
+        "reconcile_vat_accounting"
+      ],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "RECOMMEND_CATALOG_RECOVERY"
+    },
+    {
+      "version": "20261001190000",
+      "name": "20261001190000_phase10_period_filing_rpcs.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [],
+        "functions": [
+          "activate_tax_rule_version",
+          "calculate_tax_determination",
+          "calculate_tax_period",
+          "close_tax_period",
+          "create_tax_obligation",
+          "ensure_tax_period",
+          "record_tax_filing_external",
+          "record_tax_payment_external",
+          "reopen_tax_period",
+          "review_tax_period"
+        ],
+        "types": [],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF"
+      },
+      "objects_proven_in_staging_catalog": [
+        "activate_tax_rule_version",
+        "calculate_tax_determination",
+        "calculate_tax_period",
+        "close_tax_period",
+        "create_tax_obligation",
+        "ensure_tax_period",
+        "record_tax_filing_external",
+        "record_tax_payment_external",
+        "reopen_tax_period",
+        "review_tax_period"
+      ],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "RECOMMEND_CATALOG_RECOVERY"
+    },
+    {
+      "version": "20261001200000",
+      "name": "20261001200000_phase10_security.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [],
+        "functions": [],
+        "types": [],
+        "policies": [
+          "tax_*"
+        ],
+        "note": "NAME_HINT_NOT_PROOF — security migration implies RLS/policies on tax relations"
+      },
+      "objects_proven_in_staging_catalog": [
+        "tax_adj_select",
+        "tax_det_line_select",
+        "tax_det_select",
+        "tax_det_snap_select",
+        "tax_det_src_select",
+        "tax_filing_select",
+        "tax_jurisdictions_select",
+        "tax_obl_select",
+        "tax_pay_select",
+        "tax_periods_select",
+        "tax_rule_sets_select",
+        "tax_rule_versions_select",
+        "tax_wp_select"
+      ],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "RECOMMEND_CATALOG_RECOVERY"
+    },
+    {
+      "version": "20261001210000",
+      "name": "20261001210000_.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [],
+        "functions": [],
+        "types": [],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF — unnamed Phase 10 placeholder; no slug tokens"
+      },
+      "objects_proven_in_staging_catalog": [],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "BLOCKED_SEMANTIC_PROVENANCE"
+    },
+    {
+      "version": "20261001220000",
+      "name": "20261001220000_.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [],
+        "functions": [],
+        "types": [],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF — unnamed Phase 10 placeholder; no slug tokens"
+      },
+      "objects_proven_in_staging_catalog": [],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "BLOCKED_SEMANTIC_PROVENANCE"
+    },
+    {
+      "version": "20261001230000",
+      "name": "20261001230000_.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [],
+        "functions": [],
+        "types": [],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF — unnamed Phase 10 placeholder; no slug tokens"
+      },
+      "objects_proven_in_staging_catalog": [],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "BLOCKED_SEMANTIC_PROVENANCE"
+    },
+    {
+      "version": "20261001240000",
+      "name": "20261001240000_.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [],
+        "functions": [],
+        "types": [],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF — unnamed Phase 10 placeholder; no slug tokens"
+      },
+      "objects_proven_in_staging_catalog": [],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "BLOCKED_SEMANTIC_PROVENANCE"
+    },
+    {
+      "version": "20261001250000",
+      "name": "20261001250000_.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [],
+        "functions": [],
+        "types": [],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF — unnamed Phase 10 placeholder; no slug tokens"
+      },
+      "objects_proven_in_staging_catalog": [],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "BLOCKED_SEMANTIC_PROVENANCE"
+    },
+    {
+      "version": "20261001260000",
+      "name": "20261001260000_.sql",
+      "classification": "STAGING_HISTORY_WITHOUT_SQL_PAYLOAD",
+      "objects_expected_by_name": {
+        "tables": [],
+        "functions": [],
+        "types": [],
+        "policies": [],
+        "note": "NAME_HINT_NOT_PROOF — unnamed Phase 10 placeholder; no slug tokens"
+      },
+      "objects_proven_in_staging_catalog": [],
+      "objects_proven_created_by_later_migrations": [],
+      "recovery_policy": "BLOCKED_SEMANTIC_PROVENANCE"
+    }
+  ]
+}

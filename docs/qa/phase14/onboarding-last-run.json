@@ -1,0 +1,61 @@
+{
+  "ONBOARDING_FULL_FLOW": "PASS",
+  "status": "PASS",
+  "steps": 10,
+  "elapsed_ms": 29509,
+  "errors": [],
+  "manual_interventions": 0,
+  "executed": [
+    {
+      "step": "auth",
+      "status": "PASS",
+      "note": "user created + JWT obtained"
+    },
+    {
+      "step": "organization",
+      "status": "PASS",
+      "note": "org created"
+    },
+    {
+      "step": "membership_bootstrap",
+      "status": "PASS",
+      "note": "owner membership created"
+    },
+    {
+      "step": "modules_entitlements",
+      "status": "PASS",
+      "note": "platform_bootstrap + 12 features enabled"
+    },
+    {
+      "step": "customer",
+      "status": "PASS",
+      "note": "counterparty + CUSTOMER role created"
+    },
+    {
+      "step": "supplier",
+      "status": "PASS",
+      "note": "counterparty + SUPPLIER role created"
+    },
+    {
+      "step": "product",
+      "status": "PASS",
+      "note": "STOCK_ITEM created"
+    },
+    {
+      "step": "warehouse",
+      "status": "PASS",
+      "note": "warehouse created"
+    },
+    {
+      "step": "treasury_account_setup",
+      "status": "PASS",
+      "note": "clearing COA + CASH treasury account"
+    },
+    {
+      "step": "dashboard_reporting",
+      "status": "PASS",
+      "note": "get_dashboard_summary + get_financial_dashboard OK"
+    }
+  ],
+  "org_id": "d318872f-05de-406a-9e2c-7c652b04c4e2"
+}

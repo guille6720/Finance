@@ -1,0 +1,1065 @@
+{
+  "AUTHORIZATION_ACCEPTANCE": "PASS",
+  "status": "PASS",
+  "live_cases": "cases=19; failed=0",
+  "failed": [],
+  "matrix": [
+    {
+      "role": "owner",
+      "resource": "organization",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": true,
+      "app_permissions": [
+        "*"
+      ]
+    },
+    {
+      "role": "owner",
+      "resource": "members",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": true,
+      "app_permissions": [
+        "*"
+      ]
+    },
+    {
+      "role": "owner",
+      "resource": "sales",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": true,
+      "app_permissions": [
+        "*"
+      ]
+    },
+    {
+      "role": "owner",
+      "resource": "purchases",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": true,
+      "app_permissions": [
+        "*"
+      ]
+    },
+    {
+      "role": "owner",
+      "resource": "treasury",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": true,
+      "app_permissions": [
+        "*"
+      ]
+    },
+    {
+      "role": "owner",
+      "resource": "inventory",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": true,
+      "app_permissions": [
+        "*"
+      ]
+    },
+    {
+      "role": "owner",
+      "resource": "accounting",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": true,
+      "app_permissions": [
+        "*"
+      ]
+    },
+    {
+      "role": "owner",
+      "resource": "taxes",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": true,
+      "app_permissions": [
+        "*"
+      ]
+    },
+    {
+      "role": "owner",
+      "resource": "pos",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": true,
+      "app_permissions": [
+        "*"
+      ]
+    },
+    {
+      "role": "owner",
+      "resource": "dashboard",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": false,
+      "reverse": false,
+      "delete/configure": true,
+      "app_permissions": [
+        "*"
+      ]
+    },
+    {
+      "role": "owner",
+      "resource": "export",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": false,
+      "reverse": false,
+      "delete/configure": true,
+      "app_permissions": [
+        "*"
+      ]
+    },
+    {
+      "role": "owner",
+      "resource": "configure",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": true,
+      "app_permissions": [
+        "*"
+      ]
+    },
+    {
+      "role": "admin",
+      "resource": "organization",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": true,
+      "app_permissions": [
+        "org.update",
+        "members.manage_roles",
+        "features.manage",
+        "accounting.manage_periods"
+      ]
+    },
+    {
+      "role": "admin",
+      "resource": "members",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": true,
+      "app_permissions": [
+        "org.update",
+        "members.manage_roles",
+        "features.manage",
+        "accounting.manage_periods"
+      ]
+    },
+    {
+      "role": "admin",
+      "resource": "sales",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": true,
+      "app_permissions": [
+        "org.update",
+        "members.manage_roles",
+        "features.manage",
+        "accounting.manage_periods"
+      ]
+    },
+    {
+      "role": "admin",
+      "resource": "purchases",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": true,
+      "app_permissions": [
+        "org.update",
+        "members.manage_roles",
+        "features.manage",
+        "accounting.manage_periods"
+      ]
+    },
+    {
+      "role": "admin",
+      "resource": "treasury",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": true,
+      "app_permissions": [
+        "org.update",
+        "members.manage_roles",
+        "features.manage",
+        "accounting.manage_periods"
+      ]
+    },
+    {
+      "role": "admin",
+      "resource": "inventory",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": true,
+      "app_permissions": [
+        "org.update",
+        "members.manage_roles",
+        "features.manage",
+        "accounting.manage_periods"
+      ]
+    },
+    {
+      "role": "admin",
+      "resource": "accounting",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": true,
+      "app_permissions": [
+        "org.update",
+        "members.manage_roles",
+        "features.manage",
+        "accounting.manage_periods"
+      ]
+    },
+    {
+      "role": "admin",
+      "resource": "taxes",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": true,
+      "app_permissions": [
+        "org.update",
+        "members.manage_roles",
+        "features.manage",
+        "accounting.manage_periods"
+      ]
+    },
+    {
+      "role": "admin",
+      "resource": "pos",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": true,
+      "app_permissions": [
+        "org.update",
+        "members.manage_roles",
+        "features.manage",
+        "accounting.manage_periods"
+      ]
+    },
+    {
+      "role": "admin",
+      "resource": "dashboard",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": false,
+      "reverse": false,
+      "delete/configure": true,
+      "app_permissions": [
+        "org.update",
+        "members.manage_roles",
+        "features.manage",
+        "accounting.manage_periods"
+      ]
+    },
+    {
+      "role": "admin",
+      "resource": "export",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": false,
+      "reverse": false,
+      "delete/configure": true,
+      "app_permissions": [
+        "org.update",
+        "members.manage_roles",
+        "features.manage",
+        "accounting.manage_periods"
+      ]
+    },
+    {
+      "role": "admin",
+      "resource": "configure",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": true,
+      "app_permissions": [
+        "org.update",
+        "members.manage_roles",
+        "features.manage",
+        "accounting.manage_periods"
+      ]
+    },
+    {
+      "role": "manager",
+      "resource": "organization",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "branches.manage",
+        "accounting.read"
+      ]
+    },
+    {
+      "role": "manager",
+      "resource": "members",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "branches.manage",
+        "accounting.read"
+      ]
+    },
+    {
+      "role": "manager",
+      "resource": "sales",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "branches.manage",
+        "accounting.read"
+      ]
+    },
+    {
+      "role": "manager",
+      "resource": "purchases",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "branches.manage",
+        "accounting.read"
+      ]
+    },
+    {
+      "role": "manager",
+      "resource": "treasury",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "branches.manage",
+        "accounting.read"
+      ]
+    },
+    {
+      "role": "manager",
+      "resource": "inventory",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "branches.manage",
+        "accounting.read"
+      ]
+    },
+    {
+      "role": "manager",
+      "resource": "accounting",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "branches.manage",
+        "accounting.read"
+      ]
+    },
+    {
+      "role": "manager",
+      "resource": "taxes",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "branches.manage",
+        "accounting.read"
+      ]
+    },
+    {
+      "role": "manager",
+      "resource": "pos",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "branches.manage",
+        "accounting.read"
+      ]
+    },
+    {
+      "role": "manager",
+      "resource": "dashboard",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "branches.manage",
+        "accounting.read"
+      ]
+    },
+    {
+      "role": "manager",
+      "resource": "export",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "branches.manage",
+        "accounting.read"
+      ]
+    },
+    {
+      "role": "manager",
+      "resource": "configure",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "branches.manage",
+        "accounting.read"
+      ]
+    },
+    {
+      "role": "operator",
+      "resource": "organization",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "features.read"
+      ]
+    },
+    {
+      "role": "operator",
+      "resource": "members",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "features.read"
+      ]
+    },
+    {
+      "role": "operator",
+      "resource": "sales",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "features.read"
+      ]
+    },
+    {
+      "role": "operator",
+      "resource": "purchases",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "features.read"
+      ]
+    },
+    {
+      "role": "operator",
+      "resource": "treasury",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "features.read"
+      ]
+    },
+    {
+      "role": "operator",
+      "resource": "inventory",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "features.read"
+      ]
+    },
+    {
+      "role": "operator",
+      "resource": "accounting",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "features.read"
+      ]
+    },
+    {
+      "role": "operator",
+      "resource": "taxes",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "features.read"
+      ]
+    },
+    {
+      "role": "operator",
+      "resource": "pos",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "features.read"
+      ]
+    },
+    {
+      "role": "operator",
+      "resource": "dashboard",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "features.read"
+      ]
+    },
+    {
+      "role": "operator",
+      "resource": "export",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "features.read"
+      ]
+    },
+    {
+      "role": "operator",
+      "resource": "configure",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "features.read"
+      ]
+    },
+    {
+      "role": "accountant",
+      "resource": "organization",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "fiscal.update",
+        "accounting.manage_periods",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "accountant",
+      "resource": "members",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "fiscal.update",
+        "accounting.manage_periods",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "accountant",
+      "resource": "sales",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": false,
+      "app_permissions": [
+        "fiscal.update",
+        "accounting.manage_periods",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "accountant",
+      "resource": "purchases",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": false,
+      "app_permissions": [
+        "fiscal.update",
+        "accounting.manage_periods",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "accountant",
+      "resource": "treasury",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": false,
+      "app_permissions": [
+        "fiscal.update",
+        "accounting.manage_periods",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "accountant",
+      "resource": "inventory",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": false,
+      "app_permissions": [
+        "fiscal.update",
+        "accounting.manage_periods",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "accountant",
+      "resource": "accounting",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": false,
+      "app_permissions": [
+        "fiscal.update",
+        "accounting.manage_periods",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "accountant",
+      "resource": "taxes",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": true,
+      "delete/configure": false,
+      "app_permissions": [
+        "fiscal.update",
+        "accounting.manage_periods",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "accountant",
+      "resource": "pos",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": true,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "fiscal.update",
+        "accounting.manage_periods",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "accountant",
+      "resource": "dashboard",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "fiscal.update",
+        "accounting.manage_periods",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "accountant",
+      "resource": "export",
+      "read": true,
+      "create": true,
+      "update": true,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "fiscal.update",
+        "accounting.manage_periods",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "accountant",
+      "resource": "configure",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "fiscal.update",
+        "accounting.manage_periods",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "viewer",
+      "resource": "organization",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "accounting.read",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "viewer",
+      "resource": "members",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "accounting.read",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "viewer",
+      "resource": "sales",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "accounting.read",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "viewer",
+      "resource": "purchases",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "accounting.read",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "viewer",
+      "resource": "treasury",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "accounting.read",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "viewer",
+      "resource": "inventory",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "accounting.read",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "viewer",
+      "resource": "accounting",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "accounting.read",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "viewer",
+      "resource": "taxes",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "accounting.read",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "viewer",
+      "resource": "pos",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "accounting.read",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "viewer",
+      "resource": "dashboard",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "accounting.read",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "viewer",
+      "resource": "export",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "accounting.read",
+        "audit.read"
+      ]
+    },
+    {
+      "role": "viewer",
+      "resource": "configure",
+      "read": true,
+      "create": false,
+      "update": false,
+      "post": false,
+      "reverse": false,
+      "delete/configure": false,
+      "app_permissions": [
+        "org.read",
+        "accounting.read",
+        "audit.read"
+      ]
+    }
+  ],
+  "note": "Positive/negative live cases from cross-tenant × roles; matrix documents expected module verbs."
+}

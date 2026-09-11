@@ -1,0 +1,45 @@
+{
+  "schema_version": 1,
+  "decision": "DEFER_PITR_PAUSE_PHASE_13_DR",
+  "reason": "USER_DEFERRED_PITR_AND_DR_EXECUTION",
+  "paused_at": "2026-09-10T11:34:00.000Z",
+  "recorded_at": "2026-09-10T12:36:24.807Z",
+  "T0_DR_PRIMARY_ISOLATED": "PASS",
+  "T1_DR_PRIMARY_INITIALIZED": "PASS",
+  "T2_DR_FIXTURE_LOADED": "PASS",
+  "T3_PITR_ACTIVE": "DEFERRED",
+  "DR_GATE": "NOT_RUN",
+  "MEASURED_RPO": "UNPROVEN",
+  "MEASURED_RTO": "UNPROVEN",
+  "PHASE_13": "IN_PROGRESS",
+  "DR_TEMP_RESOURCES_REMAINING": 0,
+  "STAGING": "UNTOUCHED",
+  "PRODUCTION": "NOT_AUTHORIZED",
+  "ARCA_HOMOLOGATION": "BLOCKED_PENDING",
+  "DR_PRIMARY_DELETED": "PASS",
+  "DR_PRIMARY_VERIFIED_ABSENT": "PASS",
+  "PITR_ACTIVE": "NO",
+  "RESTORE_PROJECT_EXISTS": "NO",
+  "disposable_primary": {
+    "ref_was": "yqqqocmbuxgagounywtp",
+    "name_was": "CONTABILIUM-DR-PRIMARY",
+    "status": "DELETED_VERIFIED_ABSENT",
+    "never_recreate_assumption": "Old remote project cannot be restored; future resume must recreate a new disposable primary."
+  },
+  "staging_ref": "rpcpdrzbcclofvjpgldb",
+  "actions_forbidden_until_new_authorization": [
+    "enable_PITR",
+    "continue_T3_T13",
+    "restore",
+    "claim_RPO_RTO",
+    "touch_Staging",
+    "create_Production",
+    "enable_ARCA",
+    "recreate_DR_primary_without_authorization"
+  ],
+  "sanitized_highlights": {
+    "GOLDEN_FULL_FLOW_ON_PRIMARY": "PASS 19/19",
+    "storage_sha256": "6e211f19d464655d3010442e8b4b6ef87b296933fc2f03de707752f1ba616522",
+    "staging_untouched": true
+  }
+}

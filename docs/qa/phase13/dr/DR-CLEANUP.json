@@ -1,0 +1,31 @@
+{
+  "status": "PASS",
+  "project_ref": "yqqqocmbuxgagounywtp",
+  "project_name": "CONTABILIUM-DR-PRIMARY",
+  "staging_ref": "rpcpdrzbcclofvjpgldb",
+  "deleted": true,
+  "verified_absent": true,
+  "pitr_was_enabled": false,
+  "dr_temp_resources_remaining": 0,
+  "staging_untouched": true,
+  "production_authorized": false,
+  "cleanup_started_at": "2026-09-10T12:17:31.801Z",
+  "delete_confirmed_at": "2026-09-10T12:17:36.629Z",
+  "absence_verified_at": "2026-09-10T12:17:36.629Z",
+  "recorded_at": "2026-09-10T12:36:24.807Z",
+  "evidence": [
+    "docs/qa/phase13/dr/DR-PAUSE-EVIDENCE.json",
+    "docs/qa/phase13/dr/DR-T0.json",
+    "docs/qa/phase13/dr/DR-T1.json",
+    "docs/qa/phase13/dr/DR-T2.json",
+    "projects list verify: ref yqqqocmbuxgagounywtp absent after cleanup"
+  ],
+  "raw_execution_evidence": {
+    "note": "Historical CLI noise retained for audit only. Canonical deleted/verified_absent above are authoritative.",
+    "cli_prompt_noise": "Do you want to delete project yqqqocmbuxgagounywtp? This action is irreversible. [y/N] y",
+    "npm_warn": "Unknown env config \"devdir\"",
+    "TOOLING_WARNING_DEVDIR": "P2",
+    "DR_BLOCKING": "NO",
+    "interpretation": "CLI exit was noisy; subsequent projects-list verification showed the disposable ref absent. Canonical result is deleted=true, verified_absent=true."
+  }
+}

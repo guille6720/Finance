@@ -1,0 +1,11 @@
+{
+  "status": "CREATED",
+  "at": "2026-09-09T18:57:56.474Z",
+  "name": "CONTABILIUM-DR-PRIMARY",
+  "org_id": "qsgnqyleasarodfwzlwe",
+  "region": "sa-east-1",
+  "ref": "yqqqocmbuxgagounywtp",
+  "staging_ref": "rpcpdrzbcclofvjpgldb",
+  "DR_PRIMARY_ISOLATED": "PASS",
+  "stdout_redacted": "{\"id\":\"yqqqocmbuxgagounywtp\",\"ref\":\"yqqqocmbuxgagounywtp\",\"organization_id\":\"qsgnqyleasarodfwzlwe\",\"organization_slug\":\"qsgnqyleasarodfwzlwe\",\"name\":\"CONTABILIUM-DR-PRIMARY\",\"region\":\"sa-east-1\",\"created_at\":\"2026-09-09T18:51:06.002433Z\",\"status\":\"ACTIVE_HEALTHY\",\"message\":\"Created project\"}\n"
+}

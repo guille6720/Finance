@@ -1,0 +1,644 @@
+{
+  "schema_version": 1,
+  "git_commit_sha": "085924124fa78938c982bb499d1f670db55f93c9",
+  "release_tag": "local-085924124fa7-2026-09-09",
+  "application_version": "0.1.0",
+  "environment": "local",
+  "build_timestamp": "2026-09-09T16:15:24.365Z",
+  "rollback_reference": {
+    "strategy": "FORWARD_CORRECTION_ONLY",
+    "previous_release_tag": null,
+    "destructive_downgrade_migrations": false,
+    "note": "Database rollback is not implemented via automatic down migrations."
+  },
+  "migration_manifest": [
+    {
+      "name": "20260329000001_phase1_foundation.sql",
+      "sha256": "975ce94e1097803a9d003f1ed623bf3a10fc12bec52199b59f4767a1775f4a97",
+      "bytes": 25406
+    },
+    {
+      "name": "20260329180000_phase1_security_hardening.sql",
+      "sha256": "bd6142347baad7f05fb97bd0ad8ffd5cc2a92b68efccc3acc39eb2db0345f5f3",
+      "bytes": 5312
+    },
+    {
+      "name": "20260329181000_phase1_org_bootstrap_select.sql",
+      "sha256": "a0d2b7c464d9729f2cb594f9f4e454ec3dbd7a2b0511a7e7f41602c07702beb9",
+      "bytes": 707
+    },
+    {
+      "name": "20260329190000_phase1_performance_hardening.sql",
+      "sha256": "2c490e9709dd6656076646d031af23878df3ac1b9d5aee64d9c5d2f172c341f9",
+      "bytes": 7908
+    },
+    {
+      "name": "20260329200000_phase2_accounting_core.sql",
+      "sha256": "4c9e4001185523be906acb9bcf22610a4a4ec683aace748cb9f035cadd69ac71",
+      "bytes": 41693
+    },
+    {
+      "name": "20260329210000_phase2_accounting_security.sql",
+      "sha256": "47408b27e659c3b14e0945c6d6678b85de69ec215d25bc5b7d616b97004c17c4",
+      "bytes": 10507
+    },
+    {
+      "name": "20260329220000_phase2_btree_gist_extensions_schema.sql",
+      "sha256": "2b42c762be02c244eebc2c5ecc98770f839bb46225d074324bd2c6628259a18a",
+      "bytes": 1416
+    },
+    {
+      "name": "20260329230000_phase2_fk_covering_indexes.sql",
+      "sha256": "7e7011bc5d995a1495cd11b9d1aeda6f70cf423a23a5ed0c9d9f8a51bb3e77c0",
+      "bytes": 1651
+    },
+    {
+      "name": "20260331100000_phase3_counterparties_core.sql",
+      "sha256": "990012ea4fc94d5a8c1baaef3e2efe4aa14024481a9efe11ac2def45894bcb24",
+      "bytes": 12359
+    },
+    {
+      "name": "20260331110000_phase3_counterparty_accounting_dimension.sql",
+      "sha256": "d92afe7eddc5385f922b55ef99d37f9591bed427f3d0d21f75ca515e7e32bae0",
+      "bytes": 8899
+    },
+    {
+      "name": "20260331120000_phase3_counterparties_security.sql",
+      "sha256": "925a300b1f68887db1b546bee970fb34ef831090ba8cd5c23e5a1b5842829d15",
+      "bytes": 11129
+    },
+    {
+      "name": "20260331130000_phase3_fix_reversal_engine.sql",
+      "sha256": "3e1391669c2719be9c3f7e9d93d7867bfcab23e317b5023b6b9eed362e9ac1d6",
+      "bytes": 4465
+    },
+    {
+      "name": "20260331140000_phase3_hardening_security.sql",
+      "sha256": "1c71da41f91e2298bc78ea9a0807d9f03fef096418336def8b72fb81612e66fd",
+      "bytes": 2586
+    },
+    {
+      "name": "20260401100000_phase4_sales_core.sql",
+      "sha256": "1f5478e7337054723f667c6a911f8e696d469a33c4d63c5908b9e5ef523cd4f5",
+      "bytes": 18885
+    },
+    {
+      "name": "20260401110000_phase4_sales_functions.sql",
+      "sha256": "ff553431d8dcdcbf8136aefc947367cd9d21fc86f52e8cea35882f19adec149b",
+      "bytes": 14908
+    },
+    {
+      "name": "20260401120000_phase4_sales_security.sql",
+      "sha256": "48d3781ed6e973fd6818a0fd487392186d4ba5f90362739513bc8b8b716faa84",
+      "bytes": 4387
+    },
+    {
+      "name": "20260401130000_phase4_sales_sequences_fix.sql",
+      "sha256": "0a23ad12a88e3089e394a87c601549fb586108699b1aa66b738bb4a4d6722ba0",
+      "bytes": 1717
+    },
+    {
+      "name": "20260401140000_phase4_sales_hardening.sql",
+      "sha256": "898d9080f20efef3b3330f4ef2185e46aa7dfa0187c81451e217d87165c5feea",
+      "bytes": 6948
+    },
+    {
+      "name": "20260501100000_phase5_fiscal_core.sql",
+      "sha256": "b198e637bc61441867bfaccf68e7db63e3c6bc0c859bc4d70144b9ca41034452",
+      "bytes": 23074
+    },
+    {
+      "name": "20260501110000_phase5_fiscal_catalogs.sql",
+      "sha256": "c6d1927d5338bbbf0dd5fef6ee2aeca2fce780cba2efab990a160d794eb1214e",
+      "bytes": 7916
+    },
+    {
+      "name": "20260501120000_phase5_fiscal_accounting.sql",
+      "sha256": "3a915beb590d1ff915001a14cb99f858c279e516517af516ac19b5117b0a0e9c",
+      "bytes": 2207
+    },
+    {
+      "name": "20260501130000_phase5_fiscal_security.sql",
+      "sha256": "ce4216283517155bd6a600bec47a5af1f3951558eccd784ce8fbfe6aecae631e",
+      "bytes": 10252
+    },
+    {
+      "name": "20260501140000_phase5_fiscal_functions.sql",
+      "sha256": "9c94f80ac43ee7fced3105898a76e250e42060b182a2465bf71697f4cbd06abf",
+      "bytes": 24901
+    },
+    {
+      "name": "20260501150000_phase5_fiscal_hardening.sql",
+      "sha256": "60492267c9a88dd529ecbaa1fa10c3ab2debb65a8f1387902d8c3f98b1834ccf",
+      "bytes": 1598
+    },
+    {
+      "name": "20260501160000_phase5_prepare_note_lint_fix.sql",
+      "sha256": "799e9a66a3a383900d9daa6e135c7616bafee76542c69ac892bdf926feacdba6",
+      "bytes": 4251
+    },
+    {
+      "name": "20260501170000_phase5_advisor_fk_indexes.sql",
+      "sha256": "12017f00b43e9e0297e1edf5d2542c28d6550ea02170f67e84fa9e23cd0b567e",
+      "bytes": 3383
+    },
+    {
+      "name": "20260501180000_phase5_rls_policy_split.sql",
+      "sha256": "72d5f7595bf31b8b6b010ec00e8909d4fdd93600a043cc1612d2d127ee2c1460",
+      "bytes": 7488
+    },
+    {
+      "name": "20260501190000_phase5_security_definer_trust.sql",
+      "sha256": "fbb8b2c45ba30ed77cebd71f2ae5946ca8990f2923aeeab61c1dac79a6b612a6",
+      "bytes": 10641
+    },
+    {
+      "name": "20260501200000_phase5_prelive_selfcheck.sql",
+      "sha256": "23b0a7107e77c05c90e818deca1e840520c3d506c6b2d10246d5bf77f1d7ce01",
+      "bytes": 2474
+    },
+    {
+      "name": "20260601100000_phase6_purchases_core.sql",
+      "sha256": "8969fba9ccfd1924e32cfd23f700922411a736c5b451c27ff0211a71606c730d",
+      "bytes": 14594
+    },
+    {
+      "name": "20260601110000_phase6_accounts_payable.sql",
+      "sha256": "67d2c233883974044d6c560c743659e4a9592a9445b7b8c1f85692250311e009",
+      "bytes": 8576
+    },
+    {
+      "name": "20260601120000_phase6_purchase_functions.sql",
+      "sha256": "bd9fa1c3ce39de3ea2a8ef9a0be55cfdeacd6ef288fbada63e560f6eea3c96ea",
+      "bytes": 22518
+    },
+    {
+      "name": "20260601130000_phase6_purchase_security.sql",
+      "sha256": "17688809772088d266e3b6039779e02351eda2cef379a5ee7624b8765e089657",
+      "bytes": 13369
+    },
+    {
+      "name": "20260601140000_phase6_advisor_indexes.sql",
+      "sha256": "2427820d36fb67a536016bac5e89539062290df825a9165f6b29493b7a4b7c1a",
+      "bytes": 1039
+    },
+    {
+      "name": "20260601150000_phase6_final_advisor_fk_indexes.sql",
+      "sha256": "f05eaab0bf88bd6ad14d6c4443c57fcdca2631830121111ac8ce6c1299136f0a",
+      "bytes": 3029
+    },
+    {
+      "name": "20260701100000_phase7_treasury_core.sql",
+      "sha256": "cffff767c4b393567583abdb6bde54063255d6947575934396a8aca57b5f9abd",
+      "bytes": 12733
+    },
+    {
+      "name": "20260701110000_phase7_accounts_receivable.sql",
+      "sha256": "bccf07a625f792fdeb5ae97a705c9330b55c5b440869907a66dd514b9a9a9fad",
+      "bytes": 7757
+    },
+    {
+      "name": "20260701120000_phase7_allocations.sql",
+      "sha256": "caaa88d6d187f231a30e71112892a1ff07dce989c67cdea214f5a35d82bdcd39",
+      "bytes": 6761
+    },
+    {
+      "name": "20260701130000_phase7_accounting_helpers.sql",
+      "sha256": "ef336add5b5a509f56753387290f03e35425cd50553610817bf632830c467367",
+      "bytes": 9961
+    },
+    {
+      "name": "20260701140000_phase7_post_treasury.sql",
+      "sha256": "dd888b02ceb07811afbed435376c6d50911d493736e8337ff681781cd400e20f",
+      "bytes": 16762
+    },
+    {
+      "name": "20260701150000_phase7_reverse_treasury.sql",
+      "sha256": "12afc9e788b1686bf52d9ad8cf030ec63a1b996e1939513abb886e259be3fb40",
+      "bytes": 5791
+    },
+    {
+      "name": "20260701160000_phase7_bank_reconciliation.sql",
+      "sha256": "9039ed25f4a78f17130807d3781b1793ab78c5619528858fb738f316e2c5087e",
+      "bytes": 9790
+    },
+    {
+      "name": "20260701170000_phase7_security.sql",
+      "sha256": "9ad7c851c72ded3299de5cddf51894d66833781384468a1e4a0c1ddb42dc195e",
+      "bytes": 10863
+    },
+    {
+      "name": "20260701180000_phase7_hardening.sql",
+      "sha256": "bf38ad22f919be2097e3844dc6c505b16837c2a24d113e693d142ef77fc7b0a9",
+      "bytes": 50
+    },
+    {
+      "name": "20260701190000_phase7_final_advisor_fk_indexes.sql",
+      "sha256": "bf38ad22f919be2097e3844dc6c505b16837c2a24d113e693d142ef77fc7b0a9",
+      "bytes": 50
+    },
+    {
+      "name": "20260801100000_phase8_products.sql",
+      "sha256": "4cc5ae16340c52ceebc321c2bbea3a99651a03911afbc4cde3fa5808409ee3fe",
+      "bytes": 393
+    },
+    {
+      "name": "20260801110000_phase8_warehouses_inventory_core.sql",
+      "sha256": "4cc5ae16340c52ceebc321c2bbea3a99651a03911afbc4cde3fa5808409ee3fe",
+      "bytes": 393
+    },
+    {
+      "name": "20260801120000_phase8_stock_cost_reservations.sql",
+      "sha256": "4cc5ae16340c52ceebc321c2bbea3a99651a03911afbc4cde3fa5808409ee3fe",
+      "bytes": 393
+    },
+    {
+      "name": "20260801130000_phase8_accounting_helpers.sql",
+      "sha256": "4cc5ae16340c52ceebc321c2bbea3a99651a03911afbc4cde3fa5808409ee3fe",
+      "bytes": 393
+    },
+    {
+      "name": "20260801140000_phase8_reservations_rpc.sql",
+      "sha256": "4cc5ae16340c52ceebc321c2bbea3a99651a03911afbc4cde3fa5808409ee3fe",
+      "bytes": 393
+    },
+    {
+      "name": "20260801150000_phase8_post_inventory.sql",
+      "sha256": "4cc5ae16340c52ceebc321c2bbea3a99651a03911afbc4cde3fa5808409ee3fe",
+      "bytes": 393
+    },
+    {
+      "name": "20260801160000_phase8_reverse_inventory.sql",
+      "sha256": "4cc5ae16340c52ceebc321c2bbea3a99651a03911afbc4cde3fa5808409ee3fe",
+      "bytes": 393
+    },
+    {
+      "name": "20260801170000_phase8_commercial_integration.sql",
+      "sha256": "4cc5ae16340c52ceebc321c2bbea3a99651a03911afbc4cde3fa5808409ee3fe",
+      "bytes": 393
+    },
+    {
+      "name": "20260801180000_phase8_security.sql",
+      "sha256": "4cc5ae16340c52ceebc321c2bbea3a99651a03911afbc4cde3fa5808409ee3fe",
+      "bytes": 393
+    },
+    {
+      "name": "20260801190000_phase8_advisor_hardening.sql",
+      "sha256": "4cc5ae16340c52ceebc321c2bbea3a99651a03911afbc4cde3fa5808409ee3fe",
+      "bytes": 393
+    },
+    {
+      "name": "20260801200000_phase8_final_security_rls_hardening.sql",
+      "sha256": "4cc5ae16340c52ceebc321c2bbea3a99651a03911afbc4cde3fa5808409ee3fe",
+      "bytes": 393
+    },
+    {
+      "name": "20260801205000_phase13_recover_phase8_products_inventory.sql",
+      "sha256": "2926e5f0a40bdd313c5f274061d3d670f9841f1ce50d36c881facf7f31ba6220",
+      "bytes": 105738
+    },
+    {
+      "name": "20260901100000_phase9_clearing.sql",
+      "sha256": "ee774bf887902f5c957a5a01680cde53a6a6719e2085d205d7da4da9cade4563",
+      "bytes": 2677
+    },
+    {
+      "name": "20260901110000_phase9_pos_core.sql",
+      "sha256": "52d71c2ed8fd454f76983da708f420224f7cb8079231ccb2680a88bafae7adb8",
+      "bytes": 12913
+    },
+    {
+      "name": "20260901120000_phase9_pos_helpers.sql",
+      "sha256": "659c8d385b2b567ae8fadd1d02251164b17d248c467f333da266824c18740729",
+      "bytes": 11176
+    },
+    {
+      "name": "20260901130000_phase9_pos_session_checkout.sql",
+      "sha256": "9eac719ac787a3dbd225b51c9cd4613f2c103715cc6b2596a0ba312b432947da",
+      "bytes": 32042
+    },
+    {
+      "name": "20260901140000_phase9_pos_finalize.sql",
+      "sha256": "ccb3e57a875c3f35d4c65b4ff9bb3e0e8054a43c557b2d8fb8d8634bff0db330",
+      "bytes": 44509
+    },
+    {
+      "name": "20260901150000_phase9_pos_security.sql",
+      "sha256": "7a743b1eefb2e29615e375c836311e66d8de2dc6545ba57361a9472fe0c2e56c",
+      "bytes": 7145
+    },
+    {
+      "name": "20260901160000_phase9_pos_advisor_hardening.sql",
+      "sha256": "93bc38cdb86718e9cdefda13a988799cdaad51ba3e8c95f96ff7b4bbe2197cf2",
+      "bytes": 1323
+    },
+    {
+      "name": "20260901170000_phase9_sales_invoiced_status_fix.sql",
+      "sha256": "34904e42de40e6c5933dc0c8eaeed14a11f1ce2654bc57b6c70f676407f6708e",
+      "bytes": 874
+    },
+    {
+      "name": "20260901180000_phase9_pos_fk_indexes.sql",
+      "sha256": "9b9ed5a5aa9e8c5a0d3115888b9f0453137e507df4df620622b97e902c7351d2",
+      "bytes": 518
+    },
+    {
+      "name": "20260901190000_.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001100000_phase10_tax_reference_core.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001110000_phase10_tax_registrations_rules.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001120000_phase10_tax_periods.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001130000_phase10_vat_classification_wp.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001140000_phase10_tax_determinations.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001150000_phase10_iibb.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001160000_phase10_filing_obligations.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001170000_phase10_tax_helpers.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001180000_phase10_calculate_vat.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001190000_phase10_period_filing_rpcs.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001200000_phase10_security.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001210000_.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001220000_.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001230000_.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001240000_.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001250000_.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001260000_.sql",
+      "sha256": "d8a957038679125d4840554fc43375697e662283121561afdefc2c3fbecaf729",
+      "bytes": 2
+    },
+    {
+      "name": "20261001260500_phase13_recover_phase10_taxes.sql",
+      "sha256": "5a72ccaf47b64310e6c63cc6aa2dcd0559d473c723dbfa15a70005f0a367022f",
+      "bytes": 132148
+    },
+    {
+      "name": "20261001270000_phase10_hardening_fixture_counterparty_reuse.sql",
+      "sha256": "d2be22fdf8e4819119b46c47bc922b2b127a63067230fcec4414b03d1781df64",
+      "bytes": 4850
+    },
+    {
+      "name": "20261001280000_phase10_hardening_filing_fk_index.sql",
+      "sha256": "9acc096050b7b5709a59d18e77bcaf9452ea5f9b2a350fe16400c5bb08554755",
+      "bytes": 210
+    },
+    {
+      "name": "20261101100000_phase11_metric_registry.sql",
+      "sha256": "4f6fdc1023fcc91067728c975ab26c7c156447b0831c1fe5b0465a5176dfe33a",
+      "bytes": 9038
+    },
+    {
+      "name": "20261101110000_phase11_saved_reports.sql",
+      "sha256": "0af5cb8be8ed1d7d194a41057b945d8558253ed2c69cc0b74ffe747df7da5798",
+      "bytes": 3527
+    },
+    {
+      "name": "20261101120000_phase11_alerts_thresholds.sql",
+      "sha256": "90573f963940545e744ccc041be741c0db7d21392d5cbf317ce212f247b49ffb",
+      "bytes": 10894
+    },
+    {
+      "name": "20261101130000_phase11_helpers_core.sql",
+      "sha256": "7811022802b4fd4667a65a8177fb1bcc0d89bd6422bc5d2c6e051f57a86430ab",
+      "bytes": 13296
+    },
+    {
+      "name": "20261101140000_phase11_accounting_reports.sql",
+      "sha256": "0ba0e61976935db6f8be675b1161d7104e94b3e0ce3caa2ad11461ca7bfb4386",
+      "bytes": 7225
+    },
+    {
+      "name": "20261101150000_phase11_dashboard_rpcs.sql",
+      "sha256": "dd8da5dd434338fc36d4312ae0a80b490029ae6bdb3a2f566e694eb95e94ba0e",
+      "bytes": 23882
+    },
+    {
+      "name": "20261101160000_phase11_reports_alerts.sql",
+      "sha256": "c97053310ae69fc5d448f6a6aea1c76f1775ac3d4cc6c85f2e68aaa331e4d1d1",
+      "bytes": 33897
+    },
+    {
+      "name": "20261101170000_phase11_security_grants.sql",
+      "sha256": "e90c2dc5fb02bc26eb90ac5ef6be5726466b4792cf1516dd9c08b3db8ab29b1c",
+      "bytes": 9411
+    },
+    {
+      "name": "20261101180000_phase11_permissions_seed.sql",
+      "sha256": "3aaaa487d50af2ebc3ba14ebc5bf4826731a301cf11861064278c01905cf161b",
+      "bytes": 1222
+    },
+    {
+      "name": "20261101190000_phase11_attention_product_margin.sql",
+      "sha256": "d87d2df3560a307256cf5555e1405a5fb0800049d9ca2a315ebf1dc0e0c253fb",
+      "bytes": 6607
+    },
+    {
+      "name": "20261101200000_phase11_fix_product_margin_lineage.sql",
+      "sha256": "8b11a1f0802718dbdc4933cb9b21827b33a654f414bd2ec1040f8253be3acf13",
+      "bytes": 3428
+    },
+    {
+      "name": "20261101210000_phase11_final_authz_reporting_hardening.sql",
+      "sha256": "4be92921b36a750e16012add18743f7ff275575c1b162722d497463cadcc51fe",
+      "bytes": 88689
+    },
+    {
+      "name": "20261101220000_phase11_margin_fixture.sql",
+      "sha256": "7e2d0895e072b0165ab7597d980d093a57864be78acd03aff4bdede2412e8900",
+      "bytes": 8164
+    },
+    {
+      "name": "20261101230000_phase11_margin_fixture_draft_lines.sql",
+      "sha256": "dbd05cbaa1f602bac27c8350c5327062fc2a1d81fe0dbeda4e46494dba5ec10b",
+      "bytes": 8216
+    },
+    {
+      "name": "20261201100000_phase12_release_governance.sql",
+      "sha256": "3cbfcc6e011018d1991bbe82c8fb298959b7dcc67681763b04f75ddc0415fb69",
+      "bytes": 4667
+    },
+    {
+      "name": "20261201110000_phase12_entitlements.sql",
+      "sha256": "be62957a0f42e991f394fb7f7996c3b331b1b920ef49c83311b2e6cd438cc6c5",
+      "bytes": 3183
+    },
+    {
+      "name": "20261201120000_phase12_preferences.sql",
+      "sha256": "db670f3da6255e11bfd83f1c8a10ecc16606754c5a9f6c6ae4461bd76a8b666f",
+      "bytes": 2271
+    },
+    {
+      "name": "20261201130000_phase12_dependencies.sql",
+      "sha256": "2bc7f43f3b17fa9ca8d6043ebf137abbdb392c855a4cf84a9c2e028361eaf1db",
+      "bytes": 6320
+    },
+    {
+      "name": "20261201140000_phase12_packs.sql",
+      "sha256": "d8c13156c3d71261518a2a9969327ce7315ff16d1ffb4661d03964624c1cadd4",
+      "bytes": 8297
+    },
+    {
+      "name": "20261201150000_phase12_effective_state_engine.sql",
+      "sha256": "75e446dcb51217c79adbf31e088cbee099fdc77afa32032b4b907cef8be01b24",
+      "bytes": 21486
+    },
+    {
+      "name": "20261201155000_phase12_recompute_preserve_quiet.sql",
+      "sha256": "c79fb0ea774ae04898ad9566f156cddb76c1ff72e15b54df8a2e655a57655cb1",
+      "bytes": 4793
+    },
+    {
+      "name": "20261201160000_phase12_migration_backfill.sql",
+      "sha256": "fedba20b283e09e120921134250f4e1c309136f97a7b4d65419b6cb3f92172e9",
+      "bytes": 6028
+    },
+    {
+      "name": "20261201170000_phase12_lockdown_organization_features.sql",
+      "sha256": "e5e82cdb45b7344594abe88b46e3b6f7e2095dd96c4955ac6737c5b58ac43c76",
+      "bytes": 1929
+    },
+    {
+      "name": "20261201180000_phase12_client_rpcs.sql",
+      "sha256": "5ea538026e919c0b58be61f6a1530cd5e0621a74f6d718cdfa715cb5fcb7cd5d",
+      "bytes": 16579
+    },
+    {
+      "name": "20261201190000_phase12_source_feature_guard_hardening.sql",
+      "sha256": "99bfe9ee051977012854ee79335d688ee95d883b6dcab79ecfb49165c9aec586",
+      "bytes": 17224
+    },
+    {
+      "name": "20261201200000_phase12_security.sql",
+      "sha256": "873e8ded9b0d72e30d5175df54881475d3160378092cb503044e2be71f5dfe3e",
+      "bytes": 4595
+    },
+    {
+      "name": "20261201210000_phase12_advisor_hardening.sql",
+      "sha256": "1594d4cf12937f9d0a36b979860b60eb6a6f881d29d06924114cd3f770471fbb",
+      "bytes": 1128
+    },
+    {
+      "name": "20261201220000_phase12_revoke_anon_execute.sql",
+      "sha256": "9772afef8d7b646bb1034145b7ba0e525fc309dc0015a3fa05482ce31956ac30",
+      "bytes": 1206
+    },
+    {
+      "name": "20261201230000_phase12_platform_enable_helper.sql",
+      "sha256": "ea56dbd32923a6f8e499b175ac4d19807c34b7ffddd306aa41bb672b161ec34a",
+      "bytes": 3919
+    },
+    {
+      "name": "20261201240000_phase12_final_entitlement_acl_hardening.sql",
+      "sha256": "b2fce86c3c7e363e09b5aa5e6fb37d562a5bb173e9a1c923918f1e29e09bb9e1",
+      "bytes": 11739
+    },
+    {
+      "name": "20261201241000_phase12_function_acl_probe.sql",
+      "sha256": "d114bc60d490fe298ba999615781a501d3cc6d71f298570ae9f8fc794bbbd025",
+      "bytes": 1916
+    },
+    {
+      "name": "20261201242000_phase12_function_acl_probe_fix.sql",
+      "sha256": "0b9453b04a7eda234ade0a424a5154ff2d474429a40b2d0bb322fdfadfb05313",
+      "bytes": 1904
+    },
+    {
+      "name": "20261301100000_phase13_anon_table_acl_hardening.sql",
+      "sha256": "9b1a570f2bd125390bb5d299e4379f343dab9998b32b63d1b1b8fba6dd2231e3",
+      "bytes": 839
+    },
+    {
+      "name": "20261301110000_phase13_local_hardening.sql",
+      "sha256": "d070d2c3d2ad56ce2e9d62c0fb52d692f8ec8a7b2538ab725c7bfdb9786811d0",
+      "bytes": 4195
+    },
+    {
+      "name": "20261301120000_phase13_recover_definer_authz_hardening.sql",
+      "sha256": "86d0893ea461fb4df2d0f91a7bb7d0e18ecca17720a06d4eb0820accbc203ad1",
+      "bytes": 10631
+    }
+  ],
+  "migration_chain_sha256": "d46f0c0edc70e7bb6ebb502a438de433748ae2c9c688b9267381d9ddd4a5f5b9",
+  "schema_fingerprint_sha256": "ca472ea6dc3ccf45d9a49929cc84695fba2bdffb3357080d6bf363a690838cf8",
+  "feature_release_matrix": {
+    "accounting": "controlled",
+    "sales": "controlled",
+    "purchases": "controlled",
+    "treasury": "controlled",
+    "inventory": "controlled",
+    "pos": "controlled",
+    "taxes": "controlled/review",
+    "dashboard": "controlled",
+    "fiscal_invoicing": "BLOCKED_PENDING_ARCA_HOMOLOGATION",
+    "medical_legal": "RESTRICTED",
+    "future_modules": "COMING_SOON"
+  },
+  "production_authorized": false,
+  "rpo_5m": "UNPROVEN",
+  "rto_4h": "UNPROVEN"
+}

@@ -1,0 +1,146 @@
+{
+  "generated_at": "2026-09-09T13:56:12.352Z",
+  "policy": {
+    "historical_versions": "Neutralize INVALID_JUNK (q;) in-place to documented no-op; never replace with invented original SQL.",
+    "forward_recovery": "Add NEW recover_* migrations sourced from staging-public-schema.sql catalog extraction.",
+    "version_ordering": "Recovery versions MUST sort after the junk/noop they replace and before dependents. 20260909xxxxxx prefix is ONLY for post-phase12 tail work."
+  },
+  "neutralize_in_place": [
+    {
+      "file": "20260801100000_phase8_products.sql",
+      "action": "Replace q; with comment-only no-op documenting corruption + pointer to recover_* successor"
+    },
+    {
+      "file": "20260801110000_phase8_warehouses_inventory_core.sql",
+      "action": "Replace q; with comment-only no-op documenting corruption + pointer to recover_* successor"
+    },
+    {
+      "file": "20260801120000_phase8_stock_cost_reservations.sql",
+      "action": "Replace q; with comment-only no-op documenting corruption + pointer to recover_* successor"
+    },
+    {
+      "file": "20260801130000_phase8_accounting_helpers.sql",
+      "action": "Replace q; with comment-only no-op documenting corruption + pointer to recover_* successor"
+    },
+    {
+      "file": "20260801140000_phase8_reservations_rpc.sql",
+      "action": "Replace q; with comment-only no-op documenting corruption + pointer to recover_* successor"
+    },
+    {
+      "file": "20260801150000_phase8_post_inventory.sql",
+      "action": "Replace q; with comment-only no-op documenting corruption + pointer to recover_* successor"
+    },
+    {
+      "file": "20260801160000_phase8_reverse_inventory.sql",
+      "action": "Replace q; with comment-only no-op documenting corruption + pointer to recover_* successor"
+    },
+    {
+      "file": "20260801170000_phase8_commercial_integration.sql",
+      "action": "Replace q; with comment-only no-op documenting corruption + pointer to recover_* successor"
+    },
+    {
+      "file": "20260801180000_phase8_security.sql",
+      "action": "Replace q; with comment-only no-op documenting corruption + pointer to recover_* successor"
+    },
+    {
+      "file": "20260801190000_phase8_advisor_hardening.sql",
+      "action": "Replace q; with comment-only no-op documenting corruption + pointer to recover_* successor"
+    },
+    {
+      "file": "20260801200000_phase8_final_security_rls_hardening.sql",
+      "action": "Replace q; with comment-only no-op documenting corruption + pointer to recover_* successor"
+    }
+  ],
+  "catalog_recovery_domains": [
+    {
+      "domain": "phase8_products_inventory",
+      "priority": "P0",
+      "reason": "11 INVALID_JUNK migrations; Phase 9 FAIL_RISK without these prerequisites",
+      "object_counts": {
+        "tables": 11,
+        "enums": 7,
+        "functions": 18
+      },
+      "suggested_recover_files": [
+        "20260801201000_recover_phase8_products.sql",
+        "20260801202000_recover_phase8_warehouses_inventory_core.sql",
+        "20260801203000_recover_phase8_stock_cost_reservations.sql",
+        "20260801204000_recover_phase8_accounting_helpers.sql",
+        "20260801205000_recover_phase8_reservations_rpc.sql",
+        "20260801206000_recover_phase8_post_inventory.sql",
+        "20260801207000_recover_phase8_reverse_inventory.sql",
+        "20260801208000_recover_phase8_commercial_integration.sql",
+        "20260801209000_recover_phase8_security.sql",
+        "20260801210000_recover_phase8_advisor_hardening.sql",
+        "20260801211000_recover_phase8_final_security_rls_hardening.sql"
+      ],
+      "insert_after": "20260801200000_phase8_final_security_rls_hardening.sql",
+      "insert_before": "20260901100000_phase9_clearing.sql"
+    },
+    {
+      "domain": "phase10_tax",
+      "priority": "P0",
+      "reason": "11 named semicolon-only cores + security noop; Phase 11 tax dashboards depend on tax catalog",
+      "object_counts": {
+        "tables": 17,
+        "enums": 20,
+        "functions": 25
+      },
+      "suggested_recover_files": [
+        "20261001261000_recover_phase10_tax_reference_core.sql",
+        "20261001262000_recover_phase10_tax_registrations_rules.sql",
+        "20261001263000_recover_phase10_tax_periods.sql",
+        "20261001264000_recover_phase10_vat_classification_wp.sql",
+        "20261001265000_recover_phase10_tax_determinations.sql",
+        "20261001266000_recover_phase10_iibb.sql",
+        "20261001267000_recover_phase10_filing_obligations.sql",
+        "20261001268000_recover_phase10_tax_helpers.sql",
+        "20261001269000_recover_phase10_calculate_vat.sql",
+        "20261001270000_recover_phase10_period_filing_rpcs.sql",
+        "20261001271000_recover_phase10_security.sql"
+      ],
+      "insert_after": "20261001260000_.sql",
+      "insert_before": "20261001270000_phase10_hardening_fixture_counterparty_reuse.sql",
+      "blocked_unnamed_noops": [
+        "20260901190000_.sql",
+        "20261001210000_.sql",
+        "20261001220000_.sql",
+        "20261001230000_.sql",
+        "20261001240000_.sql",
+        "20261001250000_.sql",
+        "20261001260000_.sql"
+      ],
+      "blocked_policy": "BLOCKED_SEMANTIC_PROVENANCE — leave as no-op unless staging forensics identifies objects"
+    },
+    {
+      "domain": "phase7_hardening_tail",
+      "priority": "P2",
+      "reason": "Comment-only stubs marked applied-via-db-query; likely indexes/grants — extract from staging if cleanroom gaps appear",
+      "suggested_recover_files": [
+        "20260701180500_recover_phase7_hardening.sql",
+        "20260701190500_recover_phase7_final_advisor_fk_indexes.sql"
+      ],
+      "insert_after": "20260701180000_phase7_hardening.sql",
+      "insert_before": "20260801100000_phase8_products.sql",
+      "note": "Only if pg_dump diff shows objects missing after phase7_security apply"
+    },
+    {
+      "domain": "phase13_tail_hardening",
+      "priority": "P3",
+      "reason": "Use 20260909xxxxxx prefix for new work after historical chain is repaired",
+      "suggested_recover_files": [
+        "20260909120000_phase13_hardening.sql (already present locally; verify substantive)"
+      ],
+      "insert_after": "20261301100000_phase13_anon_table_acl_hardening.sql"
+    }
+  ],
+  "recommended_apply_order": [
+    "1. Neutralize 11 phase8 q; files in-place (no-op comments)",
+    "2. Apply 20260801201000–20260801211000 recover_phase8_* (before phase9)",
+    "3. Leave phase9 substantive chain unchanged",
+    "4. Leave phase10 noop versions; add 20261001261000–20261001271000 recover_phase10_* before hardening",
+    "5. Optional phase7 recover if index diff warrants",
+    "6. Phase 11+ chain unchanged",
+    "7. New phase13+ work at 20260909xxxxxx only after cleanroom green"
+  ]
+}

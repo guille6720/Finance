@@ -1,0 +1,90 @@
+{
+  "status": "PASS",
+  "superadmin_controls_entitlements": true,
+  "production_baseline_future_pilot": {
+    "accounting": "controlled",
+    "sales": "controlled",
+    "purchases": "controlled",
+    "treasury": "controlled",
+    "inventory": "controlled",
+    "pos": "controlled",
+    "taxes": "controlled/review",
+    "dashboard": "controlled",
+    "fiscal_invoicing": "BLOCKED_PENDING_ARCA_HOMOLOGATION",
+    "medical_legal": "RESTRICTED",
+    "payroll": "COMING_SOON",
+    "projects": "COMING_SOON",
+    "assets": "COMING_SOON"
+  },
+  "catalog": [
+    {
+      "code": "accounting",
+      "default_status": "enabled"
+    },
+    {
+      "code": "assets",
+      "default_status": "disabled"
+    },
+    {
+      "code": "banks",
+      "default_status": "disabled"
+    },
+    {
+      "code": "cash",
+      "default_status": "disabled"
+    },
+    {
+      "code": "customers",
+      "default_status": "disabled"
+    },
+    {
+      "code": "dashboard",
+      "default_status": "enabled"
+    },
+    {
+      "code": "fiscal_invoicing",
+      "default_status": "disabled"
+    },
+    {
+      "code": "inventory",
+      "default_status": "disabled"
+    },
+    {
+      "code": "medical_legal",
+      "default_status": "restricted"
+    },
+    {
+      "code": "payroll",
+      "default_status": "disabled"
+    },
+    {
+      "code": "pos",
+      "default_status": "disabled"
+    },
+    {
+      "code": "projects",
+      "default_status": "disabled"
+    },
+    {
+      "code": "purchases",
+      "default_status": "disabled"
+    },
+    {
+      "code": "reports",
+      "default_status": "disabled"
+    },
+    {
+      "code": "sales",
+      "default_status": "disabled"
+    },
+    {
+      "code": "suppliers",
+      "default_status": "disabled"
+    },
+    {
+      "code": "taxes",
+      "default_status": "disabled"
+    }
+  ],
+  "fiscal_invoicing": "BLOCKED_PENDING_ARCA_HOMOLOGATION"
+}

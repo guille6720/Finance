@@ -1,0 +1,40 @@
+{
+  "prior_harness": {
+    "script": "tests/k6/write.js",
+    "pattern": "signup+login+org_create per iteration",
+    "vus_50": {
+      "result": "FAIL",
+      "http_req_failed": 1.0,
+      "checks": "login/token ~0% pass",
+      "evidence": "docs/qa/phase13/k6-prior-write-50.json"
+    },
+    "vus_100": {
+      "result": "FAIL",
+      "http_req_failed": 0.8944,
+      "checks": "login ~10% pass; org create 0%",
+      "p95_ms": 822.52,
+      "evidence": "docs/qa/phase13/k6-prior-write-100.json"
+    },
+    "component_separation": {
+      "application": "not reached reliably (no token)",
+      "Auth": "PRIMARY — signup/login storm saturates GoTrue",
+      "PostgREST": "secondary — org create only when token exists",
+      "PostgreSQL": "no lock/deadlock evidence in app write path",
+      "connection_saturation": "possible under Auth; not mitigated with paid pooler",
+      "locks": 0,
+      "docker_cpu_ram": "no paid resize; Next/load-api OOM observed separately",
+      "test_harness": "unsafe pattern for capacity claims"
+    },
+    "likely_cause": "Auth/GoTrue signup+login pressure (harness), not application RLS writes"
+  },
+  "safe_optimization": {
+    "applied": true,
+    "change": "APP write uses single pre-provisioned synthetic owner + idempotent organization_settings upsert + audit insert",
+    "paid_resources": false
+  },
+  "app_write_retest_from_50": {
+    "stages": [50, 100, 250],
+    "WRITE_RETEST_FROM_50_CAPACITY": 250,
+    "VERIFIED_WRITE_CAPACITY_APP": 250
+  }
+}

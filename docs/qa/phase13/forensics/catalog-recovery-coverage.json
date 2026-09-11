@@ -1,0 +1,164 @@
+{
+  "generated_at": "2026-09-09T14:01:07.144Z",
+  "phase8": {
+    "enums": {
+      "target": 7,
+      "covered": 7,
+      "objects": [
+        "inventory_accounting_status",
+        "inventory_line_direction",
+        "inventory_operation_status",
+        "inventory_operation_type",
+        "inventory_reservation_status",
+        "inventory_unit_code",
+        "product_type"
+      ]
+    },
+    "tables": {
+      "target": 11,
+      "covered": 11,
+      "objects": [
+        "inventory_accounting_mappings",
+        "inventory_cost_state",
+        "inventory_ledger_entries",
+        "inventory_operation_lines",
+        "inventory_operation_sequences",
+        "inventory_operations",
+        "inventory_reservations",
+        "inventory_stock_state",
+        "product_categories",
+        "products",
+        "warehouses"
+      ]
+    },
+    "functions": {
+      "target": 18,
+      "covered": 18,
+      "objects": [
+        "create_inventory_reservation",
+        "deactivate_product",
+        "ensure_inventory_chart_accounts",
+        "ensure_inventory_cost_row",
+        "ensure_inventory_stock_row",
+        "inventory_assert_feature",
+        "inventory_round_avg",
+        "inventory_round_value",
+        "next_inventory_operation_number",
+        "post_inventory_operation",
+        "prevent_inventory_ledger_mutation",
+        "prevent_inventory_projection_client_write",
+        "prevent_posted_inventory_line_mutation",
+        "prevent_posted_inventory_op_mutation",
+        "prevent_reservation_client_mutate",
+        "purchase_line_inventory_debit_account",
+        "release_inventory_reservation",
+        "reverse_inventory_operation"
+      ]
+    },
+    "skipped": [],
+    "output_file": "20260801205000_phase13_recover_phase8_products_inventory.sql"
+  },
+  "phase10": {
+    "enums": {
+      "target": 20,
+      "covered": 20,
+      "objects": [
+        "iibb_distribution_method",
+        "iibb_sales_allocation_strategy",
+        "tax_adjustment_direction",
+        "tax_adjustment_status",
+        "tax_cm_form_code",
+        "tax_code",
+        "tax_determination_line_kind",
+        "tax_determination_status",
+        "tax_filing_kind",
+        "tax_filing_status",
+        "tax_obligation_status",
+        "tax_obligation_type",
+        "tax_period_status",
+        "tax_registration_status",
+        "tax_rule_status",
+        "tax_source_domain",
+        "tax_workspace_environment",
+        "tax_wp_status",
+        "tax_wp_type",
+        "vat_credit_classification"
+      ]
+    },
+    "tables": {
+      "target": 17,
+      "covered": 17,
+      "objects": [
+        "vat_purchase_classifications",
+        "tax_rule_versions",
+        "iibb_cm_coefficients",
+        "iibb_jurisdiction_allocations",
+        "organization_tax_registrations",
+        "tax_adjustments",
+        "tax_determination_lines",
+        "tax_determination_rule_snapshots",
+        "tax_determination_sources",
+        "tax_determinations",
+        "tax_filing_records",
+        "tax_jurisdictions",
+        "tax_obligations",
+        "tax_payment_records",
+        "tax_periods",
+        "tax_rule_sets",
+        "tax_withholdings_perceptions"
+      ]
+    },
+    "functions": {
+      "target": 32,
+      "covered": 32,
+      "objects": [
+        "activate_tax_rule_version",
+        "calculate_tax_determination",
+        "calculate_tax_period",
+        "close_tax_period",
+        "create_tax_obligation",
+        "ensure_tax_period",
+        "prevent_active_tax_rule_mutation",
+        "prevent_tax_determination_client_mutation",
+        "prevent_tax_filing_mutation",
+        "prevent_tax_payment_mutation",
+        "prevent_tax_period_status_forgery",
+        "reconcile_vat_accounting",
+        "record_tax_filing_external",
+        "record_tax_payment_external",
+        "register_tax_wp",
+        "reopen_tax_period",
+        "revalidate_tax_determination_sources",
+        "review_tax_period",
+        "tax_assert_feature",
+        "tax_assert_role",
+        "tax_assert_service_role",
+        "tax_canonical_fiscal_hash",
+        "tax_canonical_purchase_hash",
+        "tax_fiscal_vat_economic_sign",
+        "tax_obligation_outstanding",
+        "tax_resolve_active_rule",
+        "tax_resolve_effective_date",
+        "tax_sha256",
+        "tax_test_fixture_purchase_iva_components",
+        "upsert_iibb_jurisdiction_allocation",
+        "upsert_organization_tax_registration",
+        "upsert_vat_purchase_classification"
+      ]
+    },
+    "skipped": [],
+    "output_file": "20261001260500_phase13_recover_phase10_taxes.sql"
+  },
+  "explicitly_skipped": [
+    {
+      "object": "finalize_pos_sale_impl",
+      "kind": "function",
+      "reason": "STAGING_ONLY_REFACTOR — Phase 9 calls finalize_pos_sale; impl variant not required for cleanroom correctness"
+    },
+    {
+      "object": "pos_assert_session_actor",
+      "kind": "function",
+      "reason": "Phase 9 domain function — provided by substantive Phase 9 migrations"
+    }
+  ]
+}

@@ -1,0 +1,583 @@
+{
+  "CLEAN_ROOM_MIGRATIONS": {
+    "status": "PASS",
+    "detail": "db reset applied all migrations + seed.sql"
+  },
+  "MIGRATION_PROVENANCE": {
+    "status": "PASS",
+    "detail": "all migration SHAs match",
+    "chain_sha256": "03e019864f946d9c7811a57a8842bf227a51c45a7a1bb1c2cb3806c4a803009a",
+    "mismatches": []
+  },
+  "SCHEMA_FINGERPRINT": {
+    "status": "PASS",
+    "detail": "schema fingerprint matches expected",
+    "sha256": "ca472ea6dc3ccf45d9a49929cc84695fba2bdffb3357080d6bf363a690838cf8",
+    "expected_sha256": "ca472ea6dc3ccf45d9a49929cc84695fba2bdffb3357080d6bf363a690838cf8",
+    "drift": []
+  },
+  "SCHEMA_DRIFT": {
+    "status": "PASS",
+    "detail": "SCHEMA DRIFT: 0 unexplained",
+    "drift": []
+  },
+  "PHASE_1_12_GATES": {
+    "status": "PASS",
+    "detail": "all 116 phase 1–12 DB gates passed",
+    "checks": [
+      {
+        "id": "phase1.table.profiles",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.organizations",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.organization_members",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.branches",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.fiscal_conditions",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.fiscal_profiles",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.business_profiles",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.accounting_periods",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.cost_centers",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.feature_catalog",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.organization_features",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.app_settings",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.organization_settings",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.table.audit_events",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.profiles",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.organizations",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.organization_members",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.branches",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.fiscal_conditions",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.accounting_periods",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.fiscal_profiles",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.business_profiles",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.cost_centers",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.app_settings",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.organization_settings",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.audit_events",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.feature_catalog",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.rls.organization_features",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.seed.fiscal_conditions",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.seed.feature_catalog",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.app_settings.phase",
+        "status": "PASS"
+      },
+      {
+        "id": "phase1.accounting_core_setting_exists",
+        "status": "PASS"
+      },
+      {
+        "id": "phase2.present_table.accounts",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase2.rls.accounts",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase2.present_table.journal_entries",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase2.rls.journal_entries",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase2.present_table.journal_entry_lines",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase2.rls.journal_entry_lines",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase2.present_table.accounting_sequences",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase2.rls.accounting_sequences",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase3.present_table.counterparties",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase3.rls.counterparties",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase3.present_table.counterparty_addresses",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase3.rls.counterparty_addresses",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase3.present_table.counterparty_roles",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase3.rls.counterparty_roles",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase4.present_table.sales_documents",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase4.rls.sales_documents",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase4.present_table.sales_document_lines",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase4.rls.sales_document_lines",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase4.present_table.sales_document_sequences",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase4.rls.sales_document_sequences",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase5.present_table.fiscal_documents",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase5.rls.fiscal_documents",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase5.present_table.fiscal_document_lines",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase5.rls.fiscal_document_lines",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase5.present_table.fiscal_points_of_sale",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase5.rls.fiscal_points_of_sale",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase6.present_table.purchase_documents",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase6.rls.purchase_documents",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase6.present_table.purchase_document_lines",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase6.rls.purchase_document_lines",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase6.present_table.purchase_orders",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase6.rls.purchase_orders",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase6.present_table.accounts_payable_items",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase6.rls.accounts_payable_items",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase7.present_table.treasury_accounts",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase7.rls.treasury_accounts",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase7.present_table.treasury_operations",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase7.rls.treasury_operations",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase7.present_table.accounts_receivable_items",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase7.rls.accounts_receivable_items",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase7.present_table.bank_reconciliation_matches",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase7.rls.bank_reconciliation_matches",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase8.present_table.products",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase8.rls.products",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase8.present_table.product_categories",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase8.rls.product_categories",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase8.present_table.warehouses",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase8.rls.warehouses",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase8.present_table.inventory_operations",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase8.rls.inventory_operations",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase8.present_table.inventory_stock_state",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase8.rls.inventory_stock_state",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase9.present_table.pos_sessions",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase9.rls.pos_sessions",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase9.present_table.pos_sales",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase9.rls.pos_sales",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase9.present_table.pos_terminals",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase9.rls.pos_terminals",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase9.present_table.pos_tenders",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase9.rls.pos_tenders",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase10.present_table.tax_jurisdictions",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase10.rls.tax_jurisdictions",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase10.present_table.tax_determinations",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase10.rls.tax_determinations",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase10.present_table.tax_periods",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase10.rls.tax_periods",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase10.present_table.tax_filing_records",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase10.rls.tax_filing_records",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase10.present_table.organization_tax_registrations",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase10.rls.organization_tax_registrations",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase11.present_table.analytics_metric_definitions",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase11.rls.analytics_metric_definitions",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase11.present_table.saved_reports",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase11.rls.saved_reports",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase11.present_table.analytics_alert_settings",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase11.rls.analytics_alert_settings",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase12.present_table.module_packs",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase12.rls.module_packs",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase12.present_table.module_pack_features",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase12.rls.module_pack_features",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase12.present_table.feature_release_controls",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase12.rls.feature_release_controls",
+        "status": "PASS",
+        "note": "RLS enabled"
+      },
+      {
+        "id": "phase12.present_table.organization_feature_entitlements",
+        "status": "PASS",
+        "note": "domain table present"
+      },
+      {
+        "id": "phase12.rls.organization_feature_entitlements",
+        "status": "PASS",
+        "note": "RLS enabled"
+      }
+    ],
+    "failed": []
+  },
+  "CLEAN_ROOM_REBUILD": {
+    "status": "PASS",
+    "detail": "all clean-room requirements passed"
+  }
+}

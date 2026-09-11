@@ -1,0 +1,9 @@
+{
+  "MIGRATION_DRIFT": 0,
+  "status": "PASS",
+  "file_count": 122,
+  "history_count": 122,
+  "provenance": "PASS",
+  "mismatches": [],
+  "destructive_without_emc_plan": []
+}

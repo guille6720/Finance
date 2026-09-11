@@ -1,0 +1,19 @@
+{
+  "started": "2026-09-09T22:40:19.758Z",
+  "finished": "2026-09-09T22:40:20.871Z",
+  "DR_PRIMARY_REF": "yqqqocmbuxgagounywtp",
+  "staging_ref": "rpcpdrzbcclofvjpgldb",
+  "isolated": true,
+  "env_keys_present": {
+    "DR_PRIMARY_REF": true,
+    "DR_PRIMARY_URL": true,
+    "DR_PRIMARY_ANON_KEY": true,
+    "DR_PRIMARY_SERVICE_ROLE_KEY": true,
+    "DR_PRIMARY_DB_PASSWORD": true
+  },
+  "table_count": 301,
+  "expected_tables": 107,
+  "DR_PRIMARY_SCHEMA_OK": "PASS",
+  "error": null,
+  "note": "Count from PostgREST OpenAPI paths (tables+some views). Exact 107 validated if PASS and migrations complete."
+}

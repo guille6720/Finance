@@ -1,0 +1,25 @@
+{
+  "recorded_at": "2026-09-10T12:18:00.000Z",
+  "MAXIMUM_TOTAL_DR_BUDGET_USD": 40.0,
+  "OPTION_SELECTED": "B",
+  "org_id": "qsgnqyleasarodfwzlwe",
+  "org_name": "OpusOrg",
+  "org_plan": "PAID_INFERRED",
+  "staging_ref": "rpcpdrzbcclofvjpgldb",
+  "staging_untouched": true,
+  "PITR_ENABLED": false,
+  "line_items_actual_approx": {
+    "PROJECT_COST": 10.0,
+    "RESTORE_PROJECT_COST": 0.0,
+    "COMPUTE_COST": "micro hours only until delete (no Small)",
+    "PITR_COST": 0.0,
+    "STORAGE_COST": 0.0,
+    "TRANSFER_COST": 0.0,
+    "TAXES_IF_KNOWN": null
+  },
+  "CURRENT_ESTIMATED_TOTAL_COST_USD": 10.0,
+  "COST_CAP_EXCEEDED": "NO",
+  "resources_live": [],
+  "DR_TEMP_RESOURCES_REMAINING": 0,
+  "note": "DR paused with PITR deferred. Disposable primary yqqqocmbuxgagounywtp verified absent from projects list after cleanup. Staging untouched."
+}

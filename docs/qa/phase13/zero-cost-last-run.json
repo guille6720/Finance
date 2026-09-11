@@ -1,0 +1,44 @@
+{
+  "phase": 13,
+  "status": "IN_PROGRESS",
+  "generated_at": "2026-09-09T12:45:00.000Z",
+  "cleanroom": {
+    "CLEAN_ROOM_REBUILD": "PASS",
+    "CLEAN_ROOM_MIGRATIONS": "PASS",
+    "MIGRATION_PROVENANCE": "PASS",
+    "SCHEMA_FINGERPRINT": "PASS",
+    "SCHEMA_DRIFT_UNEXPLAINED": 0,
+    "PHASE_1_12_GATES": "PASS"
+  },
+  "VERIFIED_READ_CAPACITY": 250,
+  "VERIFIED_WRITE_CAPACITY": 50,
+  "VERIFIED_MIXED_CAPACITY": 250,
+  "k6_notes": {
+    "read_target": "GET /api/health via phase13 health stand-in (Next.js Turbopack OOM with local Supabase Docker)",
+    "write_target": "local Supabase Auth + PostgREST organizations insert",
+    "write_stop_stage": 100
+  },
+  "golden_flow": {
+    "phase1_golden": "PASS",
+    "full_operational_golden": "FAIL",
+    "verdict": "BLOCKED_DOMAIN_NOT_IN_SCHEMA"
+  },
+  "security_definer_unexplained": 0,
+  "DR": {
+    "RPO_5_MIN_PROVEN": false,
+    "RTO_4_HOURS_PROVEN": false
+  },
+  "COST_APPROVAL_REQUIRED": {
+    "missing_tests": [
+      {
+        "test": "DB restore drill proving RPO <= 5 minutes",
+        "required_resource": "Remote disposable Supabase project with backup/PITR or external DB backup restore target (paid options may apply)"
+      },
+      {
+        "test": "Storage restore drill proving RTO <= 4 hours (DB + Storage)",
+        "required_resource": "External Storage backup provider and/or Supabase Storage backup on disposable remote project"
+      }
+    ],
+    "note": "Do NOT provision. Phase 13 remains IN PROGRESS until drills complete."
+  }
+}

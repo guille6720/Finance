@@ -1,0 +1,22 @@
+{
+  "started": "2026-09-10T03:02:48.804Z",
+  "finished": "2026-09-10T03:02:48.805Z",
+  "DR_PRIMARY_REF": "yqqqocmbuxgagounywtp",
+  "staging_ref": "rpcpdrzbcclofvjpgldb",
+  "isolated": true,
+  "CURRENT_ESTIMATED_TOTAL_COST_USD": 28.06,
+  "COST_CAP_EXCEEDED": "NO",
+  "projected": {
+    "PROJECT_COST": 10,
+    "RESTORE_PROJECT_COST": 10,
+    "COMPUTE_COST": 1.48,
+    "PITR_COST": 6.58,
+    "STORAGE_COST": 0,
+    "TRANSFER_COST": 0,
+    "TOTAL": 28.06
+  },
+  "PITR_ACTIVE": "FAIL",
+  "COMPUTE_SMALL": "FAIL",
+  "steps": [],
+  "error": "MISSING_SUPABASE_ACCESS_TOKEN"
+}

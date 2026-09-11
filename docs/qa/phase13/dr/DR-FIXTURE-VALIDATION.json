@@ -1,0 +1,38 @@
+{
+  "validated_at": "2026-09-09T18:00:00Z",
+  "DR_FIXTURE_READY": "PASS",
+  "DR_FIXTURE_MANIFEST": "VALID",
+  "real_data": false,
+  "checks": [
+    { "id": "manifest_exists", "status": "PASS" },
+    { "id": "namespace_DR_FIXTURE", "status": "PASS" },
+    { "id": "org_label", "status": "PASS", "value": "DR_FIXTURE_ORG" },
+    { "id": "owner_specified", "status": "PASS", "value": "dr.fixture.owner@example.com" },
+    { "id": "secondary_member_specified", "status": "PASS", "value": "dr.fixture.operator@example.com" },
+    { "id": "branch", "status": "PASS" },
+    { "id": "counterparty_customer_and_supplier", "status": "PASS" },
+    { "id": "product", "status": "PASS" },
+    { "id": "warehouse", "status": "PASS" },
+    { "id": "treasury_account", "status": "PASS" },
+    { "id": "sale", "status": "PASS" },
+    { "id": "purchase", "status": "PASS" },
+    { "id": "inventory_movement", "status": "PASS" },
+    { "id": "journal_entry", "status": "PASS" },
+    { "id": "tax_determination", "status": "PASS" },
+    { "id": "dashboard_reporting_state", "status": "PASS" },
+    {
+      "id": "storage_object",
+      "status": "PASS",
+      "path": "docs/qa/phase13/dr/DR_FIXTURE_PURCHASE_EVIDENCE.pdf",
+      "mime_type": "application/pdf",
+      "bucket": "purchase-evidence",
+      "bucket_allowed_mimes": ["application/pdf", "image/jpeg", "image/png", "image/webp"]
+    },
+    { "id": "no_real_tenant_data_in_manifest", "status": "PASS" },
+    {
+      "id": "live_rows_labeled_DR_FIXTURE",
+      "status": "PASS",
+      "note": "Loaded on disposable DR primary yqqqocmbuxgagounywtp at T2 (2026-09-09). Synthetic only. DR paused before PITR; primary cleaned up after evidence preserve."
+    }
+  ]
+}

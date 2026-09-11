@@ -1,0 +1,3966 @@
+{
+  "generated_at": "2026-09-09T13:53:29.504Z",
+  "staging_project_ref": "rpcpdrzbcclofvjpgldb",
+  "methodology": "Map staging catalog objects to phases 1–12 by first CREATE appearance in non-empty supabase/migrations/*.sql; UNCLASSIFIED when no local SQL evidence.",
+  "phase_labels": {
+    "1": "platform",
+    "2": "accounting",
+    "3": "counterparties",
+    "4": "sales",
+    "5": "fiscal",
+    "6": "purchases",
+    "7": "treasury",
+    "8": "products/inventory",
+    "9": "POS",
+    "10": "taxes",
+    "11": "dashboard/reporting",
+    "12": "configurator/entitlements"
+  },
+  "summary": {
+    "staging_object_count": 448,
+    "classified_count": 341,
+    "unclassified_count": 107,
+    "by_phase": {
+      "1": 26,
+      "2": 26,
+      "3": 14,
+      "4": 26,
+      "5": 37,
+      "6": 33,
+      "7": 42,
+      "9": 34,
+      "10": 1,
+      "11": 57,
+      "12": 45
+    }
+  },
+  "classified": [
+    {
+      "kind": "function",
+      "name": "can_mutate_org",
+      "object": "can_mutate_org",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "handle_new_user",
+      "object": "handle_new_user",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "has_org_role",
+      "object": "has_org_role",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "is_org_member",
+      "object": "is_org_member",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_audit_mutation",
+      "object": "prevent_audit_mutation",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "set_updated_at",
+      "object": "set_updated_at",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "accounting_periods",
+      "object": "accounting_periods",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "app_settings",
+      "object": "app_settings",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "audit_events",
+      "object": "audit_events",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "branches",
+      "object": "branches",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "business_profiles",
+      "object": "business_profiles",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "cost_centers",
+      "object": "cost_centers",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "feature_catalog",
+      "object": "feature_catalog",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_conditions",
+      "object": "fiscal_conditions",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_profiles",
+      "object": "fiscal_profiles",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "organization_features",
+      "object": "organization_features",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "organization_members",
+      "object": "organization_members",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "organization_settings",
+      "object": "organization_settings",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "organizations",
+      "object": "organizations",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "profiles",
+      "object": "profiles",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "business_type",
+      "object": "business_type",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "feature_status",
+      "object": "feature_status",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "member_role",
+      "object": "member_role",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "member_status",
+      "object": "member_status",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "organization_status",
+      "object": "organization_status",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "ux_mode",
+      "object": "ux_mode",
+      "phase": 1,
+      "phase_label": "platform",
+      "first_migration": "20260329000001_phase1_foundation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "tax_test_fixture_authorized_fiscal",
+      "object": "tax_test_fixture_authorized_fiscal",
+      "phase": 10,
+      "phase_label": "taxes",
+      "first_migration": "20261001270000_phase10_hardening_fixture_counterparty_reuse.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "ack_analytics_alert",
+      "object": "ack_analytics_alert",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101160000_phase11_reports_alerts.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_account_is_cogs",
+      "object": "analytics_account_is_cogs",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_aging_bucket",
+      "object": "analytics_aging_bucket",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101150000_phase11_dashboard_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_alert_resolve_missing",
+      "object": "analytics_alert_resolve_missing",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101160000_phase11_reports_alerts.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_alert_rule_enabled",
+      "object": "analytics_alert_rule_enabled",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101160000_phase11_reports_alerts.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_alert_threshold",
+      "object": "analytics_alert_threshold",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101160000_phase11_reports_alerts.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_alert_upsert_open",
+      "object": "analytics_alert_upsert_open",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101160000_phase11_reports_alerts.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_ap_open_total",
+      "object": "analytics_ap_open_total",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101150000_phase11_dashboard_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_ar_open_total",
+      "object": "analytics_ar_open_total",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101150000_phase11_dashboard_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_assert_any_feature",
+      "object": "analytics_assert_any_feature",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_assert_capability",
+      "object": "analytics_assert_capability",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101210000_phase11_final_authz_reporting_hardening.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_assert_feature",
+      "object": "analytics_assert_feature",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_assert_member",
+      "object": "analytics_assert_member",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_assert_service_role",
+      "object": "analytics_assert_service_role",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_feature_enabled",
+      "object": "analytics_feature_enabled",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_fiscal_economic_sign",
+      "object": "analytics_fiscal_economic_sign",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_has_capability",
+      "object": "analytics_has_capability",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101210000_phase11_final_authz_reporting_hardening.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_is_economic_journal_status",
+      "object": "analytics_is_economic_journal_status",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_journal_economic_lines",
+      "object": "analytics_journal_economic_lines",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_management_balance_sheet",
+      "object": "analytics_management_balance_sheet",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101140000_phase11_accounting_reports.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_management_pnl",
+      "object": "analytics_management_pnl",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101140000_phase11_accounting_reports.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_member_role",
+      "object": "analytics_member_role",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101210000_phase11_final_authz_reporting_hardening.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_metric_payload",
+      "object": "analytics_metric_payload",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101150000_phase11_dashboard_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_org_timezone",
+      "object": "analytics_org_timezone",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_period_bounds",
+      "object": "analytics_period_bounds",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_prev_period_bounds",
+      "object": "analytics_prev_period_bounds",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_product_margin_summary",
+      "object": "analytics_product_margin_summary",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101190000_phase11_attention_product_margin.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_sales_fiscal_gross",
+      "object": "analytics_sales_fiscal_gross",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_sales_fiscal_net",
+      "object": "analytics_sales_fiscal_net",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_signed_balance",
+      "object": "analytics_signed_balance",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101130000_phase11_helpers_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_test_fixture_mixed_product_margin",
+      "object": "analytics_test_fixture_mixed_product_margin",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101220000_phase11_margin_fixture.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_treasury_type_balance",
+      "object": "analytics_treasury_type_balance",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101150000_phase11_dashboard_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "analytics_validate_saved_report_config",
+      "object": "analytics_validate_saved_report_config",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101210000_phase11_final_authz_reporting_hardening.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "delete_saved_report",
+      "object": "delete_saved_report",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101160000_phase11_reports_alerts.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "evaluate_analytics_alerts",
+      "object": "evaluate_analytics_alerts",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101160000_phase11_reports_alerts.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "get_ap_aging",
+      "object": "get_ap_aging",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101150000_phase11_dashboard_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "get_ar_aging",
+      "object": "get_ar_aging",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101150000_phase11_dashboard_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "get_attention_summary",
+      "object": "get_attention_summary",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101190000_phase11_attention_product_margin.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "get_dashboard_summary",
+      "object": "get_dashboard_summary",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101150000_phase11_dashboard_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "get_financial_dashboard",
+      "object": "get_financial_dashboard",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101150000_phase11_dashboard_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "get_report_dataset",
+      "object": "get_report_dataset",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101160000_phase11_reports_alerts.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "list_saved_reports",
+      "object": "list_saved_reports",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101160000_phase11_reports_alerts.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "upsert_analytics_inventory_threshold",
+      "object": "upsert_analytics_inventory_threshold",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101160000_phase11_reports_alerts.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "upsert_saved_report",
+      "object": "upsert_saved_report",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101160000_phase11_reports_alerts.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "analytics_alert_events",
+      "object": "analytics_alert_events",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101120000_phase11_alerts_thresholds.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "analytics_alert_settings",
+      "object": "analytics_alert_settings",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101120000_phase11_alerts_thresholds.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "analytics_inventory_thresholds",
+      "object": "analytics_inventory_thresholds",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101120000_phase11_alerts_thresholds.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "analytics_metric_definitions",
+      "object": "analytics_metric_definitions",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101100000_phase11_metric_registry.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "saved_reports",
+      "object": "saved_reports",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101110000_phase11_saved_reports.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "analytics_alert_domain",
+      "object": "analytics_alert_domain",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101120000_phase11_alerts_thresholds.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "analytics_alert_severity",
+      "object": "analytics_alert_severity",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101120000_phase11_alerts_thresholds.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "analytics_alert_status",
+      "object": "analytics_alert_status",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101120000_phase11_alerts_thresholds.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "analytics_capability",
+      "object": "analytics_capability",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101210000_phase11_final_authz_reporting_hardening.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "analytics_metric_comparison",
+      "object": "analytics_metric_comparison",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101100000_phase11_metric_registry.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "analytics_metric_domain",
+      "object": "analytics_metric_domain",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101100000_phase11_metric_registry.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "analytics_metric_unit_type",
+      "object": "analytics_metric_unit_type",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101100000_phase11_metric_registry.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "saved_report_visibility",
+      "object": "saved_report_visibility",
+      "phase": 11,
+      "phase_label": "dashboard/reporting",
+      "first_migration": "20261101110000_phase11_saved_reports.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "apply_module_pack",
+      "object": "apply_module_pack",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201180000_phase12_client_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "bootstrap_organization_modules",
+      "object": "bootstrap_organization_modules",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201190000_phase12_source_feature_guard_hardening.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "feature_dependencies_assert_dag",
+      "object": "feature_dependencies_assert_dag",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201130000_phase12_dependencies.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "get_module_configuration_state",
+      "object": "get_module_configuration_state",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201180000_phase12_client_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "modules_assert_configure",
+      "object": "modules_assert_configure",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201180000_phase12_client_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "modules_assert_read",
+      "object": "modules_assert_read",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201180000_phase12_client_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "modules_assert_service_role",
+      "object": "modules_assert_service_role",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "modules_config_hash",
+      "object": "modules_config_hash",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "modules_disable_block_reason",
+      "object": "modules_disable_block_reason",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "modules_entitlement_is_granted",
+      "object": "modules_entitlement_is_granted",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "modules_entitlement_is_restricted",
+      "object": "modules_entitlement_is_restricted",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "modules_evaluate_feature_state",
+      "object": "modules_evaluate_feature_state",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "modules_lock_organization",
+      "object": "modules_lock_organization",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "modules_preference_desired",
+      "object": "modules_preference_desired",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "modules_write_audit",
+      "object": "modules_write_audit",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "organization_features_engine_write_guard",
+      "object": "organization_features_engine_write_guard",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201170000_phase12_lockdown_organization_features.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "phase12_assert_authenticated_function_acl",
+      "object": "phase12_assert_authenticated_function_acl",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201241000_phase12_function_acl_probe.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "phase12_assert_authenticated_table_acl",
+      "object": "phase12_assert_authenticated_table_acl",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201240000_phase12_final_entitlement_acl_hardening.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "platform_bootstrap_organization_modules",
+      "object": "platform_bootstrap_organization_modules",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201240000_phase12_final_entitlement_acl_hardening.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "platform_disable_organization_feature",
+      "object": "platform_disable_organization_feature",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201230000_phase12_platform_enable_helper.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "platform_enable_organization_feature",
+      "object": "platform_enable_organization_feature",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201230000_phase12_platform_enable_helper.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "platform_grant_feature_entitlement",
+      "object": "platform_grant_feature_entitlement",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "platform_revoke_feature_entitlement",
+      "object": "platform_revoke_feature_entitlement",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "platform_set_feature_release",
+      "object": "platform_set_feature_release",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "preview_module_pack",
+      "object": "preview_module_pack",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201180000_phase12_client_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "recompute_feature_for_all_organizations",
+      "object": "recompute_feature_for_all_organizations",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "recompute_organization_features",
+      "object": "recompute_organization_features",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201150000_phase12_effective_state_engine.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "sales_assert_feature",
+      "object": "sales_assert_feature",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201190000_phase12_source_feature_guard_hardening.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "set_organization_feature_preference",
+      "object": "set_organization_feature_preference",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201180000_phase12_client_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "why_feature_unavailable",
+      "object": "why_feature_unavailable",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201180000_phase12_client_rpcs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "feature_dependencies",
+      "object": "feature_dependencies",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201130000_phase12_dependencies.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "feature_release_controls",
+      "object": "feature_release_controls",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201100000_phase12_release_governance.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "module_pack_features",
+      "object": "module_pack_features",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201140000_phase12_packs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "module_packs",
+      "object": "module_packs",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201140000_phase12_packs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "organization_feature_entitlements",
+      "object": "organization_feature_entitlements",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201110000_phase12_entitlements.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "organization_feature_preferences",
+      "object": "organization_feature_preferences",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201120000_phase12_preferences.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "organization_pack_applications",
+      "object": "organization_pack_applications",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201140000_phase12_packs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "phase12_migration_effective_diff",
+      "object": "phase12_migration_effective_diff",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201160000_phase12_migration_backfill.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "phase12_migration_effective_snapshot",
+      "object": "phase12_migration_effective_snapshot",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201160000_phase12_migration_backfill.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "feature_dependency_kind",
+      "object": "feature_dependency_kind",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201130000_phase12_dependencies.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "feature_entitlement_source",
+      "object": "feature_entitlement_source",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201110000_phase12_entitlements.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "feature_entitlement_status",
+      "object": "feature_entitlement_status",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201110000_phase12_entitlements.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "feature_mandatory_core_policy",
+      "object": "feature_mandatory_core_policy",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201100000_phase12_release_governance.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "feature_release_status",
+      "object": "feature_release_status",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201100000_phase12_release_governance.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "module_pack_type",
+      "object": "module_pack_type",
+      "phase": 12,
+      "phase_label": "configurator/entitlements",
+      "first_migration": "20261201140000_phase12_packs.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "accounting_write_audit",
+      "object": "accounting_write_audit",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "close_accounting_period",
+      "object": "close_accounting_period",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "ensure_monthly_periods",
+      "object": "ensure_monthly_periods",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "next_journal_entry_number",
+      "object": "next_journal_entry_number",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "post_journal_entry",
+      "object": "post_journal_entry",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_account_delete_with_movements",
+      "object": "prevent_account_delete_with_movements",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_posted_journal_mutation",
+      "object": "prevent_posted_journal_mutation",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_posted_line_mutation",
+      "object": "prevent_posted_line_mutation",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "reopen_accounting_period",
+      "object": "reopen_accounting_period",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "resolve_open_period",
+      "object": "resolve_open_period",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "reverse_journal_entry",
+      "object": "reverse_journal_entry",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "seed_starter_chart_of_accounts",
+      "object": "seed_starter_chart_of_accounts",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "sync_period_closed_flag",
+      "object": "sync_period_closed_flag",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "validate_account_hierarchy",
+      "object": "validate_account_hierarchy",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "validate_journal_line_tenancy",
+      "object": "validate_journal_line_tenancy",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "accounting_fiscal_years",
+      "object": "accounting_fiscal_years",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "accounting_sequences",
+      "object": "accounting_sequences",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "accounts",
+      "object": "accounts",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "journal_entries",
+      "object": "journal_entries",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "journal_entry_lines",
+      "object": "journal_entry_lines",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "account_type",
+      "object": "account_type",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "fiscal_year_status",
+      "object": "fiscal_year_status",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "journal_entry_status",
+      "object": "journal_entry_status",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "journal_source_type",
+      "object": "journal_source_type",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "normal_balance",
+      "object": "normal_balance",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "period_status",
+      "object": "period_status",
+      "phase": 2,
+      "phase_label": "accounting",
+      "first_migration": "20260329200000_phase2_accounting_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "counterparties_normalize_tax_id",
+      "object": "counterparties_normalize_tax_id",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "find_counterparty_soft_duplicates",
+      "object": "find_counterparty_soft_duplicates",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "normalize_counterparty_tax_id",
+      "object": "normalize_counterparty_tax_id",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_counterparty_delete_with_movements",
+      "object": "prevent_counterparty_delete_with_movements",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331110000_phase3_counterparty_accounting_dimension.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "validate_counterparty_child_tenancy",
+      "object": "validate_counterparty_child_tenancy",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "counterparties",
+      "object": "counterparties",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "counterparty_addresses",
+      "object": "counterparty_addresses",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "counterparty_contacts",
+      "object": "counterparty_contacts",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "counterparty_fiscal_profiles",
+      "object": "counterparty_fiscal_profiles",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "counterparty_roles",
+      "object": "counterparty_roles",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "counterparty_address_type",
+      "object": "counterparty_address_type",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "counterparty_entity_type",
+      "object": "counterparty_entity_type",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "counterparty_role",
+      "object": "counterparty_role",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "tax_id_type",
+      "object": "tax_id_type",
+      "phase": 3,
+      "phase_label": "counterparties",
+      "first_migration": "20260331100000_phase3_counterparties_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "accept_quote",
+      "object": "accept_quote",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401110000_phase4_sales_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "build_counterparty_snapshot",
+      "object": "build_counterparty_snapshot",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "cancel_sales_document",
+      "object": "cancel_sales_document",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401110000_phase4_sales_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "confirm_sales_order",
+      "object": "confirm_sales_order",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401110000_phase4_sales_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "convert_quote_to_order",
+      "object": "convert_quote_to_order",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401110000_phase4_sales_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "mark_order_ready_to_invoice",
+      "object": "mark_order_ready_to_invoice",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401110000_phase4_sales_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "next_sales_internal_number",
+      "object": "next_sales_internal_number",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_frozen_sales_document_mutation",
+      "object": "prevent_frozen_sales_document_mutation",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_frozen_sales_line_mutation",
+      "object": "prevent_frozen_sales_line_mutation",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "recalculate_sales_line_amounts",
+      "object": "recalculate_sales_line_amounts",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "refresh_sales_document_totals",
+      "object": "refresh_sales_document_totals",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "reject_quote",
+      "object": "reject_quote",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401110000_phase4_sales_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "sales_assert_role",
+      "object": "sales_assert_role",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401110000_phase4_sales_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "sales_document_lines_refresh_header",
+      "object": "sales_document_lines_refresh_header",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "sales_write_audit",
+      "object": "sales_write_audit",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401110000_phase4_sales_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "send_quote",
+      "object": "send_quote",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401110000_phase4_sales_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "validate_sales_customer",
+      "object": "validate_sales_customer",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "validate_sales_document_status_for_type",
+      "object": "validate_sales_document_status_for_type",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "validate_sales_line_tenancy",
+      "object": "validate_sales_line_tenancy",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "sales_document_lines",
+      "object": "sales_document_lines",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "sales_document_sequences",
+      "object": "sales_document_sequences",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "sales_documents",
+      "object": "sales_documents",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "sales_discount_input_mode",
+      "object": "sales_discount_input_mode",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "sales_document_status",
+      "object": "sales_document_status",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "sales_document_type",
+      "object": "sales_document_type",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "sales_line_unit_code",
+      "object": "sales_line_unit_code",
+      "phase": 4,
+      "phase_label": "sales",
+      "first_migration": "20260401100000_phase4_sales_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "begin_fiscal_authorization",
+      "object": "begin_fiscal_authorization",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501140000_phase5_fiscal_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "complete_fiscal_authorization",
+      "object": "complete_fiscal_authorization",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501140000_phase5_fiscal_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "fiscal_assert_feature",
+      "object": "fiscal_assert_feature",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501140000_phase5_fiscal_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "fiscal_assert_role",
+      "object": "fiscal_assert_role",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501140000_phase5_fiscal_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "fiscal_assert_service_role",
+      "object": "fiscal_assert_service_role",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501190000_phase5_security_definer_trust.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "mark_fiscal_ready_to_authorize",
+      "object": "mark_fiscal_ready_to_authorize",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501140000_phase5_fiscal_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "phase5_prelive_selfcheck",
+      "object": "phase5_prelive_selfcheck",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501200000_phase5_prelive_selfcheck.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prepare_fiscal_invoice_from_sales_order",
+      "object": "prepare_fiscal_invoice_from_sales_order",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501140000_phase5_fiscal_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prepare_fiscal_note",
+      "object": "prepare_fiscal_note",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501140000_phase5_fiscal_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_active_fiscal_rule_mutation",
+      "object": "prevent_active_fiscal_rule_mutation",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_authorized_fiscal_line_mutation",
+      "object": "prevent_authorized_fiscal_line_mutation",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_authorized_fiscal_mutation",
+      "object": "prevent_authorized_fiscal_mutation",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_authorized_fiscal_summary_mutation",
+      "object": "prevent_authorized_fiscal_summary_mutation",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "resolve_fiscal_rule_version",
+      "object": "resolve_fiscal_rule_version",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501140000_phase5_fiscal_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "set_fiscal_qr_payload",
+      "object": "set_fiscal_qr_payload",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501140000_phase5_fiscal_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_accounting_mappings",
+      "object": "fiscal_accounting_mappings",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501120000_phase5_fiscal_accounting.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_authorization_attempts",
+      "object": "fiscal_authorization_attempts",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_credential_metadata",
+      "object": "fiscal_credential_metadata",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_document_lines",
+      "object": "fiscal_document_lines",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_document_types",
+      "object": "fiscal_document_types",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_documents",
+      "object": "fiscal_documents",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_parameter_catalogs",
+      "object": "fiscal_parameter_catalogs",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_points_of_sale",
+      "object": "fiscal_points_of_sale",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_rule_versions",
+      "object": "fiscal_rule_versions",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_service_profiles",
+      "object": "fiscal_service_profiles",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "fiscal_tax_summaries",
+      "object": "fiscal_tax_summaries",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "fiscal_accounting_status",
+      "object": "fiscal_accounting_status",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "fiscal_authorization_outcome",
+      "object": "fiscal_authorization_outcome",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "fiscal_credential_status",
+      "object": "fiscal_credential_status",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "fiscal_document_class",
+      "object": "fiscal_document_class",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "fiscal_document_status",
+      "object": "fiscal_document_status",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "fiscal_environment",
+      "object": "fiscal_environment",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "fiscal_issuance_method",
+      "object": "fiscal_issuance_method",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "fiscal_operation_kind",
+      "object": "fiscal_operation_kind",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "fiscal_relationship_type",
+      "object": "fiscal_relationship_type",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "fiscal_rule_status",
+      "object": "fiscal_rule_status",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "fiscal_vat_treatment",
+      "object": "fiscal_vat_treatment",
+      "phase": 5,
+      "phase_label": "fiscal",
+      "first_migration": "20260501100000_phase5_fiscal_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "approve_purchase_order",
+      "object": "approve_purchase_order",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601120000_phase6_purchase_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "assert_active_supplier",
+      "object": "assert_active_supplier",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601120000_phase6_purchase_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "build_supplier_snapshot",
+      "object": "build_supplier_snapshot",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601120000_phase6_purchase_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "complete_purchase_order",
+      "object": "complete_purchase_order",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601120000_phase6_purchase_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "mark_purchase_reviewed",
+      "object": "mark_purchase_reviewed",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601120000_phase6_purchase_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "next_purchase_order_number",
+      "object": "next_purchase_order_number",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601120000_phase6_purchase_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "post_purchase_document",
+      "object": "post_purchase_document",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601120000_phase6_purchase_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_ap_client_mutation",
+      "object": "prevent_ap_client_mutation",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601110000_phase6_accounts_payable.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_posted_purchase_line_mutation",
+      "object": "prevent_posted_purchase_line_mutation",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601110000_phase6_accounts_payable.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_posted_purchase_mutation",
+      "object": "prevent_posted_purchase_mutation",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601110000_phase6_accounts_payable.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "purchase_assert_feature",
+      "object": "purchase_assert_feature",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601120000_phase6_purchase_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "purchase_assert_role",
+      "object": "purchase_assert_role",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601120000_phase6_purchase_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "reverse_purchase_document",
+      "object": "reverse_purchase_document",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601120000_phase6_purchase_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "supplier_ap_net_open",
+      "object": "supplier_ap_net_open",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601120000_phase6_purchase_functions.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "accounts_payable_items",
+      "object": "accounts_payable_items",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601110000_phase6_accounts_payable.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "purchase_accounting_mappings",
+      "object": "purchase_accounting_mappings",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601110000_phase6_accounts_payable.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "purchase_attachments",
+      "object": "purchase_attachments",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601110000_phase6_accounts_payable.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "purchase_document_lines",
+      "object": "purchase_document_lines",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "purchase_document_tax_summaries",
+      "object": "purchase_document_tax_summaries",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "purchase_documents",
+      "object": "purchase_documents",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "purchase_order_lines",
+      "object": "purchase_order_lines",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "purchase_order_sequences",
+      "object": "purchase_order_sequences",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "purchase_orders",
+      "object": "purchase_orders",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "accounts_payable_direction",
+      "object": "accounts_payable_direction",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "accounts_payable_status",
+      "object": "accounts_payable_status",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "purchase_accounting_status",
+      "object": "purchase_accounting_status",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "purchase_attachment_kind",
+      "object": "purchase_attachment_kind",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "purchase_document_status",
+      "object": "purchase_document_status",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "purchase_document_type",
+      "object": "purchase_document_type",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "purchase_line_unit_code",
+      "object": "purchase_line_unit_code",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "purchase_order_status",
+      "object": "purchase_order_status",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "purchase_relationship_type",
+      "object": "purchase_relationship_type",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "purchase_vat_treatment",
+      "object": "purchase_vat_treatment",
+      "phase": 6,
+      "phase_label": "purchases",
+      "first_migration": "20260601100000_phase6_purchases_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "ensure_ar_from_fiscal_document",
+      "object": "ensure_ar_from_fiscal_document",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701110000_phase7_accounts_receivable.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "ignore_bank_statement_line",
+      "object": "ignore_bank_statement_line",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701160000_phase7_bank_reconciliation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "match_bank_statement_line",
+      "object": "match_bank_statement_line",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701160000_phase7_bank_reconciliation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "next_treasury_operation_number",
+      "object": "next_treasury_operation_number",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701130000_phase7_accounting_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "post_open_item_compensation",
+      "object": "post_open_item_compensation",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701130000_phase7_accounting_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "post_treasury_operation",
+      "object": "post_treasury_operation",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701140000_phase7_post_treasury.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_ar_client_mutation",
+      "object": "prevent_ar_client_mutation",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701110000_phase7_accounts_receivable.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_posted_allocation_mutation",
+      "object": "prevent_posted_allocation_mutation",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701120000_phase7_allocations.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_posted_treasury_leg_mutation",
+      "object": "prevent_posted_treasury_leg_mutation",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701100000_phase7_treasury_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_posted_treasury_mutation",
+      "object": "prevent_posted_treasury_mutation",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701100000_phase7_treasury_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "resolve_adjustment_offset_account",
+      "object": "resolve_adjustment_offset_account",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701130000_phase7_accounting_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "resolve_ap_account",
+      "object": "resolve_ap_account",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701130000_phase7_accounting_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "resolve_ar_account",
+      "object": "resolve_ar_account",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701130000_phase7_accounting_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "resolve_opening_equity_account",
+      "object": "resolve_opening_equity_account",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701130000_phase7_accounting_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "reverse_treasury_operation",
+      "object": "reverse_treasury_operation",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701150000_phase7_reverse_treasury.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "treasury_account_balance",
+      "object": "treasury_account_balance",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701100000_phase7_treasury_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "treasury_assert_feature",
+      "object": "treasury_assert_feature",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701130000_phase7_accounting_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "unmatch_bank_statement_line",
+      "object": "unmatch_bank_statement_line",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701160000_phase7_bank_reconciliation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "accounts_receivable_items",
+      "object": "accounts_receivable_items",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701110000_phase7_accounts_receivable.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "bank_reconciliation_matches",
+      "object": "bank_reconciliation_matches",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701160000_phase7_bank_reconciliation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "bank_statement_imports",
+      "object": "bank_statement_imports",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701160000_phase7_bank_reconciliation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "bank_statement_lines",
+      "object": "bank_statement_lines",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701160000_phase7_bank_reconciliation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "collection_allocations",
+      "object": "collection_allocations",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701120000_phase7_allocations.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "open_item_compensations",
+      "object": "open_item_compensations",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701120000_phase7_allocations.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "payment_allocations",
+      "object": "payment_allocations",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701120000_phase7_allocations.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "treasury_accounting_mappings",
+      "object": "treasury_accounting_mappings",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701120000_phase7_allocations.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "treasury_accounts",
+      "object": "treasury_accounts",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701100000_phase7_treasury_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "treasury_operation_legs",
+      "object": "treasury_operation_legs",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701100000_phase7_treasury_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "treasury_operation_sequences",
+      "object": "treasury_operation_sequences",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701100000_phase7_treasury_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "treasury_operations",
+      "object": "treasury_operations",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701100000_phase7_treasury_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "accounts_receivable_direction",
+      "object": "accounts_receivable_direction",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701110000_phase7_accounts_receivable.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "accounts_receivable_status",
+      "object": "accounts_receivable_status",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701110000_phase7_accounts_receivable.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "ar_source_type",
+      "object": "ar_source_type",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701110000_phase7_accounts_receivable.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "bank_import_status",
+      "object": "bank_import_status",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701160000_phase7_bank_reconciliation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "bank_statement_match_status",
+      "object": "bank_statement_match_status",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701160000_phase7_bank_reconciliation.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "compensation_status",
+      "object": "compensation_status",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701120000_phase7_allocations.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "open_item_domain",
+      "object": "open_item_domain",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701120000_phase7_allocations.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "treasury_account_type",
+      "object": "treasury_account_type",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701100000_phase7_treasury_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "treasury_accounting_status",
+      "object": "treasury_accounting_status",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701100000_phase7_treasury_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "treasury_leg_direction",
+      "object": "treasury_leg_direction",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701100000_phase7_treasury_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "treasury_operation_status",
+      "object": "treasury_operation_status",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701100000_phase7_treasury_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "treasury_operation_type",
+      "object": "treasury_operation_type",
+      "phase": 7,
+      "phase_label": "treasury",
+      "first_migration": "20260701100000_phase7_treasury_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "begin_pos_checkout",
+      "object": "begin_pos_checkout",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901130000_phase9_pos_session_checkout.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "cancel_pos_sale_draft",
+      "object": "cancel_pos_sale_draft",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901130000_phase9_pos_session_checkout.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "close_pos_session",
+      "object": "close_pos_session",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901130000_phase9_pos_session_checkout.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "ensure_pos_walk_in_and_settings",
+      "object": "ensure_pos_walk_in_and_settings",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901130000_phase9_pos_session_checkout.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "ensure_treasury_clearing_coa",
+      "object": "ensure_treasury_clearing_coa",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901100000_phase9_clearing.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "finalize_pos_sale",
+      "object": "finalize_pos_sale",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901140000_phase9_pos_finalize.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "open_pos_session",
+      "object": "open_pos_session",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901130000_phase9_pos_session_checkout.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "pos_assert_feature",
+      "object": "pos_assert_feature",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901120000_phase9_pos_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "pos_assert_feature_code",
+      "object": "pos_assert_feature_code",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901120000_phase9_pos_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "pos_expected_account_type",
+      "object": "pos_expected_account_type",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901120000_phase9_pos_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "pos_settings_validate_before_write",
+      "object": "pos_settings_validate_before_write",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901120000_phase9_pos_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "pos_terminal_validate_before_write",
+      "object": "pos_terminal_validate_before_write",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901120000_phase9_pos_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "pos_test_fixture_mark_fiscal_authorized",
+      "object": "pos_test_fixture_mark_fiscal_authorized",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901140000_phase9_pos_finalize.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "pos_tta_validate_before_write",
+      "object": "pos_tta_validate_before_write",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901120000_phase9_pos_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "pos_validate_tender_account",
+      "object": "pos_validate_tender_account",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901120000_phase9_pos_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "pos_validate_walk_in_customer",
+      "object": "pos_validate_walk_in_customer",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901120000_phase9_pos_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prepare_pos_fiscal_handoff",
+      "object": "prepare_pos_fiscal_handoff",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901130000_phase9_pos_session_checkout.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_pos_sale_engine_forgery",
+      "object": "prevent_pos_sale_engine_forgery",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901120000_phase9_pos_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_pos_session_expected_forgery",
+      "object": "prevent_pos_session_expected_forgery",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901120000_phase9_pos_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_pos_tender_engine_forgery",
+      "object": "prevent_pos_tender_engine_forgery",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901120000_phase9_pos_helpers.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "reset_pos_checkout",
+      "object": "reset_pos_checkout",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901130000_phase9_pos_session_checkout.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "set_pos_tenders",
+      "object": "set_pos_tenders",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901130000_phase9_pos_session_checkout.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "start_pos_sale",
+      "object": "start_pos_sale",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901130000_phase9_pos_session_checkout.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "function",
+      "name": "sync_pos_fiscal_status",
+      "object": "sync_pos_fiscal_status",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901130000_phase9_pos_session_checkout.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "pos_sales",
+      "object": "pos_sales",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901110000_phase9_pos_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "pos_sessions",
+      "object": "pos_sessions",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901110000_phase9_pos_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "pos_settings",
+      "object": "pos_settings",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901110000_phase9_pos_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "pos_tenders",
+      "object": "pos_tenders",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901110000_phase9_pos_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "pos_terminal_tender_accounts",
+      "object": "pos_terminal_tender_accounts",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901110000_phase9_pos_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "table",
+      "name": "pos_terminals",
+      "object": "pos_terminals",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901110000_phase9_pos_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "pos_sale_status",
+      "object": "pos_sale_status",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901110000_phase9_pos_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "pos_session_status",
+      "object": "pos_session_status",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901110000_phase9_pos_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "pos_tender_method",
+      "object": "pos_tender_method",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901110000_phase9_pos_core.sql",
+      "evidence": "CREATE in migration file"
+    },
+    {
+      "kind": "type",
+      "name": "pos_tender_status",
+      "object": "pos_tender_status",
+      "phase": 9,
+      "phase_label": "POS",
+      "first_migration": "20260901110000_phase9_pos_core.sql",
+      "evidence": "CREATE in migration file"
+    }
+  ],
+  "unclassified": [
+    {
+      "kind": "function",
+      "name": "activate_tax_rule_version",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "calculate_tax_determination",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "calculate_tax_period",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "close_tax_period",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "create_inventory_reservation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "create_tax_obligation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "deactivate_product",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "ensure_inventory_chart_accounts",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "ensure_inventory_cost_row",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "ensure_inventory_stock_row",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "ensure_tax_period",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "finalize_pos_sale_impl",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "inventory_assert_feature",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "inventory_round_avg",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "inventory_round_value",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "next_inventory_operation_number",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "pos_assert_session_actor",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "post_inventory_operation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_active_tax_rule_mutation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_inventory_ledger_mutation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_inventory_projection_client_write",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_posted_inventory_line_mutation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_posted_inventory_op_mutation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_reservation_client_mutate",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_tax_determination_client_mutation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_tax_filing_mutation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_tax_payment_mutation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "prevent_tax_period_status_forgery",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "purchase_line_inventory_debit_account",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "reconcile_vat_accounting",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "record_tax_filing_external",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "record_tax_payment_external",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "register_tax_wp",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "release_inventory_reservation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "reopen_tax_period",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "revalidate_tax_determination_sources",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "reverse_inventory_operation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "review_tax_period",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "tax_assert_feature",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "tax_assert_role",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "tax_assert_service_role",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "tax_canonical_fiscal_hash",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "tax_canonical_purchase_hash",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "tax_fiscal_vat_economic_sign",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "tax_obligation_outstanding",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "tax_resolve_active_rule",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "tax_resolve_effective_date",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "tax_sha256",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "tax_test_fixture_purchase_iva_components",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "upsert_iibb_jurisdiction_allocation",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "upsert_organization_tax_registration",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "function",
+      "name": "upsert_vat_purchase_classification",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "iibb_cm_coefficients",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "iibb_jurisdiction_allocations",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "inventory_accounting_mappings",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "inventory_cost_state",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "inventory_ledger_entries",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "inventory_operation_lines",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "inventory_operation_sequences",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "inventory_operations",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "inventory_reservations",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "inventory_stock_state",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "organization_tax_registrations",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "product_categories",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "products",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_adjustments",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_determination_lines",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_determination_rule_snapshots",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_determination_sources",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_determinations",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_filing_records",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_jurisdictions",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_obligations",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_payment_records",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_periods",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_rule_sets",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_rule_versions",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "tax_withholdings_perceptions",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "vat_purchase_classifications",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "table",
+      "name": "warehouses",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "iibb_distribution_method",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "iibb_sales_allocation_strategy",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "inventory_accounting_status",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "inventory_line_direction",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "inventory_operation_status",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "inventory_operation_type",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "inventory_reservation_status",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "inventory_unit_code",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "product_type",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_adjustment_direction",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_adjustment_status",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_cm_form_code",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_code",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_determination_line_kind",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_determination_status",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_filing_kind",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_filing_status",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_obligation_status",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_obligation_type",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_period_status",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_registration_status",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_rule_status",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_source_domain",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_workspace_environment",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_wp_status",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "tax_wp_type",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    },
+    {
+      "kind": "type",
+      "name": "vat_credit_classification",
+      "phase": "UNCLASSIFIED",
+      "phase_label": "UNCLASSIFIED",
+      "first_migration": null,
+      "evidence": "not found in non-empty local migrations"
+    }
+  ]
+}

@@ -1,0 +1,112 @@
+{
+  "recorded_at": "2026-09-10T12:36:24.795Z",
+  "T0_T2_EVIDENCE_PRESERVED": "PASS",
+  "files": [
+    {
+      "path": "docs/qa/phase13/dr/DR-T0.json",
+      "purpose": "T0 disposable primary create + isolation",
+      "exists": true,
+      "sha256": "7044232756217e1f8829c0a02bfbcea54de2bdf15940fe9d20fd2a1dbe8f5159",
+      "contains_secret": false,
+      "status": "PASS"
+    },
+    {
+      "path": "docs/qa/phase13/dr/DR-T1.json",
+      "purpose": "T1 link + migration push + init",
+      "exists": true,
+      "sha256": "9caecbdea4ef83a565ef11e804dc1583d11a0614a04c1f3c53f34a91d569b608",
+      "contains_secret": false,
+      "status": "PASS"
+    },
+    {
+      "path": "docs/qa/phase13/dr/DR-T1-SCHEMA.json",
+      "purpose": "T1 schema/OpenAPI presence check",
+      "exists": true,
+      "sha256": "348d3bb0bf95d7f8e24f38119a43dc4b0754f10bf0b3e994523ae51b40f98ebe",
+      "contains_secret": false,
+      "status": "PASS"
+    },
+    {
+      "path": "docs/qa/phase13/dr/DR-T2.json",
+      "purpose": "T2 fixtures + golden + storage + secondary member",
+      "exists": true,
+      "sha256": "d7741920dd0aa24f25217b0336f4031f328d25d6376ec038bc7f1a69be89eeb8",
+      "contains_secret": false,
+      "status": "PASS"
+    },
+    {
+      "path": "docs/qa/phase13/dr/DR-FIXTURE-MANIFEST.json",
+      "purpose": "Synthetic fixture specification",
+      "exists": true,
+      "sha256": "f0421500ba81100c8505153ed868245febb9cb738607f6349b4c2d15b4d2e637",
+      "contains_secret": false,
+      "status": "PASS"
+    },
+    {
+      "path": "docs/qa/phase13/dr/DR-FIXTURE-VALIDATION.json",
+      "purpose": "Fixture readiness validation",
+      "exists": true,
+      "sha256": "b3d5310cec62d123c9686c17002bf7f3d4f4a6fba85ba1a17a8369d6245fd372",
+      "contains_secret": false,
+      "status": "PASS"
+    },
+    {
+      "path": "docs/qa/phase13/dr/DR_FIXTURE_PURCHASE_EVIDENCE.pdf",
+      "purpose": "Synthetic purchase-evidence PDF",
+      "exists": true,
+      "sha256": "6e211f19d464655d3010442e8b4b6ef87b296933fc2f03de707752f1ba616522",
+      "contains_secret": false,
+      "status": "PASS"
+    },
+    {
+      "path": "docs/qa/phase13/dr/_storage_backup/DR_FIXTURE_PURCHASE_EVIDENCE.pdf",
+      "purpose": "Independent local Storage backup copy",
+      "exists": true,
+      "sha256": "6e211f19d464655d3010442e8b4b6ef87b296933fc2f03de707752f1ba616522",
+      "contains_secret": false,
+      "status": "PASS"
+    },
+    {
+      "path": "docs/qa/phase13/dr/DR-CLEANUP.json",
+      "purpose": "Canonical disposable primary cleanup",
+      "exists": true,
+      "sha256": "7067ce2aa6357cd0e24fa01217b598f8a0f2559ba5c0cf1b47a63c201e4a8cf8",
+      "contains_secret": false,
+      "status": "PASS"
+    },
+    {
+      "path": "docs/qa/phase13/dr/DR-PAUSE-EVIDENCE.json",
+      "purpose": "Canonical DR pause state",
+      "exists": true,
+      "sha256": "d6b718a9cfb8e0430579ea10ca3c29c1d4e558dc11ce5d613b49cf6988f2cd20",
+      "contains_secret": false,
+      "status": "PASS"
+    },
+    {
+      "path": "docs/qa/phase13/dr/DR-TIMELINE.json",
+      "purpose": "DR timeline (paused)",
+      "exists": true,
+      "sha256": "e5039abb52817ae4d82a17a78ab8ff492b9ec22a39df09f2782225909db7caec",
+      "contains_secret": false,
+      "status": "PASS"
+    },
+    {
+      "path": "docs/qa/phase13/dr/DR-COST-LIVE.json",
+      "purpose": "Live cost tracking at pause",
+      "exists": true,
+      "sha256": "b70eddc91843da97ef17b5d5de524c5733f1cf76d4c6dcab49043b1d3b01e570",
+      "contains_secret": false,
+      "status": "PASS"
+    },
+    {
+      "path": "docs/qa/phase13/dr/PHASE-13-DR-FINAL-REPORT.md",
+      "purpose": "DR final report (paused)",
+      "exists": true,
+      "sha256": "8e301b0d05e6364662339cf13ec0761d70e410e370eee77f00362e6ba6405dc5",
+      "contains_secret": false,
+      "status": "PASS"
+    }
+  ],
+  "SECRET_SCAN": "PASS",
+  "FILES_WITH_POTENTIAL_SECRET": []
+}

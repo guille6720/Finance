@@ -1,0 +1,144 @@
+{
+    "metrics": {
+        "http_req_duration{expected_response:true}": {
+            "max": 176.198,
+            "p(90)": 29.5013,
+            "p(95)": 53.8087,
+            "avg": 18.22074221046444,
+            "min": 6.2863,
+            "med": 10.7845
+        },
+        "iteration_duration": {
+            "min": 213.7065,
+            "med": 229.68625,
+            "max": 395.5797,
+            "p(90)": 262.55093000000005,
+            "p(95)": 287.59692,
+            "avg": 237.37572341176468
+        },
+        "http_req_connecting": {
+            "p(95)": 0,
+            "avg": 0.04105426219870665,
+            "min": 0,
+            "med": 0,
+            "max": 7.6727,
+            "p(90)": 0
+        },
+        "http_req_receiving": {
+            "p(90)": 0.5162,
+            "p(95)": 0.5286,
+            "avg": 0.0961130511463844,
+            "min": 0,
+            "med": 0,
+            "max": 1.8612
+        },
+        "http_req_blocked": {
+            "min": 0,
+            "med": 0,
+            "max": 7.6727,
+            "p(90)": 0,
+            "p(95)": 0,
+            "avg": 0.046422163433274544
+        },
+        "vus_max": {
+            "value": 10,
+            "min": 10,
+            "max": 10
+        },
+        "http_req_failed": {
+            "passes": 0,
+            "fails": 1701,
+            "thresholds": {
+                "rate<0.08": false
+            },
+            "value": 0
+        },
+        "data_received": {
+            "count": 871894,
+            "rate": 42938.16092055008
+        },
+        "http_req_sending": {
+            "min": 0,
+            "med": 0,
+            "max": 4.0607,
+            "p(90)": 0,
+            "p(95)": 0.5088,
+            "avg": 0.035700235155790724
+        },
+        "vus": {
+            "value": 10,
+            "min": 10,
+            "max": 10
+        },
+        "iterations": {
+            "count": 850,
+            "rate": 41.85994717530751
+        },
+        "http_reqs": {
+            "count": 1701,
+            "rate": 83.76914134729185
+        },
+        "http_req_waiting": {
+            "avg": 18.088928924162257,
+            "min": 6.2863,
+            "med": 10.6084,
+            "max": 176.198,
+            "p(90)": 29.387,
+            "p(95)": 53.4633
+        },
+        "checks": {
+            "passes": 1700,
+            "fails": 0,
+            "value": 1
+        },
+        "http_req_duration": {
+            "p(90)": 29.5013,
+            "p(95)": 53.8087,
+            "avg": 18.22074221046444,
+            "min": 6.2863,
+            "med": 10.7845,
+            "max": 176.198,
+            "thresholds": {
+                "p(95)<4000": false
+            }
+        },
+        "http_req_tls_handshaking": {
+            "avg": 0,
+            "min": 0,
+            "med": 0,
+            "max": 0,
+            "p(90)": 0,
+            "p(95)": 0
+        },
+        "data_sent": {
+            "count": 2410116,
+            "rate": 118690.97464278051
+        }
+    },
+    "setup_data": {
+        "userId": "ff8dbd88-650f-4ce4-9d37-d872519374b4",
+        "token": "eyJhbGciOiJFUzI1NiIsImtpZCI6ImI4MTI2OWYxLTIxZDgtNGYyZS1iNzE5LWMyMjQwYTg0MGQ5MCIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJodHRwOi8vMTI3LjAuMC4xOjU0MzIxL2F1dGgvdjEiLCJzdWIiOiJmZjhkYmQ4OC02NTBmLTRjZTQtOWQzNy1kODcyNTE5Mzc0YjQiLCJhdWQiOiJhdXRoZW50aWNhdGVkIiwiZXhwIjoxNzg4OTcyMTM0LCJpYXQiOjE3ODg5Njg1MzQsImVtYWlsIjoicGhhc2UxMy1sb2FkLWZpeGVkQGV4YW1wbGUuY29tIiwicGhvbmUiOiIiLCJhcHBfbWV0YWRhdGEiOnsicHJvdmlkZXIiOiJlbWFpbCIsInByb3ZpZGVycyI6WyJlbWFpbCJdfSwidXNlcl9tZXRhZGF0YSI6eyJlbWFpbF92ZXJpZmllZCI6dHJ1ZSwiZnVsbF9uYW1lIjoiTG9hZCBGaXh0dXJlIn0sInJvbGUiOiJhdXRoZW50aWNhdGVkIiwiYWFsIjoiYWFsMSIsImFtciI6W3sibWV0aG9kIjoicGFzc3dvcmQiLCJ0aW1lc3RhbXAiOjE3ODg5Njg1MzR9XSwic2Vzc2lvbl9pZCI6IjQxMjk5ZmFmLTQ4NzQtNDdmNi04MDA3LWY2MDk1ZTZlM2Y1MCIsImlzX2Fub255bW91cyI6ZmFsc2V9.xRpWD4oP4Mx4CeD8QsHo0XtN1D7GKDl4dH7o2sWYq_jdlPVpAexmnb9d7KsFfvhHVLH3st_AvH5mf3Ey6SzuqA"
+    },
+    "root_group": {
+        "path": "",
+        "id": "d41d8cd98f00b204e9800998ecf8427e",
+        "groups": {},
+        "checks": {
+                "settings upsert ok": {
+                    "path": "::settings upsert ok",
+                    "id": "119ab4f1724d5f83add957a13560d694",
+                    "passes": 850,
+                    "fails": 0,
+                    "name": "settings upsert ok"
+                },
+                "audit insert ok": {
+                    "path": "::audit insert ok",
+                    "id": "1727df6f9355699250f13f8b796238f9",
+                    "passes": 850,
+                    "fails": 0,
+                    "name": "audit insert ok"
+                }
+            },
+        "name": ""
+    }
+}

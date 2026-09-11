@@ -1,0 +1,6 @@
+{
+  "status": "NOT_EXECUTED",
+  "evidence_class": "DOCUMENTED",
+  "reason": "Waiting for explicit cost approval. Storage restore is independent of Postgres.",
+  "STORAGE_RESTORE": null
+}

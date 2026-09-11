@@ -1,0 +1,281 @@
+{
+  "generated_at": "2026-09-09T13:25:00.000Z",
+  "phase": "13C",
+  "objective": "Recover exact provenance of missing Phase 2–11 schema without inventing tables",
+  "sources": {
+    "A_cleanroom": {
+      "reachable": true,
+      "method": "local supabase db reset + information_schema inventory",
+      "evidence": "docs/qa/phase13/schema-inventory.json",
+      "counts": {
+        "tables": 14,
+        "views": 0,
+        "materialized_views": 0,
+        "enums": 6,
+        "functions_public": 6,
+        "security_definer": 4,
+        "constraints": 41,
+        "policies": 33
+      }
+    },
+    "B_staging": {
+      "reachable": false,
+      "method": "env STAGING_SUPABASE_URL / STAGING_SUPABASE_PROJECT_REF / remote db",
+      "configured": false,
+      "observed": {
+        "NEXT_PUBLIC_SUPABASE_URL_local": "http://127.0.0.1:54321",
+        "NEXT_PUBLIC_SUPABASE_URL_env_placeholder": "https://placeholder.supabase.co",
+        "STAGING_SUPABASE_PROJECT_REF": null,
+        "STAGING_DATABASE_URL": null
+      },
+      "classification": "STAGING_COMPARISON_UNAVAILABLE",
+      "note": "No Staging project credentials or URL configured in this workspace. Cannot inventory Staging without connecting. NO paid project created. NO Production accessed."
+    },
+    "C_repository_migrations": {
+      "files": [
+        "supabase/migrations/20260329000001_phase1_foundation.sql",
+        "supabase/migrations/20260909120000_phase13_hardening.sql"
+      ],
+      "archived_sql_directories": [],
+      "other_sql": [
+        "supabase/seed.sql",
+        "supabase/tests/rls_isolation.sql"
+      ]
+    },
+    "D_git_history": {
+      "commit_count": 1,
+      "branches": ["main", "remotes/origin/main"],
+      "only_commit": {
+        "sha": "085924124fa78938c982bb499d1f670db55f93c9",
+        "message": "Publish the local accounting app to the empty GitHub repository.",
+        "date": "2026-09-09T02:33:54Z"
+      },
+      "deleted_migration_files": [],
+      "renamed_migration_directories": [],
+      "worktrees_with_extra_migrations": [],
+      "stashes": []
+    },
+    "E_archives": {
+      "sql_dumps": [],
+      "backup_files": [],
+      "note": "No .dump / .backup / archived migration trees found outside node_modules"
+    }
+  },
+  "root_cause": {
+    "code": "PHASES_2_11_NEVER_COMMITTED",
+    "summary": "Repository is Phase 1 foundation only. Operational domains were never present as migrations in git history. Architecture docs label them as future. Roadmap forbids auto-starting Phase 2. UI marks modules coming_soon. Assumption that Staging holds a richer implemented schema is unverified because Staging is not configured/reachable from this environment.",
+    "evidence": [
+      "git rev-list --all --count = 1",
+      "git log --diff-filter=D -- supabase: empty",
+      "docs/architecture/ACCOUNTING-CORE.md: 'Phase 1 does not implement posting' / 'future entities'",
+      "docs/roadmap/ROADMAP.md: 'Do not start Phase 2 automatically after Phase 1'",
+      "docs/qa/PHASE-1-QA.md: 'Coming soon modules do not pretend to work'",
+      "src/components/shell/app-sidebar.tsx: customers/suppliers status coming_soon",
+      "feature_catalog seeds: sales/purchases/inventory/pos/accounting/taxes default disabled"
+    ]
+  },
+  "cleanroom_objects": {
+    "tables": [
+      "accounting_periods",
+      "app_settings",
+      "audit_events",
+      "branches",
+      "business_profiles",
+      "cost_centers",
+      "feature_catalog",
+      "fiscal_conditions",
+      "fiscal_profiles",
+      "organization_features",
+      "organization_members",
+      "organization_settings",
+      "organizations",
+      "profiles"
+    ],
+    "views": [],
+    "materialized_views": [],
+    "enums": [
+      "business_type",
+      "feature_status",
+      "member_role",
+      "member_status",
+      "organization_status",
+      "ux_mode"
+    ],
+    "functions": [
+      "can_mutate_org(uuid)",
+      "handle_new_user()",
+      "has_org_role(uuid, member_role[])",
+      "is_org_member(uuid)",
+      "prevent_audit_mutation()",
+      "set_updated_at()"
+    ],
+    "classification": "PRESENT_IN_CLEANROOM"
+  },
+  "expected_operational_objects_from_docs_not_in_repo": [
+    {
+      "name": "accounts",
+      "kind": "table",
+      "domain": "accounting",
+      "doc_ref": "docs/architecture/ACCOUNTING-CORE.md",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null
+    },
+    {
+      "name": "journal_entries",
+      "kind": "table",
+      "domain": "accounting",
+      "doc_ref": "docs/architecture/ACCOUNTING-CORE.md",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null
+    },
+    {
+      "name": "journal_lines",
+      "kind": "table",
+      "domain": "accounting",
+      "doc_ref": "docs/architecture/ACCOUNTING-CORE.md",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null
+    },
+    {
+      "name": "customers",
+      "kind": "table",
+      "domain": "counterparties",
+      "doc_ref": "docs/roadmap/ROADMAP.md Phase 3; feature_catalog",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null,
+      "note": "Not MISSING_MIGRATION in the sense of a lost file — never committed. Not RENAMED (no alternate table in clean-room)."
+    },
+    {
+      "name": "suppliers",
+      "kind": "table",
+      "domain": "counterparties",
+      "doc_ref": "docs/roadmap/ROADMAP.md Phase 3",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null
+    },
+    {
+      "name": "products",
+      "kind": "table",
+      "domain": "inventory",
+      "doc_ref": "docs/roadmap/ROADMAP.md Phase 8",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null
+    },
+    {
+      "name": "sales_documents",
+      "kind": "table",
+      "domain": "sales",
+      "doc_ref": "docs/roadmap/ROADMAP.md Phase 4",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null,
+      "candidate_aliases_checked": [
+        "sales_orders",
+        "sales_invoices",
+        "orders",
+        "invoices"
+      ],
+      "alias_result": "none_in_cleanroom"
+    },
+    {
+      "name": "purchase_documents",
+      "kind": "table",
+      "domain": "purchases",
+      "doc_ref": "docs/roadmap/ROADMAP.md Phase 6",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null
+    },
+    {
+      "name": "cash_sessions",
+      "kind": "table",
+      "domain": "treasury",
+      "doc_ref": "docs/roadmap/ROADMAP.md Phase 7",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null
+    },
+    {
+      "name": "bank_accounts",
+      "kind": "table",
+      "domain": "treasury",
+      "doc_ref": "docs/roadmap/ROADMAP.md Phase 7",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null
+    },
+    {
+      "name": "stock_movements",
+      "kind": "table",
+      "domain": "inventory",
+      "doc_ref": "docs/roadmap/ROADMAP.md Phase 8",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null
+    },
+    {
+      "name": "pos_sessions",
+      "kind": "table",
+      "domain": "POS",
+      "doc_ref": "docs/roadmap/ROADMAP.md Phase 9",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null
+    },
+    {
+      "name": "tax_books",
+      "kind": "table",
+      "domain": "taxes",
+      "doc_ref": "docs/roadmap/ROADMAP.md Phase 10",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null
+    },
+    {
+      "name": "kpi_snapshots",
+      "kind": "table",
+      "domain": "dashboard/reporting",
+      "doc_ref": "docs/roadmap/ROADMAP.md Phase 11",
+      "classification": "DESIGN_DOCUMENTED_NOT_IMPLEMENTED",
+      "staging_status": "UNKNOWN_STAGING_UNREACHABLE",
+      "git_provenance": null,
+      "note": "App dashboard uses Phase 1 setup-completeness reads only"
+    }
+  ],
+  "classification_summary": {
+    "PRESENT_IN_CLEANROOM": 14,
+    "MISSING_MIGRATION": 0,
+    "RENAMED": 0,
+    "LEGACY": 0,
+    "INTENTIONALLY_REMOVED": 0,
+    "DESIGN_DOCUMENTED_NOT_IMPLEMENTED": 14,
+    "DIRECT_CHANGE_UNMIGRATED": 0,
+    "UNKNOWN": 0,
+    "STAGING_COMPARISON_UNAVAILABLE": true
+  },
+  "recovery_migrations_created": [],
+  "recovery_blocked_reason": "NO_PROVENANCE_TO_RECOVER — creating forward recovery SQL from assumptions is forbidden by Phase 13C rules",
+  "before_after_inventory": {
+    "before_13c": { "tables": 14, "views": 0 },
+    "after_13c": { "tables": 14, "views": 0 },
+    "delta": "none — no recovery migrations applied"
+  },
+  "required_next_input_for_recovery": [
+    "Read-only Staging connection (STAGING_SUPABASE_URL + service role or DB URL) for forensic inventory ONLY — no destructive changes",
+    "OR export of Staging schema DDL (pg_dump --schema-only) as forensic evidence",
+    "OR historical migration archive from another repo/branch with commit SHAs"
+  ],
+  "gates": {
+    "MIGRATION_COMPLETENESS_PHASE1_12": "FAIL",
+    "CLEAN_ROOM_COMPLETE_SCHEMA": "FAIL",
+    "GOLDEN_FULL_FLOW": "BLOCKED_MISSING_MIGRATION_OPERATIONAL_DOMAINS",
+    "ZERO_COST_PHASE13_GATES": "FAIL",
+    "reason": "Operational Phase 2–11 schema not present and not recoverable without inventing DDL or Staging evidence"
+  }
+}

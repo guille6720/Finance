@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "evidence_class": "LOCAL_SYNTHETIC_FILE",
+  "note": "No real tenant data. Identifiers are deterministic labels. Hashes filled when the local fixture script runs.",
+  "fixture_namespace": "DR_FIXTURE",
+  "legal_name": "DR_FIXTURE_ORG",
+  "users": {
+    "owner_email_pattern": "dr.fixture.owner@example.com",
+    "member_email_pattern": "dr.fixture.operator@example.com",
+    "expected_count": 2
+  },
+  "expected_row_counts": {
+    "organizations": 1,
+    "organization_members": 2,
+    "branches": 1,
+    "counterparties": 2,
+    "counterparty_roles": 2,
+    "products": 1,
+    "warehouses": 1,
+    "treasury_accounts": 1,
+    "sales_documents": ">=1",
+    "purchase_documents_or_orders": ">=1",
+    "inventory_operations": ">=1",
+    "journal_entries_posted": ">=1",
+    "tax_periods": ">=1",
+    "purchase_attachments": 1
+  },
+  "relationships": {
+    "customer_role": "CUSTOMER",
+    "supplier_role": "SUPPLIER",
+    "inventory": "RECEIPT 10 units IN",
+    "journal": "balanced 1000 ARS POSTED",
+    "tax": "IVA HOMOLOGATION period + determination",
+    "storage_path": "{organization_id}/{purchase_document_id}/DR_FIXTURE_PURCHASE_EVIDENCE.pdf"
+  },
+  "storage": {
+    "bucket": "purchase-evidence",
+    "object_name": "DR_FIXTURE_PURCHASE_EVIDENCE.pdf",
+    "mime_type": "application/pdf",
+    "public": false,
+    "classification": "CRITICAL",
+    "bytes": 191,
+    "sha256": "6e211f19d464655d3010442e8b4b6ef87b296933fc2f03de707752f1ba616522",
+    "measured_upload_at": "2026-09-09T22:40:32.719Z",
+    "allowed_mime_note": "Bucket allowlist is application/pdf, image/jpeg, image/png, image/webp. text/plain is rejected."
+  },
+  "expected_accounting": {
+    "posted_manual_journal_debit_credit": "1000.0000",
+    "currency": "ARS"
+  },
+  "expected_inventory": {
+    "receipt_qty": "10",
+    "direction": "IN"
+  },
+  "rpo_probe": {
+    "id": "DR_FIXTURE_RPO_PROBE",
+    "table": "organization_settings",
+    "key": "dr.rpo_probe",
+    "written_at_t1": null
+  },
+  "created_at": "2026-09-09T17:42:19.238Z",
+  "source": "scripts/phase13/dr-prepare-fixture.mjs + golden-flow contracts",
+  "local_blob": "docs/qa/phase13/dr/DR_FIXTURE_PURCHASE_EVIDENCE.pdf"
+}

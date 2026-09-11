@@ -1,0 +1,1386 @@
+{
+  "inventory": {
+    "generated_at": "2026-09-09T13:22:40.927Z",
+    "tables": [
+      "accounting_periods",
+      "app_settings",
+      "audit_events",
+      "branches",
+      "business_profiles",
+      "cost_centers",
+      "feature_catalog",
+      "fiscal_conditions",
+      "fiscal_profiles",
+      "organization_features",
+      "organization_members",
+      "organization_settings",
+      "organizations",
+      "profiles"
+    ],
+    "views": [],
+    "enums": [
+      {
+        "name": "business_type",
+        "labels": "{kiosk,retail,professional,services,accounting_firm,healthcare,medical_legal,industry,other}"
+      },
+      {
+        "name": "feature_status",
+        "labels": "{enabled,disabled,restricted}"
+      },
+      {
+        "name": "member_role",
+        "labels": "{owner,admin,manager,operator,accountant,viewer}"
+      },
+      {
+        "name": "member_status",
+        "labels": "{invited,active,disabled}"
+      },
+      {
+        "name": "organization_status",
+        "labels": "{draft,active,suspended,closed}"
+      },
+      {
+        "name": "ux_mode",
+        "labels": "{business,accountant}"
+      }
+    ],
+    "functions": [
+      {
+        "name": "can_mutate_org",
+        "args": "p_org_id uuid",
+        "security_definer": true,
+        "returns": "boolean",
+        "config": [
+          "search_path=public"
+        ],
+        "exec_authenticated": true,
+        "exec_anon": true
+      },
+      {
+        "name": "handle_new_user",
+        "args": "",
+        "security_definer": true,
+        "returns": "trigger",
+        "config": [
+          "search_path=public"
+        ],
+        "exec_authenticated": false,
+        "exec_anon": false
+      },
+      {
+        "name": "has_org_role",
+        "args": "p_org_id uuid, p_roles member_role[]",
+        "security_definer": true,
+        "returns": "boolean",
+        "config": [
+          "search_path=public"
+        ],
+        "exec_authenticated": true,
+        "exec_anon": true
+      },
+      {
+        "name": "is_org_member",
+        "args": "p_org_id uuid",
+        "security_definer": true,
+        "returns": "boolean",
+        "config": [
+          "search_path=public"
+        ],
+        "exec_authenticated": true,
+        "exec_anon": true
+      },
+      {
+        "name": "prevent_audit_mutation",
+        "args": "",
+        "security_definer": false,
+        "returns": "trigger",
+        "config": [],
+        "exec_authenticated": true,
+        "exec_anon": true
+      },
+      {
+        "name": "set_updated_at",
+        "args": "",
+        "security_definer": false,
+        "returns": "trigger",
+        "config": [],
+        "exec_authenticated": true,
+        "exec_anon": true
+      }
+    ],
+    "constraints": [
+      {
+        "table_name": "accounting_periods",
+        "constraint_name": "accounting_periods_closed_by_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "accounting_periods",
+        "constraint_name": "accounting_periods_organization_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "accounting_periods",
+        "constraint_name": "accounting_periods_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "accounting_periods",
+        "constraint_name": "accounting_periods_range",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "app_settings",
+        "constraint_name": "app_settings_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "audit_events",
+        "constraint_name": "audit_events_actor_user_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "audit_events",
+        "constraint_name": "audit_events_organization_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "audit_events",
+        "constraint_name": "audit_events_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "branches",
+        "constraint_name": "branches_organization_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "branches",
+        "constraint_name": "branches_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "business_profiles",
+        "constraint_name": "business_profiles_organization_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "business_profiles",
+        "constraint_name": "business_profiles_organization_id_key",
+        "constraint_type": "UNIQUE"
+      },
+      {
+        "table_name": "business_profiles",
+        "constraint_name": "business_profiles_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "cost_centers",
+        "constraint_name": "cost_centers_organization_id_code_key",
+        "constraint_type": "UNIQUE"
+      },
+      {
+        "table_name": "cost_centers",
+        "constraint_name": "cost_centers_organization_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "cost_centers",
+        "constraint_name": "cost_centers_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "feature_catalog",
+        "constraint_name": "feature_catalog_code_key",
+        "constraint_type": "UNIQUE"
+      },
+      {
+        "table_name": "feature_catalog",
+        "constraint_name": "feature_catalog_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "fiscal_conditions",
+        "constraint_name": "fiscal_conditions_code_key",
+        "constraint_type": "UNIQUE"
+      },
+      {
+        "table_name": "fiscal_conditions",
+        "constraint_name": "fiscal_conditions_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "fiscal_profiles",
+        "constraint_name": "fiscal_profiles_fiscal_condition_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "fiscal_profiles",
+        "constraint_name": "fiscal_profiles_organization_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "fiscal_profiles",
+        "constraint_name": "fiscal_profiles_organization_id_key",
+        "constraint_type": "UNIQUE"
+      },
+      {
+        "table_name": "fiscal_profiles",
+        "constraint_name": "fiscal_profiles_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "organization_features",
+        "constraint_name": "organization_features_feature_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "organization_features",
+        "constraint_name": "organization_features_organization_id_feature_id_key",
+        "constraint_type": "UNIQUE"
+      },
+      {
+        "table_name": "organization_features",
+        "constraint_name": "organization_features_organization_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "organization_features",
+        "constraint_name": "organization_features_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "organization_members",
+        "constraint_name": "organization_members_invited_by_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "organization_members",
+        "constraint_name": "organization_members_organization_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "organization_members",
+        "constraint_name": "organization_members_organization_id_user_id_key",
+        "constraint_type": "UNIQUE"
+      },
+      {
+        "table_name": "organization_members",
+        "constraint_name": "organization_members_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "organization_members",
+        "constraint_name": "organization_members_user_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "organization_settings",
+        "constraint_name": "organization_settings_organization_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "organization_settings",
+        "constraint_name": "organization_settings_organization_id_key_key",
+        "constraint_type": "UNIQUE"
+      },
+      {
+        "table_name": "organization_settings",
+        "constraint_name": "organization_settings_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "organizations",
+        "constraint_name": "organizations_created_by_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "organizations",
+        "constraint_name": "organizations_cuit_format",
+        "constraint_type": "CHECK"
+      },
+      {
+        "table_name": "organizations",
+        "constraint_name": "organizations_pkey",
+        "constraint_type": "PRIMARY KEY"
+      },
+      {
+        "table_name": "profiles",
+        "constraint_name": "profiles_id_fkey",
+        "constraint_type": "FOREIGN KEY"
+      },
+      {
+        "table_name": "profiles",
+        "constraint_name": "profiles_pkey",
+        "constraint_type": "PRIMARY KEY"
+      }
+    ],
+    "policies": [
+      {
+        "tablename": "accounting_periods",
+        "policyname": "accounting_periods_mutate",
+        "cmd": "ALL",
+        "roles": "{authenticated}",
+        "qual": "has_org_role(organization_id, ARRAY['owner'::member_role, 'admin'::member_role, 'accountant'::member_role])",
+        "with_check": "has_org_role(organization_id, ARRAY['owner'::member_role, 'admin'::member_role, 'accountant'::member_role])"
+      },
+      {
+        "tablename": "accounting_periods",
+        "policyname": "accounting_periods_select",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "is_org_member(organization_id)",
+        "with_check": null
+      },
+      {
+        "tablename": "app_settings",
+        "policyname": "app_settings_select_authenticated",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "true",
+        "with_check": null
+      },
+      {
+        "tablename": "audit_events",
+        "policyname": "audit_events_insert",
+        "cmd": "INSERT",
+        "roles": "{authenticated}",
+        "qual": null,
+        "with_check": "((actor_user_id = auth.uid()) AND ((organization_id IS NULL) OR is_org_member(organization_id)))"
+      },
+      {
+        "tablename": "audit_events",
+        "policyname": "audit_events_select",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "((organization_id IS NOT NULL) AND is_org_member(organization_id))",
+        "with_check": null
+      },
+      {
+        "tablename": "branches",
+        "policyname": "branches_insert",
+        "cmd": "INSERT",
+        "roles": "{authenticated}",
+        "qual": null,
+        "with_check": "can_mutate_org(organization_id)"
+      },
+      {
+        "tablename": "branches",
+        "policyname": "branches_select",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "is_org_member(organization_id)",
+        "with_check": null
+      },
+      {
+        "tablename": "branches",
+        "policyname": "branches_update",
+        "cmd": "UPDATE",
+        "roles": "{authenticated}",
+        "qual": "can_mutate_org(organization_id)",
+        "with_check": "can_mutate_org(organization_id)"
+      },
+      {
+        "tablename": "business_profiles",
+        "policyname": "business_profiles_insert",
+        "cmd": "INSERT",
+        "roles": "{authenticated}",
+        "qual": null,
+        "with_check": "can_mutate_org(organization_id)"
+      },
+      {
+        "tablename": "business_profiles",
+        "policyname": "business_profiles_select",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "is_org_member(organization_id)",
+        "with_check": null
+      },
+      {
+        "tablename": "business_profiles",
+        "policyname": "business_profiles_update",
+        "cmd": "UPDATE",
+        "roles": "{authenticated}",
+        "qual": "can_mutate_org(organization_id)",
+        "with_check": "can_mutate_org(organization_id)"
+      },
+      {
+        "tablename": "cost_centers",
+        "policyname": "cost_centers_mutate",
+        "cmd": "ALL",
+        "roles": "{authenticated}",
+        "qual": "can_mutate_org(organization_id)",
+        "with_check": "can_mutate_org(organization_id)"
+      },
+      {
+        "tablename": "cost_centers",
+        "policyname": "cost_centers_select",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "is_org_member(organization_id)",
+        "with_check": null
+      },
+      {
+        "tablename": "feature_catalog",
+        "policyname": "feature_catalog_select",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "(active = true)",
+        "with_check": null
+      },
+      {
+        "tablename": "fiscal_conditions",
+        "policyname": "fiscal_conditions_select",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "(active = true)",
+        "with_check": null
+      },
+      {
+        "tablename": "fiscal_profiles",
+        "policyname": "fiscal_profiles_insert",
+        "cmd": "INSERT",
+        "roles": "{authenticated}",
+        "qual": null,
+        "with_check": "can_mutate_org(organization_id)"
+      },
+      {
+        "tablename": "fiscal_profiles",
+        "policyname": "fiscal_profiles_select",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "is_org_member(organization_id)",
+        "with_check": null
+      },
+      {
+        "tablename": "fiscal_profiles",
+        "policyname": "fiscal_profiles_update",
+        "cmd": "UPDATE",
+        "roles": "{authenticated}",
+        "qual": "can_mutate_org(organization_id)",
+        "with_check": "can_mutate_org(organization_id)"
+      },
+      {
+        "tablename": "organization_features",
+        "policyname": "organization_features_mutate",
+        "cmd": "ALL",
+        "roles": "{authenticated}",
+        "qual": "has_org_role(organization_id, ARRAY['owner'::member_role, 'admin'::member_role])",
+        "with_check": "has_org_role(organization_id, ARRAY['owner'::member_role, 'admin'::member_role])"
+      },
+      {
+        "tablename": "organization_features",
+        "policyname": "organization_features_select",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "is_org_member(organization_id)",
+        "with_check": null
+      },
+      {
+        "tablename": "organization_members",
+        "policyname": "members_insert_owner_bootstrap_or_admin",
+        "cmd": "INSERT",
+        "roles": "{authenticated}",
+        "qual": null,
+        "with_check": "(((user_id = auth.uid()) AND (role = 'owner'::member_role) AND (EXISTS ( SELECT 1\n   FROM organizations o\n  WHERE ((o.id = organization_members.organization_id) AND (o.created_by = auth.uid()))))) OR has_org_role(organization_id, ARRAY['owner'::member_role, 'admin'::member_role]))"
+      },
+      {
+        "tablename": "organization_members",
+        "policyname": "members_select_same_org",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "is_org_member(organization_id)",
+        "with_check": null
+      },
+      {
+        "tablename": "organization_members",
+        "policyname": "members_select_self",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "(user_id = auth.uid())",
+        "with_check": null
+      },
+      {
+        "tablename": "organization_members",
+        "policyname": "members_update_admins",
+        "cmd": "UPDATE",
+        "roles": "{authenticated}",
+        "qual": "has_org_role(organization_id, ARRAY['owner'::member_role, 'admin'::member_role])",
+        "with_check": "has_org_role(organization_id, ARRAY['owner'::member_role, 'admin'::member_role])"
+      },
+      {
+        "tablename": "organization_settings",
+        "policyname": "organization_settings_mutate",
+        "cmd": "ALL",
+        "roles": "{authenticated}",
+        "qual": "has_org_role(organization_id, ARRAY['owner'::member_role, 'admin'::member_role])",
+        "with_check": "has_org_role(organization_id, ARRAY['owner'::member_role, 'admin'::member_role])"
+      },
+      {
+        "tablename": "organization_settings",
+        "policyname": "organization_settings_select",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "is_org_member(organization_id)",
+        "with_check": null
+      },
+      {
+        "tablename": "organizations",
+        "policyname": "organizations_insert_authenticated",
+        "cmd": "INSERT",
+        "roles": "{authenticated}",
+        "qual": null,
+        "with_check": "((auth.uid() IS NOT NULL) AND (created_by = auth.uid()))"
+      },
+      {
+        "tablename": "organizations",
+        "policyname": "organizations_select_creator",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "(created_by = auth.uid())",
+        "with_check": null
+      },
+      {
+        "tablename": "organizations",
+        "policyname": "organizations_select_member",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "is_org_member(id)",
+        "with_check": null
+      },
+      {
+        "tablename": "organizations",
+        "policyname": "organizations_update_admins",
+        "cmd": "UPDATE",
+        "roles": "{authenticated}",
+        "qual": "can_mutate_org(id)",
+        "with_check": "can_mutate_org(id)"
+      },
+      {
+        "tablename": "profiles",
+        "policyname": "profiles_select_own",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "(id = auth.uid())",
+        "with_check": null
+      },
+      {
+        "tablename": "profiles",
+        "policyname": "profiles_select_same_org",
+        "cmd": "SELECT",
+        "roles": "{authenticated}",
+        "qual": "(EXISTS ( SELECT 1\n   FROM (organization_members me\n     JOIN organization_members other ON ((other.organization_id = me.organization_id)))\n  WHERE ((me.user_id = auth.uid()) AND (me.status = 'active'::member_status) AND (other.user_id = profiles.id) AND (other.status = 'active'::member_status))))",
+        "with_check": null
+      },
+      {
+        "tablename": "profiles",
+        "policyname": "profiles_update_own",
+        "cmd": "UPDATE",
+        "roles": "{authenticated}",
+        "qual": "(id = auth.uid())",
+        "with_check": "(id = auth.uid())"
+      }
+    ],
+    "feature_catalog": [
+      {
+        "code": "dashboard",
+        "name": "Panel",
+        "default_status": "enabled",
+        "category": "core",
+        "active": true
+      },
+      {
+        "code": "sales",
+        "name": "Ventas",
+        "default_status": "disabled",
+        "category": "gestion",
+        "active": true
+      },
+      {
+        "code": "purchases",
+        "name": "Compras",
+        "default_status": "disabled",
+        "category": "gestion",
+        "active": true
+      },
+      {
+        "code": "customers",
+        "name": "Clientes",
+        "default_status": "disabled",
+        "category": "gestion",
+        "active": true
+      },
+      {
+        "code": "suppliers",
+        "name": "Proveedores",
+        "default_status": "disabled",
+        "category": "gestion",
+        "active": true
+      },
+      {
+        "code": "cash",
+        "name": "Caja",
+        "default_status": "disabled",
+        "category": "finanzas",
+        "active": true
+      },
+      {
+        "code": "banks",
+        "name": "Bancos",
+        "default_status": "disabled",
+        "category": "finanzas",
+        "active": true
+      },
+      {
+        "code": "inventory",
+        "name": "Inventario",
+        "default_status": "disabled",
+        "category": "operaciones",
+        "active": true
+      },
+      {
+        "code": "pos",
+        "name": "Punto de venta",
+        "default_status": "disabled",
+        "category": "operaciones",
+        "active": true
+      },
+      {
+        "code": "accounting",
+        "name": "Contabilidad",
+        "default_status": "disabled",
+        "category": "contabilidad",
+        "active": true
+      },
+      {
+        "code": "taxes",
+        "name": "Impuestos",
+        "default_status": "disabled",
+        "category": "contabilidad",
+        "active": true
+      },
+      {
+        "code": "payroll",
+        "name": "Sueldos",
+        "default_status": "disabled",
+        "category": "rrhh",
+        "active": true
+      },
+      {
+        "code": "projects",
+        "name": "Proyectos",
+        "default_status": "disabled",
+        "category": "operaciones",
+        "active": true
+      },
+      {
+        "code": "assets",
+        "name": "Bienes de uso",
+        "default_status": "disabled",
+        "category": "contabilidad",
+        "active": true
+      },
+      {
+        "code": "reports",
+        "name": "Reportes",
+        "default_status": "disabled",
+        "category": "reportes",
+        "active": true
+      },
+      {
+        "code": "medical_legal",
+        "name": "Médico-legal",
+        "default_status": "restricted",
+        "category": "vertical",
+        "active": true
+      }
+    ],
+    "app_settings": [
+      {
+        "key": "platform.accounting_core_enabled",
+        "value": false
+      },
+      {
+        "key": "platform.phase",
+        "value": "1"
+      },
+      {
+        "key": "platform.phase13.dr_rpo_rto_proven",
+        "value": false
+      },
+      {
+        "key": "platform.phase13.status",
+        "value": "in_progress"
+      }
+    ],
+    "counts": {
+      "tables": 14,
+      "views": 0,
+      "enums": 6,
+      "functions": 6,
+      "functions_exec_authenticated": 5,
+      "security_definer": 4,
+      "constraints": 41,
+      "policies": 33
+    }
+  },
+  "golden_step_classification": [
+    {
+      "step": "organization",
+      "determination": "A_EXISTS",
+      "objects": [
+        "organizations"
+      ],
+      "note": "canonical name"
+    },
+    {
+      "step": "membership_bootstrap",
+      "determination": "A_EXISTS",
+      "objects": [
+        "organization_members"
+      ],
+      "note": "canonical name"
+    },
+    {
+      "step": "modules_entitlements",
+      "determination": "A_EXISTS",
+      "objects": [
+        "feature_catalog",
+        "organization_features"
+      ],
+      "note": "canonical name"
+    },
+    {
+      "step": "customer",
+      "determination": "D_MISSING_MIGRATION",
+      "objects": [],
+      "note": "No public table among candidates: customers, parties, counterparties, clients, partners. Feature catalog may list the module as disabled/coming_soon only.",
+      "feature_flags": [
+        {
+          "code": "dashboard",
+          "default_status": "enabled"
+        },
+        {
+          "code": "sales",
+          "default_status": "disabled"
+        },
+        {
+          "code": "purchases",
+          "default_status": "disabled"
+        },
+        {
+          "code": "customers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "suppliers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "cash",
+          "default_status": "disabled"
+        },
+        {
+          "code": "banks",
+          "default_status": "disabled"
+        },
+        {
+          "code": "inventory",
+          "default_status": "disabled"
+        },
+        {
+          "code": "pos",
+          "default_status": "disabled"
+        },
+        {
+          "code": "accounting",
+          "default_status": "disabled"
+        },
+        {
+          "code": "taxes",
+          "default_status": "disabled"
+        },
+        {
+          "code": "payroll",
+          "default_status": "disabled"
+        },
+        {
+          "code": "projects",
+          "default_status": "disabled"
+        },
+        {
+          "code": "assets",
+          "default_status": "disabled"
+        },
+        {
+          "code": "reports",
+          "default_status": "disabled"
+        },
+        {
+          "code": "medical_legal",
+          "default_status": "restricted"
+        }
+      ]
+    },
+    {
+      "step": "supplier",
+      "determination": "D_MISSING_MIGRATION",
+      "objects": [],
+      "note": "No public table among candidates: suppliers, vendors, parties, counterparties. Feature catalog may list the module as disabled/coming_soon only.",
+      "feature_flags": [
+        {
+          "code": "dashboard",
+          "default_status": "enabled"
+        },
+        {
+          "code": "sales",
+          "default_status": "disabled"
+        },
+        {
+          "code": "purchases",
+          "default_status": "disabled"
+        },
+        {
+          "code": "customers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "suppliers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "cash",
+          "default_status": "disabled"
+        },
+        {
+          "code": "banks",
+          "default_status": "disabled"
+        },
+        {
+          "code": "inventory",
+          "default_status": "disabled"
+        },
+        {
+          "code": "pos",
+          "default_status": "disabled"
+        },
+        {
+          "code": "accounting",
+          "default_status": "disabled"
+        },
+        {
+          "code": "taxes",
+          "default_status": "disabled"
+        },
+        {
+          "code": "payroll",
+          "default_status": "disabled"
+        },
+        {
+          "code": "projects",
+          "default_status": "disabled"
+        },
+        {
+          "code": "assets",
+          "default_status": "disabled"
+        },
+        {
+          "code": "reports",
+          "default_status": "disabled"
+        },
+        {
+          "code": "medical_legal",
+          "default_status": "restricted"
+        }
+      ]
+    },
+    {
+      "step": "product",
+      "determination": "D_MISSING_MIGRATION",
+      "objects": [],
+      "note": "No public table among candidates: products, items, sku, inventory_items, goods. Feature catalog may list the module as disabled/coming_soon only.",
+      "feature_flags": [
+        {
+          "code": "sales",
+          "default_status": "disabled"
+        },
+        {
+          "code": "purchases",
+          "default_status": "disabled"
+        },
+        {
+          "code": "customers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "suppliers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "cash",
+          "default_status": "disabled"
+        },
+        {
+          "code": "banks",
+          "default_status": "disabled"
+        },
+        {
+          "code": "inventory",
+          "default_status": "disabled"
+        },
+        {
+          "code": "pos",
+          "default_status": "disabled"
+        },
+        {
+          "code": "accounting",
+          "default_status": "disabled"
+        },
+        {
+          "code": "taxes",
+          "default_status": "disabled"
+        },
+        {
+          "code": "reports",
+          "default_status": "disabled"
+        }
+      ]
+    },
+    {
+      "step": "sale_order",
+      "determination": "D_MISSING_MIGRATION",
+      "objects": [],
+      "note": "No public table among candidates: sales_documents, sales_orders, sales_invoices, orders, invoices. Feature catalog may list the module as disabled/coming_soon only.",
+      "feature_flags": [
+        {
+          "code": "dashboard",
+          "default_status": "enabled"
+        },
+        {
+          "code": "sales",
+          "default_status": "disabled"
+        },
+        {
+          "code": "purchases",
+          "default_status": "disabled"
+        },
+        {
+          "code": "customers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "suppliers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "cash",
+          "default_status": "disabled"
+        },
+        {
+          "code": "banks",
+          "default_status": "disabled"
+        },
+        {
+          "code": "inventory",
+          "default_status": "disabled"
+        },
+        {
+          "code": "pos",
+          "default_status": "disabled"
+        },
+        {
+          "code": "accounting",
+          "default_status": "disabled"
+        },
+        {
+          "code": "taxes",
+          "default_status": "disabled"
+        },
+        {
+          "code": "payroll",
+          "default_status": "disabled"
+        },
+        {
+          "code": "projects",
+          "default_status": "disabled"
+        },
+        {
+          "code": "assets",
+          "default_status": "disabled"
+        },
+        {
+          "code": "reports",
+          "default_status": "disabled"
+        },
+        {
+          "code": "medical_legal",
+          "default_status": "restricted"
+        }
+      ]
+    },
+    {
+      "step": "purchase",
+      "determination": "D_MISSING_MIGRATION",
+      "objects": [],
+      "note": "No public table among candidates: purchase_documents, purchase_orders, purchases, payables, expenses. Feature catalog may list the module as disabled/coming_soon only.",
+      "feature_flags": [
+        {
+          "code": "dashboard",
+          "default_status": "enabled"
+        },
+        {
+          "code": "sales",
+          "default_status": "disabled"
+        },
+        {
+          "code": "purchases",
+          "default_status": "disabled"
+        },
+        {
+          "code": "customers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "suppliers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "cash",
+          "default_status": "disabled"
+        },
+        {
+          "code": "banks",
+          "default_status": "disabled"
+        },
+        {
+          "code": "inventory",
+          "default_status": "disabled"
+        },
+        {
+          "code": "pos",
+          "default_status": "disabled"
+        },
+        {
+          "code": "accounting",
+          "default_status": "disabled"
+        },
+        {
+          "code": "taxes",
+          "default_status": "disabled"
+        },
+        {
+          "code": "payroll",
+          "default_status": "disabled"
+        },
+        {
+          "code": "projects",
+          "default_status": "disabled"
+        },
+        {
+          "code": "assets",
+          "default_status": "disabled"
+        },
+        {
+          "code": "reports",
+          "default_status": "disabled"
+        },
+        {
+          "code": "medical_legal",
+          "default_status": "restricted"
+        }
+      ]
+    },
+    {
+      "step": "treasury_payment",
+      "determination": "D_MISSING_MIGRATION",
+      "objects": [],
+      "note": "No public table among candidates: payments, cash_sessions, cash_movements, bank_accounts, treasury_transactions, collections. Feature catalog may list the module as disabled/coming_soon only.",
+      "feature_flags": [
+        {
+          "code": "sales",
+          "default_status": "disabled"
+        },
+        {
+          "code": "purchases",
+          "default_status": "disabled"
+        },
+        {
+          "code": "customers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "suppliers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "cash",
+          "default_status": "disabled"
+        },
+        {
+          "code": "banks",
+          "default_status": "disabled"
+        },
+        {
+          "code": "inventory",
+          "default_status": "disabled"
+        },
+        {
+          "code": "pos",
+          "default_status": "disabled"
+        },
+        {
+          "code": "accounting",
+          "default_status": "disabled"
+        },
+        {
+          "code": "taxes",
+          "default_status": "disabled"
+        },
+        {
+          "code": "reports",
+          "default_status": "disabled"
+        }
+      ]
+    },
+    {
+      "step": "inventory_impact",
+      "determination": "D_MISSING_MIGRATION",
+      "objects": [],
+      "note": "No public table among candidates: stock_movements, inventory_movements, inventory_ledger, warehouse_stocks. Feature catalog may list the module as disabled/coming_soon only.",
+      "feature_flags": [
+        {
+          "code": "dashboard",
+          "default_status": "enabled"
+        },
+        {
+          "code": "sales",
+          "default_status": "disabled"
+        },
+        {
+          "code": "purchases",
+          "default_status": "disabled"
+        },
+        {
+          "code": "customers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "suppliers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "cash",
+          "default_status": "disabled"
+        },
+        {
+          "code": "banks",
+          "default_status": "disabled"
+        },
+        {
+          "code": "inventory",
+          "default_status": "disabled"
+        },
+        {
+          "code": "pos",
+          "default_status": "disabled"
+        },
+        {
+          "code": "accounting",
+          "default_status": "disabled"
+        },
+        {
+          "code": "taxes",
+          "default_status": "disabled"
+        },
+        {
+          "code": "payroll",
+          "default_status": "disabled"
+        },
+        {
+          "code": "projects",
+          "default_status": "disabled"
+        },
+        {
+          "code": "assets",
+          "default_status": "disabled"
+        },
+        {
+          "code": "reports",
+          "default_status": "disabled"
+        },
+        {
+          "code": "medical_legal",
+          "default_status": "restricted"
+        }
+      ]
+    },
+    {
+      "step": "accounting_journal",
+      "determination": "D_MISSING_MIGRATION",
+      "objects": [],
+      "note": "No public table among candidates: journal_entries, journal_lines, ledger_entries, accounts, chart_of_accounts. Feature catalog may list the module as disabled/coming_soon only.",
+      "feature_flags": [
+        {
+          "code": "dashboard",
+          "default_status": "enabled"
+        },
+        {
+          "code": "sales",
+          "default_status": "disabled"
+        },
+        {
+          "code": "purchases",
+          "default_status": "disabled"
+        },
+        {
+          "code": "customers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "suppliers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "cash",
+          "default_status": "disabled"
+        },
+        {
+          "code": "banks",
+          "default_status": "disabled"
+        },
+        {
+          "code": "inventory",
+          "default_status": "disabled"
+        },
+        {
+          "code": "pos",
+          "default_status": "disabled"
+        },
+        {
+          "code": "accounting",
+          "default_status": "disabled"
+        },
+        {
+          "code": "taxes",
+          "default_status": "disabled"
+        },
+        {
+          "code": "payroll",
+          "default_status": "disabled"
+        },
+        {
+          "code": "projects",
+          "default_status": "disabled"
+        },
+        {
+          "code": "assets",
+          "default_status": "disabled"
+        },
+        {
+          "code": "reports",
+          "default_status": "disabled"
+        },
+        {
+          "code": "medical_legal",
+          "default_status": "restricted"
+        }
+      ]
+    },
+    {
+      "step": "taxes_projection",
+      "determination": "D_MISSING_MIGRATION",
+      "objects": [],
+      "note": "No public table among candidates: tax_books, tax_liquidations, tax_determinations, iva_books, tax_lines. Feature catalog may list the module as disabled/coming_soon only.",
+      "feature_flags": [
+        {
+          "code": "dashboard",
+          "default_status": "enabled"
+        },
+        {
+          "code": "sales",
+          "default_status": "disabled"
+        },
+        {
+          "code": "purchases",
+          "default_status": "disabled"
+        },
+        {
+          "code": "customers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "suppliers",
+          "default_status": "disabled"
+        },
+        {
+          "code": "cash",
+          "default_status": "disabled"
+        },
+        {
+          "code": "banks",
+          "default_status": "disabled"
+        },
+        {
+          "code": "inventory",
+          "default_status": "disabled"
+        },
+        {
+          "code": "pos",
+          "default_status": "disabled"
+        },
+        {
+          "code": "accounting",
+          "default_status": "disabled"
+        },
+        {
+          "code": "taxes",
+          "default_status": "disabled"
+        },
+        {
+          "code": "payroll",
+          "default_status": "disabled"
+        },
+        {
+          "code": "projects",
+          "default_status": "disabled"
+        },
+        {
+          "code": "assets",
+          "default_status": "disabled"
+        },
+        {
+          "code": "reports",
+          "default_status": "disabled"
+        },
+        {
+          "code": "medical_legal",
+          "default_status": "restricted"
+        }
+      ]
+    },
+    {
+      "step": "dashboard_reporting",
+      "determination": "C_TEST_OBSOLETE_FOR_KPI_WAREHOUSE",
+      "objects": [
+        "organizations",
+        "fiscal_profiles",
+        "branches",
+        "business_profiles"
+      ],
+      "note": "Setup-completeness dashboard exists in app over Phase 1 tables; no posted-KPI/reporting warehouse tables",
+      "real_contract": "app_dashboard_setup_completeness"
+    }
+  ],
+  "blocked_steps": [
+    "customer",
+    "supplier",
+    "product",
+    "sale_order",
+    "purchase",
+    "treasury_payment",
+    "inventory_impact",
+    "accounting_journal",
+    "taxes_projection"
+  ],
+  "verdict": "BLOCKED_MISSING_MIGRATION_OPERATIONAL_DOMAINS"
+}

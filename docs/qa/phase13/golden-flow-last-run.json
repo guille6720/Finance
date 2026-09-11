@@ -1,0 +1,206 @@
+{
+  "GOLDEN_FULL_FLOW": "PASS",
+  "GOLDEN_PHASE1_CONTRACT_FLOW": "PASS",
+  "mandatory_fails": [],
+  "steps_pass": 19,
+  "steps_fail": 0,
+  "executed": [
+    {
+      "step": "auth",
+      "status": "PASS",
+      "note": "user created + JWT obtained",
+      "user_id": "ab701341-5abe-4fbf-86d2-c74b6dee9171"
+    },
+    {
+      "step": "organization",
+      "status": "PASS",
+      "note": "org created",
+      "org_id": "5efb77f3-0b8f-48e1-b069-e717a259a6a8"
+    },
+    {
+      "step": "membership_bootstrap",
+      "status": "PASS",
+      "note": "owner membership created"
+    },
+    {
+      "step": "modules_entitlements",
+      "status": "PASS",
+      "note": "platform_bootstrap + 12 features enabled",
+      "bootstrap": {
+        "hash": "a12c865be23995054b2d1495ad3011e33925ed386e2a82b546dcff44399aaa16",
+        "changed": 17,
+        "organization_id": "5efb77f3-0b8f-48e1-b069-e717a259a6a8"
+      },
+      "features_enabled": [
+        "dashboard",
+        "sales",
+        "purchases",
+        "inventory",
+        "cash",
+        "banks",
+        "accounting",
+        "taxes",
+        "pos",
+        "customers",
+        "suppliers",
+        "reports"
+      ],
+      "pack_applied": "STARTER_COMERCIO",
+      "pack_result": "fail:{\"code\":\"P0001\",\"details\":null,\"hint\":null,\"message\":\"CONFIGURATION_CHANGED\"}",
+      "recompute_ok": true,
+      "org_features_active": [
+        "dashboard",
+        "sales",
+        "purchases",
+        "customers",
+        "suppliers",
+        "cash",
+        "banks",
+        "inventory",
+        "pos",
+        "accounting"
+      ]
+    },
+    {
+      "step": "fiscal_invoicing_arca",
+      "status": "PASS",
+      "determination": "C_TEST_OBSOLETE_PENDING_HOMOLOGATION",
+      "note": "accounting_core_enabled present; ARCA homologation cert not exercised (out-of-scope for local golden flow – F5 gate blocked separately)"
+    },
+    {
+      "step": "chart_of_accounts",
+      "status": "PASS",
+      "note": "22 accounts seeded",
+      "count": 22,
+      "seeded": 22,
+      "purchase_mapping_ok": true
+    },
+    {
+      "step": "fiscal_year_periods",
+      "status": "PASS",
+      "note": "FY 2026 created + 12 periods",
+      "fiscal_year_id": "3a6a3167-7616-4232-a022-fcacef31219a",
+      "periods": 12
+    },
+    {
+      "step": "customer",
+      "status": "PASS",
+      "note": "counterparty + CUSTOMER role created",
+      "customer_id": "5e099a4b-f319-4361-9cd6-f9333ef6a3ed",
+      "cuit": "20123456786"
+    },
+    {
+      "step": "supplier",
+      "status": "PASS",
+      "note": "counterparty + SUPPLIER role created",
+      "supplier_id": "051e93d1-42ba-4c2c-ad18-bbee4ccf3e41",
+      "cuit": "30501234563"
+    },
+    {
+      "step": "product",
+      "status": "PASS",
+      "note": "STOCK_ITEM created",
+      "product_id": "024ed8a8-249a-4c24-9dab-be8a55495d32"
+    },
+    {
+      "step": "warehouse",
+      "status": "PASS",
+      "note": "warehouse created",
+      "warehouse_id": "1a2f2087-403f-4290-8ffd-0dfa93a4cede"
+    },
+    {
+      "step": "treasury_account_setup",
+      "status": "PASS",
+      "note": "clearing COA + CASH treasury account",
+      "treasury_account_id": "147fce09-3aa6-4ed4-afc4-b6f3e3f17788",
+      "linked_accounting_account": "1.1.01"
+    },
+    {
+      "step": "sale_order",
+      "status": "PASS",
+      "note": "QUOTE→SENT→ACCEPTED→SALES_ORDER→CONFIRMED",
+      "quote_id": "be11b250-1ea6-4918-a37a-3e46eee23059",
+      "order_id": "60919129-97e5-41b3-8fa2-9bf49b278f70",
+      "order_status": "CONFIRMED"
+    },
+    {
+      "step": "purchase",
+      "status": "PASS",
+      "note": "PO→APPROVED + SUPPLIER_INVOICE→REVIEWED→POSTED",
+      "purchase_order_id": "d5623ff9-9943-44b4-8678-c7f2301dfbe4",
+      "purchase_doc_id": "56acd756-6d0f-44ba-aaaa-98f2ffa7e47b"
+    },
+    {
+      "step": "treasury_payment",
+      "status": "PASS",
+      "note": "OPENING_BALANCE treasury op POSTED",
+      "treasury_op_id": "72caa6ff-e95a-4485-913b-4f5199832f0d"
+    },
+    {
+      "step": "inventory_impact",
+      "status": "PASS",
+      "note": "RECEIPT posted (10 units IN)",
+      "inventory_op_id": "31bd4ede-7564-4f1d-9a95-ec828824b90b"
+    },
+    {
+      "step": "accounting_journal",
+      "status": "PASS",
+      "note": "balanced journal entry POSTED (1000 ARS)",
+      "journal_entry_id": "d0f58e2f-aaff-4090-9bcd-22612f69c142",
+      "period_id": "9e2f34bb-1d67-42ac-b202-c47b8ecc247e",
+      "debit_account": "1.1.01",
+      "credit_account": "4.1.01"
+    },
+    {
+      "step": "taxes_projection",
+      "status": "PASS",
+      "note": "IVA HOMOLOGATION period ensured + calculated",
+      "tax_period_id": "bf67145c-e750-4a0a-97ef-d25dbad8d62c",
+      "jurisdiction": "NACIONAL",
+      "determination_id": "f4d431b5-6434-414f-bd12-f39d79c4a37d"
+    },
+    {
+      "step": "dashboard_reporting",
+      "status": "PASS",
+      "note": "get_dashboard_summary + get_financial_dashboard OK",
+      "dashboard_keys": [
+        "metrics",
+        "sections",
+        "data_as_of",
+        "period_end",
+        "generated_at",
+        "generated_by",
+        "period_start",
+        "calculation_version"
+      ],
+      "financial_keys": [
+        "metrics",
+        "data_as_of",
+        "period_end",
+        "generated_at",
+        "period_start",
+        "compare_period_end",
+        "calculation_version",
+        "compare_period_start"
+      ]
+    }
+  ],
+  "context_ids": {
+    "org_id": "5efb77f3-0b8f-48e1-b069-e717a259a6a8",
+    "user_id": "ab701341-5abe-4fbf-86d2-c74b6dee9171",
+    "customer_id": "5e099a4b-f319-4361-9cd6-f9333ef6a3ed",
+    "supplier_id": "051e93d1-42ba-4c2c-ad18-bbee4ccf3e41",
+    "product_id": "024ed8a8-249a-4c24-9dab-be8a55495d32",
+    "warehouse_id": "1a2f2087-403f-4290-8ffd-0dfa93a4cede",
+    "treasury_account_id": "147fce09-3aa6-4ed4-afc4-b6f3e3f17788",
+    "quote_id": "be11b250-1ea6-4918-a37a-3e46eee23059",
+    "sales_order_id": "60919129-97e5-41b3-8fa2-9bf49b278f70",
+    "purchase_order_id": "d5623ff9-9943-44b4-8678-c7f2301dfbe4",
+    "purchase_doc_id": "56acd756-6d0f-44ba-aaaa-98f2ffa7e47b",
+    "treasury_op_id": "72caa6ff-e95a-4485-913b-4f5199832f0d",
+    "inventory_op_id": "31bd4ede-7564-4f1d-9a95-ec828824b90b",
+    "journal_entry_id": "d0f58e2f-aaff-4090-9bcd-22612f69c142",
+    "tax_period_id": "bf67145c-e750-4a0a-97ef-d25dbad8d62c"
+  },
+  "run_at": "2026-09-09T22:40:31.683Z"
+}

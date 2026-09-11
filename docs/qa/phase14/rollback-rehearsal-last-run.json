@@ -1,0 +1,13 @@
+{
+  "ROLLBACK_REHEARSAL": "PASS",
+  "status": "PASS",
+  "simulated": {
+    "release_n_plus_1": "20261301120000_phase13_recover_definer_authz_hardening.sql",
+    "application_rollback": "schema retained; no automatic down SQL",
+    "synthetic_operations": true
+  },
+  "automatic_downgrade_migrations": false,
+  "phase1_tables_intact": true,
+  "fingerprint_sha256": "ca472ea6dc3ccf45d9a49929cc84695fba2bdffb3357080d6bf363a690838cf8",
+  "detail": "Forward-only rehearsal: N+1 applied, app rollback does not drop schema, marker written"
+}

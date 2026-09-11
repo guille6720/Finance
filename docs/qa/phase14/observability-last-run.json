@@ -1,0 +1,20 @@
+{
+  "OBSERVABILITY": "PASS",
+  "status": "PASS",
+  "signals": [
+    "http_5xx",
+    "correlation_id",
+    "auth_errors",
+    "audit_immutability",
+    "runbook_p0",
+    "slo_doc"
+  ],
+  "correlation_id": true,
+  "secret_safe_audit_writer": true,
+  "missing": [],
+  "runbook_links": [
+    "docs/ops/INCIDENT-RESPONSE.md",
+    "docs/ops/RUNBOOK.md",
+    "docs/operations/SLO-PILOT.md"
+  ]
+}

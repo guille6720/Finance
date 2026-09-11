@@ -1,0 +1,31 @@
+{
+  "PILOT_ACCEPTANCE": "PASS",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "setup",
+      "status": "PASS"
+    },
+    {
+      "id": "daily_operations",
+      "status": "PASS"
+    },
+    {
+      "id": "corrections_reversals_idempotency",
+      "status": "PASS"
+    },
+    {
+      "id": "reports",
+      "status": "PASS"
+    },
+    {
+      "id": "exports",
+      "status": "PASS"
+    },
+    {
+      "id": "arca_not_called",
+      "status": "PASS"
+    }
+  ],
+  "failed": []
+}

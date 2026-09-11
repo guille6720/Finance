@@ -1,0 +1,76 @@
+{
+  "generated_at": "2026-09-09T13:56:12.352Z",
+  "verdict": "FAIL_RISK",
+  "rationale": "All 11 Phase 8 migrations are INVALID_JUNK (q;). Phase 9 substantive migrations reference products, warehouses, inventory_operations, inventory_reservations, inventory_operation_lines and call inventory RPCs that would not exist on cleanroom apply.",
+  "phase8_junk_versions": [
+    "20260801100000",
+    "20260801110000",
+    "20260801120000",
+    "20260801130000",
+    "20260801140000",
+    "20260801150000",
+    "20260801160000",
+    "20260801170000",
+    "20260801180000",
+    "20260801190000",
+    "20260801200000"
+  ],
+  "phase9_dependency_refs": {
+    "products": [
+      "20260901130000_phase9_pos_session_checkout.sql",
+      "20260901140000_phase9_pos_finalize.sql"
+    ],
+    "warehouses": [
+      "20260901110000_phase9_pos_core.sql"
+    ],
+    "inventory_objects": [
+      "20260901110000_phase9_pos_core.sql",
+      "20260901130000_phase9_pos_session_checkout.sql",
+      "20260901140000_phase9_pos_finalize.sql"
+    ]
+  },
+  "missing_prerequisite_objects": {
+    "tables": [
+      "inventory_accounting_mappings",
+      "inventory_cost_state",
+      "inventory_ledger_entries",
+      "inventory_operation_lines",
+      "inventory_operation_sequences",
+      "inventory_operations",
+      "inventory_reservations",
+      "inventory_stock_state",
+      "product_categories",
+      "products",
+      "warehouses"
+    ],
+    "functions": [
+      "create_inventory_reservation",
+      "deactivate_product",
+      "ensure_inventory_chart_accounts",
+      "ensure_inventory_cost_row",
+      "ensure_inventory_stock_row",
+      "inventory_assert_feature",
+      "inventory_round_avg",
+      "inventory_round_value",
+      "next_inventory_operation_number",
+      "post_inventory_operation",
+      "prevent_inventory_ledger_mutation",
+      "prevent_inventory_projection_client_write",
+      "prevent_posted_inventory_line_mutation",
+      "prevent_posted_inventory_op_mutation",
+      "prevent_reservation_client_mutate",
+      "purchase_line_inventory_debit_account",
+      "release_inventory_reservation",
+      "reverse_inventory_operation"
+    ],
+    "enums": [
+      "inventory_accounting_status",
+      "inventory_line_direction",
+      "inventory_operation_status",
+      "inventory_operation_type",
+      "inventory_reservation_status",
+      "inventory_unit_code",
+      "product_type"
+    ]
+  }
+}

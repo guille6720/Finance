@@ -1,0 +1,838 @@
+{
+  "generated_at": "2026-09-09T13:56:12.331Z",
+  "migrations_dir": "supabase/migrations",
+  "total_files": 118,
+  "summary": {
+    "SUBSTANTIVE": 87,
+    "NOOP_OR_STUB": 20,
+    "INVALID_JUNK": 11
+  },
+  "files": [
+    {
+      "filename": "20260329000001_phase1_foundation.sql",
+      "version": "20260329000001",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 25406
+    },
+    {
+      "filename": "20260329180000_phase1_security_hardening.sql",
+      "version": "20260329180000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 5312
+    },
+    {
+      "filename": "20260329181000_phase1_org_bootstrap_select.sql",
+      "version": "20260329181000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 707
+    },
+    {
+      "filename": "20260329190000_phase1_performance_hardening.sql",
+      "version": "20260329190000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 7908
+    },
+    {
+      "filename": "20260329200000_phase2_accounting_core.sql",
+      "version": "20260329200000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 41693
+    },
+    {
+      "filename": "20260329210000_phase2_accounting_security.sql",
+      "version": "20260329210000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 10507
+    },
+    {
+      "filename": "20260329220000_phase2_btree_gist_extensions_schema.sql",
+      "version": "20260329220000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 1416
+    },
+    {
+      "filename": "20260329230000_phase2_fk_covering_indexes.sql",
+      "version": "20260329230000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 1651
+    },
+    {
+      "filename": "20260331100000_phase3_counterparties_core.sql",
+      "version": "20260331100000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 12359
+    },
+    {
+      "filename": "20260331110000_phase3_counterparty_accounting_dimension.sql",
+      "version": "20260331110000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 8899
+    },
+    {
+      "filename": "20260331120000_phase3_counterparties_security.sql",
+      "version": "20260331120000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 11129
+    },
+    {
+      "filename": "20260331130000_phase3_fix_reversal_engine.sql",
+      "version": "20260331130000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 4465
+    },
+    {
+      "filename": "20260331140000_phase3_hardening_security.sql",
+      "version": "20260331140000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 2586
+    },
+    {
+      "filename": "20260401100000_phase4_sales_core.sql",
+      "version": "20260401100000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 18885
+    },
+    {
+      "filename": "20260401110000_phase4_sales_functions.sql",
+      "version": "20260401110000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 14908
+    },
+    {
+      "filename": "20260401120000_phase4_sales_security.sql",
+      "version": "20260401120000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 4387
+    },
+    {
+      "filename": "20260401130000_phase4_sales_sequences_fix.sql",
+      "version": "20260401130000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 1717
+    },
+    {
+      "filename": "20260401140000_phase4_sales_hardening.sql",
+      "version": "20260401140000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 6948
+    },
+    {
+      "filename": "20260501100000_phase5_fiscal_core.sql",
+      "version": "20260501100000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 23074
+    },
+    {
+      "filename": "20260501110000_phase5_fiscal_catalogs.sql",
+      "version": "20260501110000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 7916
+    },
+    {
+      "filename": "20260501120000_phase5_fiscal_accounting.sql",
+      "version": "20260501120000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 2207
+    },
+    {
+      "filename": "20260501130000_phase5_fiscal_security.sql",
+      "version": "20260501130000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 10252
+    },
+    {
+      "filename": "20260501140000_phase5_fiscal_functions.sql",
+      "version": "20260501140000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 24901
+    },
+    {
+      "filename": "20260501150000_phase5_fiscal_hardening.sql",
+      "version": "20260501150000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 1598
+    },
+    {
+      "filename": "20260501160000_phase5_prepare_note_lint_fix.sql",
+      "version": "20260501160000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 4251
+    },
+    {
+      "filename": "20260501170000_phase5_advisor_fk_indexes.sql",
+      "version": "20260501170000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 3383
+    },
+    {
+      "filename": "20260501180000_phase5_rls_policy_split.sql",
+      "version": "20260501180000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 7488
+    },
+    {
+      "filename": "20260501190000_phase5_security_definer_trust.sql",
+      "version": "20260501190000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 10641
+    },
+    {
+      "filename": "20260501200000_phase5_prelive_selfcheck.sql",
+      "version": "20260501200000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 2474
+    },
+    {
+      "filename": "20260601100000_phase6_purchases_core.sql",
+      "version": "20260601100000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 14594
+    },
+    {
+      "filename": "20260601110000_phase6_accounts_payable.sql",
+      "version": "20260601110000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 8576
+    },
+    {
+      "filename": "20260601120000_phase6_purchase_functions.sql",
+      "version": "20260601120000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 22518
+    },
+    {
+      "filename": "20260601130000_phase6_purchase_security.sql",
+      "version": "20260601130000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 13369
+    },
+    {
+      "filename": "20260601140000_phase6_advisor_indexes.sql",
+      "version": "20260601140000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 1039
+    },
+    {
+      "filename": "20260601150000_phase6_final_advisor_fk_indexes.sql",
+      "version": "20260601150000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 3029
+    },
+    {
+      "filename": "20260701100000_phase7_treasury_core.sql",
+      "version": "20260701100000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 12733
+    },
+    {
+      "filename": "20260701110000_phase7_accounts_receivable.sql",
+      "version": "20260701110000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 7757
+    },
+    {
+      "filename": "20260701120000_phase7_allocations.sql",
+      "version": "20260701120000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 6761
+    },
+    {
+      "filename": "20260701130000_phase7_accounting_helpers.sql",
+      "version": "20260701130000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 9961
+    },
+    {
+      "filename": "20260701140000_phase7_post_treasury.sql",
+      "version": "20260701140000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 16762
+    },
+    {
+      "filename": "20260701150000_phase7_reverse_treasury.sql",
+      "version": "20260701150000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 5791
+    },
+    {
+      "filename": "20260701160000_phase7_bank_reconciliation.sql",
+      "version": "20260701160000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 9790
+    },
+    {
+      "filename": "20260701170000_phase7_security.sql",
+      "version": "20260701170000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 10863
+    },
+    {
+      "filename": "20260701180000_phase7_hardening.sql",
+      "version": "20260701180000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "empty payload",
+      "bytes": 50
+    },
+    {
+      "filename": "20260701190000_phase7_final_advisor_fk_indexes.sql",
+      "version": "20260701190000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "empty payload",
+      "bytes": 50
+    },
+    {
+      "filename": "20260801100000_phase8_products.sql",
+      "version": "20260801100000",
+      "classification": "INVALID_JUNK",
+      "reason": "literal q; placeholder from schema_migrations {q} corruption",
+      "bytes": 3
+    },
+    {
+      "filename": "20260801110000_phase8_warehouses_inventory_core.sql",
+      "version": "20260801110000",
+      "classification": "INVALID_JUNK",
+      "reason": "literal q; placeholder from schema_migrations {q} corruption",
+      "bytes": 3
+    },
+    {
+      "filename": "20260801120000_phase8_stock_cost_reservations.sql",
+      "version": "20260801120000",
+      "classification": "INVALID_JUNK",
+      "reason": "literal q; placeholder from schema_migrations {q} corruption",
+      "bytes": 3
+    },
+    {
+      "filename": "20260801130000_phase8_accounting_helpers.sql",
+      "version": "20260801130000",
+      "classification": "INVALID_JUNK",
+      "reason": "literal q; placeholder from schema_migrations {q} corruption",
+      "bytes": 3
+    },
+    {
+      "filename": "20260801140000_phase8_reservations_rpc.sql",
+      "version": "20260801140000",
+      "classification": "INVALID_JUNK",
+      "reason": "literal q; placeholder from schema_migrations {q} corruption",
+      "bytes": 3
+    },
+    {
+      "filename": "20260801150000_phase8_post_inventory.sql",
+      "version": "20260801150000",
+      "classification": "INVALID_JUNK",
+      "reason": "literal q; placeholder from schema_migrations {q} corruption",
+      "bytes": 3
+    },
+    {
+      "filename": "20260801160000_phase8_reverse_inventory.sql",
+      "version": "20260801160000",
+      "classification": "INVALID_JUNK",
+      "reason": "literal q; placeholder from schema_migrations {q} corruption",
+      "bytes": 3
+    },
+    {
+      "filename": "20260801170000_phase8_commercial_integration.sql",
+      "version": "20260801170000",
+      "classification": "INVALID_JUNK",
+      "reason": "literal q; placeholder from schema_migrations {q} corruption",
+      "bytes": 3
+    },
+    {
+      "filename": "20260801180000_phase8_security.sql",
+      "version": "20260801180000",
+      "classification": "INVALID_JUNK",
+      "reason": "literal q; placeholder from schema_migrations {q} corruption",
+      "bytes": 3
+    },
+    {
+      "filename": "20260801190000_phase8_advisor_hardening.sql",
+      "version": "20260801190000",
+      "classification": "INVALID_JUNK",
+      "reason": "literal q; placeholder from schema_migrations {q} corruption",
+      "bytes": 3
+    },
+    {
+      "filename": "20260801200000_phase8_final_security_rls_hardening.sql",
+      "version": "20260801200000",
+      "classification": "INVALID_JUNK",
+      "reason": "literal q; placeholder from schema_migrations {q} corruption",
+      "bytes": 3
+    },
+    {
+      "filename": "20260901100000_phase9_clearing.sql",
+      "version": "20260901100000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 2677
+    },
+    {
+      "filename": "20260901110000_phase9_pos_core.sql",
+      "version": "20260901110000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 12913
+    },
+    {
+      "filename": "20260901120000_phase9_pos_helpers.sql",
+      "version": "20260901120000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 11176
+    },
+    {
+      "filename": "20260901130000_phase9_pos_session_checkout.sql",
+      "version": "20260901130000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 32042
+    },
+    {
+      "filename": "20260901140000_phase9_pos_finalize.sql",
+      "version": "20260901140000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 44509
+    },
+    {
+      "filename": "20260901150000_phase9_pos_security.sql",
+      "version": "20260901150000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 7145
+    },
+    {
+      "filename": "20260901160000_phase9_pos_advisor_hardening.sql",
+      "version": "20260901160000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 1323
+    },
+    {
+      "filename": "20260901170000_phase9_sales_invoiced_status_fix.sql",
+      "version": "20260901170000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 874
+    },
+    {
+      "filename": "20260901180000_phase9_pos_fk_indexes.sql",
+      "version": "20260901180000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 518
+    },
+    {
+      "filename": "20260901190000_.sql",
+      "version": "20260901190000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001100000_phase10_tax_reference_core.sql",
+      "version": "20261001100000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001110000_phase10_tax_registrations_rules.sql",
+      "version": "20261001110000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001120000_phase10_tax_periods.sql",
+      "version": "20261001120000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001130000_phase10_vat_classification_wp.sql",
+      "version": "20261001130000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001140000_phase10_tax_determinations.sql",
+      "version": "20261001140000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001150000_phase10_iibb.sql",
+      "version": "20261001150000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001160000_phase10_filing_obligations.sql",
+      "version": "20261001160000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001170000_phase10_tax_helpers.sql",
+      "version": "20261001170000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001180000_phase10_calculate_vat.sql",
+      "version": "20261001180000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001190000_phase10_period_filing_rpcs.sql",
+      "version": "20261001190000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001200000_phase10_security.sql",
+      "version": "20261001200000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001210000_.sql",
+      "version": "20261001210000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001220000_.sql",
+      "version": "20261001220000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001230000_.sql",
+      "version": "20261001230000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001240000_.sql",
+      "version": "20261001240000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001250000_.sql",
+      "version": "20261001250000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001260000_.sql",
+      "version": "20261001260000",
+      "classification": "NOOP_OR_STUB",
+      "reason": "semicolon-only noop (schema_migrations {} payload)",
+      "bytes": 2
+    },
+    {
+      "filename": "20261001270000_phase10_hardening_fixture_counterparty_reuse.sql",
+      "version": "20261001270000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 4850
+    },
+    {
+      "filename": "20261001280000_phase10_hardening_filing_fk_index.sql",
+      "version": "20261001280000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 210
+    },
+    {
+      "filename": "20261101100000_phase11_metric_registry.sql",
+      "version": "20261101100000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 9038
+    },
+    {
+      "filename": "20261101110000_phase11_saved_reports.sql",
+      "version": "20261101110000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 3527
+    },
+    {
+      "filename": "20261101120000_phase11_alerts_thresholds.sql",
+      "version": "20261101120000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 10894
+    },
+    {
+      "filename": "20261101130000_phase11_helpers_core.sql",
+      "version": "20261101130000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 13296
+    },
+    {
+      "filename": "20261101140000_phase11_accounting_reports.sql",
+      "version": "20261101140000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 7225
+    },
+    {
+      "filename": "20261101150000_phase11_dashboard_rpcs.sql",
+      "version": "20261101150000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 23882
+    },
+    {
+      "filename": "20261101160000_phase11_reports_alerts.sql",
+      "version": "20261101160000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 33897
+    },
+    {
+      "filename": "20261101170000_phase11_security_grants.sql",
+      "version": "20261101170000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 9411
+    },
+    {
+      "filename": "20261101180000_phase11_permissions_seed.sql",
+      "version": "20261101180000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 1222
+    },
+    {
+      "filename": "20261101190000_phase11_attention_product_margin.sql",
+      "version": "20261101190000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 6607
+    },
+    {
+      "filename": "20261101200000_phase11_fix_product_margin_lineage.sql",
+      "version": "20261101200000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 3428
+    },
+    {
+      "filename": "20261101210000_phase11_final_authz_reporting_hardening.sql",
+      "version": "20261101210000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 88689
+    },
+    {
+      "filename": "20261101220000_phase11_margin_fixture.sql",
+      "version": "20261101220000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 8164
+    },
+    {
+      "filename": "20261101230000_phase11_margin_fixture_draft_lines.sql",
+      "version": "20261101230000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 8216
+    },
+    {
+      "filename": "20261201100000_phase12_release_governance.sql",
+      "version": "20261201100000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 4667
+    },
+    {
+      "filename": "20261201110000_phase12_entitlements.sql",
+      "version": "20261201110000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 3183
+    },
+    {
+      "filename": "20261201120000_phase12_preferences.sql",
+      "version": "20261201120000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 2271
+    },
+    {
+      "filename": "20261201130000_phase12_dependencies.sql",
+      "version": "20261201130000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 6320
+    },
+    {
+      "filename": "20261201140000_phase12_packs.sql",
+      "version": "20261201140000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 8297
+    },
+    {
+      "filename": "20261201150000_phase12_effective_state_engine.sql",
+      "version": "20261201150000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 21486
+    },
+    {
+      "filename": "20261201155000_phase12_recompute_preserve_quiet.sql",
+      "version": "20261201155000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 4793
+    },
+    {
+      "filename": "20261201160000_phase12_migration_backfill.sql",
+      "version": "20261201160000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 6028
+    },
+    {
+      "filename": "20261201170000_phase12_lockdown_organization_features.sql",
+      "version": "20261201170000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 1929
+    },
+    {
+      "filename": "20261201180000_phase12_client_rpcs.sql",
+      "version": "20261201180000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 16579
+    },
+    {
+      "filename": "20261201190000_phase12_source_feature_guard_hardening.sql",
+      "version": "20261201190000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 17224
+    },
+    {
+      "filename": "20261201200000_phase12_security.sql",
+      "version": "20261201200000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 4595
+    },
+    {
+      "filename": "20261201210000_phase12_advisor_hardening.sql",
+      "version": "20261201210000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 1128
+    },
+    {
+      "filename": "20261201220000_phase12_revoke_anon_execute.sql",
+      "version": "20261201220000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 1206
+    },
+    {
+      "filename": "20261201230000_phase12_platform_enable_helper.sql",
+      "version": "20261201230000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 3919
+    },
+    {
+      "filename": "20261201240000_phase12_final_entitlement_acl_hardening.sql",
+      "version": "20261201240000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 11739
+    },
+    {
+      "filename": "20261201241000_phase12_function_acl_probe.sql",
+      "version": "20261201241000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 1916
+    },
+    {
+      "filename": "20261201242000_phase12_function_acl_probe_fix.sql",
+      "version": "20261201242000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 1904
+    },
+    {
+      "filename": "20261301100000_phase13_anon_table_acl_hardening.sql",
+      "version": "20261301100000",
+      "classification": "SUBSTANTIVE",
+      "reason": "contains DDL/DML statements",
+      "bytes": 839
+    }
+  ]
+}

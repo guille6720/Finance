@@ -1,0 +1,46 @@
+{
+  "summary": {
+    "generated_at": "2026-09-09T14:11:53.724Z",
+    "local_table_count": 107,
+    "staging_table_count": 107,
+    "local_enum_count": 98,
+    "staging_enum_count": 98,
+    "local_func_count": 241,
+    "staging_func_count": 243,
+    "local_policy_count": 257,
+    "staging_policy_count": 255,
+    "classification_counts": {
+      "INTENTIONAL_STAGING_ONLY": 2,
+      "INTENTIONAL_LOCAL_ONLY": 2
+    },
+    "UNEXPLAINED_SCHEMA_DRIFT": 0,
+    "status": "PASS"
+  },
+  "diffs": [
+    {
+      "kind": "FUNCTION",
+      "name": "finalize_pos_sale_impl(p_pos_sale_id uuid, p_idempotency_key text)",
+      "classification": "INTENTIONAL_STAGING_ONLY",
+      "note": "Staging-only function; intentionally not recovered (see INTENTIONAL_STAGING_ONLY_FUNCS)"
+    },
+    {
+      "kind": "FUNCTION",
+      "name": "pos_assert_session_actor(p_session pos_sessions, p_action text)",
+      "classification": "INTENTIONAL_STAGING_ONLY",
+      "note": "Staging-only function; intentionally not recovered (see INTENTIONAL_STAGING_ONLY_FUNCS)"
+    },
+    {
+      "kind": "POLICY",
+      "name": "organization_members::members_select_self",
+      "classification": "INTENTIONAL_LOCAL_ONLY",
+      "note": "Phase 13 local hardening policy: bootstrap visibility"
+    },
+    {
+      "kind": "POLICY",
+      "name": "organizations::organizations_select_creator",
+      "classification": "INTENTIONAL_LOCAL_ONLY",
+      "note": "Phase 13 local hardening policy: bootstrap visibility"
+    }
+  ],
+  "unexplained": []
+}

@@ -1,0 +1,55 @@
+{
+  "status": "PASS",
+  "old_app_new_db": "PASS",
+  "new_app_old_db": "N/A_FORWARD_ONLY_LOCAL",
+  "new_app_new_db": "PASS",
+  "expand_migrate_contract": "docs/qa/phase14/EXPAND-MIGRATE-CONTRACT.md",
+  "coordinated_deployments": [],
+  "columnChecks": [
+    {
+      "id": "compat.organizations.id",
+      "status": "PASS"
+    },
+    {
+      "id": "compat.organizations.legal_name",
+      "status": "PASS"
+    },
+    {
+      "id": "compat.organizations.created_by",
+      "status": "PASS"
+    },
+    {
+      "id": "compat.organizations.status",
+      "status": "PASS"
+    },
+    {
+      "id": "compat.organization_members.organization_id",
+      "status": "PASS"
+    },
+    {
+      "id": "compat.organization_members.user_id",
+      "status": "PASS"
+    },
+    {
+      "id": "compat.organization_members.role",
+      "status": "PASS"
+    },
+    {
+      "id": "compat.organization_members.status",
+      "status": "PASS"
+    },
+    {
+      "id": "compat.audit_events.organization_id",
+      "status": "PASS"
+    },
+    {
+      "id": "compat.audit_events.event_type",
+      "status": "PASS"
+    },
+    {
+      "id": "compat.audit_events.action",
+      "status": "PASS"
+    }
+  ],
+  "note": "Old app + new DB: Phase 1 columns remain. New app + old DB not rehearsed (no down migrations). Destructive changes require EMC plan."
+}
