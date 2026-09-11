@@ -20,7 +20,7 @@ Paid steps require **explicit cost approval** first (`docs/qa/phase13/dr/DR-COST
 
 ## 1. Disaster declaration
 
-Record `T_DISASTER` UTC in `DR-TIMELINE.json`.  
+Record `T_DISASTER` UTC in `DR-TIMELINE.json`.
 State: DATABASE LOSS + STORAGE LOSS of **drill primary** (not Staging).
 
 ## 2. Containment
@@ -52,19 +52,19 @@ State: DATABASE LOSS + STORAGE LOSS of **drill primary** (not Staging).
 
 Set **names** only on the recovery app:
 
-`APP_ENV=rehearsal`  
-`NEXT_PUBLIC_SUPABASE_URL` → recovery project  
-`NEXT_PUBLIC_SUPABASE_ANON_KEY`  
-`SUPABASE_SERVICE_ROLE_KEY` (server)  
-`REHEARSAL_SUPABASE_PROJECT_REF`  
-`STAGING_SUPABASE_PROJECT_REF=rpcpdrzbcclofvjpgldb`  
+`APP_ENV=rehearsal`
+`NEXT_PUBLIC_SUPABASE_URL` → recovery project
+`NEXT_PUBLIC_SUPABASE_ANON_KEY`
+`SUPABASE_SERVICE_ROLE_KEY` (server)
+`REHEARSAL_SUPABASE_PROJECT_REF`
+`STAGING_SUPABASE_PROJECT_REF=rpcpdrzbcclofvjpgldb`
 `ARCA_ENV=disabled`
 
 Startup must fail if URL contains Staging/Production refs incorrectly (`src/config/env.ts`).
 
 ## 7. Application deployment
 
-Local: `npm run build && npm run start` against recovery URL.  
+Local: `npm run build && npm run start` against recovery URL.
 Vercel optional and unpaid unless approved.
 
 ## 8. Security verification
@@ -91,17 +91,17 @@ No ARCA `FECAESolicitar`.
 
 ## 11. Reopen service
 
-Only the **drill** app. Record `T_SERVICE_RECOVERED`.  
+Only the **drill** app. Record `T_SERVICE_RECOVERED`.
 Do not reopen Production (does not exist). Do not cut Staging over.
 
 ## 12. Communication
 
-Internal: drill complete, MEASURED_RPO_MINUTES, MEASURED_RTO_MINUTES.  
+Internal: drill complete, MEASURED_RPO_MINUTES, MEASURED_RTO_MINUTES.
 No customer notification (synthetic).
 
 ## 13. Postmortem
 
-Bottleneck class if fail: BACKUP_FREQUENCY | DATABASE_RESTORE | STORAGE_BACKUP | STORAGE_RESTORE | AUTH | DNS | APP_DEPLOY | MIGRATIONS | SECRETS | MANUAL_PROCEDURE | NETWORK | COMPUTE | OTHER  
+Bottleneck class if fail: BACKUP_FREQUENCY | DATABASE_RESTORE | STORAGE_BACKUP | STORAGE_RESTORE | AUTH | DNS | APP_DEPLOY | MIGRATIONS | SECRETS | MANUAL_PROCEDURE | NETWORK | COMPUTE | OTHER
 
 Do **not** buy more capacity without a new approval.
 

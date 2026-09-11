@@ -1,7 +1,7 @@
 # Phase 13 DR cost estimate
 
-**Generated:** 2026-09-09  
-**Prices:** public list (Supabase pricing / backups docs), USD, **INFERRED from vendor documentation — not a quote**.  
+**Generated:** 2026-09-09
+**Prices:** public list (Supabase pricing / backups docs), USD, **INFERRED from vendor documentation — not a quote**.
 **No resources provisioned.**
 
 ```

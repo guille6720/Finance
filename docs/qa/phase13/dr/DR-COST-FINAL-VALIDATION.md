@@ -1,6 +1,6 @@
 # DR cost final validation — Option B
 
-**Evidence date:** 2026-09-09  
+**Evidence date:** 2026-09-09
 **Sources (fetched this session, not prior estimates):**
 
 - https://supabase.com/pricing
@@ -22,7 +22,7 @@ SUPABASE_ORGANIZATION_SLUG = qsgnqyleasarodfwzlwe
 
 Evidence: `supabase/.temp/linked-project.json` (CLI link for project `rpcpdrzbcclofvjpgldb` / Finance Staging SA). Organization ID is not a secret.
 
-**Org plan (Free vs Pro): UNKNOWN** — not in that file; dashboard billing was not queried. Two cost scenarios below.  
+**Org plan (Free vs Pro): UNKNOWN** — not in that file; dashboard billing was not queried. Two cost scenarios below.
 If the org is **Free**, moving it to Pro **would change Staging billing** (no pause, daily backups, $25/month). That conflicts with “do not change current Staging” commercially even if schema is untouched.
 
 ---

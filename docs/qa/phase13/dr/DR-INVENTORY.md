@@ -1,6 +1,6 @@
 # Phase 13 DR inventory
 
-**Evidence class in this file:** DOCUMENTED / OBSERVED / INFERRED as marked.  
+**Evidence class in this file:** DOCUMENTED / OBSERVED / INFERRED as marked.
 **No secret values.** Variable names only.
 
 Generated: 2026-09-09 (CONTABILIUM / FINANCE repo)

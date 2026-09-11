@@ -1,7 +1,7 @@
 # ARCA Phase 5 — Final release gate
 
-**Scope:** Homologation + technical completion evidence only.  
-**Recorded:** 2026-09-11  
+**Scope:** Homologation + technical completion evidence only.
+**Recorded:** 2026-09-11
 **Repo:** `E:/FINANCE`
 
 ## Verdict

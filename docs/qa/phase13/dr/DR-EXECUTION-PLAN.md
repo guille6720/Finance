@@ -1,6 +1,6 @@
 # DR execution plan (NOT EXECUTED)
 
-**Status:** READY as procedure. **COST_APPROVAL_REQUIRED = YES.**  
+**Status:** READY as procedure. **COST_APPROVAL_REQUIRED = YES.**
 Do not run until the user authorizes **OPTION B** and a **MAXIMUM TOTAL DR BUDGET IN USD**.
 
 Forbidden until then: create project, enable PITR, Small compute, restore destination, paid Storage, Vercel, Production, ARCA.

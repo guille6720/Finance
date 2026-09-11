@@ -1,7 +1,7 @@
 # Phase 5 — ARCA Homologation Step 1 (evidence)
 
-**Recorded:** 2026-09-10  
-**Scope:** Credential contract + WSAA + safe connectivity  
+**Recorded:** 2026-09-10
+**Scope:** Credential contract + WSAA + safe connectivity
 **Result:** **STOPPED** — gateway and homologation credentials not present in repo.
 
 ## Existing configuration contract (names only — no values)

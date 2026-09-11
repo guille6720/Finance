@@ -1,6 +1,6 @@
 # Phase 5 — ARCA Homologation Fiscal Gateway
 
-**F5_HOMOLOGATION_STATUS = IN_PROGRESS**  
+**F5_HOMOLOGATION_STATUS = IN_PROGRESS**
 **FECAESOLICITAR = NOT_RUN** · **ARCA_PRODUCTION = NOT_AUTHORIZED**
 
 ## Verdict (implementation)
@@ -98,19 +98,19 @@ npm run test:arca:secret-scan
 npm run test:arca:homo:live
 ```
 
-Live evidence (sanitized): `docs/qa/phase5/ARCA-HOMOLOGATION-LIVE.json`  
+Live evidence (sanitized): `docs/qa/phase5/ARCA-HOMOLOGATION-LIVE.json`
 Secret scan: `docs/qa/phase5/ARCA-SECRET-SCAN.json`
 
 ## Live execution order (STOP before CAE)
 
-1. Config validation  
-2. Cert/key match  
-3. WSAA LoginCms  
-4. TA cache  
-5. FEDummy — **STOP on FAIL**  
-6. Parameter methods + Condicion IVA receptor  
-7. FEParamGetPtosVenta — **STOP if no usable POS**  
-8. FECompUltimoAutorizado  
+1. Config validation
+2. Cert/key match
+3. WSAA LoginCms
+4. TA cache
+5. FEDummy — **STOP on FAIL**
+6. Parameter methods + Condicion IVA receptor
+7. FEParamGetPtosVenta — **STOP if no usable POS**
+8. FECompUltimoAutorizado
 
 **Absolute stop before FECAESolicitar.**
 
@@ -121,4 +121,3 @@ Secret scan: `docs/qa/phase5/ARCA-SECRET-SCAN.json`
 ## Parameter catalogs
 
 Live runner fetches ARCA `FEParam*` values and maps them via `src/server/arca/catalog-sync.ts` (preserves raw numeric IDs). Bootstrap rows in `fiscal_parameter_catalogs` are marked `refresh_required`. DB upsert is deferred to an existing secure Phase 5 write contract (no ad-hoc service-role writes in this gateway step).
-

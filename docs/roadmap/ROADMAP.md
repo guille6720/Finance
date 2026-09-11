@@ -24,7 +24,7 @@ F5_TECHNICAL_STATUS    = COMPLETE
 ARCA_PRODUCTION        = NOT_AUTHORIZED
 ```
 
-Homologation proven (WSAA, FEDummy, catalogs, CondicionIVAReceptor, Factura C authorize / reject / uncertain-reconcile, accounting post-once).  
+Homologation proven (WSAA, FEDummy, catalogs, CondicionIVAReceptor, Factura C authorize / reject / uncertain-reconcile, accounting post-once).
 Production ARCA is **not** authorized. See `docs/qa/phase5/ARCA-F5-FINAL-GATE.md`.
 
 ## Phase 6 — Purchases

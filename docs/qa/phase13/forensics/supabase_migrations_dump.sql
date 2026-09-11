@@ -35,7 +35,3 @@ ALTER TABLE "supabase_migrations"."schema_migrations" OWNER TO "postgres";
 
 ALTER TABLE ONLY "supabase_migrations"."schema_migrations"
     ADD CONSTRAINT "schema_migrations_pkey" PRIMARY KEY ("version");
-
-
-
-
