@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/lib/supabase/server";
 import { cookies } from "next/headers";
 import { ACTIVE_ORG_COOKIE } from "@/lib/authz/context";
+import { resolveActiveOrganizationId } from "@/lib/authz/active-organization";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -32,9 +33,10 @@ export default async function DashboardPage() {
     redirect("/onboarding");
   }
 
-  const orgId =
-    memberships.find((m) => m.organization_id === activeOrgId)?.organization_id ??
-    memberships[0].organization_id;
+  const orgId = resolveActiveOrganizationId(
+    memberships.map((m) => m.organization_id),
+    activeOrgId
+  ) as string;
 
   const [
     { data: org },

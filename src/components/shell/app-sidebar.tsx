@@ -24,6 +24,8 @@ import { cn } from "@/lib/utils";
 import { brand } from "@/config/brand";
 import { createClient } from "@/lib/supabase/client";
 import { useRouter } from "next/navigation";
+import { OrganizationSwitcher } from "@/components/shell/organization-switcher";
+import type { UserOrganization } from "@/lib/authz/active-organization";
 
 type NavItem = {
   name: string;
@@ -82,9 +84,13 @@ const navigation: NavGroup[] = [
 export function AppSidebar({
   companyName,
   userName,
+  organizations = [],
+  activeOrganizationId = null,
 }: {
   companyName?: string;
   userName?: string;
+  organizations?: UserOrganization[];
+  activeOrganizationId?: string | null;
 }) {
   const pathname = usePathname();
   const router = useRouter();
@@ -110,11 +116,22 @@ export function AppSidebar({
           </div>
           <div className="min-w-0">
             <p className="truncate text-sm font-semibold tracking-tight">{brand.name}</p>
-            <p className="truncate text-xs text-sidebar-muted">
-              {companyName || "Sin empresa"}
-            </p>
+            {organizations.length === 0 ? (
+              <p className="truncate text-xs text-sidebar-muted">
+                {companyName || "Sin empresa"}
+              </p>
+            ) : null}
           </div>
         </Link>
+        {organizations.length > 0 ? (
+          <div className="mt-4">
+            <OrganizationSwitcher
+              organizations={organizations}
+              activeOrganizationId={activeOrganizationId}
+              onSwitched={() => setMobileOpen(false)}
+            />
+          </div>
+        ) : null}
       </div>
 
       <nav className="flex-1 space-y-4 overflow-y-auto p-3" aria-label="Principal">

@@ -1,8 +1,12 @@
 import { redirect } from "next/navigation";
+import { cookies } from "next/headers";
 import { createClient } from "@/lib/supabase/server";
 import { AppShell } from "@/components/shell/app-shell";
-import { ACTIVE_ORG_COOKIE } from "@/lib/authz/context";
-import { cookies } from "next/headers";
+import {
+  ACTIVE_ORG_COOKIE,
+  loadUserOrganizations,
+  resolveActiveOrganizationId,
+} from "@/lib/authz/active-organization";
 
 export default async function AppLayout({
   children,
@@ -19,22 +23,12 @@ export default async function AppLayout({
   }
 
   const cookieStore = await cookies();
-  const activeOrgId = cookieStore.get(ACTIVE_ORG_COOKIE)?.value;
-
-  const { data: memberships } = await supabase
-    .from("organization_members")
-    .select("organization_id, organizations ( legal_name, commercial_name )")
-    .eq("user_id", user.id)
-    .eq("status", "active");
-
-  const membership =
-    memberships?.find((m) => m.organization_id === activeOrgId) ??
-    memberships?.[0];
-
-  const org = membership?.organizations as unknown as
-    | { legal_name: string; commercial_name: string | null }
-    | null
-    | undefined;
+  const organizations = await loadUserOrganizations(supabase, user.id);
+  const activeOrganizationId = resolveActiveOrganizationId(
+    organizations.map((o) => o.id),
+    cookieStore.get(ACTIVE_ORG_COOKIE)?.value
+  );
+  const activeOrg = organizations.find((o) => o.id === activeOrganizationId);
 
   const { data: profile } = await supabase
     .from("profiles")
@@ -44,8 +38,10 @@ export default async function AppLayout({
 
   return (
     <AppShell
-      companyName={org?.commercial_name || org?.legal_name}
+      companyName={activeOrg?.displayName}
       userName={profile?.full_name || user.email || ""}
+      organizations={organizations}
+      activeOrganizationId={activeOrganizationId}
     >
       {children}
     </AppShell>
