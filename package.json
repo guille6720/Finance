@@ -43,7 +43,10 @@
     "test:arca:homo:cae-once": "node --import tsx scripts/phase5/run-cae-once.mjs",
     "test:arca:homo:rejection": "node --import tsx scripts/phase5/run-rejection.mjs",
     "test:arca:homo:uncertain": "node --import tsx scripts/phase5/run-uncertain.mjs",
-    "test:arca:secret-scan": "node scripts/phase5/arca-secret-scan.mjs"
+    "test:arca:secret-scan": "node scripts/phase5/arca-secret-scan.mjs",
+    "demo:seed:accounting": "node scripts/demo/seed-accounting-demo.mjs",
+    "demo:postcheck": "node scripts/demo/postcheck-cli.mjs",
+    "test:demo:unit": "vitest run tests/unit/demo"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",
