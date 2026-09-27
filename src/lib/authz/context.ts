@@ -4,6 +4,7 @@ import {
   AuthorizationError,
 } from "@/lib/authz/permissions";
 import type { MemberRole, Permission } from "@/config/features";
+import { ACTIVE_ORG_COOKIE } from "@/lib/authz/context-constants";
 
 export class AuthError extends Error {
   readonly status: number;
@@ -27,8 +28,6 @@ export type OrgContext = {
     onboarding_completed_at: string | null;
   };
 };
-
-const ACTIVE_ORG_COOKIE = "active_organization_id";
 
 export { ACTIVE_ORG_COOKIE };
 

@@ -2,6 +2,7 @@ import { createClient } from "@/lib/supabase/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { ACTIVE_ORG_COOKIE } from "@/lib/authz/context";
+import { resolveActiveOrganizationId } from "@/lib/authz/active-organization";
 import { ROLE_LABELS, type MemberRole } from "@/config/features";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -22,9 +23,10 @@ export default async function UsersPage() {
     .eq("user_id", user.id)
     .eq("status", "active");
 
-  const orgId =
-    myMemberships?.find((m) => m.organization_id === activeOrgId)?.organization_id ??
-    myMemberships?.[0]?.organization_id;
+  const orgId = resolveActiveOrganizationId(
+    (myMemberships ?? []).map((m) => m.organization_id),
+    activeOrgId
+  );
 
   if (!orgId) redirect("/onboarding");
 
