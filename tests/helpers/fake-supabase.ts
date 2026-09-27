@@ -14,9 +14,20 @@ export type FakeDb = {
 
 export type FakeQueryLog = { table: string; filters: [string, unknown][] }[];
 
-export function createFakeSupabase(db: FakeDb, currentUserId: string | null) {
+export function createFakeSupabase(
+  db: FakeDb,
+  currentUserId: string | null,
+  opts: { failSelectWithProfiles?: boolean } = {}
+) {
   const log: FakeQueryLog = [];
   const inserts: { table: string; row: Row }[] = [];
+  /** Simulates an unexpected DB failure on the members+profiles listing. */
+  function forcedError(table: string, columns: string) {
+    if (opts.failSelectWithProfiles && table === "organization_members" && /profiles/.test(columns)) {
+      return { code: "XX000", message: "internal: relation organization_members secret detail" };
+    }
+    return null;
+  }
 
   const activeOrgIds = () =>
     new Set(
@@ -39,14 +50,37 @@ export function createFakeSupabase(db: FakeDb, currentUserId: string | null) {
     return false;
   }
 
+  /** organization_members → profiles FKs, as in the real schema. */
+  const MEMBER_PROFILE_FKS: Record<string, string> = {
+    organization_members_user_id_fkey: "user_id",
+    organization_members_invited_by_fkey: "invited_by",
+  };
+
+  /** PostgREST rejects an embed that matches more than one FK (PGRST201). */
+  function embedError(table: string, columns: string) {
+    if (table === "organization_members" && /\bprofiles\s*\(/.test(columns)) {
+      return {
+        code: "PGRST201",
+        message: "Could not embed because more than one relationship was found for 'organization_members' and 'profiles'",
+      };
+    }
+    const hint = columns.match(/\bprofiles!([a-z_]+)\s*\(/);
+    if (table === "organization_members" && hint && !MEMBER_PROFILE_FKS[hint[1]]) {
+      return { code: "PGRST200", message: "Could not find a relationship" };
+    }
+    return null;
+  }
+
   function withJoins(table: string, row: Row, columns: string): Row {
     const out: Row = { ...row };
     if (/organizations\s*\(/.test(columns) && table === "organization_members") {
       const org = db.organizations.find((o) => o.id === row.organization_id);
       out.organizations = org && visible("organizations", org) ? { ...org } : null;
     }
-    if (/profiles\s*\(/.test(columns) && table === "organization_members") {
-      const p = db.profiles.find((x) => x.id === row.user_id);
+    const hint = columns.match(/\bprofiles!([a-z_]+)\s*\(/);
+    if (hint && table === "organization_members") {
+      const fkColumn = MEMBER_PROFILE_FKS[hint[1]];
+      const p = db.profiles.find((x) => x.id === row[fkColumn]);
       out.profiles = p && visible("profiles", p) ? { ...p } : null;
     }
     return out;
@@ -86,6 +120,8 @@ export function createFakeSupabase(db: FakeDb, currentUserId: string | null) {
         return builder;
       },
       async maybeSingle() {
+        const failure = embedError(table, columns) ?? forcedError(table, columns);
+        if (failure) return { data: null, error: failure };
         const rows = run();
         return { data: rows[0] ?? null, error: null };
       },
@@ -93,7 +129,15 @@ export function createFakeSupabase(db: FakeDb, currentUserId: string | null) {
         inserts.push({ table, row });
         return Promise.resolve({ data: null, error: null });
       },
-      then<T>(resolve: (v: { data: Row[] | null; error: null; count?: number }) => T) {
+      then<T>(
+        resolve: (v: {
+          data: Row[] | null;
+          error: { code: string; message: string } | null;
+          count?: number;
+        }) => T
+      ) {
+        const failure = embedError(table, columns) ?? forcedError(table, columns);
+        if (failure) return Promise.resolve(resolve({ data: null, error: failure }));
         const rows = run();
         return Promise.resolve(
           resolve({ data: head ? null : rows, error: null, count: countMode ? rows.length : undefined })

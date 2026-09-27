@@ -3,6 +3,7 @@ import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { ACTIVE_ORG_COOKIE } from "@/lib/authz/context";
 import { resolveActiveOrganizationId } from "@/lib/authz/active-organization";
+import { ORGANIZATION_MEMBERS_WITH_PROFILE_SELECT } from "@/lib/members/queries";
 import { ROLE_LABELS, type MemberRole } from "@/config/features";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -30,11 +31,15 @@ export default async function UsersPage() {
 
   if (!orgId) redirect("/onboarding");
 
-  const { data: members } = await supabase
+  const { data: members, error: membersError } = await supabase
     .from("organization_members")
-    .select("id, role, status, user_id, profiles ( full_name, email )")
+    .select(ORGANIZATION_MEMBERS_WITH_PROFILE_SELECT)
     .eq("organization_id", orgId)
     .order("created_at", { ascending: true });
+
+  if (membersError) {
+    console.error("[users] members query failed", { code: membersError.code });
+  }
 
   return (
     <div className="space-y-6">
@@ -52,7 +57,12 @@ export default async function UsersPage() {
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-2">
-          {(members ?? []).map((m) => {
+          {membersError ? (
+            <p className="text-sm text-danger" role="alert" data-testid="users-load-error">
+              No se pudieron cargar los miembros de la empresa. Intentá de nuevo más tarde.
+            </p>
+          ) : null}
+          {(membersError ? [] : members ?? []).map((m) => {
             const profile = m.profiles as unknown as {
               full_name: string;
               email: string;
