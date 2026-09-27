@@ -16,7 +16,8 @@
  *   DEMO_SEED_CONFIRM=YES DEMO_SEED_CREATE_USERS=YES DEMO_SEED_PASSWORD='…' node scripts/demo/seed-accounting-demo.mjs
  *
  * Staging (allow-listed ref only):
- *   DEMO_SEED_CONFIRM=YES PHASE13_FORCE_REMOTE=1 PHASE13_API_URL=… PHASE13_SERVICE_ROLE_KEY=… …
+ *   DEMO_SEED_CONFIRM=YES PHASE13_FORCE_REMOTE=1 PHASE13_API_URL=https://<ref>.supabase.co
+ *   PHASE13_DB_URL=… PHASE13_ANON_KEY=… PHASE13_SERVICE_ROLE_KEY=… (all four required; no local fallback)
  */
 import path from "node:path";
 import { fileURLToPath } from "node:url";

@@ -54,6 +54,7 @@ process.env.PHASE13_API_URL = fileEnv.DR_PRIMARY_URL || `https://${ref}.supabase
 process.env.PHASE13_ANON_KEY = fileEnv.DR_PRIMARY_ANON_KEY;
 process.env.PHASE13_SERVICE_ROLE_KEY = fileEnv.DR_PRIMARY_SERVICE_ROLE_KEY;
 process.env.PHASE13_FORCE_REMOTE = "1";
+process.env.PHASE13_REMOTE_ALLOWED_REF = ref;
 if (fileEnv.DR_PRIMARY_DB_PASSWORD) {
   process.env.PHASE13_DB_URL = `postgresql://postgres.${ref}:${encodeURIComponent(fileEnv.DR_PRIMARY_DB_PASSWORD)}@aws-0-sa-east-1.pooler.supabase.com:6543/postgres`;
   // also try direct host style used by many projects

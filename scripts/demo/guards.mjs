@@ -2,6 +2,7 @@
  * Staging/local demo seed environment guards.
  * Never allow Production / ARCA Production.
  */
+import { ALLOWED_REMOTE_STAGING_REFS } from "../phase13/env.mjs";
 
 export const DEMO_CODES = Object.freeze({
   PRIMARY: "DEMO-AR-001",
@@ -19,10 +20,8 @@ export const DEMO_SETTINGS_KEYS = Object.freeze({
 
 export const DEMO_SEED_VERSION = "2026.09.1";
 
-/** Known disposable / staging-safe project refs (extend as needed). */
-const ALLOWED_STAGING_REFS = new Set([
-  "rpcpdrzbcclofvjpgldb", // Contabilium staging (documented in Phase 13 DR)
-]);
+/** Staging-safe project refs; single source shared with remote env loading. */
+const ALLOWED_STAGING_REFS = new Set(ALLOWED_REMOTE_STAGING_REFS);
 
 /**
  * Detect Production-like targets. Throws with DEMO_SEED_REFUSED.
