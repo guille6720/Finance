@@ -7,6 +7,7 @@ import {
   loadUserOrganizations,
   resolveActiveOrganizationId,
 } from "@/lib/authz/active-organization";
+import { getUxMode } from "@/lib/ui-mode/server";
 
 export default async function AppLayout({
   children,
@@ -36,12 +37,15 @@ export default async function AppLayout({
     .eq("id", user.id)
     .maybeSingle();
 
+  const uxMode = await getUxMode();
+
   return (
     <AppShell
       companyName={activeOrg?.displayName}
       userName={profile?.full_name || user.email || ""}
       organizations={organizations}
       activeOrganizationId={activeOrganizationId}
+      uxMode={uxMode}
     >
       {children}
     </AppShell>

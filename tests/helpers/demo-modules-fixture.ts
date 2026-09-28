@@ -32,20 +32,20 @@ export function demoModulesDb(): FakeDb {
   ];
 
   db.sales_documents = [
-    { id: "s1", organization_id: ORG_A, document_type: "SALES_ORDER", status: "CONFIRMED", counterparty_id: "cp-a-alfa", total: "1000.5000" },
-    { id: "s2", organization_id: ORG_A, document_type: "QUOTE", status: "CONVERTED", counterparty_id: "cp-a-alfa", total: "1000.5000" },
-    { id: "s3", organization_id: ORG_A, document_type: "SALES_ORDER", status: "DRAFT", counterparty_id: "cp-a-mixto", total: "999.0000" },
-    { id: "s4", organization_id: ORG_A, document_type: "SALES_ORDER", status: "CANCELLED", counterparty_id: "cp-a-mixto", total: "321.0000" },
-    { id: "s5", organization_id: ORG_A, document_type: "SALES_ORDER", status: "READY_TO_INVOICE", counterparty_id: "cp-a-alfa", total: "2000.0000" },
-    { id: "s-c", organization_id: ORG_C, document_type: "SALES_ORDER", status: "CONFIRMED", counterparty_id: "cp-c-ajeno", total: "777777.0000" },
+    { id: "s1", organization_id: ORG_A, document_type: "SALES_ORDER", internal_number: "PV-0001", document_date: "2026-01-10", status: "CONFIRMED", counterparty_id: "cp-a-alfa", total: "1000.5000" },
+    { id: "s2", organization_id: ORG_A, document_type: "QUOTE", internal_number: "PR-0001", document_date: "2026-01-08", status: "CONVERTED", counterparty_id: "cp-a-alfa", total: "1000.5000" },
+    { id: "s3", organization_id: ORG_A, document_type: "SALES_ORDER", internal_number: "PV-0002", document_date: "2026-02-10", status: "DRAFT", counterparty_id: "cp-a-mixto", total: "999.0000" },
+    { id: "s4", organization_id: ORG_A, document_type: "SALES_ORDER", internal_number: "PV-0003", document_date: "2026-02-11", status: "CANCELLED", counterparty_id: "cp-a-mixto", total: "321.0000" },
+    { id: "s5", organization_id: ORG_A, document_type: "SALES_ORDER", internal_number: "PV-0004", document_date: "2026-03-05", status: "READY_TO_INVOICE", counterparty_id: "cp-a-alfa", total: "2000.0000" },
+    { id: "s-c", organization_id: ORG_C, document_type: "SALES_ORDER", internal_number: "PV-9999", document_date: "2026-01-10", status: "CONFIRMED", counterparty_id: "cp-c-ajeno", total: "777777.0000" },
   ];
 
   db.purchase_documents = [
-    { id: "p1", organization_id: ORG_A, document_type: "SUPPLIER_INVOICE", status: "POSTED", supplier_id: "cp-a-gamma", total_amount: "500.2500" },
-    { id: "p2", organization_id: ORG_A, document_type: "SUPPLIER_CREDIT_NOTE", status: "POSTED", supplier_id: "cp-a-gamma", total_amount: "100.0000" },
-    { id: "p3", organization_id: ORG_A, document_type: "SUPPLIER_INVOICE", status: "DRAFT", supplier_id: "cp-a-mixto", total_amount: "50.0000" },
-    { id: "p4", organization_id: ORG_A, document_type: "SUPPLIER_INVOICE", status: "REVERSED", supplier_id: "cp-a-gamma", total_amount: "9999.0000" },
-    { id: "p-c", organization_id: ORG_C, document_type: "SUPPLIER_INVOICE", status: "POSTED", supplier_id: "cp-c-ajeno", total_amount: "888888.0000" },
+    { id: "p1", organization_id: ORG_A, document_type: "SUPPLIER_INVOICE", point_of_sale: 1, document_number: 123, issue_date: "2026-01-15", status: "POSTED", supplier_id: "cp-a-gamma", total_amount: "500.2500" },
+    { id: "p2", organization_id: ORG_A, document_type: "SUPPLIER_CREDIT_NOTE", point_of_sale: 1, document_number: 124, issue_date: "2026-03-20", status: "POSTED", supplier_id: "cp-a-gamma", total_amount: "100.0000" },
+    { id: "p3", organization_id: ORG_A, document_type: "SUPPLIER_INVOICE", point_of_sale: 1, document_number: 125, issue_date: "2026-02-01", status: "DRAFT", supplier_id: "cp-a-mixto", total_amount: "50.0000" },
+    { id: "p4", organization_id: ORG_A, document_type: "SUPPLIER_INVOICE", point_of_sale: 1, document_number: 126, issue_date: "2026-02-02", status: "REVERSED", supplier_id: "cp-a-gamma", total_amount: "9999.0000" },
+    { id: "p-c", organization_id: ORG_C, document_type: "SUPPLIER_INVOICE", point_of_sale: 9, document_number: 999, issue_date: "2026-01-15", status: "POSTED", supplier_id: "cp-c-ajeno", total_amount: "888888.0000" },
   ];
 
   db.treasury_accounts = [

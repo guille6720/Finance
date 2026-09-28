@@ -1,9 +1,9 @@
 "use client";
 
-import { useState } from "react";
 import { AppSidebar } from "@/components/shell/app-sidebar";
 import { AppTopbar } from "@/components/shell/app-topbar";
 import type { UserOrganization } from "@/lib/authz/active-organization";
+import type { UxMode } from "@/lib/ui-mode/constants";
 
 export function AppShell({
   companyName,
@@ -11,6 +11,7 @@ export function AppShell({
   title,
   organizations = [],
   activeOrganizationId = null,
+  uxMode = "business",
   children,
 }: {
   companyName?: string;
@@ -18,27 +19,21 @@ export function AppShell({
   title?: string;
   organizations?: UserOrganization[];
   activeOrganizationId?: string | null;
+  uxMode?: UxMode;
   children: React.ReactNode;
 }) {
-  const [uxMode, setUxMode] = useState<"business" | "accountant">("business");
-
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background" data-ux-mode={uxMode}>
       <AppSidebar
         companyName={companyName}
         userName={userName}
         organizations={organizations}
         activeOrganizationId={activeOrganizationId}
+        uxMode={uxMode}
       />
       <div className="lg:pl-64">
-        <AppTopbar
-          title={title}
-          uxMode={uxMode}
-          onToggleUxMode={() =>
-            setUxMode((m) => (m === "business" ? "accountant" : "business"))
-          }
-        />
-        <main className="mx-auto max-w-6xl p-4 lg:p-6">{children}</main>
+        <AppTopbar title={title} uxMode={uxMode} />
+        <main className="mx-auto max-w-[1400px] p-4 lg:p-8">{children}</main>
       </div>
     </div>
   );

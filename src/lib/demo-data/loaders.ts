@@ -412,27 +412,73 @@ export async function loadAccounting(
 
 export type AmountMetric = { count: number; amount: bigint };
 
-export async function loadConfirmedSales(
-  supabase: Client,
-  organizationId: string
-): Promise<QueryResult<AmountMetric>> {
-  const docs = await allRows<{ id: string; total: string | number }>("sales_documents.confirmed", (from, to) =>
+export type ConfirmedSaleRow = {
+  id: string;
+  internal_number: string | null;
+  document_date: string | null;
+  total: string | number;
+};
+
+export type PostedPurchaseRow = {
+  id: string;
+  document_type: string;
+  point_of_sale: number | null;
+  document_number: number | null;
+  issue_date: string | null;
+  total_amount: string | number;
+};
+
+export function loadConfirmedSalesRows(supabase: Client, organizationId: string) {
+  return allRows<ConfirmedSaleRow>("sales_documents.confirmed", (from, to) =>
     supabase
       .from("sales_documents")
-      .select("id, total")
+      .select("id, internal_number, document_date, total")
       .eq("organization_id", organizationId)
       .eq("document_type", "SALES_ORDER")
       .in("status", [...CONFIRMED_SALES_ORDER_STATUSES])
       .order("id", { ascending: true })
       .range(from, to)
   );
-  if (!docs.ok) return { ok: false };
+}
+
+export function summarizeSales(rows: ConfirmedSaleRow[]): AmountMetric {
   return {
-    ok: true,
-    data: {
-      count: docs.data.length,
-      amount: docs.data.reduce((acc, d) => acc + toUnits(d.total), BigInt(0)),
-    },
+    count: rows.length,
+    amount: rows.reduce((acc, d) => acc + toUnits(d.total), BigInt(0)),
+  };
+}
+
+export async function loadConfirmedSales(
+  supabase: Client,
+  organizationId: string
+): Promise<QueryResult<AmountMetric>> {
+  const docs = await loadConfirmedSalesRows(supabase, organizationId);
+  if (!docs.ok) return { ok: false };
+  return { ok: true, data: summarizeSales(docs.data) };
+}
+
+export function loadPostedPurchasesRows(supabase: Client, organizationId: string) {
+  return allRows<PostedPurchaseRow>("purchase_documents.posted", (from, to) =>
+    supabase
+      .from("purchase_documents")
+      .select("id, document_type, point_of_sale, document_number, issue_date, total_amount")
+      .eq("organization_id", organizationId)
+      .eq("status", "POSTED")
+      .order("id", { ascending: true })
+      .range(from, to)
+  );
+}
+
+/** Supplier credit notes subtract. */
+export function signedPurchaseAmount(row: Pick<PostedPurchaseRow, "document_type" | "total_amount">) {
+  const v = toUnits(row.total_amount);
+  return row.document_type === "SUPPLIER_CREDIT_NOTE" ? -v : v;
+}
+
+export function summarizePurchases(rows: PostedPurchaseRow[]): AmountMetric {
+  return {
+    count: rows.length,
+    amount: rows.reduce((acc, d) => acc + signedPurchaseAmount(d), BigInt(0)),
   };
 }
 
@@ -441,28 +487,132 @@ export async function loadPostedPurchases(
   supabase: Client,
   organizationId: string
 ): Promise<QueryResult<AmountMetric>> {
-  const docs = await allRows<{ id: string; document_type: string; total_amount: string | number }>(
-    "purchase_documents.posted",
-    (from, to) =>
-      supabase
-        .from("purchase_documents")
-        .select("id, document_type, total_amount")
-        .eq("organization_id", organizationId)
-        .eq("status", "POSTED")
-        .order("id", { ascending: true })
-        .range(from, to)
-  );
+  const docs = await loadPostedPurchasesRows(supabase, organizationId);
   if (!docs.ok) return { ok: false };
-  return {
-    ok: true,
-    data: {
-      count: docs.data.length,
-      amount: docs.data.reduce((acc, d) => {
-        const v = toUnits(d.total_amount);
-        return d.document_type === "SUPPLIER_CREDIT_NOTE" ? acc - v : acc + v;
-      }, BigInt(0)),
-    },
+  return { ok: true, data: summarizePurchases(docs.data) };
+}
+
+export type MonthlyActivity = {
+  month: string;
+  sales: bigint;
+  purchases: bigint;
+};
+
+/**
+ * Groups by the stored document month (sales: document_date, purchases: issue_date).
+ * Returns up to `maxMonths` consecutive months ending at the latest month with data;
+ * gaps inside that window are zero-filled. No data → empty array.
+ */
+export function buildMonthlyActivity(
+  sales: ConfirmedSaleRow[],
+  purchases: PostedPurchaseRow[],
+  maxMonths = 6
+): MonthlyActivity[] {
+  const zero = BigInt(0);
+  const byMonth = new Map<string, { sales: bigint; purchases: bigint }>();
+  const bucket = (date: string | null) => {
+    const m = date ? /^(\d{4})-(\d{2})/.exec(date) : null;
+    if (!m) return null;
+    const key = `${m[1]}-${m[2]}`;
+    if (!byMonth.has(key)) byMonth.set(key, { sales: zero, purchases: zero });
+    return byMonth.get(key)!;
   };
+  for (const s of sales) {
+    const b = bucket(s.document_date);
+    if (b) b.sales += toUnits(s.total);
+  }
+  for (const p of purchases) {
+    const b = bucket(p.issue_date);
+    if (b) b.purchases += signedPurchaseAmount(p);
+  }
+  if (byMonth.size === 0) return [];
+
+  const keys = [...byMonth.keys()].sort();
+  const first = keys[0];
+  const last = keys[keys.length - 1];
+  let [y, mo] = last.split("-").map(Number);
+  const out: MonthlyActivity[] = [];
+  while (out.length < maxMonths) {
+    const key = `${y}-${String(mo).padStart(2, "0")}`;
+    const v = byMonth.get(key) ?? { sales: zero, purchases: zero };
+    out.unshift({ month: key, ...v });
+    if (key === first) break;
+    mo -= 1;
+    if (mo === 0) {
+      mo = 12;
+      y -= 1;
+    }
+  }
+  return out;
+}
+
+export type RecentActivityItem = {
+  id: string;
+  kind: "sale" | "purchase" | "cash";
+  date: string;
+  reference: string;
+  description: string;
+  amount: bigint;
+  direction: "in" | "out";
+};
+
+function purchaseReference(p: PostedPurchaseRow) {
+  if (p.point_of_sale && p.document_number) {
+    return `${String(p.point_of_sale).padStart(4, "0")}-${String(p.document_number).padStart(8, "0")}`;
+  }
+  return "—";
+}
+
+/** Latest confirmed sales, posted purchases and cash movements, newest first. */
+export function buildRecentActivity(
+  sales: ConfirmedSaleRow[],
+  purchases: PostedPurchaseRow[],
+  cash: CashMovement[],
+  limit = 8
+): RecentActivityItem[] {
+  const items: RecentActivityItem[] = [
+    ...sales
+      .filter((s) => s.document_date)
+      .map((s) => ({
+        id: `sale-${s.id}`,
+        kind: "sale" as const,
+        date: s.document_date as string,
+        reference: s.internal_number || "—",
+        description: "Pedido de venta confirmado",
+        amount: toUnits(s.total),
+        direction: "in" as const,
+      })),
+    ...purchases
+      .filter((p) => p.issue_date)
+      .map((p) => ({
+        id: `purchase-${p.id}`,
+        kind: "purchase" as const,
+        date: p.issue_date as string,
+        reference: purchaseReference(p),
+        description:
+          p.document_type === "SUPPLIER_CREDIT_NOTE"
+            ? "Nota de crédito de proveedor"
+            : p.document_type === "SUPPLIER_DEBIT_NOTE"
+              ? "Nota de débito de proveedor"
+              : "Factura de proveedor",
+        amount: toUnits(p.total_amount),
+        direction: (p.document_type === "SUPPLIER_CREDIT_NOTE" ? "in" : "out") as "in" | "out",
+      })),
+    ...cash
+      .filter((m) => m.operation.status === "POSTED")
+      .map((m) => ({
+        id: `cash-${m.legId}`,
+        kind: "cash" as const,
+        date: m.operation.operation_date,
+        reference: m.operation.internal_number,
+        description: m.operation.description,
+        amount: m.amount,
+        direction: (m.direction === "INFLOW" ? "in" : "out") as "in" | "out",
+      })),
+  ];
+  return items
+    .sort((a, b) => b.date.localeCompare(a.date) || a.id.localeCompare(b.id))
+    .slice(0, limit);
 }
 
 /** Gross volume of POSTED treasury operations — not a net cash position. */
