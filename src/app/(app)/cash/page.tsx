@@ -15,6 +15,7 @@ import {
   formatARS,
   formatCount,
   formatDate,
+  humanizeDescription,
   legDirectionLabel,
   treasuryOperationTypeLabel,
 } from "@/lib/demo-data/format";
@@ -117,7 +118,7 @@ export default async function CashPage() {
                 columns={[
                   { key: "date", label: "Fecha", render: (m) => formatDate(m.operation.operation_date) },
                   { key: "number", label: "Número", render: (m) => m.operation.internal_number },
-                  { key: "description", label: "Descripción", render: (m) => m.operation.description },
+                  { key: "description", label: "Descripción", render: (m) => humanizeDescription(m.operation.description) },
                   {
                     key: "type",
                     label: "Tipo",

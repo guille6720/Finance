@@ -7,6 +7,7 @@ import { ORGANIZATION_MEMBERS_WITH_PROFILE_SELECT } from "@/lib/members/queries"
 import { ROLE_LABELS, type MemberRole } from "@/config/features";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { memberStatusLabel } from "@/lib/demo-data/format";
 
 export default async function UsersPage() {
   const supabase = await createClient();
@@ -53,7 +54,7 @@ export default async function UsersPage() {
         <CardHeader>
           <CardTitle>Equipo</CardTitle>
           <CardDescription>
-            Solo propietarios y administradores pueden cambiar roles (RLS + capa de autorización).
+            Solo propietarios y administradores pueden cambiar roles.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-2">
@@ -80,8 +81,8 @@ export default async function UsersPage() {
                   <Badge tone="primary">
                     {ROLE_LABELS[m.role as MemberRole] ?? m.role}
                   </Badge>
-                  <Badge tone={m.status === "active" ? "success" : "neutral"}>
-                    {m.status}
+                  <Badge tone={memberStatusLabel(m.status).tone}>
+                    {memberStatusLabel(m.status).label}
                   </Badge>
                 </div>
               </div>

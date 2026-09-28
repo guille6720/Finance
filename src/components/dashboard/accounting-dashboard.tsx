@@ -36,6 +36,7 @@ import {
   formatCount,
   formatDate,
   formatPeriod,
+  humanizeDescription,
   journalSourceLabel,
   taxCodeLabel,
   taxPeriodStatusLabel,
@@ -117,7 +118,7 @@ export async function AccountingDashboard({
           tone="neutral"
           loadFailed={!accounting.ok}
           value={accounting.ok ? formatCount(accounting.data.postedCount) : undefined}
-          hint="Estado POSTED en el libro diario"
+          hint="Asientos confirmados en el libro diario"
           href="/accounting"
           testId="kpi-posted-entries"
         />
@@ -145,7 +146,7 @@ export async function AccountingDashboard({
                 {
                   key: "description",
                   label: "Descripción",
-                  render: (e) => <span className="line-clamp-1">{e.description}</span>,
+                  render: (e) => <span className="line-clamp-1">{humanizeDescription(e.description)}</span>,
                 },
                 { key: "source", label: "Origen", render: (e) => journalSourceLabel(e.source_type) },
                 {

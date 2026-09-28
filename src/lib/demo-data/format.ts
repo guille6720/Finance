@@ -129,6 +129,43 @@ export function taxPeriodStatusLabel(status: string | null | undefined) {
   return TAX_PERIOD_STATUS[status ?? ""] ?? { label: status || "—", tone: "neutral" as Tone };
 }
 
+const FEATURE_STATUS: Record<string, { label: string; tone: Tone }> = {
+  enabled: { label: "Habilitado", tone: "success" },
+  restricted: { label: "Restringido", tone: "warning" },
+  disabled: { label: "Deshabilitado", tone: "neutral" },
+};
+
+export function featureStatusLabel(status: string | null | undefined) {
+  return FEATURE_STATUS[status ?? ""] ?? { label: status || "—", tone: "neutral" as Tone };
+}
+
+const MEMBER_STATUS: Record<string, { label: string; tone: Tone }> = {
+  active: { label: "Activo", tone: "success" },
+  invited: { label: "Invitado", tone: "primary" },
+  disabled: { label: "Deshabilitado", tone: "neutral" },
+};
+
+export function memberStatusLabel(status: string | null | undefined) {
+  return MEMBER_STATUS[status ?? ""] ?? { label: status || "—", tone: "neutral" as Tone };
+}
+
+/** Stored descriptions may embed raw document-type codes (e.g. "Compra SUPPLIER_INVOICE"). */
+const DOCUMENT_TYPE_WORDS: Record<string, string> = {
+  SUPPLIER_INVOICE: "factura de proveedor",
+  SUPPLIER_CREDIT_NOTE: "nota de crédito de proveedor",
+  SUPPLIER_DEBIT_NOTE: "nota de débito de proveedor",
+  SALES_ORDER: "pedido de venta",
+  SALES_QUOTE: "presupuesto",
+  SALES_INVOICE: "factura de venta",
+};
+
+const DOCUMENT_TYPE_PATTERN = new RegExp(`\\b(${Object.keys(DOCUMENT_TYPE_WORDS).join("|")})\\b`, "g");
+
+export function humanizeDescription(text: string | null | undefined): string {
+  if (!text) return "—";
+  return text.replace(DOCUMENT_TYPE_PATTERN, (code) => DOCUMENT_TYPE_WORDS[code]);
+}
+
 export function counterpartyDisplayName(row: {
   legal_name: string;
   trade_name: string | null;

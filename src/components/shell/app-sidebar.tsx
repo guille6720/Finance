@@ -134,23 +134,33 @@ export function AppSidebar({
   const Nav = (
     <div className="flex h-full flex-col bg-sidebar text-sidebar-foreground">
       <div className="border-b border-white/10 p-4">
-        <Link href="/dashboard" className="flex items-center gap-3">
-          {/* Place temporary logo at public/brand/logo-dark.png — config-driven */}
-          <div
-            className="flex h-9 w-9 items-center justify-center rounded-md bg-primary/20 text-primary-bright"
-            aria-hidden
+        <div className="flex items-start justify-between gap-2">
+          <Link href="/dashboard" className="flex min-w-0 items-center gap-3">
+            {/* Place temporary logo at public/brand/logo-dark.png — config-driven */}
+            <div
+              className="flex h-9 w-9 items-center justify-center rounded-md bg-primary/20 text-primary-bright"
+              aria-hidden
+            >
+              <Building2 className="h-5 w-5" />
+            </div>
+            <div className="min-w-0">
+              <p className="truncate text-sm font-semibold tracking-tight">{brand.name}</p>
+              {organizations.length === 0 ? (
+                <p className="truncate text-xs text-sidebar-muted">
+                  {companyName || "Sin empresa"}
+                </p>
+              ) : null}
+            </div>
+          </Link>
+          <button
+            type="button"
+            className="rounded-md p-1.5 text-sidebar-muted hover:bg-sidebar-active hover:text-sidebar-foreground lg:hidden"
+            aria-label="Cerrar menú"
+            onClick={() => setMobileOpen(false)}
           >
-            <Building2 className="h-5 w-5" />
-          </div>
-          <div className="min-w-0">
-            <p className="truncate text-sm font-semibold tracking-tight">{brand.name}</p>
-            {organizations.length === 0 ? (
-              <p className="truncate text-xs text-sidebar-muted">
-                {companyName || "Sin empresa"}
-              </p>
-            ) : null}
-          </div>
-        </Link>
+            <X className="h-5 w-5" />
+          </button>
+        </div>
         {organizations.length > 0 ? (
           <div className="mt-4">
             <OrganizationSwitcher
@@ -244,14 +254,17 @@ export function AppSidebar({
 
   return (
     <>
-      <button
-        type="button"
-        className="fixed left-4 top-4 z-50 rounded-md border border-border bg-surface p-2 lg:hidden"
-        aria-label={mobileOpen ? "Cerrar menú" : "Abrir menú"}
-        onClick={() => setMobileOpen((v) => !v)}
-      >
-        {mobileOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-      </button>
+      {mobileOpen ? null : (
+        <button
+          type="button"
+          className="fixed left-4 top-4 z-50 rounded-md border border-border bg-surface p-2 lg:hidden"
+          aria-label="Abrir menú"
+          aria-expanded={false}
+          onClick={() => setMobileOpen(true)}
+        >
+          <Menu className="h-5 w-5" />
+        </button>
+      )}
 
       {mobileOpen ? (
         <div

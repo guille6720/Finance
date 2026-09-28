@@ -58,7 +58,13 @@ import {
   parseUxMode,
 } from "@/lib/ui-mode/constants";
 import { LOAD_ERROR_MESSAGE } from "@/components/demo/module-ui";
-import { formatARS, toUnits } from "@/lib/demo-data/format";
+import {
+  featureStatusLabel,
+  formatARS,
+  humanizeDescription,
+  memberStatusLabel,
+  toUnits,
+} from "@/lib/demo-data/format";
 import {
   buildMonthlyActivity,
   buildRecentActivity,
@@ -471,5 +477,52 @@ describe("dashboard activity helpers", () => {
     expect(items[0].reference).toBe("0002-00000007");
     expect(items[0].direction).toBe("out");
     expect(items.some((i) => i.description === "mov l2")).toBe(false);
+  });
+
+  it("labels purchases without number and humanizes raw document codes", () => {
+    const unnumbered = { ...purchase("p2", "2026-01-05", "20"), point_of_sale: null, document_number: null };
+    const movement = {
+      legId: "l9",
+      accountId: "caja",
+      direction: "OUTFLOW",
+      amount: toUnits("3"),
+      operation: {
+        id: "op-l9",
+        internal_number: "TR-9",
+        operation_type: "PAYMENT",
+        status: "POSTED",
+        operation_date: "2026-01-06",
+        description: "Pago SUPPLIER_INVOICE",
+      },
+    } as unknown as CashMovement;
+    const items = buildRecentActivity([], [unnumbered as PostedPurchaseRow], [movement], 10);
+    expect(items.find((i) => i.kind === "purchase")?.reference).toBe("Sin número");
+    expect(items.find((i) => i.kind === "cash")?.description).toBe("Pago factura de proveedor");
+  });
+});
+
+describe("display labels", () => {
+  it("translates stored codes to Spanish and never shows raw enums", () => {
+    expect(humanizeDescription("Compra SUPPLIER_INVOICE")).toBe("Compra factura de proveedor");
+    expect(humanizeDescription("NC SUPPLIER_CREDIT_NOTE / SALES_ORDER")).toBe(
+      "NC nota de crédito de proveedor / pedido de venta"
+    );
+    expect(humanizeDescription("MY_SUPPLIER_INVOICE_X")).toBe("MY_SUPPLIER_INVOICE_X");
+    expect(humanizeDescription(null)).toBe("—");
+    expect(featureStatusLabel("enabled")).toEqual({ label: "Habilitado", tone: "success" });
+    expect(featureStatusLabel("disabled").label).toBe("Deshabilitado");
+    expect(featureStatusLabel("restricted").label).toBe("Restringido");
+    expect(memberStatusLabel("active")).toEqual({ label: "Activo", tone: "success" });
+    expect(memberStatusLabel("invited").label).toBe("Invitado");
+    expect(memberStatusLabel("disabled").label).toBe("Deshabilitado");
+  });
+});
+
+describe("mobile sidebar", () => {
+  it("offers a close control inside the drawer instead of behind it", () => {
+    const html = renderToStaticMarkup(createElement(AppSidebar, { uxMode: "business" }));
+    const aside = html.slice(html.indexOf("<aside"));
+    expect(aside).toContain('aria-label="Cerrar menú"');
+    expect(html.slice(0, html.indexOf("<aside"))).toContain('aria-label="Abrir menú"');
   });
 });

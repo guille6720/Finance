@@ -6,7 +6,7 @@
  */
 import type { SupabaseClient } from "@supabase/supabase-js";
 import { allRows, count, rows, type QueryResult } from "@/lib/demo-data/query";
-import { toUnits } from "@/lib/demo-data/format";
+import { humanizeDescription, toUnits } from "@/lib/demo-data/format";
 
 export const COUNTERPARTY_ROLE_SELECT =
   "counterparty_id, counterparties!counterparty_roles_counterparty_id_fkey ( id, organization_id, legal_name, trade_name, tax_id, email, phone, is_active )";
@@ -560,7 +560,7 @@ function purchaseReference(p: PostedPurchaseRow) {
   if (p.point_of_sale && p.document_number) {
     return `${String(p.point_of_sale).padStart(4, "0")}-${String(p.document_number).padStart(8, "0")}`;
   }
-  return "—";
+  return "Sin número";
 }
 
 /** Latest confirmed sales, posted purchases and cash movements, newest first. */
@@ -605,7 +605,7 @@ export function buildRecentActivity(
         kind: "cash" as const,
         date: m.operation.operation_date,
         reference: m.operation.internal_number,
-        description: m.operation.description,
+        description: humanizeDescription(m.operation.description),
         amount: m.amount,
         direction: (m.direction === "INFLOW" ? "in" : "out") as "in" | "out",
       })),

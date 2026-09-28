@@ -14,6 +14,7 @@ import {
   formatARS,
   formatCount,
   formatDate,
+  humanizeDescription,
   journalSourceLabel,
 } from "@/lib/demo-data/format";
 
@@ -112,7 +113,7 @@ export default async function AccountingPage() {
                     label: "Descripción",
                     render: (e) => (
                       <div>
-                        <p>{e.description}</p>
+                        <p>{humanizeDescription(e.description)}</p>
                         {e.reversal_of_entry_id ? (
                           <p className="text-xs text-muted-foreground">Asiento de reversión</p>
                         ) : null}

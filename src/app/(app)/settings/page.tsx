@@ -5,6 +5,7 @@ import { ACTIVE_ORG_COOKIE } from "@/lib/authz/context";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { getAppEnv } from "@/config/env";
+import { featureStatusLabel } from "@/lib/demo-data/format";
 
 export default async function SettingsPage() {
   const supabase = await createClient();
@@ -54,7 +55,7 @@ export default async function SettingsPage() {
         <CardHeader>
           <CardTitle>Módulos de la empresa</CardTitle>
           <CardDescription>
-            Estado de entitlements. Independiente de planes de facturación.
+            Qué módulos están disponibles para esta empresa.
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-2">
@@ -75,16 +76,8 @@ export default async function SettingsPage() {
                     {cat?.code} · {cat?.category}
                   </p>
                 </div>
-                <Badge
-                  tone={
-                    f.status === "enabled"
-                      ? "success"
-                      : f.status === "restricted"
-                        ? "warning"
-                        : "neutral"
-                  }
-                >
-                  {f.status}
+                <Badge tone={featureStatusLabel(f.status).tone}>
+                  {featureStatusLabel(f.status).label}
                 </Badge>
               </div>
             );
