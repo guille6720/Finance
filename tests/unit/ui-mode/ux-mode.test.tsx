@@ -508,6 +508,8 @@ describe("display labels", () => {
       "NC nota de crédito de proveedor / pedido de venta"
     );
     expect(humanizeDescription("MY_SUPPLIER_INVOICE_X")).toBe("MY_SUPPLIER_INVOICE_X");
+    expect(humanizeDescription("TRANSFER TRF-2026-000001")).toBe("Transferencia TRF-2026-000001");
+    expect(humanizeDescription("Demo-TR-XFER-1")).toBe("Demo-TR-XFER-1");
     expect(humanizeDescription(null)).toBe("—");
     expect(featureStatusLabel("enabled")).toEqual({ label: "Habilitado", tone: "success" });
     expect(featureStatusLabel("disabled").label).toBe("Deshabilitado");

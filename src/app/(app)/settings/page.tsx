@@ -70,12 +70,7 @@ export default async function SettingsPage() {
                 key={`${cat?.code ?? idx}`}
                 className="flex items-center justify-between rounded-md border border-border px-3 py-2 text-sm"
               >
-                <div>
-                  <p className="font-medium">{cat?.name ?? "—"}</p>
-                  <p className="text-xs text-muted-foreground">
-                    {cat?.code} · {cat?.category}
-                  </p>
-                </div>
+                <p className="font-medium">{cat?.name ?? "—"}</p>
                 <Badge tone={featureStatusLabel(f.status).tone}>
                   {featureStatusLabel(f.status).label}
                 </Badge>

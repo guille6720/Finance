@@ -149,7 +149,7 @@ export function memberStatusLabel(status: string | null | undefined) {
   return MEMBER_STATUS[status ?? ""] ?? { label: status || "—", tone: "neutral" as Tone };
 }
 
-/** Stored descriptions may embed raw document-type codes (e.g. "Compra SUPPLIER_INVOICE"). */
+/** Stored descriptions may embed raw type codes (e.g. "Compra SUPPLIER_INVOICE", "TRANSFER TRF-…"). */
 const DOCUMENT_TYPE_WORDS: Record<string, string> = {
   SUPPLIER_INVOICE: "factura de proveedor",
   SUPPLIER_CREDIT_NOTE: "nota de crédito de proveedor",
@@ -157,6 +157,11 @@ const DOCUMENT_TYPE_WORDS: Record<string, string> = {
   SALES_ORDER: "pedido de venta",
   SALES_QUOTE: "presupuesto",
   SALES_INVOICE: "factura de venta",
+  OPENING_BALANCE: "Saldo inicial",
+  PAYMENT: "Pago",
+  COLLECTION: "Cobranza",
+  TRANSFER: "Transferencia",
+  ADJUSTMENT: "Ajuste",
 };
 
 const DOCUMENT_TYPE_PATTERN = new RegExp(`\\b(${Object.keys(DOCUMENT_TYPE_WORDS).join("|")})\\b`, "g");
