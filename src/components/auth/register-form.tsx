@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/lib/supabase/client";
 import { brand } from "@/config/brand";
+import { authErrorMessage } from "@/lib/auth/messages";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -17,26 +18,58 @@ export function RegisterForm() {
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const [pendingEmail, setPendingEmail] = useState<string | null>(null);
 
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     setLoading(true);
     setError(null);
     const supabase = createClient();
-    const { error: signError } = await supabase.auth.signUp({
+    const { data, error: signError } = await supabase.auth.signUp({
       email,
       password,
       options: {
         data: { full_name: fullName },
+        emailRedirectTo: `${window.location.origin}/auth/confirm?next=/onboarding`,
       },
     });
     setLoading(false);
     if (signError) {
-      setError(signError.message || "No se pudo crear la cuenta");
+      setError(authErrorMessage(signError, "signup"));
+      return;
+    }
+    if (!data.session) {
+      setPendingEmail(email);
       return;
     }
     router.push("/onboarding");
     router.refresh();
+  }
+
+  if (pendingEmail) {
+    return (
+      <Card className="w-full max-w-md" data-testid="register-check-email">
+        <CardHeader>
+          <p className="text-sm font-semibold text-primary-bright">{brand.name}</p>
+          <CardTitle>Revisá tu email</CardTitle>
+          <CardDescription>
+            Te enviamos un enlace de confirmación a <strong>{pendingEmail}</strong>.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-3 text-sm text-muted-foreground">
+          <p>
+            Abrilo desde este mismo navegador para activar la cuenta y seguir con el alta de tu empresa. Si no
+            lo ves en unos minutos, revisá la carpeta de spam o promociones.
+          </p>
+          <p>
+            ¿Ya confirmaste?{" "}
+            <Link href="/login" className="text-primary-bright hover:underline">
+              Ingresar
+            </Link>
+          </p>
+        </CardContent>
+      </Card>
+    );
   }
 
   return (
