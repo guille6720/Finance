@@ -679,7 +679,7 @@ export function buildInventoryAdjustmentInPayload({
   operationDate,
   reference,
   idempotencyKey,
-  reason = "Demo opening stock",
+  reason = "Stock inicial (demo)",
 }) {
   return {
     organization_id: organizationId,
@@ -689,7 +689,7 @@ export function buildInventoryAdjustmentInPayload({
     operation_date: operationDate,
     warehouse_id: warehouseId,
     reason,
-    description: `Demo inventory ${reference}`,
+    description: "Movimiento de inventario (demo)",
     reference,
     idempotency_key: idempotencyKey,
   };

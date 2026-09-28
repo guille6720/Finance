@@ -23,7 +23,7 @@ function feePayload(reason: string | null | undefined = FEE.reason) {
     operationType: FEE.type,
     operationDate: FEE.date,
     amount: "2500.00",
-    description: `Demo treasury ${FEE.ref}`,
+    description: "Operación de tesorería (demo)",
     internalNumber: "TA-2026-000001",
     reference: FEE.ref,
     idempotencyKey: `demo-treasury-${FEE.ref}`,

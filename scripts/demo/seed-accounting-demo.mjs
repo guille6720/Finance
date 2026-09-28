@@ -1017,7 +1017,7 @@ async function seedTreasury(env, token, ctx) {
       operationType: op.type,
       operationDate: op.date,
       amount: money(op.amount),
-      description: `Demo treasury ${op.ref}`,
+      description: "Operación de tesorería (demo)",
       internalNumber: num.data || op.ref,
       reference: op.ref,
       idempotencyKey: idem,

@@ -166,9 +166,21 @@ const DOCUMENT_TYPE_WORDS: Record<string, string> = {
 
 const DOCUMENT_TYPE_PATTERN = new RegExp(`\\b(${Object.keys(DOCUMENT_TYPE_WORDS).join("|")})\\b`, "g");
 
+/** Rows seeded before the Spanish seed copy carry English placeholders plus the seed reference. */
+const LEGACY_SEED_PHRASES: [RegExp, string][] = [
+  [/\bDemo treasury DEMO-[\w-]+/g, "Operación de tesorería (demo)"],
+  [/\bDemo inventory DEMO-[\w-]+/g, "Movimiento de inventario (demo)"],
+  [/\bDemo opening stock\b/g, "Stock inicial (demo)"],
+];
+
 export function humanizeDescription(text: string | null | undefined): string {
   if (!text) return "—";
-  return text.replace(DOCUMENT_TYPE_PATTERN, (code) => DOCUMENT_TYPE_WORDS[code]);
+  let out = text.replace(/(^|:\s*)Compra (SUPPLIER_[A-Z_]+)\b/g, (match, prefix: string, code: string) => {
+    const word = DOCUMENT_TYPE_WORDS[code];
+    return word ? prefix + word.charAt(0).toUpperCase() + word.slice(1) : match;
+  });
+  for (const [pattern, replacement] of LEGACY_SEED_PHRASES) out = out.replace(pattern, replacement);
+  return out.replace(DOCUMENT_TYPE_PATTERN, (code) => DOCUMENT_TYPE_WORDS[code]);
 }
 
 export function counterpartyDisplayName(row: {

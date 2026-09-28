@@ -503,7 +503,14 @@ describe("dashboard activity helpers", () => {
 
 describe("display labels", () => {
   it("translates stored codes to Spanish and never shows raw enums", () => {
-    expect(humanizeDescription("Compra SUPPLIER_INVOICE")).toBe("Compra factura de proveedor");
+    expect(humanizeDescription("Compra SUPPLIER_INVOICE")).toBe("Factura de proveedor");
+    expect(humanizeDescription("Reversión de asiento 00000027: Compra SUPPLIER_INVOICE")).toBe(
+      "Reversión de asiento 00000027: Factura de proveedor"
+    );
+    expect(humanizeDescription("TRANSFER TRF-2026-000001 Demo treasury DEMO-TR-XFER-1")).toBe(
+      "Transferencia TRF-2026-000001 Operación de tesorería (demo)"
+    );
+    expect(humanizeDescription("Demo treasury DEMO-TR-OPEN-CASH")).toBe("Operación de tesorería (demo)");
     expect(humanizeDescription("NC SUPPLIER_CREDIT_NOTE / SALES_ORDER")).toBe(
       "NC nota de crédito de proveedor / pedido de venta"
     );

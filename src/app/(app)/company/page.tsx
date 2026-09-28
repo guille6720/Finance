@@ -2,7 +2,14 @@ import { createClient } from "@/lib/supabase/server";
 import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 import { ACTIVE_ORG_COOKIE } from "@/lib/authz/context";
-import { ROLE_LABELS, type MemberRole } from "@/config/features";
+import {
+  BUSINESS_TYPE_LABELS,
+  ROLE_LABELS,
+  type BusinessType,
+  type MemberRole,
+} from "@/config/features";
+
+const NOT_LOADED = <span className="text-muted-foreground italic">Sin cargar</span>;
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { formatCuit } from "@/lib/validations/argentina";
 
@@ -63,13 +70,13 @@ export default async function CompanyPage() {
         <CardContent className="grid gap-2 text-sm sm:grid-cols-2">
           <p>
             <span className="text-muted-foreground">CUIT:</span>{" "}
-            {org?.cuit ? formatCuit(org.cuit) : "—"}
+            {org?.cuit ? formatCuit(org.cuit) : NOT_LOADED}
           </p>
           <p>
-            <span className="text-muted-foreground">Provincia:</span> {org?.province || "—"}
+            <span className="text-muted-foreground">Provincia:</span> {org?.province || NOT_LOADED}
           </p>
           <p>
-            <span className="text-muted-foreground">Ciudad:</span> {org?.city || "—"}
+            <span className="text-muted-foreground">Ciudad:</span> {org?.city || NOT_LOADED}
           </p>
           <p>
             <span className="text-muted-foreground">Moneda:</span> {org?.base_currency}
@@ -77,11 +84,11 @@ export default async function CompanyPage() {
           <p>
             <span className="text-muted-foreground">Condición:</span>{" "}
             {(fiscal?.fiscal_conditions as unknown as { name_business?: string } | null)
-              ?.name_business || "—"}
+              ?.name_business || NOT_LOADED}
           </p>
           <p>
             <span className="text-muted-foreground">Domicilio fiscal:</span>{" "}
-            {fiscal?.fiscal_address || "—"}
+            {fiscal?.fiscal_address || NOT_LOADED}
           </p>
         </CardContent>
       </Card>
@@ -106,7 +113,12 @@ export default async function CompanyPage() {
           <CardDescription>Respuestas del alta inicial</CardDescription>
         </CardHeader>
         <CardContent className="grid gap-2 text-sm sm:grid-cols-2">
-          <p>Tipo: {business?.business_type ?? "—"}</p>
+          <p>
+            Tipo:{" "}
+            {business?.business_type
+              ? BUSINESS_TYPE_LABELS[business.business_type as BusinessType] ?? business.business_type
+              : NOT_LOADED}
+          </p>
           <p>Productos: {business?.sells_products ? "Sí" : "No"}</p>
           <p>Servicios: {business?.sells_services ? "Sí" : "No"}</p>
           <p>Inventario: {business?.manages_inventory ? "Sí" : "No"}</p>
