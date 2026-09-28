@@ -13,6 +13,7 @@ export async function GET(request: NextRequest) {
       app_env: process.env.NEXT_PUBLIC_APP_ENV ?? process.env.APP_ENV ?? "local",
       arca_env: process.env.ARCA_ENV ?? "disabled",
       production_authorized: false,
+      provisioning_configured: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),
       timestamp: new Date().toISOString(),
     },
     {

@@ -8,6 +8,8 @@ import {
   resolveActiveOrganizationId,
 } from "@/lib/authz/active-organization";
 import { getUxMode } from "@/lib/ui-mode/server";
+import { isOrganizationProvisioned } from "@/lib/onboarding/provision";
+import { SetupBanner } from "@/components/onboarding/setup-banner";
 
 export default async function AppLayout({
   children,
@@ -38,6 +40,10 @@ export default async function AppLayout({
     .maybeSingle();
 
   const uxMode = await getUxMode();
+  const needsSetup =
+    activeOrg?.role === "owner" && activeOrganizationId
+      ? (await isOrganizationProvisioned(supabase, activeOrganizationId)) === false
+      : false;
 
   return (
     <AppShell
@@ -47,6 +53,7 @@ export default async function AppLayout({
       activeOrganizationId={activeOrganizationId}
       uxMode={uxMode}
     >
+      {needsSetup ? <SetupBanner /> : null}
       {children}
     </AppShell>
   );

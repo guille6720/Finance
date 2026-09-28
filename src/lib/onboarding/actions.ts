@@ -9,6 +9,8 @@ import {
 } from "@/lib/onboarding/schema";
 import { requireUser, ACTIVE_ORG_COOKIE } from "@/lib/authz/context";
 import { writeAuditEvent } from "@/lib/audit/write-audit-event";
+import { requireActiveOrganization } from "@/lib/demo-data/organization-context";
+import { provisionOrganization } from "@/lib/onboarding/provision";
 
 export type OnboardingResult =
   | { ok: true; organizationId: string }
@@ -114,15 +116,6 @@ export async function completeOnboarding(
     works_with_suppliers: input.worksWithSuppliers,
   });
 
-  const year = new Date().getFullYear();
-  await supabase.from("accounting_periods").insert({
-    organization_id: orgId,
-    name: `Ejercicio ${year}`,
-    starts_on: `${year}-01-01`,
-    ends_on: `${year}-12-31`,
-    is_closed: false,
-  });
-
   if (input.needsCostCenters) {
     await supabase.from("cost_centers").insert({
       organization_id: orgId,
@@ -132,34 +125,9 @@ export async function completeOnboarding(
     });
   }
 
-  const { data: catalog } = await supabase
-    .from("feature_catalog")
-    .select("id, code, default_status");
-
   const recommended = new Set(
     recommendFeatures(input).map((r) => r.code)
   );
-
-  if (catalog?.length) {
-    const rows = catalog.map((f) => {
-      let status = f.default_status as string;
-      if (f.code === "dashboard") status = "enabled";
-      else if (input.acceptedRecommendedModules && recommended.has(f.code)) {
-        status = f.code === "medical_legal" ? "restricted" : "enabled";
-      } else if (f.code === "medical_legal") {
-        status = "restricted";
-      } else {
-        status = "disabled";
-      }
-      return {
-        organization_id: orgId,
-        feature_id: f.id,
-        status,
-        enabled_at: status === "enabled" ? new Date().toISOString() : null,
-      };
-    });
-    await supabase.from("organization_features").insert(rows);
-  }
 
   await supabase.from("organization_settings").insert([
     {
@@ -194,8 +162,32 @@ export async function completeOnboarding(
     secure: process.env.NODE_ENV === "production",
   });
 
+  const provisioned = await provisionOrganization(supabase, user.id, orgId);
+  if (!provisioned.ok) {
+    console.error("[onboarding] provisioning incomplete", { step: provisioned.step });
+  }
+
   revalidatePath("/dashboard");
   revalidatePath("/onboarding");
 
   return { ok: true, organizationId: orgId };
+}
+
+export type FinishSetupState = { error?: string };
+
+/** Retries provisioning for the active organization; only its creator-owner can run it. */
+export async function finishOrganizationSetup(): Promise<FinishSetupState> {
+  const { supabase, user, organizationId } = await requireActiveOrganization();
+  const result = await provisionOrganization(supabase, user.id, organizationId);
+  if (!result.ok) {
+    console.error("[onboarding] setup retry failed", { step: result.step });
+    return {
+      error:
+        result.step === "not_owner"
+          ? "Solo quien creó la empresa puede completar la configuración."
+          : "No pudimos completar la configuración. Intentá de nuevo en unos minutos.",
+    };
+  }
+  revalidatePath("/", "layout");
+  return {};
 }

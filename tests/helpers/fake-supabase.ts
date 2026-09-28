@@ -27,6 +27,7 @@ const RELATIONS: Relation[] = [
   { name: "organization_members_user_id_fkey", from: "organization_members", to: "profiles", local: "user_id", foreign: "id" },
   { name: "organization_members_invited_by_fkey", from: "organization_members", to: "profiles", local: "invited_by", foreign: "id" },
   { name: "fiscal_profiles_fiscal_condition_id_fkey", from: "fiscal_profiles", to: "fiscal_conditions", local: "fiscal_condition_id", foreign: "id" },
+  { name: "organization_features_feature_id_fkey", from: "organization_features", to: "feature_catalog", local: "feature_id", foreign: "id" },
   { name: "counterparty_roles_counterparty_id_fkey", from: "counterparty_roles", to: "counterparties", local: "counterparty_id", foreign: "id" },
   { name: "journal_entry_lines_journal_entry_id_fkey", from: "journal_entry_lines", to: "journal_entries", local: "journal_entry_id", foreign: "id" },
   { name: "journal_entry_lines_account_id_fkey", from: "journal_entry_lines", to: "accounts", local: "account_id", foreign: "id" },
@@ -36,6 +37,9 @@ const RELATIONS: Relation[] = [
   { name: "purchase_documents_journal_fk", from: "purchase_documents", to: "journal_entries", local: "journal_entry_id", foreign: "id" },
   { name: "purchase_documents_reverse_journal_fk", from: "purchase_documents", to: "journal_entries", local: "reverse_journal_entry_id", foreign: "id" },
 ];
+
+/** Catalog tables readable by any authenticated user. */
+const GLOBAL_TABLES = new Set(["feature_catalog", "fiscal_conditions"]);
 
 type Embed = { key: string; relation: Relation; inner: boolean; many?: boolean };
 type PgErr = { code: string; message: string };
@@ -85,8 +89,11 @@ export function createFakeSupabase(
     failSelectWithProfiles?: boolean;
     failTables?: string[];
     failInserts?: Record<string, PgErr>;
+    failRpcs?: Record<string, PgErr>;
+    rpcHandlers?: Record<string, (args: Record<string, unknown>, db: FakeDb) => unknown>;
   } = {}
 ) {
+  const rpcs: { name: string; args: Record<string, unknown> }[] = [];
   const log: FakeQueryLog = [];
   const inserts: { table: string; row: Row }[] = [];
   const deletes: { table: string; filters: [string, unknown][]; count: number }[] = [];
@@ -120,7 +127,7 @@ export function createFakeSupabase(
       );
     }
     if ("organization_id" in row) return orgs.has(row.organization_id as string);
-    return false;
+    return GLOBAL_TABLES.has(table);
   }
 
   function withEmbeds(row: Row, embeds: Embed[]): Row {
@@ -319,9 +326,16 @@ export function createFakeSupabase(
       },
     },
     from,
+    async rpc(name: string, args: Record<string, unknown> = {}) {
+      rpcs.push({ name, args });
+      const error = opts.failRpcs?.[name] ?? null;
+      const handler = opts.rpcHandlers?.[name];
+      if (!error && handler) return { data: handler(args, db), error: null };
+      return { data: null, error };
+    },
   };
 
-  return { client, log, inserts, deletes };
+  return { client, log, inserts, deletes, rpcs };
 }
 
 export const ORG_A = "11111111-1111-4111-8111-111111111111";
