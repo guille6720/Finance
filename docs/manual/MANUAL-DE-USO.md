@@ -248,7 +248,7 @@ El recuadro amarillo recuerda que la información es demostrativa y que no const
 
 ![Sección Empresa](img/16-empresa.png)
 
-Muestra los datos de la empresa activa (razón social, nombre comercial, CUIT, provincia, ciudad, moneda, condición fiscal, domicilio), sus **sucursales** y el **perfil del negocio** cargado en el alta. También indica tu rol en esa empresa. **Sin cargar** indica que ese dato todavía no se completó.
+Muestra los datos de la empresa activa (razón social, nombre comercial, CUIT, provincia, ciudad, moneda, condición fiscal, domicilio), sus **sucursales** y el **perfil del negocio** cargado en el alta. También indica tu rol en esa empresa. **Sin cargar** indica que ese dato todavía no se completó. Si el perfil del negocio no se respondió en el alta, la pantalla lo dice en lugar de mostrar respuestas.
 
 ### Usuarios
 

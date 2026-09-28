@@ -26,6 +26,7 @@ const RELATIONS: Relation[] = [
   { name: "organization_members_organization_id_fkey", from: "organization_members", to: "organizations", local: "organization_id", foreign: "id" },
   { name: "organization_members_user_id_fkey", from: "organization_members", to: "profiles", local: "user_id", foreign: "id" },
   { name: "organization_members_invited_by_fkey", from: "organization_members", to: "profiles", local: "invited_by", foreign: "id" },
+  { name: "fiscal_profiles_fiscal_condition_id_fkey", from: "fiscal_profiles", to: "fiscal_conditions", local: "fiscal_condition_id", foreign: "id" },
   { name: "counterparty_roles_counterparty_id_fkey", from: "counterparty_roles", to: "counterparties", local: "counterparty_id", foreign: "id" },
   { name: "journal_entry_lines_journal_entry_id_fkey", from: "journal_entry_lines", to: "journal_entries", local: "journal_entry_id", foreign: "id" },
   { name: "journal_entry_lines_account_id_fkey", from: "journal_entry_lines", to: "accounts", local: "account_id", foreign: "id" },
@@ -215,6 +216,14 @@ export function createFakeSupabase(
         const r = run();
         if ("error" in r) return { data: null, error: r.error };
         return { data: r.rows[0] ?? null, error: null };
+      },
+      async single() {
+        const failure = forcedError(table, columns);
+        if (failure) return { data: null, error: failure };
+        const r = run();
+        if ("error" in r) return { data: null, error: r.error };
+        if (r.rows.length !== 1) return { data: null, error: { code: "PGRST116", message: "not single" } };
+        return { data: r.rows[0], error: null };
       },
       insert(row: Row) {
         inserts.push({ table, row });
