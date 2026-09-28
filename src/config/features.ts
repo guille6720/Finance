@@ -79,6 +79,7 @@ export const PERMISSIONS = [
   "audit.read",
   "accounting.read",
   "accounting.manage_periods",
+  "counterparties.create",
 ] as const;
 
 export type Permission = (typeof PERMISSIONS)[number];
@@ -104,6 +105,7 @@ export const ROLE_PERMISSIONS: Record<MemberRole, readonly Permission[]> = {
     "audit.read",
     "accounting.read",
     "accounting.manage_periods",
+    "counterparties.create",
   ],
   manager: [
     "org.read",
@@ -117,6 +119,7 @@ export const ROLE_PERMISSIONS: Record<MemberRole, readonly Permission[]> = {
     "features.read",
     "audit.read",
     "accounting.read",
+    "counterparties.create",
   ],
   operator: [
     "org.read",
@@ -126,6 +129,7 @@ export const ROLE_PERMISSIONS: Record<MemberRole, readonly Permission[]> = {
     "fiscal.read",
     "business_profile.read",
     "features.read",
+    "counterparties.create",
   ],
   accountant: [
     "org.read",

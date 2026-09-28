@@ -2,7 +2,7 @@
 
 Guía para recorrer la aplicación: cómo ingresar, cómo moverse, qué muestra cada pantalla y cómo interpretar los números.
 
-> **Importante.** Esta versión es una **demo de solo lectura**. Todo lo que se ve proviene de datos cargados en el entorno de pruebas (Staging). Todavía no se pueden crear, editar ni borrar registros, y nada de lo que se muestra constituye una presentación fiscal ante ARCA.
+> **Importante.** Esta versión es una **demo**. Todo lo que se ve proviene de datos cargados en el entorno de pruebas (Staging). Por ahora solo se pueden **dar de alta clientes y proveedores** (ver secciones 7 y 8); todavía no se pueden cargar ventas, compras ni asientos, ni editar o borrar registros. Nada de lo que se muestra constituye una presentación fiscal ante ARCA.
 
 ---
 
@@ -128,7 +128,7 @@ Lista las últimas ventas confirmadas, compras contabilizadas y movimientos de c
 
 ![Acciones rápidas y progreso de configuración](img/05-negocio-acciones.png)
 
-- **Acciones rápidas** son atajos a secciones existentes. No hay botones de "crear" porque la carga de comprobantes todavía no está habilitada.
+- **Acciones rápidas** son atajos a secciones existentes. La carga de comprobantes todavía no está habilitada; las altas de clientes y proveedores se hacen desde sus secciones.
 - **Configuración de la empresa** muestra qué datos de alta están completos (tilde verde) y cuáles faltan (círculo vacío), con un porcentaje de avance.
 
 ---
@@ -182,6 +182,18 @@ Cuando una empresa todavía no tiene movimientos, la aplicación lo dice clarame
 - **Total clientes**, **Activos** y **Clientes con ventas** (clientes con al menos un documento de venta).
 - **Listado de clientes** con nombre comercial y razón social, CUIT/DNI, email, teléfono y estado (Activo / Inactivo).
 
+### Dar de alta un cliente
+
+1. Tocá **Nuevo cliente**, arriba a la derecha.
+2. Completá **Razón social o nombre** (obligatorio), y si querés el nombre comercial, el tipo (**Empresa** o **Persona**), email y teléfono.
+3. Elegí el **documento** (CUIT, CUIL, DNI, Pasaporte o Sin documento) y escribí el número. El CUIT/CUIL se valida con su dígito verificador; podés escribirlo con o sin guiones.
+4. Si también le comprás, marcá **También es proveedor**.
+5. Tocá **Guardar cliente**. Volvés al listado con el aviso **"Cliente creado correctamente."**
+
+Si ya existe un cliente con ese documento, el formulario te lo avisa y no crea un duplicado. Si el documento ya estaba cargado como proveedor, no se crea otro registro: se lo marca también como cliente y aparece el aviso correspondiente.
+
+El botón **Nuevo cliente** solo aparece para los roles **Propietario, Administrador, Gerente y Operador**. Los roles **Contador** y **Solo lectura** ven el listado pero no pueden dar de alta.
+
 ---
 
 ## 8. Proveedores
@@ -189,6 +201,8 @@ Cuando una empresa todavía no tiene movimientos, la aplicación lo dice clarame
 ![Sección Proveedores](img/11-proveedores.png)
 
 Funciona igual que Clientes: totales arriba y el listado de proveedores con sus datos de contacto y estado. **Proveedores con compras** cuenta los que tienen al menos un comprobante de compra.
+
+Para dar de alta uno, tocá **Nuevo proveedor** y seguí los mismos pasos que para un cliente. La casilla es **También es cliente**.
 
 ---
 
@@ -293,6 +307,8 @@ Los importes se muestran en pesos argentinos con formato local (por ejemplo, `$ 
 | **"No pudimos cargar esta información."** | Falló la consulta de ese bloque. Nunca se reemplaza por ceros. | Recargá la página. Si persiste, avisá al soporte. |
 | **"No se pudo cambiar el modo."** | No se guardó el cambio de modo. | Revisá la conexión y volvé a intentar. |
 | **"Cambiando de empresa…"** | Se está cargando la otra empresa. | Esperá unos segundos. |
+| **"Ya existe un cliente/proveedor con ese documento"** | Ese CUIT/DNI ya está cargado en la empresa. | Buscalo en el listado; no hace falta cargarlo de nuevo. |
+| **"Tu rol no permite crear…"** | Tu rol no tiene permiso de alta. | Pedile a un propietario o administrador. |
 | **Pronto / Próximamente** | El módulo todavía no está disponible. | — |
 | Bloques grises animados | La página se está cargando. | Esperá unos segundos. |
 
@@ -301,7 +317,13 @@ Los importes se muestran en pesos argentinos con formato local (por ejemplo, `$ 
 ## 16. Preguntas frecuentes
 
 **¿Puedo cargar una venta, una compra o un asiento?**
-Todavía no. Esta versión es de solo lectura; por eso no hay botones de "Nuevo" o "Crear".
+Todavía no. Por ahora solo se pueden dar de alta clientes y proveedores.
+
+**No veo el botón "Nuevo cliente" o "Nuevo proveedor".**
+Tu rol en esa empresa no tiene permiso de alta (por ejemplo, Contador o Solo lectura). Pedile a un propietario o administrador que lo cargue o que cambie tu rol.
+
+**¿Puedo agregar usuarios o crear otra empresa desde la aplicación?**
+Todavía no. Las invitaciones de usuarios y el alta de nuevas empresas se habilitarán más adelante.
 
 **¿Por qué el saldo de caja es distinto del volumen de tesorería?**
 El saldo de caja considera solo las cuentas de caja (ingresos menos egresos). El volumen de tesorería suma los importes de todas las operaciones de caja y bancos, sin restar nada.

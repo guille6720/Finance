@@ -37,7 +37,7 @@ const RELATIONS: Relation[] = [
   { name: "purchase_documents_reverse_journal_fk", from: "purchase_documents", to: "journal_entries", local: "reverse_journal_entry_id", foreign: "id" },
 ];
 
-type Embed = { key: string; relation: Relation; inner: boolean };
+type Embed = { key: string; relation: Relation; inner: boolean; many?: boolean };
 type PgErr = { code: string; message: string };
 
 /** Resolves `rel ( … )`, `rel!fk ( … )`, `rel!fk!inner ( … )` like PostgREST does. */
@@ -50,9 +50,17 @@ function parseEmbeds(table: string, columns: string): { embeds: Embed[]; error: 
     const modifiers = m[2].split("!").filter(Boolean);
     const inner = modifiers.includes("inner");
     const hint = modifiers.find((x) => x !== "inner" && x !== "left");
-    const candidates = RELATIONS.filter(
+    const forward = RELATIONS.filter(
       (r) => r.from === table && r.to === target && (!hint || r.name === hint)
     );
+    const reverse = RELATIONS.filter(
+      (r) => r.to === table && r.from === target && (!hint || r.name === hint)
+    );
+    if (forward.length === 0 && reverse.length === 1) {
+      embeds.push({ key: target, relation: reverse[0], inner, many: true });
+      continue;
+    }
+    const candidates = forward;
     if (candidates.length === 0) {
       return { embeds, error: { code: "PGRST200", message: "Could not find a relationship" } };
     }
@@ -73,10 +81,16 @@ function parseEmbeds(table: string, columns: string): { embeds: Embed[]; error: 
 export function createFakeSupabase(
   db: FakeDb,
   currentUserId: string | null,
-  opts: { failSelectWithProfiles?: boolean; failTables?: string[] } = {}
+  opts: {
+    failSelectWithProfiles?: boolean;
+    failTables?: string[];
+    failInserts?: Record<string, PgErr>;
+  } = {}
 ) {
   const log: FakeQueryLog = [];
   const inserts: { table: string; row: Row }[] = [];
+  const deletes: { table: string; filters: [string, unknown][]; count: number }[] = [];
+  let seq = 0;
   /** Simulates an unexpected DB failure (members+profiles listing, or whole tables). */
   function forcedError(table: string, columns: string) {
     if (opts.failSelectWithProfiles && table === "organization_members" && /profiles/.test(columns)) {
@@ -112,6 +126,12 @@ export function createFakeSupabase(
   function withEmbeds(row: Row, embeds: Embed[]): Row {
     const out: Row = { ...row };
     for (const e of embeds) {
+      if (e.many) {
+        out[e.key] = (db[e.relation.from] ?? [])
+          .filter((x) => x[e.relation.local] === row[e.relation.foreign] && visible(e.relation.from, x))
+          .map((x) => ({ ...x }));
+        continue;
+      }
       const target = (db[e.relation.to] ?? []).find(
         (x) => x[e.relation.foreign] === row[e.relation.local]
       );
@@ -225,9 +245,50 @@ export function createFakeSupabase(
         if (r.rows.length !== 1) return { data: null, error: { code: "PGRST116", message: "not single" } };
         return { data: r.rows[0], error: null };
       },
-      insert(row: Row) {
-        inserts.push({ table, row });
-        return Promise.resolve({ data: null, error: null });
+      insert(input: Row | Row[]) {
+        const rows = (Array.isArray(input) ? input : [input]).map((r) => ({
+          id: r.id ?? `${table}-${++seq}`,
+          ...r,
+        }));
+        let error: PgErr | null = opts.failInserts?.[table] ?? null;
+        if (!error && rows.some((r) => "organization_id" in r && !visible(table, r))) {
+          error = { code: "42501", message: `new row violates row-level security policy for table "${table}"` };
+        }
+        if (!error) {
+          for (const row of rows) {
+            inserts.push({ table, row });
+            (db[table] ??= []).push(row);
+          }
+        }
+        const result = { data: null, error };
+        const singleResult = { data: error ? null : { ...rows[0] }, error };
+        const chain = {
+          select() {
+            return { single: async () => singleResult, then: (res: (v: unknown) => unknown) => Promise.resolve(res(singleResult)) };
+          },
+          then(res: (v: typeof result) => unknown) {
+            return Promise.resolve(res(result));
+          },
+        };
+        return chain;
+      },
+      delete() {
+        const del = {
+          eq(col: string, val: unknown) {
+            filters.push([col, val]);
+            return del;
+          },
+          then(res: (v: { data: null; error: PgErr | null }) => unknown) {
+            const before = db[table] ?? [];
+            const keep = before.filter(
+              (r) => !(visible(table, r) && filters.every(([c, v]) => r[c] === v))
+            );
+            deletes.push({ table, filters: [...filters], count: before.length - keep.length });
+            db[table] = keep;
+            return Promise.resolve(res({ data: null, error: null }));
+          },
+        };
+        return del;
       },
       then<T>(
         resolve: (v: {
@@ -260,7 +321,7 @@ export function createFakeSupabase(
     from,
   };
 
-  return { client, log, inserts };
+  return { client, log, inserts, deletes };
 }
 
 export const ORG_A = "11111111-1111-4111-8111-111111111111";

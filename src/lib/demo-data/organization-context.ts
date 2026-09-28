@@ -7,11 +7,13 @@ import {
   resolveActiveOrganizationId,
 } from "@/lib/authz/active-organization";
 import { logQueryFailure } from "@/lib/demo-data/query";
+import type { MemberRole } from "@/config/features";
 
 export type ActiveOrganizationContext = {
   supabase: SupabaseClient;
   user: User;
   organizationId: string;
+  role: MemberRole;
 };
 
 export class OrganizationContextError extends Error {
@@ -35,7 +37,7 @@ export async function requireActiveOrganization(): Promise<ActiveOrganizationCon
   const cookieStore = await cookies();
   const { data: memberships, error } = await supabase
     .from("organization_members")
-    .select("organization_id")
+    .select("organization_id, role")
     .eq("user_id", user.id)
     .eq("status", "active")
     .order("created_at", { ascending: true });
@@ -51,5 +53,8 @@ export async function requireActiveOrganization(): Promise<ActiveOrganizationCon
   );
   if (!organizationId) redirect("/onboarding");
 
-  return { supabase, user, organizationId };
+  const role = (memberships ?? []).find((m) => m.organization_id === organizationId)
+    ?.role as MemberRole;
+
+  return { supabase, user, organizationId, role };
 }

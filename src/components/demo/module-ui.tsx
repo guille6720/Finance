@@ -8,11 +8,22 @@ export const LOAD_ERROR_MESSAGE = "No pudimos cargar esta información.";
 export const REPORTS_NOTICE =
   "Información demostrativa basada en datos registrados en Staging. No constituye una presentación fiscal.";
 
-export function ModuleHeader({ title, description }: { title: string; description: string }) {
+export function ModuleHeader({
+  title,
+  description,
+  action,
+}: {
+  title: string;
+  description: string;
+  action?: ReactNode;
+}) {
   return (
-    <div>
-      <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
-      <p className="mt-1 text-sm text-muted-foreground">{description}</p>
+    <div className="flex flex-wrap items-start justify-between gap-3">
+      <div>
+        <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
+        <p className="mt-1 text-sm text-muted-foreground">{description}</p>
+      </div>
+      {action ? <div className="shrink-0">{action}</div> : null}
     </div>
   );
 }
