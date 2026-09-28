@@ -190,6 +190,10 @@ Cuando una empresa todavía no tiene movimientos, la aplicación lo dice clarame
 4. Si también le comprás, marcá **También es proveedor**.
 5. Tocá **Guardar cliente**. Volvés al listado con el aviso **"Cliente creado correctamente."**
 
+![Formulario Nuevo cliente con errores de validación](img/20-nuevo-cliente.png)
+
+Si falta un dato o el documento no es válido, el formulario marca en rojo el campo y te dice qué corregir, sin borrar lo que ya escribiste.
+
 Si ya existe un cliente con ese documento, el formulario te lo avisa y no crea un duplicado. Si el documento ya estaba cargado como proveedor, no se crea otro registro: se lo marca también como cliente y aparece el aviso correspondiente.
 
 El botón **Nuevo cliente** solo aparece para los roles **Propietario, Administrador, Gerente y Operador**. Los roles **Contador** y **Solo lectura** ven el listado pero no pueden dar de alta.
