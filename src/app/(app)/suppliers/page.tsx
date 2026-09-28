@@ -1,10 +1,5 @@
-import { ComingSoonPage } from "@/components/shell/coming-soon";
+import { CounterpartyPage } from "@/components/demo/counterparty-page";
 
-export default function SuppliersPage() {
-  return (
-    <ComingSoonPage
-      title="Proveedores"
-      description="Proveedores a pagar y compras, sin jerga de acreedores."
-    />
-  );
+export default async function SuppliersPage() {
+  return CounterpartyPage({ role: "SUPPLIER" });
 }

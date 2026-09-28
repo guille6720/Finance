@@ -1,10 +1,5 @@
-import { ComingSoonPage } from "@/components/shell/coming-soon";
+import { CounterpartyPage } from "@/components/demo/counterparty-page";
 
-export default function CustomersPage() {
-  return (
-    <ComingSoonPage
-      title="Clientes"
-      description="Acá vas a ver a quién le vendés y quién te debe — en lenguaje simple."
-    />
-  );
+export default async function CustomersPage() {
+  return CounterpartyPage({ role: "CUSTOMER" });
 }

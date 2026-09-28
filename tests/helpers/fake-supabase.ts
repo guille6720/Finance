@@ -12,19 +12,77 @@ export type FakeDb = {
   [table: string]: Row[];
 };
 
-export type FakeQueryLog = { table: string; filters: [string, unknown][] }[];
+export type FakeQueryLog = {
+  table: string;
+  columns?: string;
+  filters: [string, unknown][];
+  inFilters?: [string, unknown[]][];
+}[];
+
+type Relation = { name: string; from: string; to: string; local: string; foreign: string };
+
+/** FK relationships as they exist in the real schema (names from pg_constraint). */
+const RELATIONS: Relation[] = [
+  { name: "organization_members_organization_id_fkey", from: "organization_members", to: "organizations", local: "organization_id", foreign: "id" },
+  { name: "organization_members_user_id_fkey", from: "organization_members", to: "profiles", local: "user_id", foreign: "id" },
+  { name: "organization_members_invited_by_fkey", from: "organization_members", to: "profiles", local: "invited_by", foreign: "id" },
+  { name: "counterparty_roles_counterparty_id_fkey", from: "counterparty_roles", to: "counterparties", local: "counterparty_id", foreign: "id" },
+  { name: "journal_entry_lines_journal_entry_id_fkey", from: "journal_entry_lines", to: "journal_entries", local: "journal_entry_id", foreign: "id" },
+  { name: "journal_entry_lines_account_id_fkey", from: "journal_entry_lines", to: "accounts", local: "account_id", foreign: "id" },
+  { name: "journal_entry_lines_counterparty_tenant_fk", from: "journal_entry_lines", to: "counterparties", local: "counterparty_id", foreign: "id" },
+  { name: "treasury_legs_org_op_fk", from: "treasury_operation_legs", to: "treasury_operations", local: "treasury_operation_id", foreign: "id" },
+  { name: "treasury_legs_org_account_fk", from: "treasury_operation_legs", to: "treasury_accounts", local: "treasury_account_id", foreign: "id" },
+  { name: "purchase_documents_journal_fk", from: "purchase_documents", to: "journal_entries", local: "journal_entry_id", foreign: "id" },
+  { name: "purchase_documents_reverse_journal_fk", from: "purchase_documents", to: "journal_entries", local: "reverse_journal_entry_id", foreign: "id" },
+];
+
+type Embed = { key: string; relation: Relation; inner: boolean };
+type PgErr = { code: string; message: string };
+
+/** Resolves `rel ( … )`, `rel!fk ( … )`, `rel!fk!inner ( … )` like PostgREST does. */
+function parseEmbeds(table: string, columns: string): { embeds: Embed[]; error: PgErr | null } {
+  const embeds: Embed[] = [];
+  const re = /([a-z_]+)((?:![a-z_]+)*)\s*\(/g;
+  let m: RegExpExecArray | null;
+  while ((m = re.exec(columns))) {
+    const target = m[1];
+    const modifiers = m[2].split("!").filter(Boolean);
+    const inner = modifiers.includes("inner");
+    const hint = modifiers.find((x) => x !== "inner" && x !== "left");
+    const candidates = RELATIONS.filter(
+      (r) => r.from === table && r.to === target && (!hint || r.name === hint)
+    );
+    if (candidates.length === 0) {
+      return { embeds, error: { code: "PGRST200", message: "Could not find a relationship" } };
+    }
+    if (candidates.length > 1) {
+      return {
+        embeds,
+        error: {
+          code: "PGRST201",
+          message: `Could not embed because more than one relationship was found for '${table}' and '${target}'`,
+        },
+      };
+    }
+    embeds.push({ key: target, relation: candidates[0], inner });
+  }
+  return { embeds, error: null };
+}
 
 export function createFakeSupabase(
   db: FakeDb,
   currentUserId: string | null,
-  opts: { failSelectWithProfiles?: boolean } = {}
+  opts: { failSelectWithProfiles?: boolean; failTables?: string[] } = {}
 ) {
   const log: FakeQueryLog = [];
   const inserts: { table: string; row: Row }[] = [];
-  /** Simulates an unexpected DB failure on the members+profiles listing. */
+  /** Simulates an unexpected DB failure (members+profiles listing, or whole tables). */
   function forcedError(table: string, columns: string) {
     if (opts.failSelectWithProfiles && table === "organization_members" && /profiles/.test(columns)) {
       return { code: "XX000", message: "internal: relation organization_members secret detail" };
+    }
+    if (opts.failTables?.includes(table)) {
+      return { code: "XX000", message: `internal: relation ${table} secret detail` };
     }
     return null;
   }
@@ -50,60 +108,81 @@ export function createFakeSupabase(
     return false;
   }
 
-  /** organization_members → profiles FKs, as in the real schema. */
-  const MEMBER_PROFILE_FKS: Record<string, string> = {
-    organization_members_user_id_fkey: "user_id",
-    organization_members_invited_by_fkey: "invited_by",
-  };
-
-  /** PostgREST rejects an embed that matches more than one FK (PGRST201). */
-  function embedError(table: string, columns: string) {
-    if (table === "organization_members" && /\bprofiles\s*\(/.test(columns)) {
-      return {
-        code: "PGRST201",
-        message: "Could not embed because more than one relationship was found for 'organization_members' and 'profiles'",
-      };
-    }
-    const hint = columns.match(/\bprofiles!([a-z_]+)\s*\(/);
-    if (table === "organization_members" && hint && !MEMBER_PROFILE_FKS[hint[1]]) {
-      return { code: "PGRST200", message: "Could not find a relationship" };
-    }
-    return null;
-  }
-
-  function withJoins(table: string, row: Row, columns: string): Row {
+  function withEmbeds(row: Row, embeds: Embed[]): Row {
     const out: Row = { ...row };
-    if (/organizations\s*\(/.test(columns) && table === "organization_members") {
-      const org = db.organizations.find((o) => o.id === row.organization_id);
-      out.organizations = org && visible("organizations", org) ? { ...org } : null;
-    }
-    const hint = columns.match(/\bprofiles!([a-z_]+)\s*\(/);
-    if (hint && table === "organization_members") {
-      const fkColumn = MEMBER_PROFILE_FKS[hint[1]];
-      const p = db.profiles.find((x) => x.id === row[fkColumn]);
-      out.profiles = p && visible("profiles", p) ? { ...p } : null;
+    for (const e of embeds) {
+      const target = (db[e.relation.to] ?? []).find(
+        (x) => x[e.relation.foreign] === row[e.relation.local]
+      );
+      out[e.key] = target && visible(e.relation.to, target) ? { ...target } : null;
     }
     return out;
   }
 
   function from(table: string) {
     const filters: [string, unknown][] = [];
+    const inFilters: [string, unknown[]][] = [];
+    const orders: { col: string; ascending: boolean; nullsFirst: boolean }[] = [];
     let columns = "*";
     let head = false;
     let countMode = false;
     let limitN: number | null = null;
-    log.push({ table, filters });
+    let rangeFrom: number | null = null;
+    let rangeTo: number | null = null;
+    const entry = { table, columns, filters, inFilters };
+    log.push(entry);
 
-    const run = () => {
-      let rows = (db[table] ?? []).filter((r) => visible(table, r));
-      for (const [col, val] of filters) rows = rows.filter((r) => r[col] === val);
+    const matches = (row: Row, col: string, test: (v: unknown) => boolean, embeds: Embed[]) => {
+      const dot = col.indexOf(".");
+      if (dot === -1) return { keep: test(row[col]) };
+      const key = col.slice(0, dot);
+      const sub = col.slice(dot + 1);
+      const embedded = row[key] as Row | null | undefined;
+      const embed = embeds.find((e) => e.key === key);
+      if (embedded && test(embedded[sub])) return { keep: true };
+      // PostgREST: an !inner embed drops the parent; a left embed is nulled out.
+      if (embed?.inner) return { keep: false };
+      row[key] = null;
+      return { keep: true };
+    };
+
+    const run = (): { rows: Row[]; total: number } | { error: PgErr } => {
+      const parsed = parseEmbeds(table, columns);
+      if (parsed.error) return { error: parsed.error };
+      let rows = (db[table] ?? [])
+        .filter((r) => visible(table, r))
+        .map((r) => withEmbeds(r, parsed.embeds));
+      for (const [col, val] of filters) {
+        rows = rows.filter((r) => matches(r, col, (v) => v === val, parsed.embeds).keep);
+      }
+      for (const [col, vals] of inFilters) {
+        rows = rows.filter((r) => matches(r, col, (v) => vals.includes(v), parsed.embeds).keep);
+      }
+      rows = rows.filter((r) => parsed.embeds.every((e) => !e.inner || r[e.key] !== null));
+      if (orders.length) {
+        rows = [...rows].sort((a, b) => {
+          for (const o of orders) {
+            const av = a[o.col];
+            const bv = b[o.col];
+            if (av === bv) continue;
+            if (av === null || av === undefined) return o.nullsFirst ? -1 : 1;
+            if (bv === null || bv === undefined) return o.nullsFirst ? 1 : -1;
+            const cmp = (av as string | number) < (bv as string | number) ? -1 : 1;
+            return o.ascending ? cmp : -cmp;
+          }
+          return 0;
+        });
+      }
+      const total = rows.length;
+      if (rangeFrom !== null && rangeTo !== null) rows = rows.slice(rangeFrom, rangeTo + 1);
       if (limitN !== null) rows = rows.slice(0, limitN);
-      return rows.map((r) => withJoins(table, r, columns));
+      return { rows, total };
     };
 
     const builder = {
       select(cols = "*", opts?: { count?: string; head?: boolean }) {
         columns = cols;
+        entry.columns = cols;
         countMode = opts?.count === "exact";
         head = Boolean(opts?.head);
         return builder;
@@ -112,18 +191,30 @@ export function createFakeSupabase(
         filters.push([col, val]);
         return builder;
       },
-      order() {
+      in(col: string, vals: unknown[]) {
+        inFilters.push([col, [...vals]]);
+        return builder;
+      },
+      order(col: string, o?: { ascending?: boolean; nullsFirst?: boolean }) {
+        const ascending = o?.ascending ?? true;
+        orders.push({ col, ascending, nullsFirst: o?.nullsFirst ?? !ascending });
         return builder;
       },
       limit(n: number) {
         limitN = n;
         return builder;
       },
+      range(fromIdx: number, toIdx: number) {
+        rangeFrom = fromIdx;
+        rangeTo = toIdx;
+        return builder;
+      },
       async maybeSingle() {
-        const failure = embedError(table, columns) ?? forcedError(table, columns);
+        const failure = forcedError(table, columns);
         if (failure) return { data: null, error: failure };
-        const rows = run();
-        return { data: rows[0] ?? null, error: null };
+        const r = run();
+        if ("error" in r) return { data: null, error: r.error };
+        return { data: r.rows[0] ?? null, error: null };
       },
       insert(row: Row) {
         inserts.push({ table, row });
@@ -136,11 +227,12 @@ export function createFakeSupabase(
           count?: number;
         }) => T
       ) {
-        const failure = embedError(table, columns) ?? forcedError(table, columns);
+        const failure = forcedError(table, columns);
         if (failure) return Promise.resolve(resolve({ data: null, error: failure }));
-        const rows = run();
+        const r = run();
+        if ("error" in r) return Promise.resolve(resolve({ data: null, error: r.error }));
         return Promise.resolve(
-          resolve({ data: head ? null : rows, error: null, count: countMode ? rows.length : undefined })
+          resolve({ data: head ? null : r.rows, error: null, count: countMode ? r.total : undefined })
         );
       },
     };

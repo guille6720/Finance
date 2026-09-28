@@ -39,7 +39,7 @@ type NavGroup = {
   items: NavItem[];
 };
 
-const navigation: NavGroup[] = [
+export const navigation: NavGroup[] = [
   {
     items: [
       { name: "Dashboard", href: "/dashboard", icon: LayoutDashboard, status: "active" },
@@ -48,27 +48,27 @@ const navigation: NavGroup[] = [
   {
     label: "Gestión",
     items: [
-      { name: "Clientes", href: "/customers", icon: Users, status: "coming_soon" },
-      { name: "Proveedores", href: "/suppliers", icon: Truck, status: "coming_soon" },
+      { name: "Clientes", href: "/customers", icon: Users, status: "active" },
+      { name: "Proveedores", href: "/suppliers", icon: Truck, status: "active" },
     ],
   },
   {
     label: "Finanzas",
     items: [
-      { name: "Caja", href: "/cash", icon: Wallet, status: "coming_soon" },
+      { name: "Caja", href: "/cash", icon: Wallet, status: "active" },
       { name: "Bancos", href: "/banks", icon: Landmark, status: "coming_soon" },
     ],
   },
   {
     label: "Contabilidad",
     items: [
-      { name: "Contabilidad", href: "/accounting", icon: Calculator, status: "coming_soon" },
+      { name: "Contabilidad", href: "/accounting", icon: Calculator, status: "active" },
     ],
   },
   {
     label: "Reportes",
     items: [
-      { name: "Reportes", href: "/reports", icon: FileText, status: "coming_soon" },
+      { name: "Reportes", href: "/reports", icon: FileText, status: "active" },
     ],
   },
   {
