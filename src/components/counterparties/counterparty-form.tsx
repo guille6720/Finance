@@ -5,7 +5,11 @@ import { useActionState, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { createCounterparty, type CounterpartyFormState } from "@/lib/counterparties/actions";
+import {
+  createCounterparty,
+  updateCounterparty,
+  type CounterpartyFormState,
+} from "@/lib/counterparties/actions";
 import {
   ENTITY_TYPE_LABELS,
   ENTITY_TYPES,
@@ -31,13 +35,20 @@ function FieldError({ id, message }: { id: string; message?: string }) {
   );
 }
 
-export function CounterpartyForm({ role }: { role: CounterpartyRoleCode }) {
+export type CounterpartyEditTarget = {
+  id: string;
+  initial: Record<string, string | boolean>;
+  showOtherRole: boolean;
+};
+
+export function CounterpartyForm({ role, edit }: { role: CounterpartyRoleCode; edit?: CounterpartyEditTarget }) {
   const copy = COPY[role];
   const [state, formAction, pending] = useActionState<CounterpartyFormState, FormData>(
-    createCounterparty.bind(null, role),
+    edit ? updateCounterparty.bind(null, role, edit.id) : createCounterparty.bind(null, role),
     {}
   );
-  const values = state.values ?? {};
+  const values = state.values ?? edit?.initial ?? {};
+  const showOtherRole = edit ? edit.showOtherRole : true;
   const text = (key: string, fallback = "") =>
     typeof values[key] === "string" ? (values[key] as string) : fallback;
   const [taxIdType, setTaxIdType] = useState<TaxIdType>(
@@ -165,19 +176,21 @@ export function CounterpartyForm({ role }: { role: CounterpartyRoleCode }) {
         </div>
       </div>
 
-      <label className="flex items-center gap-2 text-sm">
-        <input
-          type="checkbox"
-          name="alsoOtherRole"
-          defaultChecked={values.alsoOtherRole === true}
-          className="h-4 w-4 rounded border-border"
-        />
-        {copy.other}
-      </label>
+      {showOtherRole ? (
+        <label className="flex items-center gap-2 text-sm">
+          <input
+            type="checkbox"
+            name="alsoOtherRole"
+            defaultChecked={values.alsoOtherRole === true}
+            className="h-4 w-4 rounded border-border"
+          />
+          {copy.other}
+        </label>
+      ) : null}
 
       <div className="flex flex-wrap items-center gap-3">
         <Button type="submit" disabled={pending}>
-          {pending ? "Guardando…" : copy.submit}
+          {pending ? "Guardando…" : edit ? "Guardar cambios" : copy.submit}
         </Button>
         <Button asChild variant="outline">
           <Link href={copy.cancelHref}>Cancelar</Link>

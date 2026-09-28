@@ -90,6 +90,8 @@ export function createFakeSupabase(
     failTables?: string[];
     failInserts?: Record<string, PgErr>;
     failRpcs?: Record<string, PgErr>;
+    failUpdates?: Record<string, PgErr>;
+    failDeletes?: Record<string, PgErr>;
     rpcHandlers?: Record<string, (args: Record<string, unknown>, db: FakeDb) => unknown>;
   } = {}
 ) {
@@ -97,6 +99,7 @@ export function createFakeSupabase(
   const log: FakeQueryLog = [];
   const inserts: { table: string; row: Row }[] = [];
   const deletes: { table: string; filters: [string, unknown][]; count: number }[] = [];
+  const updates: { table: string; patch: Row; filters: [string, unknown][]; count: number }[] = [];
   let seq = 0;
   /** Simulates an unexpected DB failure (members+profiles listing, or whole tables). */
   function forcedError(table: string, columns: string) {
@@ -279,8 +282,49 @@ export function createFakeSupabase(
         };
         return chain;
       },
+      update(patch: Row) {
+        const apply = () => {
+          const error: PgErr | null = opts.failUpdates?.[table] ?? null;
+          if (error) return { data: null, error };
+          const hit = (db[table] ?? []).filter(
+            (r) => visible(table, r) && filters.every(([c, v]) => r[c] === v)
+          );
+          for (const r of hit) Object.assign(r, patch);
+          updates.push({ table, patch, filters: [...filters], count: hit.length });
+          return { data: hit.map((r) => ({ ...r })), error: null };
+        };
+        const upd = {
+          eq(col: string, val: unknown) {
+            filters.push([col, val]);
+            return upd;
+          },
+          select() {
+            return { then: (res: (v: unknown) => unknown) => Promise.resolve(res(apply())) };
+          },
+          then(res: (v: unknown) => unknown) {
+            const r = apply();
+            return Promise.resolve(res({ data: null, error: r.error }));
+          },
+        };
+        return upd;
+      },
       delete() {
         const del = {
+          select() {
+            return {
+              then: (res: (v: unknown) => unknown) => {
+                const error: PgErr | null = opts.failDeletes?.[table] ?? null;
+                if (error) return Promise.resolve(res({ data: null, error }));
+                const before = db[table] ?? [];
+                const gone = before.filter(
+                  (r) => visible(table, r) && filters.every(([c, v]) => r[c] === v)
+                );
+                db[table] = before.filter((r) => !gone.includes(r));
+                deletes.push({ table, filters: [...filters], count: gone.length });
+                return Promise.resolve(res({ data: gone.map((r) => ({ ...r })), error: null }));
+              },
+            };
+          },
           eq(col: string, val: unknown) {
             filters.push([col, val]);
             return del;
@@ -335,7 +379,7 @@ export function createFakeSupabase(
     },
   };
 
-  return { client, log, inserts, deletes, rpcs };
+  return { client, log, inserts, deletes, updates, rpcs };
 }
 
 export const ORG_A = "11111111-1111-4111-8111-111111111111";

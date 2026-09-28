@@ -66,7 +66,12 @@ const COPY: Record<
   },
 };
 
-export type CounterpartyNotice = "created" | "updated" | null;
+export type CounterpartyNotice = "created" | "updated" | "saved" | "deleted" | null;
+
+const NOTICE_TEXT: Record<Exclude<CounterpartyNotice, null | "created" | "updated">, string> = {
+  saved: "Cambios guardados.",
+  deleted: "Registro eliminado.",
+};
 
 export async function CounterpartyPage({
   role,
@@ -102,7 +107,7 @@ export async function CounterpartyPage({
           data-testid="counterparty-notice"
           className="rounded-md border border-success/30 bg-success/10 p-3 text-sm text-success"
         >
-          {notice === "created" ? copy.created : copy.updated}
+          {notice === "created" ? copy.created : notice === "updated" ? copy.updated : NOTICE_TEXT[notice]}
         </p>
       ) : null}
       {!result.ok ? (
@@ -136,7 +141,12 @@ export async function CounterpartyPage({
                     label: copy.column,
                     render: (r) => (
                       <div>
-                        <p className="font-medium">{counterpartyDisplayName(r)}</p>
+                        <Link
+                          href={`${copy.newHref.replace("/new", "")}/${r.id}`}
+                          className="font-medium text-primary-bright hover:underline"
+                        >
+                          {counterpartyDisplayName(r)}
+                        </Link>
                         {r.trade_name?.trim() && r.trade_name.trim() !== r.legal_name ? (
                           <p className="text-xs text-muted-foreground">{r.legal_name}</p>
                         ) : null}
