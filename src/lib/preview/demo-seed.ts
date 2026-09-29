@@ -34,6 +34,31 @@ export async function loadPreviewDemoStatus(
   return { eligible: status.eligible === true, complete: status.complete === true };
 }
 
+export type TesterQuota =
+  | { kind: "hidden" }
+  | { kind: "error" }
+  | { kind: "ok"; used: number; max: number };
+
+/**
+ * External tester quota. The database only answers to exempt (internal) accounts;
+ * everyone else gets "hidden".
+ */
+export async function loadTesterQuota(supabase: SupabaseClient, env?: Env): Promise<TesterQuota> {
+  if (!isPublicPreviewDemoEnabled(env)) return { kind: "hidden" };
+  const { data, error } = await supabase.rpc("preview_tester_quota");
+  if (error) return { kind: "error" };
+  if (!data || typeof data !== "object") return { kind: "hidden" };
+  const q = data as { used?: unknown; max?: unknown };
+  const used = Number(q.used);
+  const max = Number(q.max);
+  if (!Number.isInteger(used) || !Number.isInteger(max)) return { kind: "error" };
+  return { kind: "ok", used, max };
+}
+
+export function testerQuotaLabel(quota: { used: number; max: number }): string {
+  return `Testers externos: ${quota.used} / ${quota.max}`;
+}
+
 export type PreviewDemoResult =
   | { ok: true; seeded: false; reason: "disabled" | "not_eligible" }
   | { ok: true; seeded: true; summary: Record<string, unknown> }

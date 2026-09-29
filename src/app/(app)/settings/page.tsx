@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Badge } from "@/components/ui/badge";
 import { getAppEnv } from "@/config/env";
 import { featureStatusLabel } from "@/lib/demo-data/format";
+import { loadTesterQuota, testerQuotaLabel } from "@/lib/preview/demo-seed";
 
 export default async function SettingsPage() {
   const supabase = await createClient();
@@ -35,6 +36,8 @@ export default async function SettingsPage() {
     .select("status, feature_catalog ( code, name, category )")
     .eq("organization_id", orgId);
 
+  const testerQuota = await loadTesterQuota(supabase);
+
   let appEnv = "local";
   try {
     appEnv = getAppEnv();
@@ -50,6 +53,24 @@ export default async function SettingsPage() {
           Entorno: <Badge tone="neutral">{appEnv}</Badge>
         </p>
       </div>
+
+      {testerQuota.kind !== "hidden" && (
+        <Card>
+          <CardHeader>
+            <CardTitle>Preview público</CardTitle>
+            <CardDescription>
+              Las cuentas internas, de dueño y de QA no ocupan cupo.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="text-sm">
+            {testerQuota.kind === "ok" ? (
+              <p className="font-medium">{testerQuotaLabel(testerQuota)}</p>
+            ) : (
+              <p className="text-muted-foreground">No pudimos cargar el cupo de testers.</p>
+            )}
+          </CardContent>
+        </Card>
+      )}
 
       <Card>
         <CardHeader>
