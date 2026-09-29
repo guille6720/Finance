@@ -11,6 +11,7 @@ import { requireUser, ACTIVE_ORG_COOKIE } from "@/lib/authz/context";
 import { writeAuditEvent } from "@/lib/audit/write-audit-event";
 import { requireActiveOrganization } from "@/lib/demo-data/organization-context";
 import { provisionOrganization } from "@/lib/onboarding/provision";
+import { isTesterLimitError, runPreviewDemoSetup, testerLimitMessage } from "@/lib/preview/demo-seed";
 
 export type OnboardingResult =
   | { ok: true; organizationId: string }
@@ -59,6 +60,9 @@ export async function completeOnboarding(
     .single();
 
   if (orgError || !org) {
+    if (isTesterLimitError(orgError)) {
+      return { ok: false, error: testerLimitMessage() };
+    }
     return {
       ok: false,
       error: orgError?.message?.includes("cuit")
@@ -165,6 +169,9 @@ export async function completeOnboarding(
   const provisioned = await provisionOrganization(supabase, user.id, orgId);
   if (!provisioned.ok) {
     console.error("[onboarding] provisioning incomplete", { step: provisioned.step });
+  } else {
+    const demo = await runPreviewDemoSetup(supabase, orgId);
+    if (!demo.ok) console.error("[onboarding] preview demo incomplete", { step: demo.step });
   }
 
   revalidatePath("/dashboard");
@@ -175,7 +182,10 @@ export async function completeOnboarding(
 
 export type FinishSetupState = { error?: string };
 
-/** Retries provisioning for the active organization; only its creator-owner can run it. */
+/**
+ * Retries provisioning (and, in the public preview, the demo data) for the active
+ * organization; only its creator-owner can run it. Every step is idempotent.
+ */
 export async function finishOrganizationSetup(): Promise<FinishSetupState> {
   const { supabase, user, organizationId } = await requireActiveOrganization();
   const result = await provisionOrganization(supabase, user.id, organizationId);
@@ -187,6 +197,11 @@ export async function finishOrganizationSetup(): Promise<FinishSetupState> {
           ? "Solo quien creó la empresa puede completar la configuración."
           : "No pudimos completar la configuración. Intentá de nuevo en unos minutos.",
     };
+  }
+  const demo = await runPreviewDemoSetup(supabase, organizationId);
+  if (!demo.ok) {
+    console.error("[onboarding] preview demo retry failed", { step: demo.step });
+    return { error: "No pudimos cargar los datos de prueba. Intentá de nuevo en unos minutos." };
   }
   revalidatePath("/", "layout");
   return {};

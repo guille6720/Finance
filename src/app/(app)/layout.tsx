@@ -10,6 +10,7 @@ import {
 import { getUxMode } from "@/lib/ui-mode/server";
 import { isOrganizationProvisioned } from "@/lib/onboarding/provision";
 import { SetupBanner } from "@/components/onboarding/setup-banner";
+import { loadPreviewDemoStatus } from "@/lib/preview/demo-seed";
 
 export default async function AppLayout({
   children,
@@ -40,10 +41,12 @@ export default async function AppLayout({
     .maybeSingle();
 
   const uxMode = await getUxMode();
-  const needsSetup =
-    activeOrg?.role === "owner" && activeOrganizationId
-      ? (await isOrganizationProvisioned(supabase, activeOrganizationId)) === false
-      : false;
+  const isOwner = activeOrg?.role === "owner" && Boolean(activeOrganizationId);
+  const provisioned = isOwner ? await isOrganizationProvisioned(supabase, activeOrganizationId!) : null;
+  const needsSetup = provisioned === false;
+  const demoStatus =
+    isOwner && provisioned === true ? await loadPreviewDemoStatus(supabase, activeOrganizationId!) : null;
+  const needsDemoData = demoStatus?.eligible === true && !demoStatus.complete;
 
   return (
     <AppShell
@@ -53,7 +56,7 @@ export default async function AppLayout({
       activeOrganizationId={activeOrganizationId}
       uxMode={uxMode}
     >
-      {needsSetup ? <SetupBanner /> : null}
+      {needsSetup || needsDemoData ? <SetupBanner variant={needsSetup ? "setup" : "demo"} /> : null}
       {children}
     </AppShell>
   );

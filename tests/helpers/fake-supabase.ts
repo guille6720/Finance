@@ -42,7 +42,7 @@ const RELATIONS: Relation[] = [
 const GLOBAL_TABLES = new Set(["feature_catalog", "fiscal_conditions"]);
 
 type Embed = { key: string; relation: Relation; inner: boolean; many?: boolean };
-type PgErr = { code: string; message: string };
+type PgErr = { code: string; message: string; details?: string };
 
 /** Resolves `rel ( … )`, `rel!fk ( … )`, `rel!fk!inner ( … )` like PostgREST does. */
 function parseEmbeds(table: string, columns: string): { embeds: Embed[]; error: PgErr | null } {
